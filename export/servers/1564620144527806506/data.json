@@ -1,0 +1,47 @@
+{
+  "server_id": 1564620144527806506,
+  "vc_data.guilds": {
+    "dashboard": {
+      "points": {
+        "chat_enabled": true,
+        "chat_msgs": 1,
+        "chat_points": 100,
+        "cooldown": 0,
+        "chat_everywhere": true,
+        "enabled_channels": [],
+        "disabled_channels": [],
+        "channel_rules": [],
+        "vc_enabled": true,
+        "vc_mins": 5,
+        "vc_points": 1,
+        "vc_need_others": true,
+        "vc_need_muted": true,
+        "vc_disabled_channels": []
+      },
+      "shop": {
+        "per_page": 4,
+        "items": [
+          {
+            "role": "1564917513567866901",
+            "price": 500,
+            "stock": 8,
+            "emoji": ""
+          }
+        ]
+      },
+      "no_prefix": {
+        "role": "",
+        "users": [
+          "1502683350316351549"
+        ]
+      }
+    }
+  },
+  "vc_data.selfroles": {},
+  "vc_data.vcs": {},
+  "vc_data.mutes": {},
+  "vc_data.guild_owners": [],
+  "vc_data.vc_setup": {},
+  "afk_data.afk": {},
+  "afk_data.tag": true
+}

@@ -3,28 +3,37 @@
  "users": [
   {
    "guild_id": 1547650379448188999,
+   "user_id": 1340198074387267634,
+   "points": 32,
+   "chat_total": 1628,
+   "chat_progress": 28,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
    "user_id": 1422294161180197027,
    "points": 2,
-   "chat_total": 109,
-   "chat_progress": 11,
+   "chat_total": 125,
+   "chat_progress": 27,
    "vc_total": 0,
    "vc_progress": 0
   },
   {
    "guild_id": 1547650379448188999,
    "user_id": 1167780321706655767,
-   "points": 13,
-   "chat_total": 690,
-   "chat_progress": 40,
+   "points": 15,
+   "chat_total": 755,
+   "chat_progress": 5,
    "vc_total": 0,
    "vc_progress": 0
   },
   {
    "guild_id": 1547650379448188999,
    "user_id": 1039155760749355019,
-   "points": 33,
-   "chat_total": 1682,
-   "chat_progress": 32,
+   "points": 39,
+   "chat_total": 1999,
+   "chat_progress": 49,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -32,16 +41,16 @@
    "guild_id": 1547650379448188999,
    "user_id": 1556035098430677116,
    "points": 0,
-   "chat_total": 15,
-   "chat_progress": 15,
+   "chat_total": 25,
+   "chat_progress": 25,
    "vc_total": 0,
    "vc_progress": 0
   },
   {
    "guild_id": 1547650379448188999,
    "user_id": 1554945105981603880,
-   "points": 32,
-   "chat_total": 1636,
+   "points": 42,
+   "chat_total": 2136,
    "chat_progress": 36,
    "vc_total": 0,
    "vc_progress": 0
@@ -50,8 +59,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1509613646647525446,
    "points": 5,
-   "chat_total": 262,
-   "chat_progress": 12,
+   "chat_total": 266,
+   "chat_progress": 16,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -77,17 +86,17 @@
    "guild_id": 1547650379448188999,
    "user_id": 650534818517483526,
    "points": 1,
-   "chat_total": 82,
-   "chat_progress": 32,
+   "chat_total": 83,
+   "chat_progress": 33,
    "vc_total": 0,
    "vc_progress": 0
   },
   {
    "guild_id": 1547650379448188999,
    "user_id": 1504536783898021908,
-   "points": 8,
-   "chat_total": 447,
-   "chat_progress": 47,
+   "points": 9,
+   "chat_total": 451,
+   "chat_progress": 1,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -97,15 +106,6 @@
    "points": 10,
    "chat_total": 507,
    "chat_progress": 7,
-   "vc_total": 0,
-   "vc_progress": 0
-  },
-  {
-   "guild_id": 1547650379448188999,
-   "user_id": 1340198074387267634,
-   "points": 29,
-   "chat_total": 1468,
-   "chat_progress": 18,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -130,9 +130,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1385099857781329961,
-   "points": 22,
-   "chat_total": 1115,
-   "chat_progress": 15,
+   "points": 27,
+   "chat_total": 1368,
+   "chat_progress": 18,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -140,8 +140,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1568120942629101598,
    "points": 11,
-   "chat_total": 587,
-   "chat_progress": 37,
+   "chat_total": 588,
+   "chat_progress": 38,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -149,8 +149,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1083318196859314256,
    "points": 1,
-   "chat_total": 55,
-   "chat_progress": 5,
+   "chat_total": 97,
+   "chat_progress": 47,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -238,9 +238,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1373941121708982373,
-   "points": 0,
-   "chat_total": 25,
-   "chat_progress": 25,
+   "points": 1,
+   "chat_total": 79,
+   "chat_progress": 29,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -302,8 +302,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 747773209666912266,
    "points": 0,
-   "chat_total": 35,
-   "chat_progress": 35,
+   "chat_total": 38,
+   "chat_progress": 38,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -355,9 +355,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1421871623673348166,
-   "points": 1,
-   "chat_total": 80,
-   "chat_progress": 30,
+   "points": 2,
+   "chat_total": 105,
+   "chat_progress": 5,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -365,8 +365,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1538573910839140575,
    "points": 8,
-   "chat_total": 408,
-   "chat_progress": 8,
+   "chat_total": 428,
+   "chat_progress": 28,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -391,9 +391,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1556600326617042959,
-   "points": 24,
-   "chat_total": 1249,
-   "chat_progress": 49,
+   "points": 26,
+   "chat_total": 1335,
+   "chat_progress": 35,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -410,8 +410,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1545437058208632854,
    "points": 0,
-   "chat_total": 11,
-   "chat_progress": 11,
+   "chat_total": 18,
+   "chat_progress": 18,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -482,8 +482,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1242939991542202405,
    "points": 1,
-   "chat_total": 80,
-   "chat_progress": 30,
+   "chat_total": 82,
+   "chat_progress": 32,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -499,9 +499,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 899946327205642250,
-   "points": 0,
-   "chat_total": 38,
-   "chat_progress": 38,
+   "points": 1,
+   "chat_total": 89,
+   "chat_progress": 39,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -545,8 +545,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1419333367312158867,
    "points": 1,
-   "chat_total": 63,
-   "chat_progress": 13,
+   "chat_total": 66,
+   "chat_progress": 16,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -563,8 +563,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1569282809624010763,
    "points": 0,
-   "chat_total": 18,
-   "chat_progress": 18,
+   "chat_total": 20,
+   "chat_progress": 20,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -572,8 +572,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1538712082403557427,
    "points": 0,
-   "chat_total": 9,
-   "chat_progress": 9,
+   "chat_total": 11,
+   "chat_progress": 11,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -671,8 +671,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1520263916629000284,
    "points": 17,
-   "chat_total": 855,
-   "chat_progress": 5,
+   "chat_total": 871,
+   "chat_progress": 21,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -751,9 +751,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1472419085693485066,
-   "points": 5,
-   "chat_total": 260,
-   "chat_progress": 10,
+   "points": 6,
+   "chat_total": 335,
+   "chat_progress": 35,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -797,8 +797,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1542950046511923382,
    "points": 7,
-   "chat_total": 384,
-   "chat_progress": 34,
+   "chat_total": 385,
+   "chat_progress": 35,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -896,8 +896,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1537639385879683212,
    "points": 7,
-   "chat_total": 381,
-   "chat_progress": 31,
+   "chat_total": 388,
+   "chat_progress": 38,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -914,8 +914,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1498337260469354649,
    "points": 0,
-   "chat_total": 30,
-   "chat_progress": 30,
+   "chat_total": 31,
+   "chat_progress": 31,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -923,8 +923,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1458764946966970437,
    "points": 0,
-   "chat_total": 13,
-   "chat_progress": 13,
+   "chat_total": 22,
+   "chat_progress": 22,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -977,8 +977,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1405201420348821605,
    "points": 9,
-   "chat_total": 480,
-   "chat_progress": 30,
+   "chat_total": 485,
+   "chat_progress": 35,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -986,8 +986,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1546416423264325645,
    "points": 0,
-   "chat_total": 37,
-   "chat_progress": 37,
+   "chat_total": 42,
+   "chat_progress": 42,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1030,9 +1030,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1543476735469691002,
-   "points": 1,
-   "chat_total": 76,
-   "chat_progress": 26,
+   "points": 8,
+   "chat_total": 403,
+   "chat_progress": 3,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1066,9 +1066,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1376954961421930537,
-   "points": 1,
-   "chat_total": 88,
-   "chat_progress": 38,
+   "points": 2,
+   "chat_total": 116,
+   "chat_progress": 16,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1139,8 +1139,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1222502100748206130,
    "points": 1,
-   "chat_total": 67,
-   "chat_progress": 17,
+   "chat_total": 97,
+   "chat_progress": 47,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1175,8 +1175,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1530500465815716020,
    "points": 0,
-   "chat_total": 5,
-   "chat_progress": 5,
+   "chat_total": 12,
+   "chat_progress": 12,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1319,8 +1319,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1483496512121081991,
    "points": 1,
-   "chat_total": 53,
-   "chat_progress": 3,
+   "chat_total": 61,
+   "chat_progress": 11,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1328,8 +1328,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1400054210623574096,
    "points": 2,
-   "chat_total": 107,
-   "chat_progress": 7,
+   "chat_total": 109,
+   "chat_progress": 9,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1427,8 +1427,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1528173194161291424,
    "points": 0,
-   "chat_total": 2,
-   "chat_progress": 2,
+   "chat_total": 3,
+   "chat_progress": 3,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1436,8 +1436,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1449333478784110668,
    "points": 0,
-   "chat_total": 41,
-   "chat_progress": 41,
+   "chat_total": 44,
+   "chat_progress": 44,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1598,8 +1598,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1540767735846408225,
    "points": 4,
-   "chat_total": 238,
-   "chat_progress": 38,
+   "chat_total": 244,
+   "chat_progress": 44,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1688,8 +1688,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1356937495878566054,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 2,
+   "chat_progress": 2,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1732,9 +1732,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 829689719633215498,
-   "points": 9,
-   "chat_total": 477,
-   "chat_progress": 27,
+   "points": 10,
+   "chat_total": 535,
+   "chat_progress": 35,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1805,8 +1805,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1554863961021612135,
    "points": 0,
-   "chat_total": 6,
-   "chat_progress": 6,
+   "chat_total": 7,
+   "chat_progress": 7,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1859,8 +1859,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1306678004759527549,
    "points": 1,
-   "chat_total": 59,
-   "chat_progress": 9,
+   "chat_total": 63,
+   "chat_progress": 13,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -1904,8 +1904,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1560615763583443085,
    "points": 0,
-   "chat_total": 15,
-   "chat_progress": 15,
+   "chat_total": 30,
+   "chat_progress": 30,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2003,8 +2003,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1533171184491958494,
    "points": 7,
-   "chat_total": 364,
-   "chat_progress": 14,
+   "chat_total": 367,
+   "chat_progress": 17,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2084,8 +2084,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1373450895660159066,
    "points": 1,
-   "chat_total": 97,
-   "chat_progress": 47,
+   "chat_total": 99,
+   "chat_progress": 49,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2093,8 +2093,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1477465052356546613,
    "points": 0,
-   "chat_total": 18,
-   "chat_progress": 18,
+   "chat_total": 21,
+   "chat_progress": 21,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2111,8 +2111,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1424410478368653335,
    "points": 1,
-   "chat_total": 65,
-   "chat_progress": 15,
+   "chat_total": 67,
+   "chat_progress": 17,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2128,9 +2128,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1499322396820242446,
-   "points": 1,
-   "chat_total": 53,
-   "chat_progress": 3,
+   "points": 4,
+   "chat_total": 244,
+   "chat_progress": 44,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2138,8 +2138,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1511955780545548359,
    "points": 0,
-   "chat_total": 30,
-   "chat_progress": 30,
+   "chat_total": 45,
+   "chat_progress": 45,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2174,8 +2174,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1505912696548360314,
    "points": 0,
-   "chat_total": 10,
-   "chat_progress": 10,
+   "chat_total": 11,
+   "chat_progress": 11,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2255,8 +2255,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1342560572633518102,
    "points": 0,
-   "chat_total": 24,
-   "chat_progress": 24,
+   "chat_total": 29,
+   "chat_progress": 29,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2290,9 +2290,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1568257620702134273,
-   "points": 0,
-   "chat_total": 34,
-   "chat_progress": 34,
+   "points": 1,
+   "chat_total": 57,
+   "chat_progress": 7,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2399,8 +2399,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1330110230083928176,
    "points": 0,
-   "chat_total": 4,
-   "chat_progress": 4,
+   "chat_total": 24,
+   "chat_progress": 24,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2506,9 +2506,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1557457344588157075,
-   "points": 0,
-   "chat_total": 37,
-   "chat_progress": 37,
+   "points": 1,
+   "chat_total": 60,
+   "chat_progress": 10,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2570,8 +2570,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1453159205438750792,
    "points": 1,
-   "chat_total": 89,
-   "chat_progress": 39,
+   "chat_total": 91,
+   "chat_progress": 41,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2587,9 +2587,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1435289271379693775,
-   "points": 0,
-   "chat_total": 9,
-   "chat_progress": 9,
+   "points": 1,
+   "chat_total": 68,
+   "chat_progress": 18,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2624,8 +2624,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1451858699294609459,
    "points": 0,
-   "chat_total": 21,
-   "chat_progress": 21,
+   "chat_total": 29,
+   "chat_progress": 29,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2722,9 +2722,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1544341950595993621,
-   "points": 1,
-   "chat_total": 94,
-   "chat_progress": 44,
+   "points": 2,
+   "chat_total": 138,
+   "chat_progress": 38,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2849,8 +2849,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1517931786750001334,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 5,
+   "chat_progress": 5,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -2930,8 +2930,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1512011776923799637,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 5,
+   "chat_progress": 5,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3011,8 +3011,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1489318449040588891,
    "points": 0,
-   "chat_total": 38,
-   "chat_progress": 38,
+   "chat_total": 39,
+   "chat_progress": 39,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3065,8 +3065,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1561362748863160420,
    "points": 1,
-   "chat_total": 88,
-   "chat_progress": 38,
+   "chat_total": 95,
+   "chat_progress": 45,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3118,9 +3118,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1498656544290766874,
-   "points": 1,
-   "chat_total": 73,
-   "chat_progress": 23,
+   "points": 2,
+   "chat_total": 102,
+   "chat_progress": 2,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3136,9 +3136,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1330945209340661822,
-   "points": 0,
-   "chat_total": 34,
-   "chat_progress": 34,
+   "points": 1,
+   "chat_total": 60,
+   "chat_progress": 10,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3155,8 +3155,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 863680935248265256,
    "points": 0,
-   "chat_total": 6,
-   "chat_progress": 6,
+   "chat_total": 8,
+   "chat_progress": 8,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3236,8 +3236,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1342552625144528908,
    "points": 0,
-   "chat_total": 18,
-   "chat_progress": 18,
+   "chat_total": 19,
+   "chat_progress": 19,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3262,9 +3262,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1502586892179345419,
-   "points": 0,
-   "chat_total": 21,
-   "chat_progress": 21,
+   "points": 1,
+   "chat_total": 55,
+   "chat_progress": 5,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3290,8 +3290,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1220333254478135439,
    "points": 0,
-   "chat_total": 2,
-   "chat_progress": 2,
+   "chat_total": 17,
+   "chat_progress": 17,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3317,8 +3317,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1002593428485455912,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 34,
+   "chat_progress": 34,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3343,9 +3343,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1341324266422931477,
-   "points": 0,
-   "chat_total": 3,
-   "chat_progress": 3,
+   "points": 1,
+   "chat_total": 56,
+   "chat_progress": 6,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3379,9 +3379,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1518547711253807234,
-   "points": 1,
-   "chat_total": 94,
-   "chat_progress": 44,
+   "points": 2,
+   "chat_total": 112,
+   "chat_progress": 12,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3397,9 +3397,9 @@
   {
    "guild_id": 1547650379448188999,
    "user_id": 1353254785360330773,
-   "points": 0,
-   "chat_total": 15,
-   "chat_progress": 15,
+   "points": 1,
+   "chat_total": 63,
+   "chat_progress": 13,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3407,8 +3407,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1413884619786555583,
    "points": 0,
-   "chat_total": 4,
-   "chat_progress": 4,
+   "chat_total": 6,
+   "chat_progress": 6,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3425,8 +3425,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1498021619031867614,
    "points": 0,
-   "chat_total": 11,
-   "chat_progress": 11,
+   "chat_total": 40,
+   "chat_progress": 40,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3443,8 +3443,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1556982718791946312,
    "points": 0,
-   "chat_total": 8,
-   "chat_progress": 8,
+   "chat_total": 14,
+   "chat_progress": 14,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3461,8 +3461,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1389931313922052128,
    "points": 0,
-   "chat_total": 4,
-   "chat_progress": 4,
+   "chat_total": 5,
+   "chat_progress": 5,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3479,8 +3479,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1474027340353896458,
    "points": 0,
-   "chat_total": 16,
-   "chat_progress": 16,
+   "chat_total": 24,
+   "chat_progress": 24,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3497,8 +3497,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1013157772654813245,
    "points": 0,
-   "chat_total": 5,
-   "chat_progress": 5,
+   "chat_total": 8,
+   "chat_progress": 8,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3524,8 +3524,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1393472184609017856,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 2,
+   "chat_progress": 2,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3542,8 +3542,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 968150285706997760,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 2,
+   "chat_progress": 2,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3551,8 +3551,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1095236611077320825,
    "points": 0,
-   "chat_total": 17,
-   "chat_progress": 17,
+   "chat_total": 32,
+   "chat_progress": 32,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3569,8 +3569,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1502367558387634220,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 3,
+   "chat_progress": 3,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3605,8 +3605,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1536761823380901888,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 2,
+   "chat_progress": 2,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3632,8 +3632,8 @@
    "guild_id": 1547650379448188999,
    "user_id": 1555668562155278351,
    "points": 0,
-   "chat_total": 13,
-   "chat_progress": 13,
+   "chat_total": 14,
+   "chat_progress": 14,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -3643,6 +3643,222 @@
    "points": 0,
    "chat_total": 1,
    "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1390614770486345771,
+   "points": 0,
+   "chat_total": 40,
+   "chat_progress": 40,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1570797952333643880,
+   "points": 0,
+   "chat_total": 5,
+   "chat_progress": 5,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1088072862071537715,
+   "points": 0,
+   "chat_total": 3,
+   "chat_progress": 3,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1396063883420110969,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1529520547061563504,
+   "points": 0,
+   "chat_total": 17,
+   "chat_progress": 17,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1069653985725780109,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 678078795369938944,
+   "points": 0,
+   "chat_total": 11,
+   "chat_progress": 11,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1538330463897387149,
+   "points": 0,
+   "chat_total": 38,
+   "chat_progress": 38,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1571069507915747330,
+   "points": 0,
+   "chat_total": 5,
+   "chat_progress": 5,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1061822959272071180,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1461012409442500910,
+   "points": 0,
+   "chat_total": 7,
+   "chat_progress": 7,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1540400165414764566,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1570147421328122017,
+   "points": 0,
+   "chat_total": 18,
+   "chat_progress": 18,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1310218584550670480,
+   "points": 0,
+   "chat_total": 32,
+   "chat_progress": 32,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1418455730498834562,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1451321931063361678,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1545352822340722705,
+   "points": 0,
+   "chat_total": 8,
+   "chat_progress": 8,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1534159668937621604,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1471845663972003982,
+   "points": 0,
+   "chat_total": 3,
+   "chat_progress": 3,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1434388922082922620,
+   "points": 0,
+   "chat_total": 8,
+   "chat_progress": 8,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1157782006231478274,
+   "points": 0,
+   "chat_total": 13,
+   "chat_progress": 13,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1508811755675979866,
+   "points": 0,
+   "chat_total": 4,
+   "chat_progress": 4,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1259814573910003765,
+   "points": 0,
+   "chat_total": 3,
+   "chat_progress": 3,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1547650379448188999,
+   "user_id": 1472999560237547633,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
    "vc_total": 0,
    "vc_progress": 0
   }
@@ -3688,7 +3904,8 @@
      829689719633215498,
      1537639385879683212,
      1554280108632842295,
-     1423371939556233247
+     1423371939556233247,
+     1543476735469691002
     ]
    }
   },
@@ -3712,6 +3929,12 @@
      ],
      "560591477500018725": [
       "<a:disco:1572571259601031259>"
+     ],
+     "1554945105981603880": [
+      "<:nebula_hawww:1563397980332105730>"
+     ],
+     "1385099857781329961": [
+      "<:Cute_Cry:1549341301282185329>"
      ]
     }
    }
@@ -8165,6 +8388,446 @@
    "delta": 1,
    "reason": "chat",
    "ts": 1795205131.2004066
+  },
+  {
+   "id": 13832,
+   "guild_id": 1547650379448188999,
+   "user_id": 1039155760749355019,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795239671.146427
+  },
+  {
+   "id": 13834,
+   "guild_id": 1547650379448188999,
+   "user_id": 1340198074387267634,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795239698.4853158
+  },
+  {
+   "id": 14242,
+   "guild_id": 1547650379448188999,
+   "user_id": 1518547711253807234,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795248079.5748274
+  },
+  {
+   "id": 14245,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795248130.2656398
+  },
+  {
+   "id": 14251,
+   "guild_id": 1547650379448188999,
+   "user_id": 899946327205642250,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795248267.2323074
+  },
+  {
+   "id": 14256,
+   "guild_id": 1547650379448188999,
+   "user_id": 1373941121708982373,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795248356.3275151
+  },
+  {
+   "id": 14261,
+   "guild_id": 1547650379448188999,
+   "user_id": 1498656544290766874,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795248481.837889
+  },
+  {
+   "id": 14264,
+   "guild_id": 1547650379448188999,
+   "user_id": 1353254785360330773,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795248521.998834
+  },
+  {
+   "id": 14270,
+   "guild_id": 1547650379448188999,
+   "user_id": 1341324266422931477,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795248597.4060512
+  },
+  {
+   "id": 14273,
+   "guild_id": 1547650379448188999,
+   "user_id": 1039155760749355019,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795248666.1133745
+  },
+  {
+   "id": 14307,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795250018.272566
+  },
+  {
+   "id": 14326,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795251107.7548862
+  },
+  {
+   "id": 14331,
+   "guild_id": 1547650379448188999,
+   "user_id": 829689719633215498,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795251256.107251
+  },
+  {
+   "id": 14353,
+   "guild_id": 1547650379448188999,
+   "user_id": 1039155760749355019,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795252298.8301713
+  },
+  {
+   "id": 14368,
+   "guild_id": 1547650379448188999,
+   "user_id": 1543476735469691002,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795252746.2092001
+  },
+  {
+   "id": 14385,
+   "guild_id": 1547650379448188999,
+   "user_id": 1499322396820242446,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795253141.9690022
+  },
+  {
+   "id": 14390,
+   "guild_id": 1547650379448188999,
+   "user_id": 1556600326617042959,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795253225.1998148
+  },
+  {
+   "id": 14395,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795253354.0362134
+  },
+  {
+   "id": 14396,
+   "guild_id": 1547650379448188999,
+   "user_id": 1502586892179345419,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795253368.4018664
+  },
+  {
+   "id": 14419,
+   "guild_id": 1547650379448188999,
+   "user_id": 1376954961421930537,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795254031.894133
+  },
+  {
+   "id": 14437,
+   "guild_id": 1547650379448188999,
+   "user_id": 1421871623673348166,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795254517.1825402
+  },
+  {
+   "id": 14444,
+   "guild_id": 1547650379448188999,
+   "user_id": 1543476735469691002,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795254749.6627755
+  },
+  {
+   "id": 14453,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795254964.867354
+  },
+  {
+   "id": 14495,
+   "guild_id": 1547650379448188999,
+   "user_id": 1499322396820242446,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795255817.976689
+  },
+  {
+   "id": 14500,
+   "guild_id": 1547650379448188999,
+   "user_id": 1340198074387267634,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795255887.1802306
+  },
+  {
+   "id": 14525,
+   "guild_id": 1547650379448188999,
+   "user_id": 1385099857781329961,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795256233.3539233
+  },
+  {
+   "id": 14528,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795256265.4476476
+  },
+  {
+   "id": 14532,
+   "guild_id": 1547650379448188999,
+   "user_id": 1568257620702134273,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795256317.3889093
+  },
+  {
+   "id": 14558,
+   "guild_id": 1547650379448188999,
+   "user_id": 1499322396820242446,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795256801.6430626
+  },
+  {
+   "id": 14565,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795257027.708095
+  },
+  {
+   "id": 14574,
+   "guild_id": 1547650379448188999,
+   "user_id": 1385099857781329961,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795257278.4686754
+  },
+  {
+   "id": 14597,
+   "guild_id": 1547650379448188999,
+   "user_id": 1504536783898021908,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795257771.1988945
+  },
+  {
+   "id": 14702,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795259743.1178734
+  },
+  {
+   "id": 14730,
+   "guild_id": 1547650379448188999,
+   "user_id": 1039155760749355019,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795260291.199876
+  },
+  {
+   "id": 14879,
+   "guild_id": 1547650379448188999,
+   "user_id": 1543476735469691002,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795262337.8716965
+  },
+  {
+   "id": 14920,
+   "guild_id": 1547650379448188999,
+   "user_id": 1557457344588157075,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795263005.8320875
+  },
+  {
+   "id": 14939,
+   "guild_id": 1547650379448188999,
+   "user_id": 1543476735469691002,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795263347.7291315
+  },
+  {
+   "id": 14956,
+   "guild_id": 1547650379448188999,
+   "user_id": 1544341950595993621,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795263596.8472462
+  },
+  {
+   "id": 15017,
+   "guild_id": 1547650379448188999,
+   "user_id": 1167780321706655767,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795264510.7447586
+  },
+  {
+   "id": 15177,
+   "guild_id": 1547650379448188999,
+   "user_id": 1039155760749355019,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795267303.9055986
+  },
+  {
+   "id": 15196,
+   "guild_id": 1547650379448188999,
+   "user_id": 1543476735469691002,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795267711.8959575
+  },
+  {
+   "id": 15204,
+   "guild_id": 1547650379448188999,
+   "user_id": 1330945209340661822,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795267775.5066073
+  },
+  {
+   "id": 15343,
+   "guild_id": 1547650379448188999,
+   "user_id": 1340198074387267634,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795270220.4988406
+  },
+  {
+   "id": 15382,
+   "guild_id": 1547650379448188999,
+   "user_id": 1556600326617042959,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795270618.174575
+  },
+  {
+   "id": 15443,
+   "guild_id": 1547650379448188999,
+   "user_id": 1543476735469691002,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795271314.429747
+  },
+  {
+   "id": 15541,
+   "guild_id": 1547650379448188999,
+   "user_id": 1543476735469691002,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795272463.6387837
+  },
+  {
+   "id": 15584,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795272853.0058732
+  },
+  {
+   "id": 15751,
+   "guild_id": 1547650379448188999,
+   "user_id": 1385099857781329961,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795275809.3903089
+  },
+  {
+   "id": 15973,
+   "guild_id": 1547650379448188999,
+   "user_id": 1039155760749355019,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795280192.6331172
+  },
+  {
+   "id": 16093,
+   "guild_id": 1547650379448188999,
+   "user_id": 1385099857781329961,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795285596.0427032
+  },
+  {
+   "id": 16094,
+   "guild_id": 1547650379448188999,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795285652.575284
+  },
+  {
+   "id": 16140,
+   "guild_id": 1547650379448188999,
+   "user_id": 1472419085693485066,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795287914.9073944
+  },
+  {
+   "id": 16141,
+   "guild_id": 1547650379448188999,
+   "user_id": 1435289271379693775,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795288274.6298747
+  },
+  {
+   "id": 16143,
+   "guild_id": 1547650379448188999,
+   "user_id": 1385099857781329961,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795288456.2076366
+  },
+  {
+   "id": 16145,
+   "guild_id": 1547650379448188999,
+   "user_id": 1167780321706655767,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795288684.7173848
   }
  ]
 }

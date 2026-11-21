@@ -39,13 +39,20 @@
     },
     "panel_message_id": 1573473132516212869,
     "active_custom_vcs": {
-      "1573513094372790432": {
+      "1573788824222302408": {
         "owner": 650534818517483526,
         "banned": [],
         "block_drags": false,
-        "created": 1795225156.2974296
+        "created": 1795290896.0809376
       }
     }
+  },
+  "1506692944604823696": {
+    "server_name": "OG-Bunny  (testing server)",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
   },
   "1524797937836621874": {
     "server_name": "Twin's Empire 2.0",
@@ -54,8 +61,36 @@
     "panel_message_id": null,
     "active_custom_vcs": {}
   },
+  "1543872217920573493": {
+    "server_name": "Vortex's Empire | FREE REWARDS",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
   "1547650379448188999": {
     "server_name": "The Blaze Nebula | Drag GW",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1556044009661530124": {
+    "server_name": "Soul of Nebula",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1564620144527806506": {
+    "server_name": "𖹭.ִ𓂃Live In My Own",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1573601753965011035": {
+    "server_name": "duffer's server",
     "join_to_create": null,
     "interface": null,
     "panel_message_id": null,

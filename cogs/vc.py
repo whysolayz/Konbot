@@ -19,6 +19,11 @@ from core.ui import replied_message
 log = logging.getLogger("kon.vc")
 
 NOT_IN_VC = "Join your custom VC first."
+# everything a VC-banned member loses in that VC (voice AND its text chat)
+BAN_DENY = dict(connect=False, view_channel=False, send_messages=False, send_messages_in_threads=False,
+                add_reactions=False, read_message_history=False, attach_files=False, embed_links=False,
+                create_public_threads=False, create_private_threads=False)
+BAN_CLEAR = {k: None for k in BAN_DENY}
 CHAT_VC = contextvars.ContextVar("chat_vc", default=None)     # the voice channel whose chat a command was typed in
 CFG_KEY = "customvc"
 
@@ -174,7 +179,7 @@ class VCService:
             raise VCError("You can't ban a bot.")
         self.guard(member, target, "ban")
         try:
-            await self._ov(ch, target, f"VC ban by {member}", connect=False, view_channel=False)
+            await self._ov(ch, target, f"VC ban by {member}", **BAN_DENY)
             if target.id not in rec["banned"]:
                 rec["banned"].append(target.id)
                 self.store.save_soon()
@@ -188,18 +193,28 @@ class VCService:
         ch, rec = self.owned(member)
         if target.id not in rec["banned"]:
             raise VCError("They aren't banned here.")
+        reason = f"VC unban by {member}"
         try:
-            await self._ov(ch, discord.Object(id=target.id), f"VC unban by {member}", connect=None, view_channel=None)
+            m = ch.guild.get_member(target.id)
+            if m is not None:
+                await self._ov(ch, m, reason, **BAN_CLEAR)
+            else:
+                # not cached / left the server: remove the overwrite by id (set_permissions needs a Member or Role)
+                try:
+                    await self.bot.http.delete_channel_permissions(ch.id, target.id, reason=reason)
+                except discord.NotFound:
+                    pass
         except discord.HTTPException as e:
             raise self._http(e)
-        rec["banned"].remove(target.id)
+        if target.id in rec["banned"]:
+            rec["banned"].remove(target.id)
         self.store.save_soon()
-        return f"Unbanned **{getattr(target, 'display_name', target.name)}**."
+        return f"Unbanned **{getattr(target, 'display_name', None) or getattr(target, 'name', target.id)}**."
 
     async def permit(self, member, target: discord.Member):
         ch, rec = self.owned(member)
         try:
-            await self._ov(ch, target, f"VC permit by {member}", connect=True, view_channel=True)
+            await self._ov(ch, target, f"VC permit by {member}", **{**BAN_CLEAR, "connect": True, "view_channel": True})
         except discord.HTTPException as e:
             raise self._http(e)
         if target.id in rec["banned"]:
@@ -214,7 +229,7 @@ class VCService:
             raise VCError("Nobody else is in the VC.")
         try:
             for m in targets:
-                await self._ov(ch, m, f"VC permit all by {member}", connect=True, view_channel=True)
+                await self._ov(ch, m, f"VC permit all by {member}", **{**BAN_CLEAR, "connect": True, "view_channel": True})
                 if m.id in rec["banned"]:
                     rec["banned"].remove(m.id)
                 await asyncio.sleep(0.25)
@@ -416,7 +431,8 @@ class VCService:
                 reason=f"Custom VC for {member}",
             )
             try:
-                me_ov = discord.PermissionOverwrite(view_channel=True, connect=True, manage_channels=True, move_members=True)
+                me_ov = discord.PermissionOverwrite(view_channel=True, connect=True, manage_channels=True, move_members=True,
+                                                    manage_messages=True, send_messages=True)
                 ch = await guild.create_voice_channel(overwrites={**overwrites, guild.me: me_ov}, **kwargs)
             except discord.Forbidden:
                 try:
@@ -528,6 +544,20 @@ class VC(commands.Cog):
             rec = self.store.vc(before.channel.id)
             if rec:
                 await self.svc.on_leave(member, before.channel, rec)
+
+    @commands.Cog.listener()
+    async def on_message(self, message: discord.Message):
+        """A VC-banned member can't chat in that VC's text chat.
+        Channel overwrites already deny it, but Administrators ignore overwrites - so their messages are deleted here."""
+        if message.guild is None or message.author.bot or not isinstance(message.channel, discord.VoiceChannel):
+            return
+        rec = self.store.vc(message.channel.id)
+        if not rec or message.author.id not in rec["banned"] or message.author.id == rec["owner"]:
+            return
+        try:
+            await message.delete()
+        except discord.HTTPException:
+            pass
 
     @commands.Cog.listener()
     async def on_guild_channel_delete(self, channel):

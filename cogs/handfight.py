@@ -9,7 +9,8 @@ Modes (you pick, nothing is automatic, nothing starts until the host presses Sta
   Duo     1v1
   Squad   Red vs Blue, equal teams, EVEN players only (2v2 ... 5v5) - same team system as TimeTap
 
-Everybody locks a hand in secret (only you see your pick). First to 2 round wins takes a match, a draw is replayed.
+Everybody locks a hand in secret (only you see your pick). Default is Best of 3 (first to 2 round wins); the host can
+switch the lobby to Best of 10 (first to 6). A draw is replayed. When a game ends everybody gets a Play Again button.
 Channel + stats live in kon.db (part of every backup).
 """
 import asyncio
@@ -26,12 +27,13 @@ from discord.ext import commands
 from core import ratelimit
 from core.config import BRAND, PREFIX
 from core.icons import I, err
-from core.minigames import (BLUE, GOLD, GREEN, RED, GameCog, GameSettings, GameStopped, MiniGame, TEAM_NAME,
-                            open_channel_picker, team_icon)
+from core.minigames import (BLUE, GOLD, GREEN, RED, GameCog, GameSettings, GameStopped, LobbyView, MiniGame,
+                            TEAM_NAME, open_channel_picker, team_icon)
 
 log = logging.getLogger("kon.handfight")
 
-ROUNDS_TO_WIN = 2
+SERIES = {3: 2, 10: 6}          # best of N -> round wins needed (Best of 10 = first to 6, so it can never end level)
+DEFAULT_BEST_OF = 3
 PICK_SECONDS = 25
 CHOICES = {"rock": "Rock", "paper": "Paper", "scissors": "Scissors"}
 BEATS = {"rock": "scissors", "paper": "rock", "scissors": "paper"}
@@ -107,15 +109,63 @@ class PickView(discord.ui.View):
             asyncio.create_task(g.refresh_pick())
 
 
+class PlayAgainView(discord.ui.View):
+    """Shown under the winner announcement - any player (winner or loser) can open a rematch lobby."""
+
+    def __init__(self, game: "HandfightGame"):
+        super().__init__(timeout=600)
+        self.game = game
+        self.message: Optional[discord.Message] = None
+        b = discord.ui.Button(label="Play Again", emoji=I.e("repeat"), style=discord.ButtonStyle.success)
+        b.callback = self.again
+        self.add_item(b)
+
+    async def again(self, interaction: discord.Interaction):
+        g = self.game
+        cog, ch = g.cog, g.channel
+        if interaction.user.id not in g.players:
+            return await interaction.response.send_message(
+                err("Only the players of that game can start a rematch - use the command to start your own."), ephemeral=True)
+        if ch.id in cog.games or ch.id in cog.pending:
+            return await interaction.response.send_message(err("A game is already running here."), ephemeral=True)
+        ng = cog.new_game(g.mode, ch, interaction.user)          # the player who pressed is the new host
+        ng.best_of = g.best_of
+        ng.players = list(g.players)                              # same players, same teams - just press Start
+        ng.teams = dict(g.teams)
+        ng.names = {**g.names, interaction.user.id: interaction.user.display_name}
+        self.stop()
+        for c in self.children:
+            c.disabled = True
+        await interaction.response.edit_message(view=self)
+        ng.view = LobbyView(ng)
+        ng.lobby_msg = await ch.send(embed=ng.lobby_embed(), view=ng.view)
+        ng.task = asyncio.create_task(ng.run())
+
+    async def on_timeout(self):
+        for c in self.children:
+            c.disabled = True
+        if self.message:
+            try:
+                await self.message.edit(view=self)
+            except discord.HTTPException:
+                pass
+
+
 class HandfightGame(MiniGame):
     key = "handfight"
     title = "Handfight"
     icon = "rock"
     color = BRAND
     modes = ("duo", "squad")
+    series_options = tuple(SERIES)                # (3, 10) -> host toggles "Best of 3" / "Best of 10" in the lobby
+
+    @property
+    def to_win(self) -> int:
+        return SERIES.get(self.best_of, SERIES[DEFAULT_BEST_OF])
 
     def __init__(self, cog, mode, channel, host):
         super().__init__(cog, mode, channel, host)
+        self.best_of = DEFAULT_BEST_OF
         self.sess = defaultdict(new_session)
         self.round: Optional[Round] = None
         self.msg: Optional[discord.Message] = None
@@ -127,7 +177,7 @@ class HandfightGame(MiniGame):
     def how_to(self) -> str:
         return (f"Lock in **{I.s('rock')} Rock, {I.s('paper')} Paper or {I.s('scissors')} Scissors** - your pick stays secret until both have chosen.\n"
                 f"{I.s('rock')} beats {I.s('scissors')} · {I.s('scissors')} beats {I.s('paper')} · {I.s('paper')} beats {I.s('rock')}\n"
-                f"First to **{ROUNDS_TO_WIN}** round wins takes the match. A draw is replayed.\n"
+                f"**Best of {self.best_of}** - first to **{self.to_win}** round wins takes the match. A draw is replayed.\n"
                 f"{I.s('hourglass')} You have {PICK_SECONDS}s per round - no pick = you lose the round.")
 
     async def on_start(self):
@@ -166,8 +216,8 @@ class HandfightGame(MiniGame):
             if state == "pick":
                 status = f"{I.s('check')} Locked in" if rd and uid in rd.picks else f"{I.s('hourglass')} Choosing..."
             e.add_field(name=f"{team_icon(tm) + ' ' if tm else ''}{self.name(uid)}", inline=True,
-                        value=f"{I.s('star_fill')} **{score[uid]}** / {ROUNDS_TO_WIN}" + (f"\n{status}" if status else ""))
-        e.set_footer(text=f"Round {rnd} · first to {ROUNDS_TO_WIN}")
+                        value=f"{I.s('star_fill')} **{score[uid]}** / {self.to_win}" + (f"\n{status}" if status else ""))
+        e.set_footer(text=f"Round {rnd} · Best of {self.best_of} · first to {self.to_win}")
         return e
 
     async def refresh_pick(self):
@@ -213,7 +263,7 @@ class HandfightGame(MiniGame):
                     self.sess[l]["rounds_lost"] += 1
                     lines = [head, f"{I.s('bolt')} <@{w}> wins the round! **{CHOICES[rd.picks[w]]}** beats **{CHOICES[rd.picks[l]]}**"]
                     idle = 0
-                    if score[w] >= ROUNDS_TO_WIN:
+                    if score[w] >= self.to_win:
                         winner, state = w, "end"
             elif len(rd.picks) == 1:
                 w = next(iter(rd.picks))
@@ -223,7 +273,7 @@ class HandfightGame(MiniGame):
                 self.sess[l]["rounds_lost"] += 1
                 idle = 0
                 lines = [f"{I.s('hourglass')} <@{l}> didn't pick in time - <@{w}> wins the round."]
-                if score[w] >= ROUNDS_TO_WIN:
+                if score[w] >= self.to_win:
                     winner, state = w, "end"
             else:
                 idle += 1
@@ -257,8 +307,9 @@ class HandfightGame(MiniGame):
             content = f"<@{champ}>"
         e.add_field(name="Match wins", inline=True, value="\n".join(
             f"<@{u}> · {s['match_wins']}" for u, s in self.sess.items() if s["match_wins"]) or "-")
-        e.set_footer(text=f"GG! Play again with {PREFIX}handfight")
-        await self.channel.send(content=content, embed=e)
+        e.set_footer(text=f"GG! · Best of {self.best_of} · press Play Again for a rematch")
+        view = PlayAgainView(self)
+        view.message = await self.channel.send(content=content, embed=e, view=view)
 
 
 class Handfight(GameCog, commands.Cog):
@@ -283,7 +334,8 @@ class Handfight(GameCog, commands.Cog):
     async def handfight(self, ctx: commands.Context):
         await self.open_game(
             ctx, label="Handfight", icon="rock", command="handfight", modes=["duo", "squad"],
-            intro=(f"**Rock, Paper, Scissors** - but with lobbies, teams and a live board.\n\n"
+            intro=(f"**Rock, Paper, Scissors** - but with lobbies, teams and a live board.\n"
+                   f"Default **Best of 3** - the host can switch to **Best of 10** in the lobby.\n\n"
                    f"{I.s('swap')} **Duo** - 1v1\n"
                    f"{I.s('shield_star')} **Squad** - {I.s('team_red')} Red vs {I.s('team_blue')} Blue (even players only)"))
 

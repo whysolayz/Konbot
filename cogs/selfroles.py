@@ -649,7 +649,7 @@ class SelfRoles(commands.Cog):
                 await member.add_roles(role, reason="Self role")
                 text = ok(f"You have {role.mention} now.")
         except discord.HTTPException:
-            text = err("Something broke. Try again.")
+            text = err("I couldn't change that role - check that my role is above it and I have Manage Roles.")
         await interaction.followup.send(text, ephemeral=True, allowed_mentions=discord.AllowedMentions.none())
 
     @commands.Cog.listener()

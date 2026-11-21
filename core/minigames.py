@@ -200,11 +200,24 @@ class LobbyView(discord.ui.View):
             self._add("Leave", I.e("logout"), discord.ButtonStyle.secondary, self.leave)
         self._add("Start", I.e("play"), discord.ButtonStyle.success, self.start, row=1)
         self._add("Cancel", I.e("cross"), discord.ButtonStyle.secondary, self.cancel, row=1)
+        self.series_btn = None
+        if game.series_options:                       # e.g. Handfight: Best of 3 <-> Best of 10 (host only)
+            self.series_btn = self._add(game.series_label(), I.e("repeat"), discord.ButtonStyle.primary,
+                                        self.cycle_series, row=1)
 
     def _add(self, label, emoji, style, cb, row=0):
         b = discord.ui.Button(label=label, emoji=emoji, style=style, row=row)
         b.callback = cb
         self.add_item(b)
+        return b
+
+    async def cycle_series(self, interaction: discord.Interaction):
+        g = self.game
+        if not self.is_host(interaction.user):
+            return await interaction.response.send_message(err("Only the host can change the match length."), ephemeral=True)
+        g.cycle_series()
+        self.series_btn.label = g.series_label()
+        await interaction.response.edit_message(embed=g.lobby_embed(), view=self)
 
     def is_host(self, member) -> bool:
         return member.id == self.game.host.id or member.guild_permissions.manage_guild
@@ -254,6 +267,7 @@ class MiniGame:
     icon = "gamepad"
     color = BRAND
     modes = ("duo", "squad")
+    series_options: tuple = ()                    # e.g. (3, 10) = "Best of 3" / "Best of 10"; empty = no such setting
 
     def __init__(self, cog, mode: str, channel, host: discord.Member):
         self.cog, self.mode, self.channel, self.host = cog, mode, channel, host
@@ -276,6 +290,16 @@ class MiniGame:
         self.now: Optional[tuple] = None          # (a, b, label)
         self.upcoming: list = []
         self.champion: Optional[int] = None
+
+    # ----- match length (only games with series_options) -----
+    best_of: int = 0
+
+    def series_label(self) -> str:
+        return f"Best of {self.best_of}"
+
+    def cycle_series(self):
+        opts = list(self.series_options)
+        self.best_of = opts[(opts.index(self.best_of) + 1) % len(opts)] if self.best_of in opts else opts[0]
 
     # ----- text pieces subclasses can override -----
     def how_to(self) -> str:

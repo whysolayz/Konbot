@@ -4,7 +4,47 @@
     "create": 1488691385266864208,
     "interface": 1488691445769568306,
     "panel_msg": 1573473132516212869,
-    "panel_ver": "cf4fe9877c500fc2"
+    "panel_ver": "cf4fe9877c500fc2",
+    "dashboard": {
+      "aliases": {
+        "aliases": [
+          {
+            "name": "backupload",
+            "command": "bload"
+          }
+        ]
+      },
+      "self_roles": {
+        "channel": "1488691387653161131",
+        "title": "Self Roles :",
+        "title_emoji": "<:Spider_Diamond:1570309161198293013>",
+        "footer": "Click the buttons below to toggle your roles.",
+        "color": "#ff9100",
+        "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b00250a&is=6afed38a&hm=cc8806b939ea85d7d95df02c8276839444e69fde897cbf07edc3160bc530f326&",
+        "roles": [
+          {
+            "role": "1488691267574698006",
+            "label": "Event Ping",
+            "emoji": "<:cal2:1570309163999821864>"
+          },
+          {
+            "role": "1488691305323167774",
+            "label": "Fun Ping",
+            "emoji": "<:senpai_wow:1570309166965465138>"
+          },
+          {
+            "role": "1488691271101972531",
+            "label": "Giveaway Ping",
+            "emoji": "<:Spider_Diamond:1570309161198293013>"
+          },
+          {
+            "role": "1488691273446719489",
+            "label": "Social Feeds",
+            "emoji": "<:Senpai_Information:1517499045117952060>"
+          }
+        ]
+      }
+    }
   },
   "vc_data.selfroles": {
     "channel": 1488691387653161131,
@@ -12,7 +52,7 @@
     "title": "Self Roles :",
     "title_emoji": "<:Spider_Diamond:1570309161198293013>",
     "footer": "Click the buttons below to toggle your roles.",
-    "color": 4906624,
+    "color": 16748800,
     "banner": null,
     "roles": [
       {
@@ -44,7 +84,7 @@
         "line_emoji": "<:Senpai_Information:1517499045117952060>"
       }
     ],
-    "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b00250a&is=6afed38a&hm=cc8806b939ea85d7d95df02c8276839444e69fde897cbf07edc3160bc530f326&",
+    "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b021f4a&is=6b00cdca&hm=f9c1f6e5da1b90cbbcd44a1a86fa5ef906817bc5152e0a97e47e7fe9ffc66218&",
     "banner_ref": {
       "c": 1572381729233051669,
       "m": 1572382470312296601
@@ -52,12 +92,12 @@
     "missing": []
   },
   "vc_data.vcs": {
-    "1573513094372790432": {
+    "1573788824222302408": {
       "guild": 1488690726870057165,
       "owner": 650534818517483526,
       "banned": [],
       "block_drags": false,
-      "created": 1795225156.2974296
+      "created": 1795290896.0809376
     }
   },
   "vc_data.mutes": {},
@@ -108,61 +148,71 @@
         }
       ]
     },
-    "1476239945172648142": {
-      "reason": "AFK",
-      "since": 1795095061.9590423,
-      "guild_id": 1488690726870057165,
-      "old_nick": null,
-      "mentions": [
-        {
-          "author": "🜲 SeNvaTor 'メD | 神",
-          "channel_id": 1488691402039627776,
-          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1573366469935243455",
-          "content": "<@1476239945172648142>"
-        }
-      ]
-    },
     "743845224287043665": {
       "reason": "Aaya wait",
       "since": 1795193581.1193664,
       "guild_id": 1488690726870057165,
       "old_nick": null,
-      "mentions": []
+      "mentions": [
+        {
+          "author": "🜲 SeNvaTor 'メD | 神",
+          "channel_id": 1572286596735303771,
+          "url": "https://discord.com/channels/1488690726870057165/1572286596735303771/1573674924592205907",
+          "content": "<@743845224287043665>"
+        }
+      ]
     },
-    "1299765230011678834": {
-      "reason": "tuta hua saaz hu mei <:sad:1570501583660126249> <:sad:1569605312170823803>",
-      "since": 1795199980.0513644,
+    "1262248731353546763": {
+      "reason": "nini tame",
+      "since": 1795280207.7781858,
       "guild_id": 1488690726870057165,
       "old_nick": null,
       "mentions": [
         {
-          "author": "Nope {>.<}",
+          "author": "ProTabish",
           "channel_id": 1488691402039627776,
-          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1573407747192528980",
-          "content": "chala gaya 🥀"
+          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1573751892394246379",
+          "content": "/summon <@1262248731353546763> chat revival"
+        },
+        {
+          "author": "ProTabish",
+          "channel_id": 1488691402039627776,
+          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1573752026205003858",
+          "content": "<@1262248731353546763> anshumon me tumhe chunta hu"
+        },
+        {
+          "author": "TheSky",
+          "channel_id": 1488691402039627776,
+          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1573764517291102229",
+          "content": "<@1262248731353546763>"
+        },
+        {
+          "author": "TheSky",
+          "channel_id": 1488691402039627776,
+          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1573774312190640229",
+          "content": "<@1262248731353546763>"
+        },
+        {
+          "author": "!        VortexTheOG !?",
+          "channel_id": 1488691402039627776,
+          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1573774379139993691",
+          "content": "<@1262248731353546763> os kab dega"
         }
       ]
     },
-    "1538573910839140575": {
-      "reason": "sleep bro very tired",
-      "since": 1795200761.0500762,
+    "1297140568207527966": {
+      "reason": "its my birthday 🎂 🥳",
+      "since": 1795284338.2292867,
       "guild_id": 1488690726870057165,
       "old_nick": null,
       "mentions": [
         {
-          "author": "Goku",
-          "channel_id": 1526981496462901399,
-          "url": "https://discord.com/channels/1524797937836621874/1526981496462901399/1573498093805117451",
-          "content": "<@1538573910839140575> on hai?"
+          "author": "TheSky",
+          "channel_id": 1488691402039627776,
+          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1573761835390341204",
+          "content": "Happy birthday 🎂"
         }
       ]
-    },
-    "1543476735469691002": {
-      "reason": "bahne logz",
-      "since": 1795233344.6211426,
-      "guild_id": 1488690726870057165,
-      "old_nick": null,
-      "mentions": []
     }
   },
   "afk_data.tag": false

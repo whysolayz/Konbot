@@ -96,7 +96,7 @@ class Errors(commands.Cog):
 
         log.error("Unhandled error in %s:\n%s", name,
                   "".join(traceback.format_exception(type(error), error, error.__traceback__)))
-        await self.send(ctx, err("Something broke. Try again."))
+        await self.send(ctx, err(f"I couldn't finish that (`{type(error).__name__}`) - it's been logged for the owner."))
 
     @staticmethod
     async def send(ctx: commands.Context, text: str, delete_after: float = None):

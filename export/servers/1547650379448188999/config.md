@@ -51,18 +51,19 @@
 
 - **role**: *none*
 - **users**:
-  - `1385099857781329961` → ♤ 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 ✿ (d3adb9y1113)
+  - `1385099857781329961` → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113)
   - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
   - `1504536783898021908` → T-Mod | om pandey (om61006)
   - `1562817118641062029` → Raven (_raven.exe09)
   - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
   - `1519731963244580987` → Blaze zzz (btwkartikxz)
-  - `1340198074387267634` → HM | TacticalShower (.mlx_rinn)
+  - `1340198074387267634` → TacticalShower (.mlx_rinn)
   - `1554945105981603880` → Mexzon | Blaze (mexzon_0205)
-  - `829689719633215498` → Vortex (.vortextheog)
+  - `829689719633215498` → Vortex (_vortextheog)
   - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
-  - `1554280108632842295` → *not found (deleted / bot not in server)*
+  - `1554280108632842295` → .arnav.gg
   - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
+  - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
 
 ### Aliases
 
@@ -78,7 +79,7 @@
 - **users**:
   - **1562817118641062029** → Raven (_raven.exe09):
     - `<a:Oliviaaa_nooooo:1570865411195543645>`
-  - **829689719633215498** → Vortex (.vortextheog):
+  - **829689719633215498** → Vortex (_vortextheog):
     - `<:nebula_Bored:1561078200325382194>`
   - **1556600326617042959** → 4LC_DR4K3N (4lc_dr4k3n):
     - `<:Nebula_Angry:1549341308546449459>`
@@ -86,6 +87,10 @@
     - `<:nebula_hawww:1563397980332105730>`
   - **560591477500018725** → !     Meow (meowtheog.):
     - `<a:disco:1572571259601031259>`
+  - **1554945105981603880** → Mexzon | Blaze (mexzon_0205):
+    - `<:nebula_hawww:1563397980332105730>`
+  - **1385099857781329961** → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113):
+    - `<:Cute_Cry:1549341301282185329>`
 
 ### Aura ($aura config)
 
@@ -135,7 +140,7 @@
   - **users**:
     - **1562817118641062029** → Raven (_raven.exe09):
       - `<a:Oliviaaa_nooooo:1570865411195543645>`
-    - **829689719633215498** → Vortex (.vortextheog):
+    - **829689719633215498** → Vortex (_vortextheog):
       - `<:nebula_Bored:1561078200325382194>`
     - **1556600326617042959** → 4LC_DR4K3N (4lc_dr4k3n):
       - `<:Nebula_Angry:1549341308546449459>`
@@ -143,22 +148,27 @@
       - `<:nebula_hawww:1563397980332105730>`
     - **560591477500018725** → !     Meow (meowtheog.):
       - `<a:disco:1572571259601031259>`
+    - **1554945105981603880** → Mexzon | Blaze (mexzon_0205):
+      - `<:nebula_hawww:1563397980332105730>`
+    - **1385099857781329961** → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113):
+      - `<:Cute_Cry:1549341301282185329>`
 - **noprefix**:
   - **role**: *none*
   - **users**:
-    - `1385099857781329961` → ♤ 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 ✿ (d3adb9y1113)
+    - `1385099857781329961` → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113)
     - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
     - `1504536783898021908` → T-Mod | om pandey (om61006)
     - `1562817118641062029` → Raven (_raven.exe09)
     - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
     - `1519731963244580987` → Blaze zzz (btwkartikxz)
-    - `1340198074387267634` → HM | TacticalShower (.mlx_rinn)
+    - `1340198074387267634` → TacticalShower (.mlx_rinn)
     - `1554945105981603880` → Mexzon | Blaze (mexzon_0205)
-    - `829689719633215498` → Vortex (.vortextheog)
+    - `829689719633215498` → Vortex (_vortextheog)
     - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
-    - `1554280108632842295` → *not found (deleted / bot not in server)*
+    - `1554280108632842295` → .arnav.gg
     - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
+    - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
 
 ### Players
 
-- 405 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
+- 429 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)

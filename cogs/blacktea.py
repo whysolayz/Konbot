@@ -327,7 +327,7 @@ class Game:
 
     # ----- a message from the player whose turn it is -----
     async def handle_word(self, message: discord.Message):
-        word = message.content.strip().lower()
+        word = message.content.strip().lower().strip(" .,!?;:'\"*_~`")
         if not ONE_WORD.fullmatch(word):
             return                                   # normal chat (several words, emojis...) is ignored
         c = self.cfg

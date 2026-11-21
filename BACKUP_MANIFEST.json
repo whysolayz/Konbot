@@ -1,9 +1,9 @@
 {
   "bot": "Kon#9118",
-  "created": "2026-11-21T04:10:28.159964+00:00",
-  "reason": "Bot stopped",
-  "status": "offline",
-  "backup_number": 300,
+  "created": "2026-11-21T19:56:33.137450+00:00",
+  "reason": "Automatic (every 30s)",
+  "status": "online",
+  "backup_number": 1611,
   "kind": "code",
   "files": [
     {
@@ -772,6 +772,11 @@
       "sha1": "0a58aeee65989683038dd605bb0e645540b7a614"
     },
     {
+      "path": "cogs/dashboard_api.py",
+      "size": 19093,
+      "sha1": "ea554a29782bac09b944783ade9def28816aad69"
+    },
+    {
       "path": "cogs/drag.py",
       "size": 5238,
       "sha1": "f9a55793b45a70cdeed7bf519078c1066e462ac8"
@@ -848,8 +853,8 @@
     },
     {
       "path": "cogs/status_api.py",
-      "size": 4006,
-      "sha1": "5fdd5c38a18e3ff898cea646c8f6a51ecacd2d37"
+      "size": 3547,
+      "sha1": "ae7cc973b843763d8426b852faa14046b91543b8"
     },
     {
       "path": "cogs/tictactoe.py",
@@ -929,52 +934,72 @@
     {
       "path": "export/LINKS.md",
       "size": 1753,
-      "sha1": "e7287cd66f2003d792686a303eddb0fa40b30d67"
+      "sha1": "f1d4feab6c1fd9ff9a664236f2ede52d1449a700"
     },
     {
       "path": "export/SERVER_CONFIG.json",
-      "size": 32386,
-      "sha1": "979c5dd73a19279d4b3888b4d45c1ded45758ee0"
+      "size": 47676,
+      "sha1": "5585298644781b1dbb35ac365b0301a9f0759eac"
     },
     {
       "path": "export/SERVER_CONFIG.md",
-      "size": 33169,
-      "sha1": "238b9a95c5d0b9c31a513196bcade1133e07f206"
+      "size": 48023,
+      "sha1": "52fdea7b3e715aae87b3a2518f2fe5d394a3fab7"
     },
     {
       "path": "export/afk.json",
-      "size": 2450,
-      "sha1": "fc4e7b0786c49706e77ac1a7d64cff83c391b8b9"
+      "size": 3108,
+      "sha1": "4738adf1e5f353d2c673021089ab952b92f71cba"
     },
     {
       "path": "export/custom_vc_channels.json",
-      "size": 1645,
-      "sha1": "6097f8ab33605437c8c25f630191b37d82601e43"
+      "size": 2575,
+      "sha1": "9d0c218789ca73457ce6f8d48509f207e7066bc6"
     },
     {
       "path": "export/db_dump.json",
-      "size": 2265486,
-      "sha1": "35c0c8f7cb571e88ad7f667dea2e1ec3edc0e815"
+      "size": 2683901,
+      "sha1": "5ac48d72c63abd1076653c947dd52277290ce585"
     },
     {
       "path": "export/players_1154838258027606117.csv",
       "size": 222,
-      "sha1": "ca7c5276df0d1ca179fea718e8bba20df4087bb2"
+      "sha1": "735f632bcb017a99c29d2dca88d41264320a6f2c"
     },
     {
       "path": "export/players_1488690726870057165.csv",
-      "size": 10196,
-      "sha1": "b10cb9cbd48c1e27f77a33894f2d623926314822"
+      "size": 10339,
+      "sha1": "44f4ec1d4de614b1263c2b1ad0aa4aa9f68be82a"
+    },
+    {
+      "path": "export/players_1506692944604823696.csv",
+      "size": 271,
+      "sha1": "9ac7fb2da6f0e4a7694574863abd7fb98d596792"
     },
     {
       "path": "export/players_1524797937836621874.csv",
-      "size": 1992,
-      "sha1": "f810af2fc67c148bc3ca5e648ec7e928692b42de"
+      "size": 2272,
+      "sha1": "af9e9b17dd65276cab5bb340cb1b72c0a6ab2465"
+    },
+    {
+      "path": "export/players_1543872217920573493.csv",
+      "size": 236,
+      "sha1": "588a8c5e0a5ab01c83507fab761e90b30f737499"
     },
     {
       "path": "export/players_1547650379448188999.csv",
-      "size": 27165,
-      "sha1": "4d62b1ec9c58a59e129ca3606fbd55abaf47fc6f"
+      "size": 28664,
+      "sha1": "44dfd51c97bb01ec4b9057cb105ce66c120ba810"
+    },
+    {
+      "path": "export/players_1556044009661530124.csv",
+      "size": 3691,
+      "sha1": "9d06a4b7a2d2da1d6ec520d4f46ec82fb0f7b814"
+    },
+    {
+      "path": "export/players_1564620144527806506.csv",
+      "size": 277,
+      "sha1": "52050fd95728c7b9f0e5bd0d0a68b95a1a84cdcb"
     },
     {
       "path": "export/servers/0/config.json",
@@ -1014,37 +1039,57 @@
     {
       "path": "export/servers/1154838258027606117/database.json",
       "size": 1026,
-      "sha1": "6d19c40c3add5f94cad087dfbf319f9b448119a1"
+      "sha1": "8e011c1bef428e6622ff6364b879b50bf215bb1d"
     },
     {
       "path": "export/servers/1488690726870057165/config.json",
-      "size": 19397,
-      "sha1": "9e6e145065e1c0893c3e6b883ad13d049624d6d1"
+      "size": 22855,
+      "sha1": "7bf27eb5b45e87a652bff889c181fb073d18e16b"
     },
     {
       "path": "export/servers/1488690726870057165/config.md",
-      "size": 22317,
-      "sha1": "bc2007e2f712adf1660b898b927a06aa4c37abcc"
+      "size": 25877,
+      "sha1": "50ffd59f10e21210c0f080cc7fee2b2a56dec053"
     },
     {
       "path": "export/servers/1488690726870057165/data.json",
-      "size": 5130,
-      "sha1": "f3f9fc990de73d601f1d67abc084fabf1a79b3de"
+      "size": 7132,
+      "sha1": "8dc9c4597175c6a509f3416ca4a249bd0542075c"
     },
     {
       "path": "export/servers/1488690726870057165/database.json",
-      "size": 2096500,
-      "sha1": "b7e62473881dbc17e11f170f0e4e8421d69dbb02"
+      "size": 2484927,
+      "sha1": "8cbc0b4755fc572849f9afb985f03e06fd43957b"
+    },
+    {
+      "path": "export/servers/1506692944604823696/config.json",
+      "size": 1288,
+      "sha1": "eaa7d577755bae671427fe048c682dcac8fcd010"
+    },
+    {
+      "path": "export/servers/1506692944604823696/config.md",
+      "size": 1650,
+      "sha1": "6838209476184e03fff310b4e38e0bbf51e1af4a"
+    },
+    {
+      "path": "export/servers/1506692944604823696/data.json",
+      "size": 235,
+      "sha1": "dc9fca375fdc0e0887c8278d4efa2c373a8b45e2"
+    },
+    {
+      "path": "export/servers/1506692944604823696/database.json",
+      "size": 518,
+      "sha1": "bed29ec53c03204e667d7558db252c91234f397c"
     },
     {
       "path": "export/servers/1524797937836621874/config.json",
-      "size": 1281,
-      "sha1": "2a5c00036b8e63aa7821cee9fcc6c67bb627c634"
+      "size": 1503,
+      "sha1": "68badfb0a6207a4bbffdba4948c2ea4d6d908970"
     },
     {
       "path": "export/servers/1524797937836621874/config.md",
-      "size": 1642,
-      "sha1": "307ab223b0a5408a49df264c5f1855d622014472"
+      "size": 1926,
+      "sha1": "c16586fcdebfe6cece93724dae35937e64afecd8"
     },
     {
       "path": "export/servers/1524797937836621874/data.json",
@@ -1053,18 +1098,38 @@
     },
     {
       "path": "export/servers/1524797937836621874/database.json",
-      "size": 6428,
-      "sha1": "99ebc79fd54e6f0b7a477dab53aeadf7ae04e1b3"
+      "size": 7802,
+      "sha1": "d05df4bb7b584b50ec7acd9da91b94665c8168cd"
+    },
+    {
+      "path": "export/servers/1543872217920573493/config.json",
+      "size": 1511,
+      "sha1": "5c8218167dca2bf68b44c367572c70f13555c51e"
+    },
+    {
+      "path": "export/servers/1543872217920573493/config.md",
+      "size": 1908,
+      "sha1": "9e0cbf62fca698f58b5fa8b5ed20c269279fffee"
+    },
+    {
+      "path": "export/servers/1543872217920573493/data.json",
+      "size": 235,
+      "sha1": "e65393a67da0934bdb2b499695c7576384c1ce98"
+    },
+    {
+      "path": "export/servers/1543872217920573493/database.json",
+      "size": 695,
+      "sha1": "8db7926d137ac0df6f6e692635dfa6f7c3a109ab"
     },
     {
       "path": "export/servers/1547650379448188999/config.json",
-      "size": 3474,
-      "sha1": "17784987f93dd3d7fed7eaa9419b8aee14d812f1"
+      "size": 3878,
+      "sha1": "79876dbe16ba99d5989b26d231b1daa43b144d00"
     },
     {
       "path": "export/servers/1547650379448188999/config.md",
-      "size": 4756,
-      "sha1": "51964f4419c4d60ff6a0e4e7d86d0f337c981eab"
+      "size": 5250,
+      "sha1": "de87d191f9df894bf319904154967bef2c3ea774"
     },
     {
       "path": "export/servers/1547650379448188999/data.json",
@@ -1073,13 +1138,68 @@
     },
     {
       "path": "export/servers/1547650379448188999/database.json",
-      "size": 161921,
-      "sha1": "885fed1d85a5bdc4c96ef2d2c5b3f10347c2875e"
+      "size": 175175,
+      "sha1": "14da1f51de8c444e464b123fc840e24bc8cba9d8"
+    },
+    {
+      "path": "export/servers/1556044009661530124/config.json",
+      "size": 1444,
+      "sha1": "bdb9a9d6c9ce20953e41500886a86f749d896298"
+    },
+    {
+      "path": "export/servers/1556044009661530124/config.md",
+      "size": 1789,
+      "sha1": "af548a54596cd829c10eef9742f89f00e6eb06f3"
+    },
+    {
+      "path": "export/servers/1556044009661530124/data.json",
+      "size": 235,
+      "sha1": "a3c7f25bcb9b5ceca47c0d17592e6fff9eac65cb"
+    },
+    {
+      "path": "export/servers/1556044009661530124/database.json",
+      "size": 10352,
+      "sha1": "73be8dae2f249c7a47b4e115bb1e2cb5039d9870"
+    },
+    {
+      "path": "export/servers/1564620144527806506/config.json",
+      "size": 3330,
+      "sha1": "6530aaa4c2c6c0d941e0b827d606e14fdb835858"
+    },
+    {
+      "path": "export/servers/1564620144527806506/config.md",
+      "size": 3675,
+      "sha1": "6ddbdfd210a28d18b00f3de9e7f51efa36bfd034"
+    },
+    {
+      "path": "export/servers/1564620144527806506/data.json",
+      "size": 1022,
+      "sha1": "f38fb2efbe4e3bdc893f28fa89446a5543fbc092"
+    },
+    {
+      "path": "export/servers/1564620144527806506/database.json",
+      "size": 4459,
+      "sha1": "c5e33f37e3474356504a7a702b0dcb9d22d6f96e"
+    },
+    {
+      "path": "export/servers/1573601753965011035/config.json",
+      "size": 1276,
+      "sha1": "7af918eca6c34f14d226311e07bab8e33d948754"
+    },
+    {
+      "path": "export/servers/1573601753965011035/config.md",
+      "size": 1639,
+      "sha1": "9bd0607f97c56cb60ca2bc0af7b8c3ad94e24b72"
+    },
+    {
+      "path": "export/servers/1573601753965011035/data.json",
+      "size": 235,
+      "sha1": "c279ae3de27d49e4ed836dd5d2cfab38f5b3267d"
     },
     {
       "path": "main.py",
-      "size": 10795,
-      "sha1": "127daab00b5fabff198259b5b2b7a85c95eb99a3"
+      "size": 10817,
+      "sha1": "df6fdd368b01fa5996643773eb9dd3bf235bfbab"
     },
     {
       "path": "requirements-tools.txt",
@@ -1088,8 +1208,8 @@
     },
     {
       "path": "requirements.txt",
-      "size": 54,
-      "sha1": "8f7d2c0b22944f071a718e44c3e0c9f72dbc5bd9"
+      "size": 69,
+      "sha1": "41455cbe67fcfb704257063cb29bd464dae82c0c"
     },
     {
       "path": "tools/make_assets.py",

@@ -24,7 +24,13 @@
     "settings": null,
     "items": []
   },
-  "no_prefix": null,
+  "no_prefix": {
+    "role": null,
+    "users": [
+      1262248731353546763,
+      1538573910839140575
+    ]
+  },
   "aliases": null,
   "role_commands": null,
   "autoreact": null,
@@ -49,6 +55,14 @@
     "tag_enabled": true,
     "users": {}
   },
-  "all_settings_raw": {},
-  "players_in_database": 29
+  "all_settings_raw": {
+    "noprefix": {
+      "role": null,
+      "users": [
+        1262248731353546763,
+        1538573910839140575
+      ]
+    }
+  },
+  "players_in_database": 33
 }

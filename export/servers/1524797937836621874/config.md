@@ -33,7 +33,10 @@
 
 ### No-prefix
 
-- *not configured*
+- **role**: *none*
+- **users**:
+  - `1262248731353546763` → Anshu >_< (anshumanfr_)
+  - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
 
 ### Aliases
 
@@ -90,8 +93,12 @@
 
 ### EVERYTHING saved for this server (raw settings, nothing left out)
 
-- *not configured*
+- **noprefix**:
+  - **role**: *none*
+  - **users**:
+    - `1262248731353546763` → Anshu >_< (anshumanfr_)
+    - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
 
 ### Players
 
-- 29 players stored in `data/kon.db` (full list: `export/players_1524797937836621874.csv`)
+- 33 players stored in `data/kon.db` (full list: `export/players_1524797937836621874.csv`)
