@@ -4,6 +4,8 @@
   $db profile #general         -> turn $profile off in #general
   $db badge give #chat #games  -> several channels at once (a category ID / mention turns off the whole category)
   $db all #general             -> turn EVERY command off in #general
+  $db profile everywhere       -> turn $profile off in ALL channels of the server
+  $eb profile everywhere       -> remove it completely (works in all channels again, every channel rule is cleared)
   $db list                     -> what is turned off where
   $eb profile #general         -> turn it back on
   /disablecommand              -> same, with auto-complete for the command and a channel picker
@@ -21,6 +23,8 @@ from core.ui import OwnedView
 
 SETTINGS_KEY = "cmd_disable"
 ALL = "*"                    # every command
+EVERYWHERE = 0               # "channel id" that means: every channel of the server
+EVERYWHERE_WORDS = {"everywhere", "server", "global", "allchannels", "all-channels"}
 COG = "cog:"                 # every command of one category, e.g. "cog:Points"
 PROTECTED = {"disablecommand", "enablecommand", "help", "sync", "konextra"}   # can never be locked out
 CHANNEL_TYPES = [discord.ChannelType.text, discord.ChannelType.news, discord.ChannelType.forum,
@@ -48,6 +52,8 @@ def channel_ids(ch) -> set:
 
 
 def where(guild: discord.Guild, cid: int) -> str:
+    if cid == EVERYWHERE:
+        return "**all channels**"
     ch = guild.get_channel(cid) or guild.get_thread(cid)
     if ch is None:
         return f"~~deleted `{cid}`~~"
@@ -83,6 +89,17 @@ class CmdControl(commands.Cog):
         rules, changed = self.rules(gid), 0
         for k in keys:
             lst = rules.setdefault(k, [])
+            if EVERYWHERE in cids:
+                if disable:                                # off in every channel (one entry replaces channel rules)
+                    if lst != [EVERYWHERE]:
+                        lst[:] = [EVERYWHERE]
+                        changed += 1
+                elif lst:                                  # "remove": back on in every channel
+                    lst.clear()
+                    changed += 1
+                if not lst:
+                    rules.pop(k, None)
+                continue
             for cid in cids:
                 if disable and cid not in lst:
                     lst.append(cid)
@@ -121,7 +138,7 @@ class CmdControl(commands.Cog):
         while c is not None:                           # "badge" off  ->  "badge give" off too
             keys.add(c.qualified_name)
             c = c.parent
-        ids = channel_ids(ctx.channel)
+        ids = channel_ids(ctx.channel) | {EVERYWHERE}
         for k in keys:
             lst = rules.get(k)
             if lst and ids.intersection(lst):
@@ -204,7 +221,11 @@ class CmdControl(commands.Cog):
     def result_text(self, guild, keys, cids, disable: bool, changed: int) -> str:
         names = ", ".join(self.label(k) for k in keys)
         chans = ", ".join(where(guild, c) for c in cids)
+        if EVERYWHERE in cids and not disable and changed:
+            return ok(f"{names} {'is' if len(keys) == 1 else 'are'} back on in **all channels** (every channel rule removed).")
         if changed == 0:
+            if EVERYWHERE in cids and not disable:
+                return err(f"{names} {'has' if len(keys) == 1 else 'have'} no rules to remove.")
             if disable:
                 return err(f"{names} {'is' if len(keys) == 1 else 'are'} already off in {chans}.")
             return err(f"{names} isn't off directly in {chans}. If the whole category is off, enable the category.")
@@ -231,6 +252,10 @@ class CmdControl(commands.Cog):
             raise VCError(f"I don't know `{tokens[0]}`. Use `{PREFIX}db` for a menu.")
         cids = []
         for tok in rest:
+            if tok.lower() in EVERYWHERE_WORDS:
+                if EVERYWHERE not in cids:
+                    cids.append(EVERYWHERE)
+                continue
             try:
                 ch = await commands.GuildChannelConverter().convert(ctx, tok)
             except commands.BadArgument:
@@ -282,7 +307,7 @@ class CmdControl(commands.Cog):
         scored.sort(key=lambda x: x[0])
         return [c for _, c in scored[:25]]
 
-    async def slash_run(self, interaction: discord.Interaction, command, channel, disable: bool):
+    async def slash_run(self, interaction: discord.Interaction, command, channel, disable: bool, everywhere: bool = False):
         perms = interaction.user.guild_permissions
         if not (perms.manage_guild or await self.bot.is_owner_in(interaction.user, interaction.guild_id)):
             await interaction.response.defer(ephemeral=True)        # no rights = no reply
@@ -299,30 +324,32 @@ class CmdControl(commands.Cog):
                 raise VCError(f"I don't know `{command}`. Pick one from the list.")
         except VCError as e:
             return await interaction.response.send_message(err(str(e)), ephemeral=True)
-        cid = channel.id if channel is not None else interaction.channel_id
+        cid = EVERYWHERE if everywhere else (channel.id if channel is not None else interaction.channel_id)
         changed = self.apply(g.id, [key], [cid], disable)
         await interaction.response.send_message(self.result_text(g, [key], [cid], disable, changed),
                                                 allowed_mentions=NONE)
 
     @app_commands.command(name="disablecommand", description="Turn a command off in a channel or a whole category")
     @app_commands.describe(command="Which command (type to search)",
-                           channel="Channel or category (empty = this channel)")
+                           channel="Channel or category (empty = this channel)",
+                           everywhere="True = ALL channels of the server")
     @app_commands.autocomplete(command=command_autocomplete)
     @app_commands.guild_only()
     @app_commands.default_permissions(manage_guild=True)
     async def slash_disable(self, interaction: discord.Interaction, command: Optional[str] = None,
-                            channel: Optional[discord.abc.GuildChannel] = None):
-        await self.slash_run(interaction, command, channel, True)
+                            channel: Optional[discord.abc.GuildChannel] = None, everywhere: bool = False):
+        await self.slash_run(interaction, command, channel, True, everywhere)
 
     @app_commands.command(name="enablecommand", description="Turn a command back on in a channel or a whole category")
     @app_commands.describe(command="Which command (type to search)",
-                           channel="Channel or category (empty = this channel)")
+                           channel="Channel or category (empty = this channel)",
+                           everywhere="True = ALL channels of the server")
     @app_commands.autocomplete(command=command_autocomplete)
     @app_commands.guild_only()
     @app_commands.default_permissions(manage_guild=True)
     async def slash_enable(self, interaction: discord.Interaction, command: Optional[str] = None,
-                           channel: Optional[discord.abc.GuildChannel] = None):
-        await self.slash_run(interaction, command, channel, False)
+                           channel: Optional[discord.abc.GuildChannel] = None, everywhere: bool = False):
+        await self.slash_run(interaction, command, channel, False, everywhere)
 
 
 class DisableView(OwnedView):
@@ -349,11 +376,11 @@ class DisableView(OwnedView):
         chans = ", ".join(where(self.guild, c) for c in self.cids) or "*pick below*"
         e = discord.Embed(title=f"{I.s('lock')} Disable / Enable commands", color=BRAND, description=(
             f"**1.** Pick a category  ·  **2.** pick the commands  ·  **3.** pick channels or whole categories  ·  "
-            f"**4.** press **Disable** or **Enable**.\n\n"
+            f"**4.** press **Disable** or **Enable**  ·  the bottom buttons do **all channels** at once.\n\n"
             f"{I.s('terminal')} **Commands:** {cmds}\n{I.s('folder')} **Where:** {chans}"))
         if note:
             e.add_field(name="Done", value=note[:1000], inline=False)
-        e.set_footer(text=f"Quick way: {PREFIX}db <command> #channel  ·  {PREFIX}db list shows everything that is off")
+        e.set_footer(text=f"Quick way: {PREFIX}db <command> #channel / everywhere  ·  {PREFIX}db list shows everything that is off")
         return e
 
     # ----- components -----
@@ -411,6 +438,13 @@ class DisableView(OwnedView):
             b.callback = cb
             self.add_item(b)
 
+        # row 4 - the whole server
+        for label, emoji, style, cb in (("Disable in ALL channels", "ban", discord.ButtonStyle.danger, self.do_disable_all),
+                                        ("Remove (enable in ALL)", "refresh", discord.ButtonStyle.success, self.do_enable_all)):
+            b = discord.ui.Button(label=label, emoji=I.e(emoji), style=style, row=4)
+            b.callback = cb
+            self.add_item(b)
+
     async def push(self, interaction: discord.Interaction, note: str = ""):
         self.render()
         await interaction.response.edit_message(embed=self.embed(note), view=self)
@@ -450,6 +484,18 @@ class DisableView(OwnedView):
                                                            ephemeral=True)
         changed = self.cog.apply(self.guild.id, self.keys, self.cids, disable)
         await self.push(interaction, self.cog.result_text(self.guild, self.keys, self.cids, disable, changed))
+
+    async def act_all(self, interaction: discord.Interaction, disable: bool):
+        if not self.keys:
+            return await interaction.response.send_message(err("Pick a command first."), ephemeral=True)
+        changed = self.cog.apply(self.guild.id, self.keys, [EVERYWHERE], disable)
+        await self.push(interaction, self.cog.result_text(self.guild, self.keys, [EVERYWHERE], disable, changed))
+
+    async def do_disable_all(self, interaction: discord.Interaction):
+        await self.act_all(interaction, True)
+
+    async def do_enable_all(self, interaction: discord.Interaction):
+        await self.act_all(interaction, False)
 
     async def do_disable(self, interaction: discord.Interaction):
         await self.act(interaction, True)

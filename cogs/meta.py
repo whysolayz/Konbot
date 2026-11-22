@@ -23,10 +23,18 @@ CATEGORIES = {
     "SelfRoles": ("Self Roles", "crown"), "Expressions": ("Emojis & Stickers", "sparkles"), "Purge": ("Cleanup", "tools"),
     "Aura": ("Aura", "fire"), "RoleTransfer": ("Role Transfer", "crown"), "TicTacToe": ("Tic Tac Toe", "gamepad"), "CmdControl": ("Command Control", "lock"),
     "BlackTea": ("BlackTea", "leaf"), "TimeTap": ("TimeTap", "stopwatch"), "Handfight": ("Handfight", "rock"), "Games": ("Games", "gamepad"), "ImageHost": ("Image Links", "image"),
+    "Tickets": ("Tickets", "ticket"),
 }
-# order of the pages in $help (anything not listed goes at the end, A-Z)
-ORDER = ["Meta", "Points", "Shop", "RoleCmds", "VC", "Drag", "AFK", "SelfRoles", "Autoreact", "Aura", "Games", "TimeTap", "Handfight", "BlackTea", "TicTacToe",
-         "Expressions", "ImageHost", "Purge", "Prefixes", "CmdControl", "RoleTransfer", "Admin", "Backup"]
+# $help is split into a few big groups (key -> (title, icon, short text, [categories in it]))
+GROUPS = {
+    "general": ("General & Utility", "home", "Help, AFK, emojis, image links, aliases", ["Meta", "AFK", "Expressions", "ImageHost", "Prefixes"]),
+    "fun": ("Fun & Games", "gamepad", "Games, Aura", ["Games", "TimeTap", "Handfight", "BlackTea", "TicTacToe", "Aura"]),
+    "voice": ("Voice", "speaker", "Custom VC and drag", ["VC", "Drag"]),
+    "economy": ("Points & Shop", "coins", "Points, badges, leaderboard, role shop", ["Points", "Shop"]),
+    "community": ("Community & Tickets", "ticket", "Tickets, self roles, autoreact, role commands", ["Tickets", "SelfRoles", "Autoreact", "RoleCmds", "RoleTransfer"]),
+    "mod": ("Moderation & Admin", "tools", "Cleanup, command control, setup, backup", ["Purge", "CmdControl", "Interface", "Admin", "Backup"]),
+}
+GROUP_OF = {cog: key for key, (_, _, _, cogs) in GROUPS.items() for cog in cogs}
 
 # short, plain descriptions (key = command name without prefix). Anything missing falls back to the docstring.
 DESC = {
@@ -84,8 +92,13 @@ DESC = {
     "links": "List saved image links", "linkget": "Fresh link + preview of a saved image", "linkdel": "Delete a saved image",
     "ei": "List animated emojis with their IDs (`$ei name`, `$ei here`, `$ei <id>`)",
     "point enable": "Count points in a channel again", "point disable": "Stop counting points in a channel",
-    "disablecommand": "Turn commands off in channels / whole categories (`$db`, no arguments = menu)",
-    "enablecommand": "Turn commands back on (`$eb`)",
+    "disablecommand": "Turn commands off in channels / categories / the whole server (`$db`, `$db <cmd> everywhere`)",
+    "enablecommand": "Turn commands back on (`$eb`, `$eb <cmd> everywhere` removes every rule)",
+    "ticket": "Ticket control panel: categories, panel message, banner, logs, roles (admins)",
+    "ticket close": "Close this ticket (staff or the opener), saves a transcript",
+    "ticket claim": "Claim / release this ticket (staff)", "ticket add": "Let a member into this ticket (staff)",
+    "ticket remove": "Take a member out of this ticket (staff)", "ticket rename": "Rename this ticket channel (staff)",
+    "ticket blacklist": "Block / unblock a member from opening tickets (admins)",
     "help": "This menu", "konextra": "Give a member Kon owner rights (this server only)",
     "konextra remove": "Take owner rights away", "konextra list": "Show the extra owners",
 }
@@ -137,36 +150,50 @@ def describe(cmd: commands.Command) -> str:
     return d if d and not d.startswith(PREFIX) else ""
 
 
+def _count(cogs: dict) -> int:
+    return sum(len(v) for _, _, secs in cogs.values() for v in secs.values())
+
+
 class HelpView(OwnedView):
-    """Category menu + Previous / Next for long categories."""
+    """Group menu (Fun & Games, Voice, ...) + Previous / Next for long groups."""
     MAX_CHARS = 3400
 
     def __init__(self, ctx, pages: dict):
         super().__init__(ctx.author.id, timeout=300)
-        self.pages = pages          # key -> (title, icon, {level: [lines]})
+        self.pages = pages          # group key -> (title, icon, text, {cog: (title, icon, {level: [lines]})})
         self.key, self.i = "__all__", 0
         opts = [discord.SelectOption(label="Overview", value="__all__", emoji=I.e("menu"), default=True)]
-        for key, (title, icon, secs) in pages.items():
-            n = sum(len(v) for v in secs.values())
-            opts.append(discord.SelectOption(label=title, value=key, description=f"{n} command{'s' if n != 1 else ''}", emoji=I.e(icon)))
+        for key, (title, icon, text, cogs) in pages.items():
+            n = _count(cogs)
+            opts.append(discord.SelectOption(label=title, value=key, description=f"{n} command{'s' if n != 1 else ''} · {text}"[:100], emoji=I.e(icon)))
         self.sel = discord.ui.Select(placeholder="Pick a category...", options=opts[:25], row=0)
         self.sel.callback = self.picked
         self.add_item(self.sel)
         self.prev.emoji, self.next.emoji = I.e("left"), I.e("right")
         self.sync()
 
+    def open(self, key: str):
+        self.key, self.i = key, 0
+        for o in self.sel.options:
+            o.default = o.value == key
+        self.sync()
+
     def chunks(self, key) -> list:
-        """Lines of a category cut into pages that fit one embed."""
-        title, icon, secs = self.pages[key]
-        multi = sum(1 for v in secs.values() if v) > 1
+        """Lines of a group cut into pages that fit one embed (every category inside has its own heading)."""
+        title, icon, text, cogs = self.pages[key]
         lines = []
-        for level, label in SECTIONS:
-            part = secs.get(level)
-            if not part:
-                continue
-            if multi:
-                lines.append(f"-# {label}")
-            lines.extend(part)
+        for cog_title, cog_icon, secs in cogs.values():
+            if lines:
+                lines.append("")
+            lines.append(f"**{I.s(cog_icon)} {cog_title}**")
+            multi = sum(1 for v in secs.values() if v) > 1
+            for level, label in SECTIONS:
+                part = secs.get(level)
+                if not part:
+                    continue
+                if multi:
+                    lines.append(f"-# {label}")
+                lines.extend(part)
         out, cur, size = [], [], 0
         for ln in lines or ["—"]:
             if cur and size + len(ln) + 1 > self.MAX_CHARS:
@@ -183,13 +210,14 @@ class HelpView(OwnedView):
         self.next.disabled = self.i >= n - 1
 
     def overview(self) -> discord.Embed:
-        rows = [f"{I.s(icon)} **{title}** · {sum(len(v) for v in secs.values())}" for key, (title, icon, secs) in self.pages.items()]
+        rows = [f"{I.s(icon)} **{title}** · {_count(cogs)}\n-# {text}" for key, (title, icon, text, cogs) in self.pages.items()]
         return discord.Embed(title=f"{I.s('sparkles')} Kon Help", color=BRAND, description=(
             f"Prefix: `{PREFIX}` · `<x>` = required · `[x]` = optional\n"
-            f"You only see the commands **you** can use.\n\n" + "\n".join(rows) + "\n\n-# Pick a category from the menu below."))
+            f"You only see the commands **you** can use. Details: `{PREFIX}help <command>`\n\n" + "\n".join(rows)
+            + "\n\n-# Pick a category from the menu below."))
 
     def page(self, key) -> discord.Embed:
-        title, icon, secs = self.pages[key]
+        title, icon, text, cogs = self.pages[key]
         chunks = self.chunks(key)
         self.i = min(self.i, len(chunks) - 1)
         e = discord.Embed(title=f"{I.s(icon)} {title}", color=BRAND, description=chunks[self.i])
@@ -200,10 +228,7 @@ class HelpView(OwnedView):
         return self.overview() if self.key == "__all__" else self.page(self.key)
 
     async def picked(self, interaction: discord.Interaction):
-        self.key, self.i = self.sel.values[0], 0
-        for o in self.sel.options:
-            o.default = o.value == self.key
-        self.sync()
+        self.open(self.sel.values[0])
         await interaction.response.edit_message(embed=self.current(), view=self)
 
     async def turn(self, interaction: discord.Interaction, step: int):
@@ -335,10 +360,32 @@ class Meta(commands.Cog):
         view.message = await ctx.reply(embed=view.overview(), view=view, mention_author=False)
 
     # ---------- $help ----------
+    async def command_help(self, ctx: commands.Context, cmd: commands.Command) -> discord.Embed:
+        level = await access_level(ctx, cmd)
+        usage = f"{PREFIX}{cmd.qualified_name} {cmd.signature}".strip()
+        text = describe(cmd) or (cmd.help or "").split("\n")[0] or "—"
+        e = discord.Embed(title=f"{I.s('terminal')} {usage}", color=BRAND, description=text)
+        if cmd.aliases:
+            e.add_field(name="Aliases", value=" ".join(f"`{PREFIX}{a}`" for a in cmd.aliases), inline=True)
+        e.add_field(name="Who", value={"member": "Everyone", "admin": "Admins", "owner": "Owner"}.get(level, "Everyone"), inline=True)
+        cat = CATEGORIES.get(cmd.cog_name or "Meta", (cmd.cog_name or "General", "menu"))[0]
+        e.add_field(name="Category", value=cat, inline=True)
+        subs = sorted(getattr(cmd, "commands", ()), key=lambda c: c.name)
+        if subs:
+            lines = []
+            for sc in subs[:12]:
+                if await access_level(ctx, sc) is None or sc.hidden:
+                    continue
+                d = describe(sc)
+                lines.append(f"`{PREFIX}{sc.qualified_name} {sc.signature}`".replace(" `", "`") + (f" — {d}" if d else ""))
+            if lines:
+                e.add_field(name="Subcommands", value="\n".join(lines)[:1000], inline=False)
+        return e
+
     @commands.command(name="help", aliases=["h"])
     @commands.guild_only()
-    async def show_help(self, ctx: commands.Context):
-        """Every command you can use, by category (admin / owner commands only show for admins / owners)."""
+    async def show_help(self, ctx: commands.Context, *, query: str = ""):
+        """$help [category / command] - every command you can use, by category."""
         pages: dict[str, tuple] = {}
         for cmd in sorted(self.bot.walk_commands(), key=lambda c: c.qualified_name):
             if cmd.name == "rolecmd" or cmd.hidden:                  # internal dispatcher for custom role commands
@@ -346,16 +393,7 @@ class Meta(commands.Cog):
             level = await access_level(ctx, cmd)
             if level is None:                                        # not allowed -> never shown
                 continue
-            cog = cmd.cog_name or "Meta"
-            if cog in ("Interface", "Admin"):
-                cog = "Admin"
-            title, icon = CATEGORIES.get(cog, (cog, "menu"))
-            usage = f"{PREFIX}{cmd.qualified_name} {cmd.signature}".strip()
-            desc = describe(cmd)
-            sub = cmd.parent is not None
-            alias = "" if sub or not cmd.aliases else " · *" + ", ".join(f"{PREFIX}{a}" for a in cmd.aliases[:3]) + "*"
-            line = ("↳ " if sub else "") + f"`{usage}`" + (f" — {desc}" if desc else "") + alias
-            pages.setdefault(cog, (title, icon, {}))[2].setdefault(level, []).append(line)
+            self._add_line(pages, cmd, level)
         # the role commands of THIS server ($setmanager ...) are listed too, for people who may use them
         if ctx.author.guild_permissions.manage_roles or await self.bot.is_true_owner(ctx.author):
             lines = []
@@ -363,12 +401,50 @@ class Meta(commands.Cog):
                 r = ctx.guild.get_role(d["role"])
                 lines.append(f"`{PREFIX}set{n} @user` — gives {r.mention if r else '*deleted role*'}")
             if lines:
-                title, icon = CATEGORIES["RoleCmds"]
-                pages.setdefault("RoleCmds", (title, icon, {}))[2].setdefault("admin", []).extend(lines)
-        pages = dict(sorted(pages.items(), key=lambda kv: (ORDER.index(kv[0]) if kv[0] in ORDER else len(ORDER), kv[1][0].lower())))
+                self._cog_bucket(pages, "RoleCmds")[2].setdefault("admin", []).extend(lines)
+        order = list(GROUPS) + ["other"]
+        pages = dict(sorted(pages.items(), key=lambda kv: order.index(kv[0]) if kv[0] in order else len(order)))
+        for key, (title, icon, text, cogs) in pages.items():       # inside a group: the order of GROUPS[...]
+            if key in GROUPS:
+                rank = GROUPS[key][3]
+                pages[key] = (title, icon, text, dict(sorted(cogs.items(), key=lambda kv: rank.index(kv[0]) if kv[0] in rank else 99)))
         view = HelpView(ctx, pages)
+
+        q = query.strip().lstrip(PREFIX).strip().lower()
+        if q:
+            hit = next((k for k, v in pages.items() if q in (k, v[0].lower())), None)
+            if hit:
+                view.open(hit)
+                return await ctx.reply(embed=view.current(), view=view, mention_author=False,
+                                       allowed_mentions=discord.AllowedMentions.none())
+            cmd = self.bot.get_command(q)
+            if cmd is not None and not cmd.hidden and await access_level(ctx, cmd) is not None:
+                return await ctx.reply(embed=await self.command_help(ctx, cmd), mention_author=False,
+                                       allowed_mentions=discord.AllowedMentions.none())
         view.message = await ctx.reply(embed=view.overview(), view=view, mention_author=False,
                                        allowed_mentions=discord.AllowedMentions.none())
+
+    @staticmethod
+    def _cog_bucket(pages: dict, cog: str) -> tuple:
+        gkey = GROUP_OF.get(cog, "other")
+        if gkey in GROUPS:
+            title, icon, text, _ = GROUPS[gkey]
+        else:
+            title, icon, text = "More", "menu", "Everything else"
+        group = pages.setdefault(gkey, (title, icon, text, {}))
+        ctitle, cicon = CATEGORIES.get(cog, (cog, "menu"))
+        return group[3].setdefault(cog, (ctitle, cicon, {}))
+
+    def _add_line(self, pages: dict, cmd: commands.Command, level: str):
+        cog = cmd.cog_name or "Meta"
+        if cog == "Interface":
+            cog = "Admin"
+        usage = f"{PREFIX}{cmd.qualified_name} {cmd.signature}".strip()
+        desc = describe(cmd)
+        sub = cmd.parent is not None
+        alias = "" if sub or not cmd.aliases else " · *" + ", ".join(f"{PREFIX}{a}" for a in cmd.aliases[:3]) + "*"
+        line = ("↳ " if sub else "") + f"`{usage}`" + (f" — {desc}" if desc else "") + alias
+        self._cog_bucket(pages, cog)[2].setdefault(level, []).append(line)
 
     # ---------- $konextra (bot owner only, PER SERVER) ----------
     @commands.group(name="konextra", aliases=["kextra"], invoke_without_command=True)

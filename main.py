@@ -19,7 +19,7 @@ log = logging.getLogger("kon")
 
 EXTENSIONS = ["cogs.errors", "cogs.afk", "cogs.vc", "cogs.drag", "cogs.interface", "cogs.points", "cogs.shop",
               "cogs.backup", "cogs.meta", "cogs.admin", "cogs.prefixes", "cogs.autoreact", "cogs.rolecmds",
-              "cogs.selfroles", "cogs.expressions", "cogs.purge", "cogs.aura", "cogs.roletransfer", "cogs.tictactoe", "cogs.blacktea", "cogs.timetap", "cogs.handfight", "cogs.games", "cogs.imagehost", "cogs.cmdcontrol", "cogs.status_api", "cogs.dashboard_api"]
+              "cogs.selfroles", "cogs.expressions", "cogs.purge", "cogs.aura", "cogs.roletransfer", "cogs.tictactoe", "cogs.blacktea", "cogs.timetap", "cogs.handfight", "cogs.games", "cogs.imagehost", "cogs.cmdcontrol", "cogs.tickets", "cogs.status_api", "cogs.dashboard_api"]
 
 
 class Kon(commands.Bot):

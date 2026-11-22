@@ -182,3 +182,15 @@ Messages older than 14 days can't be bulk-deleted by Discord and are skipped.
   (`$interface`) are edited in place at start (new orange image + new buttons) - no need to post a new one.
 - **VC rename:** Discord cannot show custom/animated emojis in channel names (raw `<:name:id>` text), so they are removed; normal emojis stay. **VC status** (`$vcstatus`) and **AFK** accept custom + animated emojis by `<:name:id>`, `:name:` or emoji ID (only emojis the bot can use).
 - **BlackTea:** the word must now START with the shown letters (`STR` -> street). Easy = 2 letters, Medium/Hard = 3 letters.
+
+## Tickets
+
+`$ticket` (admins) opens the control panel: create / edit categories (emoji, form question, Discord category, extra roles),
+panel message, ticket welcome message, banner upload, log channels (opened / closed / transcript), support + admin roles,
+settings and **Send / update panel**. The public panel is a Components V2 message with a category dropdown.
+Inside a ticket: Close, Close With Reason, Claim buttons, plus `$ticket close|claim|add|remove|rename`.
+Logs contain ticket number, category, opener, claimed by, first staff reply (who + how fast), message counts, duration and
+reason. Every closed ticket produces a Discord-styled HTML transcript (sent to the transcript channel and to the opener's DMs).
+
+`$db <command> everywhere` turns a command off in ALL channels, `$eb <command> everywhere` removes every rule again.
+`$help` is grouped (General, Fun & Games, Voice, Points & Shop, Community & Tickets, Moderation & Admin); `$help <command>` shows details.
