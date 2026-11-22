@@ -53,7 +53,7 @@ DESC = {
     "store": "Open the role shop (pages, balance, buy with the menu)", "pointshop": "Open the role shop", "pointshop config": "Add / edit / reorder shop roles",
     "point": "Points settings overview", "point config": "Points, cooldown and channel rules",
     "point add": "Give points", "point remove": "Take points", "point set": "Set exact points", "point reset": "Wipe a member's data",
-    "badge": "Show badges", "badge give": "Give a badge", "badge remove": "Remove a badge",
+    "badge": "Show badges", "badge give": "Give a badge", "badge remove": "Pick a badge from a menu to remove it",
     "noprefix": "Show no-prefix settings", "noprefix role": "Role that doesn't need the prefix",
     "noprefix add": "Give one member no-prefix", "noprefix remove": "Remove a member's no-prefix",
     "noprefix clear": "Remove the no-prefix role",
@@ -154,96 +154,119 @@ def _count(cogs: dict) -> int:
     return sum(len(v) for _, _, secs in cogs.values() for v in secs.values())
 
 
+def short(text: str, n: int = 52) -> str:
+    text = " ".join((text or "").replace("`", "").split())
+    return text if len(text) <= n else text[:n - 1].rstrip() + "…"
+
+
 class HelpView(OwnedView):
-    """Group menu (Fun & Games, Voice, ...) + Previous / Next for long groups."""
-    MAX_CHARS = 3400
+    """$help: pick a category in the menu -> its commands. Previous / Next walk through EVERY page in order
+    (overview -> category after category), so you can just keep pressing Next."""
+    MAX_LINES = 12
+    MAX_CHARS = 1500
 
     def __init__(self, ctx, pages: dict):
         super().__init__(ctx.author.id, timeout=300)
         self.pages = pages          # group key -> (title, icon, text, {cog: (title, icon, {level: [lines]})})
-        self.key, self.i = "__all__", 0
-        opts = [discord.SelectOption(label="Overview", value="__all__", emoji=I.e("menu"), default=True)]
-        for key, (title, icon, text, cogs) in pages.items():
-            n = _count(cogs)
-            opts.append(discord.SelectOption(label=title, value=key, description=f"{n} command{'s' if n != 1 else ''} · {text}"[:100], emoji=I.e(icon)))
-        self.sel = discord.ui.Select(placeholder="Pick a category...", options=opts[:25], row=0)
+        self.flat: list = [None]    # [None] = overview, then one dict per page (a long category has several)
+        self.first: dict[str, int] = {}          # category key -> index of its first page
+        self.group_first: dict[str, int] = {}    # group key -> index of its first page
+        self.cats: list = []                     # (cog key, title, icon, command count) in menu order
+        for gkey, (gtitle, gicon, gtext, cogs) in pages.items():
+            self.group_first[gkey] = len(self.flat)
+            for cog, (ctitle, cicon, secs) in cogs.items():
+                lines = [ln for level, _ in SECTIONS for ln in secs.get(level, [])]
+                self.first[cog] = len(self.flat)
+                self.cats.append((cog, ctitle, cicon, len(lines)))
+                for chunk in self.split(lines):
+                    self.flat.append({"cog": cog, "group": gtitle, "title": ctitle, "icon": cicon, "lines": chunk})
+        self.pos = 0
+        self.sel = discord.ui.Select(placeholder="Pick a category...", row=0, options=self.options())
         self.sel.callback = self.picked
         self.add_item(self.sel)
-        self.prev.emoji, self.next.emoji = I.e("left"), I.e("right")
+        self.prev.emoji, self.next.emoji, self.home.emoji = I.e("left"), I.e("right"), I.e("home")
         self.sync()
 
-    def open(self, key: str):
-        self.key, self.i = key, 0
-        for o in self.sel.options:
-            o.default = o.value == key
-        self.sync()
-
-    def chunks(self, key) -> list:
-        """Lines of a group cut into pages that fit one embed (every category inside has its own heading)."""
-        title, icon, text, cogs = self.pages[key]
-        lines = []
-        for cog_title, cog_icon, secs in cogs.values():
-            if lines:
-                lines.append("")
-            lines.append(f"**{I.s(cog_icon)} {cog_title}**")
-            multi = sum(1 for v in secs.values() if v) > 1
-            for level, label in SECTIONS:
-                part = secs.get(level)
-                if not part:
-                    continue
-                if multi:
-                    lines.append(f"-# {label}")
-                lines.extend(part)
-        out, cur, size = [], [], 0
+    @classmethod
+    def split(cls, lines: list) -> list:
+        out, chunk, size = [], [], 0
         for ln in lines or ["—"]:
-            if cur and size + len(ln) + 1 > self.MAX_CHARS:
-                out.append("\n".join(cur))
-                cur, size = [], 0
-            cur.append(ln)
+            if chunk and (len(chunk) >= cls.MAX_LINES or size + len(ln) > cls.MAX_CHARS):
+                out.append(chunk)
+                chunk, size = [], 0
+            chunk.append(ln)
             size += len(ln) + 1
-        out.append("\n".join(cur))
+        out.append(chunk)
         return out
 
+    def current_cog(self) -> Optional[str]:
+        item = self.flat[self.pos]
+        return item["cog"] if item else None
+
+    def options(self) -> list:
+        cur = self.current_cog()
+        opts = [discord.SelectOption(label="Overview", value="__all__", emoji=I.e("menu"), default=cur is None)]
+        for cog, title, icon, n in self.cats[:24]:
+            opts.append(discord.SelectOption(label=title[:100], value=cog, description=f"{n} command{'s' if n != 1 else ''}",
+                                             emoji=I.e(icon), default=cog == cur))
+        return opts
+
+    def open(self, key: str):
+        """key = category key, group key or '__all__'."""
+        if key in self.first:
+            self.pos = self.first[key]
+        elif key in self.group_first:
+            self.pos = self.group_first[key]
+        else:
+            self.pos = 0
+        self.sync()
+
     def sync(self):
-        n = 1 if self.key == "__all__" else len(self.chunks(self.key))
-        self.prev.disabled = self.i <= 0
-        self.next.disabled = self.i >= n - 1
+        self.sel.options = self.options()
+        self.prev.disabled = self.home.disabled = self.pos <= 0
+        self.next.disabled = self.pos >= len(self.flat) - 1
 
     def overview(self) -> discord.Embed:
-        rows = [f"{I.s(icon)} **{title}** · {_count(cogs)}\n-# {text}" for key, (title, icon, text, cogs) in self.pages.items()]
+        rows = []
+        for gkey, (title, icon, text, cogs) in self.pages.items():
+            names = " · ".join(ct for ct, _, _ in cogs.values())
+            rows.append(f"{I.s(icon)} **{title}**\n-# {names}")
         return discord.Embed(title=f"{I.s('sparkles')} Kon Help", color=BRAND, description=(
-            f"Prefix: `{PREFIX}` · `<x>` = required · `[x]` = optional\n"
-            f"You only see the commands **you** can use. Details: `{PREFIX}help <command>`\n\n" + "\n".join(rows)
-            + "\n\n-# Pick a category from the menu below."))
+            "\n".join(rows) + f"\n\n-# Pick a category below, or press **Next** to go through all of them\n"
+            f"-# Prefix `{PREFIX}` · `<x>` required · `[x]` optional · `{PREFIX}help <command>` for details"))
 
-    def page(self, key) -> discord.Embed:
-        title, icon, text, cogs = self.pages[key]
-        chunks = self.chunks(key)
-        self.i = min(self.i, len(chunks) - 1)
-        e = discord.Embed(title=f"{I.s(icon)} {title}", color=BRAND, description=chunks[self.i])
-        e.set_footer(text=f"Page {self.i + 1}/{len(chunks)} · Prefix {PREFIX}")
+    def page(self) -> discord.Embed:
+        item = self.flat[self.pos]
+        e = discord.Embed(title=f"{I.s(item['icon'])} {item['title']}", color=BRAND, description="\n".join(item["lines"]))
+        e.set_author(name=item["group"])
+        e.set_footer(text=f"Page {self.pos}/{len(self.flat) - 1} · {I.s('lock')} admin  {I.s('crown')} owner")
         return e
 
     def current(self) -> discord.Embed:
-        return self.overview() if self.key == "__all__" else self.page(self.key)
+        return self.overview() if self.pos == 0 else self.page()
+
+    async def show(self, interaction: discord.Interaction):
+        self.sync()
+        await interaction.response.edit_message(embed=self.current(), view=self)
 
     async def picked(self, interaction: discord.Interaction):
         self.open(self.sel.values[0])
-        await interaction.response.edit_message(embed=self.current(), view=self)
-
-    async def turn(self, interaction: discord.Interaction, step: int):
-        self.i += step
-        embed = self.current()
-        self.sync()
-        await interaction.response.edit_message(embed=embed, view=self)
+        await self.show(interaction)
 
     @discord.ui.button(label="Previous", style=discord.ButtonStyle.secondary, row=1)
     async def prev(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await self.turn(interaction, -1)
+        self.pos = max(0, self.pos - 1)
+        await self.show(interaction)
 
-    @discord.ui.button(label="Next", style=discord.ButtonStyle.secondary, row=1)
+    @discord.ui.button(label="Next", style=discord.ButtonStyle.primary, row=1)
     async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await self.turn(interaction, 1)
+        self.pos = min(len(self.flat) - 1, self.pos + 1)
+        await self.show(interaction)
+
+    @discord.ui.button(label="Home", style=discord.ButtonStyle.secondary, row=1)
+    async def home(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.pos = 0
+        await self.show(interaction)
 
 
 class InfoView(OwnedView):
@@ -399,7 +422,7 @@ class Meta(commands.Cog):
             lines = []
             for n, d in sorted(self.bot.rolecmds(ctx.guild.id).items()):
                 r = ctx.guild.get_role(d["role"])
-                lines.append(f"`{PREFIX}set{n} @user` — gives {r.mention if r else '*deleted role*'}")
+                lines.append(f"`{PREFIX}set{n} @user` {r.mention if r else '*deleted role*'} {I.s('lock')}")
             if lines:
                 self._cog_bucket(pages, "RoleCmds")[2].setdefault("admin", []).extend(lines)
         order = list(GROUPS) + ["other"]
@@ -413,10 +436,14 @@ class Meta(commands.Cog):
         q = query.strip().lstrip(PREFIX).strip().lower()
         if q:
             hit = next((k for k, v in pages.items() if q in (k, v[0].lower())), None)
+            if hit is None:
+                hit = next((cog for v in pages.values() for cog, (ct, _, _) in v[3].items()
+                            if q in (cog.lower(), ct.lower())), None)
             if hit:
                 view.open(hit)
-                return await ctx.reply(embed=view.current(), view=view, mention_author=False,
-                                       allowed_mentions=discord.AllowedMentions.none())
+                view.message = await ctx.reply(embed=view.current(), view=view, mention_author=False,
+                                               allowed_mentions=discord.AllowedMentions.none())
+                return
             cmd = self.bot.get_command(q)
             if cmd is not None and not cmd.hidden and await access_level(ctx, cmd) is not None:
                 return await ctx.reply(embed=await self.command_help(ctx, cmd), mention_author=False,
@@ -440,10 +467,9 @@ class Meta(commands.Cog):
         if cog == "Interface":
             cog = "Admin"
         usage = f"{PREFIX}{cmd.qualified_name} {cmd.signature}".strip()
-        desc = describe(cmd)
-        sub = cmd.parent is not None
-        alias = "" if sub or not cmd.aliases else " · *" + ", ".join(f"{PREFIX}{a}" for a in cmd.aliases[:3]) + "*"
-        line = ("↳ " if sub else "") + f"`{usage}`" + (f" — {desc}" if desc else "") + alias
+        desc = short(describe(cmd))
+        badge = {"admin": f" {I.s('lock')}", "owner": f" {I.s('crown')}"}.get(level, "")
+        line = ("↳ " if cmd.parent is not None else "") + f"`{usage}`" + (f" — {desc}" if desc else "") + badge
         self._cog_bucket(pages, cog)[2].setdefault(level, []).append(line)
 
     # ---------- $konextra (bot owner only, PER SERVER) ----------

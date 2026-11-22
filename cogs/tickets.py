@@ -30,7 +30,7 @@ from discord.ext import commands
 from core import media
 from core.config import BLURPLE, BRAND, PREFIX
 from core.errors import VCError
-from core.icons import I, err, ok
+from core.icons import FALLBACK, I, err, ok
 from core.transcript import build_html, esc, fmt_dt
 from core.ui import OwnedView, clean_emoji, to_partial
 
@@ -63,6 +63,60 @@ DEFAULTS = {
     "categories": [], "max_open": 1, "name_format": "ticket-{user}", "opener_can_close": True,
     "counter": 0, "blacklist": [], "tickets": {}, "stats": {"opened": 0, "closed": 0},
 }
+
+
+# Owner-only preset for the "Dark Spider's Web" server ($ticket -> owner button): panel text, welcome message, categories.
+def dsw_preset() -> dict:
+    """Owner-only "Dark Spider's Web" setup. Built when used, so it carries Kon's own icons (not plain emojis)."""
+    mail, tick, scroll, users = I.s("mail"), I.s("ticket"), I.s("messages"), I.s("users")
+    return {
+        "panel": {
+            "title": "__Contact Support Team__", "color": 0x2ECC71, "placeholder": "Select a topic...",
+            "description": (
+                f"{mail} **Create A Ticket**- if you need support or have any important queries\n\n"
+                f"{tick} **Do Not Create a Ticket For Fun!**\n\n"
+                f"{scroll} __**Ticket For Support**__ :-\n"
+                "- Create Ticket For General Support\n"
+                "[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]\n"
+                "- Creating a ticket to be staff is strictly prohibited.\n"
+                "- Tickets for fun would result in 2days mute / ban\n"
+                "- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike "
+                "or a serious action which will be taken by our Support Team.\n"
+                "- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. "
+                "So, please don't create a ticket regarding this topic.\n\n"
+                f"{users} __**Ticket for Partnership/Sponsors**__ :-\n"
+                "- Create a Ticket If You Got Any Brand Deals Or Sponsors For SenpaiSpider\n"
+                "- Kindly Mention The Basic Details And Have Patience.\n"
+                "- The Rates For Brand Deals Would Be Discussed In Ticket\n"
+                "- Leaking The Information To Anyone Would Lead To Ban.\n"
+                "- You Could Contact Our Business Mail Too senpaispidersponsership@gmail.com\n\n"
+                "__select category from the dropdown menu to contact us__"),
+        },
+        "welcome": {
+            "title": "Help/support",
+            "description": (f"{I.s('headset')} **Welcome to the Ticket Support**\n"
+                            "> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon.")},
+        "categories": [       # the emoji is an icon NAME - it is looked up when drawn, so it survives re-uploads
+            {"id": "dsw-support", "name": "General Support", "emoji": "messages", "description": "Reports, bugs, role claiming and more",
+             "question": "Kindly Mention your issue!", "parent": None, "ping_roles": []},
+            {"id": "dsw-partner", "name": "Partnership/Sponsors", "emoji": "users", "description": "Brand deals and sponsors",
+             "question": "Kindly mention the basic details of your deal!", "parent": None, "ping_roles": []},
+        ],
+    }
+
+
+def show_emoji(e: Optional[str]) -> str:
+    """Category emoji as text: an icon name (Kon's own icon), a custom emoji string or a unicode emoji."""
+    if not e:
+        return ""
+    return I.s(e) if e in FALLBACK else e
+
+
+def cat_emoji(e: Optional[str]):
+    """Category emoji for a dropdown option (an icon name resolves to Kon's icon, or its unicode fallback)."""
+    if not e:
+        return None
+    return I.e(e) if e in FALLBACK else to_partial(e)
 
 
 def fmt_dur(seconds: float) -> str:
@@ -204,7 +258,7 @@ class Tickets(commands.Cog):
         view = discord.ui.LayoutView(timeout=None)
         view.add_item(discord.ui.Container(*items, accent_colour=discord.Colour(p.get("color") or BRAND)))
         options = [discord.SelectOption(label=c["name"][:100], value=c["id"], description=(c.get("description") or None),
-                                        emoji=to_partial(c.get("emoji"))) for c in cfg["categories"][:MAX_CATEGORIES]]
+                                        emoji=cat_emoji(c.get("emoji"))) for c in cfg["categories"][:MAX_CATEGORIES]]
         row = discord.ui.ActionRow()
         row.add_item(NoopSelect(custom_id=CID + "panel", placeholder=(p.get("placeholder") or "Choose a category...")[:150],
                                 options=options))
@@ -275,7 +329,7 @@ class Tickets(commands.Cog):
         v.add_item(Noop(label="Close", emoji=I.e("lock"), style=discord.ButtonStyle.danger, custom_id=CID + "close"))
         v.add_item(Noop(label="Close With Reason", emoji=I.e("edit"), style=discord.ButtonStyle.danger,
                         custom_id=CID + "close_reason"))
-        v.add_item(Noop(label="Unclaim" if claimed else "Claim", emoji=I.e("claim"),
+        v.add_item(Noop(label="Unclaim" if claimed else "Claim", emoji=I.e("user_plus_arrow"),
                         style=discord.ButtonStyle.secondary if claimed else discord.ButtonStyle.success,
                         custom_id=CID + "claim"))
         return v
@@ -421,7 +475,7 @@ class Tickets(commands.Cog):
         claimed = cur != user.id
         t["claimed_by"], t["claimed_at"] = (user.id, time.time()) if claimed else (None, None)
         self.save(channel.guild.id)
-        text = (f"{I.s('claim')} {user.mention} claimed this ticket and will help you from here." if claimed
+        text = (f"{I.s('user_plus_arrow')} {user.mention} claimed this ticket and will help you from here." if claimed
                 else f"{I.s('refresh')} {user.mention} released this ticket - another staff member can take it.")
         try:
             await channel.send(embed=discord.Embed(color=GREEN if claimed else GOLD, description=text), allowed_mentions=NONE)
@@ -529,7 +583,7 @@ class Tickets(commands.Cog):
                 log.warning("closed log failed in %s", closed_ch)
         if trans_ch is not None:
             try:
-                await trans_ch.send(embed=embed(f"{I.s('scroll')} Ticket #{t['num']:04d} · transcript", BLURPLE, fields),
+                await trans_ch.send(embed=embed(f"{I.s('messages')} Ticket #{t['num']:04d} · transcript", BLURPLE, fields),
                                     file=file(), allowed_mentions=NONE)
             except discord.HTTPException:
                 log.warning("transcript log failed in %s", trans_ch)
@@ -674,7 +728,7 @@ class Tickets(commands.Cog):
         """$ticket - the ticket control panel (admins)."""
         if not self.is_admin(ctx.author):
             raise commands.MissingPermissions(["manage_guild"])
-        view = TicketAdmin(self, ctx.author)
+        view = TicketAdmin(self, ctx.author, owner=await self.bot.is_true_owner(ctx.author))
         view.message = await ctx.reply(embed=view.embed(), view=view, mention_author=False)
 
     def _need_ticket(self, ctx: commands.Context) -> dict:
@@ -765,7 +819,7 @@ HOME_OPTIONS = (
     ("panel", "Edit panel message", "Title, text, colour and dropdown text of the panel", "message"),
     ("welcome", "Edit ticket message", "The message inside every new ticket", "ticket"),
     ("banner", "Upload banner", "Image / GIF on top of the panel", "image"),
-    ("logs", "Log channels", "Opened / closed / transcript logs and the tickets' Discord category", "scroll"),
+    ("logs", "Log channels", "Opened / closed / transcript logs and the tickets' Discord category", "messages"),
     ("roles", "Support roles", "Who can see, claim and close tickets", "shield_star"),
     ("settings", "Settings", "Max tickets per member, channel name, opener may close", "settings"),
     ("send", "Send / update panel", "Post the panel in a channel", "upload"),
@@ -775,9 +829,11 @@ HOME_OPTIONS = (
 class TicketAdmin(OwnedView):
     """$ticket - everything is edited here: home -> (categories | logs | roles | send)."""
 
-    def __init__(self, cog: Tickets, invoker: discord.Member):
+    def __init__(self, cog: Tickets, invoker: discord.Member, owner: bool = False):
         super().__init__(invoker.id, timeout=900)
         self.cog, self.guild = cog, invoker.guild
+        self.owner = owner                  # the real bot owner gets the "Dark Spider's Web" preset button (home page only)
+        self.confirm = False                # preset button was pressed once, waiting for the 2nd press
         self.page: str = "home"
         self.cat_id: Optional[str] = None
         self.render()
@@ -795,7 +851,7 @@ class TicketAdmin(OwnedView):
         c = self.cfg
         if self.page == "cat":
             cat = self.cog.category(c, self.cat_id) or {}
-            e = discord.Embed(color=BRAND, title=f"{I.s('edit')} {cat.get('emoji') or ''} {cat.get('name', 'Category')}".strip(),
+            e = discord.Embed(color=BRAND, title=f"{I.s('edit')} {show_emoji(cat.get('emoji'))} {cat.get('name', 'Category')}".strip(),
                               description=f"{I.s('message')} {cat.get('description') or '*no description*'}")
             e.add_field(name="Form question", value=cat.get("question") or "*none - the ticket opens straight away*", inline=False)
             e.add_field(name="Tickets open under", value=self.ch(cat.get("parent") or c.get("open_category")), inline=True)
@@ -806,10 +862,10 @@ class TicketAdmin(OwnedView):
             e = discord.Embed(color=BRAND, title=f"{I.s('edit')} Edit category", description="Pick the category you want to change.")
         elif self.page == "logs":
             lg = c["logs"]
-            e = discord.Embed(color=BRAND, title=f"{I.s('scroll')} Log channels", description=(
-                f"{I.s('inbox')} **Opened log:** {self.ch(lg['opened'])}\n"
+            e = discord.Embed(color=BRAND, title=f"{I.s('messages')} Log channels", description=(
+                f"{I.s('mail')} **Opened log:** {self.ch(lg['opened'])}\n"
                 f"{I.s('lock')} **Closed log:** {self.ch(lg['closed'])}\n"
-                f"{I.s('scroll')} **Transcripts:** {self.ch(lg['transcript'])}\n"
+                f"{I.s('messages')} **Transcripts:** {self.ch(lg['transcript'])}\n"
                 f"{I.s('folder')} **Tickets open under:** {self.ch(c['open_category'])}\n\n"
                 f"Pick a channel in each menu. Leave a menu empty to turn that log off."))
         elif self.page == "roles":
@@ -831,7 +887,7 @@ class TicketAdmin(OwnedView):
 
     def home_embed(self) -> discord.Embed:
         c = self.cfg
-        cats = ", ".join(f"{x.get('emoji') or ''} {x['name']}".strip() for x in c["categories"]) or "*none yet*"
+        cats = ", ".join(f"{show_emoji(x.get('emoji'))} {x['name']}".strip() for x in c["categories"]) or "*none yet*"
         lg = c["logs"]
         e = discord.Embed(color=BRAND, title=f"{I.s('ticket')} Ticket control panel", description=(
             "Everything about tickets is edited here. Pick what to change in the menu below."))
@@ -863,10 +919,16 @@ class TicketAdmin(OwnedView):
             b = discord.ui.Button(label="Send / update panel", emoji=I.e("upload"), style=discord.ButtonStyle.success, row=1)
             b.callback = self.quick_send
             self.add_item(b)
+            if self.owner:
+                b = discord.ui.Button(label="Confirm: load Dark Spider's Web" if self.confirm else "Dark Spider's Web",
+                                      emoji=I.e("crown"), row=1,
+                                      style=discord.ButtonStyle.danger if self.confirm else discord.ButtonStyle.primary)
+                b.callback = self.preset_btn
+                self.add_item(b)
         elif self.page == "catpick":
             sel = discord.ui.Select(placeholder="Pick a category...", row=0, options=[
                 discord.SelectOption(label=x["name"][:100], value=x["id"], description=(x.get("description") or None),
-                                     emoji=to_partial(x.get("emoji"))) for x in c["categories"][:25]])
+                                     emoji=cat_emoji(x.get("emoji"))) for x in c["categories"][:25]])
             sel.callback = self.cat_picked
             self.add_item(sel)
             self.add_back(1)
@@ -943,13 +1005,33 @@ class TicketAdmin(OwnedView):
         await self.refresh()
 
     # ----- navigation -----
+    async def preset_btn(self, interaction: discord.Interaction):
+        if not self.owner:
+            return await say(interaction, err("Only the bot owner can use this."))
+        if not self.confirm:
+            self.confirm = True
+            return await self.push(interaction, "This **replaces** the panel text, the ticket message and ALL categories with the "
+                                                "Dark Spider's Web setup. Press the red button to confirm.")
+        self.confirm = False
+        c = self.cfg
+        preset = dsw_preset()
+        c["panel"].update(preset["panel"])
+        c["welcome"] = preset["welcome"]
+        c["categories"] = preset["categories"]
+        self.cog.save(self.guild.id)
+        await self.cog.refresh_panel(self.guild)
+        await self.push(interaction, "Dark Spider's Web loaded: panel text, ticket message and the 2 categories "
+                                     "(General Support, Partnership/Sponsors). Set the logs + support roles, then post the panel.")
+
     async def go_home(self, interaction: discord.Interaction):
+        self.confirm = False
         self.page = "home"
         await self.push(interaction)
 
     async def home_pick(self, interaction: discord.Interaction):
         v = interaction.data["values"][0]
         c = self.cfg
+        self.confirm = False
         if v == "create":
             if len(c["categories"]) >= MAX_CATEGORIES:
                 return await say(interaction, err(f"You can have at most {MAX_CATEGORIES} categories."))

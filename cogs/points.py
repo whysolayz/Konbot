@@ -54,6 +54,79 @@ def show_badge(name: str) -> str:
     return name if "<" in name else f"**{name}**"      # emojis render best without bold markers
 
 
+_CUSTOM_EMOJI = re.compile(r"<(a?):(\w+):(\d+)>")
+
+
+def badge_option(name: str, idx: int) -> discord.SelectOption:
+    """A badge as a dropdown option: a custom emoji becomes the option's icon, the rest is the label."""
+    m = _CUSTOM_EMOJI.search(name)
+    icon = None
+    label = name
+    if m:
+        icon = discord.PartialEmoji(name=m.group(2), id=int(m.group(3)), animated=bool(m.group(1)))
+        label = _CUSTOM_EMOJI.sub("", name).strip() or m.group(2)
+    return discord.SelectOption(label=label[:100] or "badge", value=str(idx), emoji=icon)
+
+
+class BadgeRemoveView(OwnedView):
+    """$badge remove @user -> pick a badge in the menu and it is removed right away."""
+    PER = 25
+
+    def __init__(self, cog, invoker: discord.Member, member: discord.Member):
+        super().__init__(invoker.id, timeout=180)
+        self.cog, self.guild, self.member = cog, invoker.guild, member
+        self.page = 0
+        self.badges: list = []
+        self.render()
+
+    def embed(self, note: str = "") -> discord.Embed:
+        e = discord.Embed(color=BRAND, title=f"{I.s('trophy')} Remove a badge",
+                          description=f"Pick the badge to remove from {self.member.mention}.\n\n" +
+                                      (", ".join(self.badges) if self.badges else "*No badges left.*"))
+        if note:
+            e.add_field(name="Done", value=note[:1000], inline=False)
+        return e
+
+    def render(self):
+        self.clear_items()
+        self.badges = self.cog.db.badges(self.guild.id, self.member.id)
+        pages = max(1, -(-len(self.badges) // self.PER))
+        self.page = max(0, min(self.page, pages - 1))
+        if not self.badges:
+            return
+        start = self.page * self.PER
+        chunk = self.badges[start:start + self.PER]
+        sel = discord.ui.Select(placeholder="Select a badge to remove...", row=0,
+                                options=[badge_option(b, start + i) for i, b in enumerate(chunk)])
+        sel.callback = self.picked
+        self.add_item(sel)
+        if pages > 1:
+            for label, step in (("Previous", -1), ("Next", 1)):
+                b = discord.ui.Button(label=label, style=discord.ButtonStyle.secondary, row=1,
+                                      disabled=(self.page + step < 0 or self.page + step >= pages))
+                b.callback = (lambda i, st=step: self.turn(i, st))
+                self.add_item(b)
+
+    async def turn(self, interaction: discord.Interaction, step: int):
+        self.page += step
+        self.render()
+        await interaction.response.edit_message(embed=self.embed(), view=self)
+
+    async def picked(self, interaction: discord.Interaction):
+        idx = int(interaction.data["values"][0])
+        if idx >= len(self.badges):
+            self.render()
+            return await interaction.response.edit_message(embed=self.embed("That list changed - pick again."), view=self)
+        name = self.badges[idx]
+        gone = self.cog.db.remove_badge(self.guild.id, self.member.id, name)
+        self.render()
+        note = f"Removed {show_badge(name)}." if gone else "They no longer have that badge."
+        if not self.badges:
+            self.stop()
+            return await interaction.response.edit_message(embed=self.embed(note), view=None)
+        await interaction.response.edit_message(embed=self.embed(note), view=self)
+
+
 def onoff(v: bool) -> str:
     return "ON" if v else "OFF"
 
@@ -643,12 +716,19 @@ class Points(commands.Cog):
 
     @badge.command(name="remove")
     @commands.has_permissions(manage_guild=True)
-    async def badge_remove(self, ctx, member: discord.Member, *, name: str):
-        """$badge remove @user <name>"""
-        name = clean_badge(self.bot, name)
-        if not self.db.remove_badge(ctx.guild.id, member.id, name):
-            raise VCError("They don't have that badge.")
-        await ctx.reply(ok(f"Removed {show_badge(name)} from {member.mention}."), mention_author=False)
+    async def badge_remove(self, ctx, member: discord.Member, *, name: str = ""):
+        """$badge remove @user - pick the badge to remove from a menu (or `$badge remove @user <name>`)."""
+        if name.strip():
+            name = clean_badge(self.bot, name)
+            if not self.db.remove_badge(ctx.guild.id, member.id, name):
+                raise VCError("They don't have that badge.")
+            return await ctx.reply(ok(f"Removed {show_badge(name)} from {member.mention}."), mention_author=False,
+                                   allowed_mentions=discord.AllowedMentions.none())
+        if not self.db.badges(ctx.guild.id, member.id):
+            raise VCError(f"{member.mention} has no badges.")
+        view = BadgeRemoveView(self, ctx.author, member)
+        view.message = await ctx.reply(embed=view.embed(), view=view, mention_author=False,
+                                       allowed_mentions=discord.AllowedMentions.none())
 
 
 async def setup(bot):
