@@ -184,10 +184,10 @@ class Autoreact(commands.Cog):
             "Pick **one emoji** and I'll react with it every time someone **@mentions you**.",
             "",
             f"{I.s('heart')} **Your emoji:** {mine[0] if mine else '*not set yet*'}",
-            f"{I.s('shield_check')} **Access:** " + ("✅ you can use it" if allowed else "❌ ask an admin"),
+            f"{I.s('shield_check')} **Access:** " + (f"{I.s('check')} you can use it" if allowed else f"{I.s('cross')} ask an admin"),
             "",
             "**How to use**",
-            f"`{PREFIX}ar 🔥` · set your emoji",
+            f"`{PREFIX}ar <emoji>` · set your emoji",
             f"`{PREFIX}ar off` · turn it off",
         ]
         if ctx.author.guild_permissions.manage_guild:
@@ -247,7 +247,7 @@ class Autoreact(commands.Cog):
         tokens = CUSTOM_EMOJI.sub(r" \1 ", emojis).split()
         tokens = list(dict.fromkeys(tokens))
         if len(tokens) > MAX_EMOJIS:
-            raise VCError(f"Just **1 emoji**, like `{PREFIX}ar 🔥`")
+            raise VCError(f"Just **1 emoji**, like `{PREFIX}ar <emoji>`")
         tok = tokens[0]
         try:                                     # real test: Discord itself tells us if the emoji is usable
             await ctx.message.add_reaction(tok)
@@ -264,7 +264,7 @@ class Autoreact(commands.Cog):
     async def au_setup(self, ctx: commands.Context, *, emoji: str = ""):
         """$ar setup <emoji> - same as `$ar <emoji>`"""
         if not emoji.strip():
-            raise VCError(f"Which emoji? Like `{PREFIX}ar 🔥`")
+            raise VCError(f"Which emoji? Like `{PREFIX}ar <emoji>`")
         await self.set_emoji(ctx, emoji)
 
     @autoreacter.command(name="off", aliases=["disable", "stop"])

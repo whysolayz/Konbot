@@ -389,6 +389,8 @@ class SelfRoles(commands.Cog):
     @staticmethod
     def shown(text, gone, icon: str = "diamond"):
         """Emoji text for messages / embeds: a deleted custom emoji becomes Kon's own icon."""
+        if text == "🍃":                      # the default leaf -> Kon's own leaf icon
+            return I.s("leaf")
         if text and any(i in gone for i in emo.ids_in(text)):
             return I.s(icon)
         return text

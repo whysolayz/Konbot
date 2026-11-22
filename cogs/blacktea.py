@@ -203,7 +203,7 @@ class Game:
             f"# `{self.fragment.upper()}`\n"
             f"{I.s('hourglass')} ends <t:{self.deadline}:R>"))
         board = "\n".join(
-            (f"{I.s('play')} " if uid == self.current else "▫️ ") + f"<@{uid}> {hearts(self.lives[uid])}"
+            (f"{I.s('play')} " if uid == self.current else f"{I.s('minus')} ") + f"<@{uid}> {hearts(self.lives[uid])}"
             for uid in self.order)
         e.add_field(name="Players", value=board, inline=False)
         e.set_footer(text=f"{c['label']} mode · turn {rnd} · words used: {len(self.used)}")

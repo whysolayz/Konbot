@@ -53,7 +53,7 @@ DESC = {
     "store": "Open the role shop (pages, balance, buy with the menu)", "pointshop": "Open the role shop", "pointshop config": "Add / edit / reorder shop roles",
     "point": "Points settings overview", "point config": "Points, cooldown and channel rules",
     "point add": "Give points", "point remove": "Take points", "point set": "Set exact points", "point reset": "Wipe a member's data",
-    "badge": "Show badges", "badge give": "Give a badge", "badge remove": "Pick a badge from a menu to remove it",
+    "badge": "Show badges", "badge give": "Give a badge", "badge remove": "Remove all badges (or one by name)",
     "noprefix": "Show no-prefix settings", "noprefix role": "Role that doesn't need the prefix",
     "noprefix add": "Give one member no-prefix", "noprefix remove": "Remove a member's no-prefix",
     "noprefix clear": "Remove the no-prefix role",
@@ -237,9 +237,12 @@ class HelpView(OwnedView):
 
     def page(self) -> discord.Embed:
         item = self.flat[self.pos]
-        e = discord.Embed(title=f"{I.s(item['icon'])} {item['title']}", color=BRAND, description="\n".join(item["lines"]))
+        # custom emojis do NOT render in an embed footer (they show as raw <:name:id>), so the legend goes in the description
+        legend = f"\n\n-# {I.s('lock')} admin  ·  {I.s('crown')} owner"
+        e = discord.Embed(title=f"{I.s(item['icon'])} {item['title']}", color=BRAND,
+                          description="\n".join(item["lines"]) + legend)
         e.set_author(name=item["group"])
-        e.set_footer(text=f"Page {self.pos}/{len(self.flat) - 1} · {I.s('lock')} admin  {I.s('crown')} owner")
+        e.set_footer(text=f"Page {self.pos}/{len(self.flat) - 1}")
         return e
 
     def current(self) -> discord.Embed:
@@ -364,7 +367,7 @@ class Meta(commands.Cog):
         db = (time.perf_counter() - t0) * 1000
 
         def dot(ms, good, ok_):
-            return "🟢" if ms < good else ("🟡" if ms < ok_ else "🔴")
+            return I.s("light_green") if ms < good else (I.s("warning") if ms < ok_ else I.s("light_red"))
         worst = max(ws / 150, api / 300, db / 20)
         status, color = (("Active", BRAND) if worst < 1 else ("Slow", 0xF58219) if worst < 2.5 else ("Struggling", 0xED4245))
         e = discord.Embed(title=f"{I.s('sparkles')} Kon Ping", color=color, description=(

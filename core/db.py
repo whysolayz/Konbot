@@ -232,6 +232,11 @@ class DB:
                                     (gid, uid, badge))
         return cur.rowcount > 0
 
+    def clear_badges(self, gid, uid) -> int:
+        with self.conn:
+            cur = self.conn.execute("DELETE FROM badges WHERE guild_id=? AND user_id=?", (gid, uid))
+        return cur.rowcount
+
     def repair_badges(self) -> int:
         """Old versions cut badges at 30 characters, which broke custom emojis ('<:name:123' without the '>').
         Close them again so they show as emojis."""

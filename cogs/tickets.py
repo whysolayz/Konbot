@@ -250,10 +250,9 @@ class Tickets(commands.Cog):
     # ------------------------------------------------------------ the V2 panel
     def build_panel(self, cfg: dict, banner_url: Optional[str] = None) -> discord.ui.LayoutView:
         p = cfg["panel"]
-        items = []
-        if banner_url:
-            items += [discord.ui.MediaGallery(discord.MediaGalleryItem(banner_url)), discord.ui.Separator()]
-        items.append(discord.ui.TextDisplay(f"## {I.s('ticket')} {p['title']}\n{p['description']}"[:3900]))
+        items = [discord.ui.TextDisplay(f"## {I.s('ticket')} {p['title']}\n{p['description']}"[:3900])]
+        if banner_url:                                   # the banner sits under the text, right above the dropdown
+            items += [discord.ui.Separator(), discord.ui.MediaGallery(discord.MediaGalleryItem(banner_url))]
         items += [discord.ui.Separator(), discord.ui.TextDisplay("-# Pick a category from the menu below to open a ticket.")]
         view = discord.ui.LayoutView(timeout=None)
         view.add_item(discord.ui.Container(*items, accent_colour=discord.Colour(p.get("color") or BRAND)))
@@ -1014,14 +1013,33 @@ class TicketAdmin(OwnedView):
                                                 "Dark Spider's Web setup. Press the red button to confirm.")
         self.confirm = False
         c = self.cfg
+        await interaction.response.defer()
         preset = dsw_preset()
         c["panel"].update(preset["panel"])
         c["welcome"] = preset["welcome"]
         c["categories"] = preset["categories"]
+        made, failed = [], False
+        for cat, dname in zip(c["categories"], ("Support Tickets", "Partnership Tickets")):   # each category opens in its OWN Discord category
+            dcat = discord.utils.get(self.guild.categories, name=dname)
+            if dcat is None:
+                try:
+                    dcat = await self.guild.create_category(dname, reason="Ticket preset", overwrites={
+                        self.guild.default_role: discord.PermissionOverwrite(view_channel=False),
+                        self.guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True, manage_channels=True)})
+                    made.append(dname)
+                except discord.HTTPException:
+                    failed = True
+                    continue
+            cat["parent"] = dcat.id
         self.cog.save(self.guild.id)
         await self.cog.refresh_panel(self.guild)
-        await self.push(interaction, "Dark Spider's Web loaded: panel text, ticket message and the 2 categories "
-                                     "(General Support, Partnership/Sponsors). Set the logs + support roles, then post the panel.")
+        note = ("Dark Spider's Web loaded: panel text, ticket message and 2 categories. "
+                "General Support tickets open under **Support Tickets**, Partnership/Sponsors under **Partnership Tickets**"
+                + (f" (created: {', '.join(made)})" if made else "") + ". Set the logs + support roles, then post the panel.")
+        if failed:
+            note += f"\n{I.s('warning')} I couldn't create a Discord category (need Manage Channels) - set it per category in **Edit category**."
+        self.render()
+        await interaction.edit_original_response(embed=self.embed(note), view=self)
 
     async def go_home(self, interaction: discord.Interaction):
         self.confirm = False

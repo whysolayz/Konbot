@@ -88,6 +88,8 @@ class LinksView(OwnedView):
         return e
 
     def sync(self):
+        self.first.emoji, self.prev.emoji = I.e("rewind"), I.e("prev")        # Kon icons
+        self.next.emoji, self.last.emoji = I.e("next"), I.e("fast_forward")
         self.first.disabled = self.prev.disabled = self.page <= 0
         self.next.disabled = self.last.disabled = self.page >= self.pages - 1
         self.counter.label = f"{self.page + 1}/{self.pages}"
@@ -97,11 +99,11 @@ class LinksView(OwnedView):
         self.sync()
         await interaction.response.edit_message(embed=self.embed(), view=self)
 
-    @discord.ui.button(emoji="⏮", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(style=discord.ButtonStyle.secondary)
     async def first(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.go(interaction, 0)
 
-    @discord.ui.button(emoji="◀", style=discord.ButtonStyle.primary)
+    @discord.ui.button(style=discord.ButtonStyle.primary)
     async def prev(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.go(interaction, self.page - 1)
 
@@ -109,11 +111,11 @@ class LinksView(OwnedView):
     async def counter(self, interaction: discord.Interaction, button: discord.ui.Button):
         pass
 
-    @discord.ui.button(emoji="▶", style=discord.ButtonStyle.primary)
+    @discord.ui.button(style=discord.ButtonStyle.primary)
     async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.go(interaction, self.page + 1)
 
-    @discord.ui.button(emoji="⏭", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(style=discord.ButtonStyle.secondary)
     async def last(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.go(interaction, self.pages - 1)
 

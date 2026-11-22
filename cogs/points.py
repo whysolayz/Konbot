@@ -717,18 +717,19 @@ class Points(commands.Cog):
     @badge.command(name="remove")
     @commands.has_permissions(manage_guild=True)
     async def badge_remove(self, ctx, member: discord.Member, *, name: str = ""):
-        """$badge remove @user - pick the badge to remove from a menu (or `$badge remove @user <name>`)."""
+        """$badge remove @user - remove ALL their badges (or `$badge remove @user <name>` for just one)."""
+        quiet = discord.AllowedMentions.none()
         if name.strip():
             name = clean_badge(self.bot, name)
             if not self.db.remove_badge(ctx.guild.id, member.id, name):
                 raise VCError("They don't have that badge.")
             return await ctx.reply(ok(f"Removed {show_badge(name)} from {member.mention}."), mention_author=False,
-                                   allowed_mentions=discord.AllowedMentions.none())
-        if not self.db.badges(ctx.guild.id, member.id):
+                                   allowed_mentions=quiet)
+        n = self.db.clear_badges(ctx.guild.id, member.id)
+        if not n:
             raise VCError(f"{member.mention} has no badges.")
-        view = BadgeRemoveView(self, ctx.author, member)
-        view.message = await ctx.reply(embed=view.embed(), view=view, mention_author=False,
-                                       allowed_mentions=discord.AllowedMentions.none())
+        await ctx.reply(ok(f"Removed all **{n}** badge(s) from {member.mention}."), mention_author=False,
+                        allowed_mentions=quiet)
 
 
 async def setup(bot):
