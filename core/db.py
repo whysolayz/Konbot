@@ -85,7 +85,7 @@ class DB:
 
     def counts(self) -> dict:
         q = lambda t: self.conn.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
-        return {"users": q("users"), "items": q("shop_items"), "purchases": q("purchases")}
+        return {"users": q("users"), "items": q("shop_items"), "purchases": q("purchases"), "settings": q("settings")}
 
     def snapshot(self, dest: str):
         """Consistent copy of the live database (used by $backup)."""

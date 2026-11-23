@@ -1,7 +1,8 @@
 """Tickets - a Components V2 panel with a category dropdown, private ticket channels, detailed logs and an HTML transcript.
 
 $ticket                 (admins) the control panel: create / edit categories, panel message, welcome message, banner,
-                        log channels, support roles, settings, post the panel
+                        log channels, support roles, settings, post the panel. You can make MANY panels (each one has
+                        its own categories, text, banner, channel, logs, roles and rules) - switch between them in the menu.
 $ticket close [reason]  close the ticket you are in (staff or the opener)
 $ticket claim           claim / unclaim the ticket you are in (staff)
 $ticket add @member     let someone into this ticket (staff)
@@ -9,6 +10,7 @@ $ticket remove @member  take someone out of this ticket (staff)
 $ticket rename <name>   rename this ticket channel (staff)
 $ticket blacklist [@m]  (admins) block / unblock someone from opening tickets, no member = list
 
+A ticket is closed automatically (with a transcript + the reason) when its owner leaves the server, is kicked or is banned.
 Everything is saved in kon.db (settings table key "tickets"), so it is part of every backup.
 Every button / dropdown has a fixed custom_id ("kon_tk:...") and is handled in on_interaction, so the panel and the
 ticket buttons keep working after a restart without re-posting anything.
@@ -47,7 +49,9 @@ MAX_CATEGORIES = 25
 MAX_HISTORY = 10000                  # messages in one transcript
 CLOSE_DELAY = 5
 
-DEFAULTS = {
+MAX_PANELS = 10
+PANEL_DEFAULTS = {                                  # everything ONE panel owns
+    "name": "Main panel",
     "panel_channel": None, "panel_message": None,
     "panel": {"title": "Support Center", "color": BRAND, "placeholder": "Choose a category...", "banner": None,
               "description": ("Need a hand? Pick the category that fits your problem from the menu below and a private "
@@ -61,14 +65,20 @@ DEFAULTS = {
     "support_roles": [], "admin_roles": [], "open_category": None,
     "logs": {"opened": None, "closed": None, "transcript": None},
     "categories": [], "max_open": 1, "name_format": "ticket-{user}", "opener_can_close": True,
-    "counter": 0, "blacklist": [], "tickets": {}, "stats": {"opened": 0, "closed": 0},
 }
+PANEL_KEYS = set(PANEL_DEFAULTS) - {"name"}         # old (single panel) versions kept these at the top level
+GUILD_DEFAULTS = {"panels": {}, "counter": 0, "blacklist": [], "tickets": {}, "stats": {"opened": 0, "closed": 0}}
+
+
+def panel_cid(pid: str) -> str:
+    """custom_id of a panel dropdown. The first panel keeps the old id, so panels posted before the update keep working."""
+    return CID + "panel" if pid == "main" else f"{CID}panel:{pid}"
 
 
 # Owner-only preset for the "Dark Spider's Web" server ($ticket -> owner button): panel text, welcome message, categories.
 def dsw_preset() -> dict:
     """Owner-only "Dark Spider's Web" setup. Built when used, so it carries Kon's own icons (not plain emojis)."""
-    mail, tick, scroll, users = I.s("mail"), I.s("ticket"), I.s("messages"), I.s("users")
+    mail, tick, scroll, users = I.s("mail"), I.s("warning"), I.s("messages"), I.s("users")
     return {
         "panel": {
             "title": "__Contact Support Team__", "color": 0x2ECC71, "placeholder": "Select a topic...",
@@ -203,42 +213,88 @@ class Tickets(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._cfg: dict[int, dict] = {}
+        self._swept = False
 
     # ------------------------------------------------------------ storage
+    @staticmethod
+    def fill_panel(stored: Optional[dict]) -> dict:
+        p = copy.deepcopy(PANEL_DEFAULTS)
+        for k, v in (stored or {}).items():
+            if isinstance(p.get(k), dict) and isinstance(v, dict):
+                p[k].update(v)
+            else:
+                p[k] = copy.deepcopy(v)
+        return p
+
+    def load_cfg(self, stored: Optional[dict]) -> dict:
+        """Saved settings -> {panels, counter, blacklist, tickets, stats}. Old single-panel settings become the panel "main"."""
+        c = copy.deepcopy(GUILD_DEFAULTS)
+        stored = dict(stored or {})
+        legacy = {k: stored.pop(k) for k in list(stored) if k in PANEL_KEYS}
+        panels = stored.pop("panels", None)
+        panels = panels if isinstance(panels, dict) else {}
+        for k, v in stored.items():
+            if isinstance(c.get(k), dict) and isinstance(v, dict):
+                c[k].update(v)
+            else:
+                c[k] = v
+        c["panels"] = {str(pid): self.fill_panel(p) for pid, p in panels.items() if isinstance(p, dict)}
+        if legacy:
+            if "main" not in c["panels"]:
+                c["panels"]["main"] = self.fill_panel({**legacy, "name": "Main panel"})
+            elif not c["panels"]["main"]["categories"] and legacy.get("categories"):
+                c["panels"]["main"] = self.fill_panel({**legacy, "name": c["panels"]["main"]["name"]})
+        if not c["panels"]:
+            c["panels"]["main"] = self.fill_panel({})
+        return c
+
     def cfg(self, gid: int) -> dict:
         c = self._cfg.get(gid)
         if c is None:
-            stored = self.bot.db.get_settings(gid, KEY)
-            c = copy.deepcopy(DEFAULTS)
-            for k, v in stored.items():
-                if isinstance(c.get(k), dict) and isinstance(v, dict):
-                    c[k].update(v)
-                else:
-                    c[k] = v
-            self._cfg[gid] = c
+            c = self._cfg[gid] = self.load_cfg(self.bot.db.get_settings(gid, KEY))
         return c
 
     def save(self, gid: int):
         self.bot.db.set_settings(gid, KEY, self.cfg(gid))
 
+    def pcfg(self, gid: int, pid: Optional[str]) -> Optional[dict]:
+        return self.cfg(gid)["panels"].get(pid or "main")
+
+    def default_pid(self, gid: int) -> str:
+        panels = self.cfg(gid)["panels"]
+        return "main" if "main" in panels else next(iter(panels))
+
+    def panel_of(self, gid: int, t: Optional[dict]) -> tuple:
+        """(panel id, panel settings) of a ticket. A ticket whose panel was deleted uses the first panel's rules."""
+        panels = self.cfg(gid)["panels"]
+        pid = (t or {}).get("panel") or "main"
+        if pid not in panels:
+            pid = self.default_pid(gid)
+        return pid, panels[pid]
+
     # ------------------------------------------------------------ who is who
-    def is_admin(self, member: discord.Member) -> bool:
+    def role_ids(self, gid: int, key: str, pid: Optional[str] = None) -> set:
+        panels = self.cfg(gid)["panels"]
+        pcs = [panels[pid]] if pid in panels else list(panels.values())
+        return {r for pc in pcs for r in pc[key]}
+
+    def is_admin(self, member: discord.Member, pid: Optional[str] = None) -> bool:
         p = member.guild_permissions
         if p.administrator or p.manage_guild or self.bot.is_owner_fast(member.id, member.guild.id):
             return True
-        ids = set(self.cfg(member.guild.id)["admin_roles"])
+        ids = self.role_ids(member.guild.id, "admin_roles", pid)
         return any(r.id in ids for r in member.roles)
 
-    def is_staff(self, member) -> bool:
+    def is_staff(self, member, pid: Optional[str] = None) -> bool:
         if not isinstance(member, discord.Member):
             return False
-        if self.is_admin(member):
+        if self.is_admin(member, pid):
             return True
-        ids = set(self.cfg(member.guild.id)["support_roles"])
+        ids = self.role_ids(member.guild.id, "support_roles", pid)
         return any(r.id in ids for r in member.roles)
 
-    def category(self, cfg: dict, cid: str) -> Optional[dict]:
-        return next((c for c in cfg["categories"] if c["id"] == cid), None)
+    def category(self, pc: dict, cid: str) -> Optional[dict]:
+        return next((c for c in pc["categories"] if c["id"] == cid), None)
 
     def ticket_of(self, channel_id: int, gid: int) -> Optional[dict]:
         return self.cfg(gid)["tickets"].get(str(channel_id))
@@ -248,77 +304,81 @@ class Tickets(commands.Cog):
         return f"<@{uid}>" if uid else "Nobody"
 
     # ------------------------------------------------------------ the V2 panel
-    def build_panel(self, cfg: dict, banner_url: Optional[str] = None) -> discord.ui.LayoutView:
-        p = cfg["panel"]
-        items = [discord.ui.TextDisplay(f"## {I.s('ticket')} {p['title']}\n{p['description']}"[:3900])]
+    def build_panel(self, pc: dict, pid: str, banner_url: Optional[str] = None) -> discord.ui.LayoutView:
+        p = pc["panel"]
+        items = [discord.ui.TextDisplay(f"## {p['title']}\n{p['description']}"[:3900])]
         if banner_url:                                   # the banner sits under the text, right above the dropdown
             items += [discord.ui.Separator(), discord.ui.MediaGallery(discord.MediaGalleryItem(banner_url))]
         items += [discord.ui.Separator(), discord.ui.TextDisplay("-# Pick a category from the menu below to open a ticket.")]
         view = discord.ui.LayoutView(timeout=None)
         view.add_item(discord.ui.Container(*items, accent_colour=discord.Colour(p.get("color") or BRAND)))
         options = [discord.SelectOption(label=c["name"][:100], value=c["id"], description=(c.get("description") or None),
-                                        emoji=cat_emoji(c.get("emoji"))) for c in cfg["categories"][:MAX_CATEGORIES]]
+                                        emoji=cat_emoji(c.get("emoji"))) for c in pc["categories"][:MAX_CATEGORIES]]
         row = discord.ui.ActionRow()
-        row.add_item(NoopSelect(custom_id=CID + "panel", placeholder=(p.get("placeholder") or "Choose a category...")[:150],
+        row.add_item(NoopSelect(custom_id=panel_cid(pid), placeholder=(p.get("placeholder") or "Choose a category...")[:150],
                                 options=options))
         view.add_item(row)
         return view
 
-    async def publish_panel(self, guild: discord.Guild, channel: Optional[discord.TextChannel] = None) -> discord.Message:
-        cfg = self.cfg(guild.id)
-        if not cfg["categories"]:
+    async def publish_panel(self, guild: discord.Guild, pid: str, channel: Optional[discord.TextChannel] = None) -> discord.Message:
+        pc = self.pcfg(guild.id, pid)
+        if pc is None:
+            raise VCError("That panel doesn't exist any more.")
+        if not pc["categories"]:
             raise VCError("Create at least one category first.")
-        channel = channel or (guild.get_channel(cfg["panel_channel"]) if cfg["panel_channel"] else None)
+        channel = channel or (guild.get_channel(pc["panel_channel"]) if pc["panel_channel"] else None)
         if not isinstance(channel, discord.TextChannel):
             raise VCError("Pick a channel for the panel first.")
         perms = channel.permissions_for(guild.me)
         if not (perms.view_channel and perms.send_messages):
             raise VCError(f"I need **View Channel and Send Messages** in {channel.mention}.")
-        url = await media.fresh(self.bot, cfg["panel"].get("banner"))
-        view = self.build_panel(cfg, url)
+        url = await media.fresh(self.bot, pc["panel"].get("banner"))
+        view = self.build_panel(pc, pid, url)
         msg = None
-        if cfg["panel_message"] and cfg["panel_channel"] == channel.id:
+        if pc["panel_message"] and pc["panel_channel"] == channel.id:
             try:
-                msg = await channel.get_partial_message(cfg["panel_message"]).edit(view=view, attachments=[])
+                msg = await channel.get_partial_message(pc["panel_message"]).edit(view=view, attachments=[])
             except discord.NotFound:
                 msg = None
             except discord.HTTPException as e:
                 raise VCError(f"Discord said no: {e.text}")
         if msg is None:
-            old_ch = guild.get_channel(cfg["panel_channel"]) if cfg["panel_channel"] else None
-            if old_ch is not None and cfg["panel_message"]:
+            old_ch = guild.get_channel(pc["panel_channel"]) if pc["panel_channel"] else None
+            if old_ch is not None and pc["panel_message"]:
                 try:
-                    await old_ch.get_partial_message(cfg["panel_message"]).delete()
+                    await old_ch.get_partial_message(pc["panel_message"]).delete()
                 except discord.HTTPException:
                     pass
             try:
                 msg = await channel.send(view=view, allowed_mentions=NONE)
             except discord.HTTPException as e:
                 raise VCError(f"Couldn't post the panel: {e.text}")
-        cfg["panel_channel"], cfg["panel_message"] = channel.id, msg.id
-        cfg["panel"]["_url"] = url                      # remembered so a reset (below) can redraw the same banner
+        pc["panel_channel"], pc["panel_message"] = channel.id, msg.id
+        pc["panel"]["_url"] = url                        # remembered so a reset (below) can redraw the same banner
         self.save(guild.id)
         return msg
 
-    async def refresh_panel(self, guild: discord.Guild):
+    async def refresh_panel(self, guild: discord.Guild, pid: str):
         """Redraw the posted panel after an edit (quietly - nothing happens when no panel is posted)."""
-        cfg = self.cfg(guild.id)
-        if not (cfg["panel_message"] and cfg["panel_channel"]) or not cfg["categories"]:
+        pc = self.pcfg(guild.id, pid)
+        if pc is None or not (pc["panel_message"] and pc["panel_channel"]) or not pc["categories"]:
             return
         try:
-            await self.publish_panel(guild)
+            await self.publish_panel(guild, pid)
         except (VCError, discord.HTTPException):
             pass
 
-    async def reset_panel(self, guild: discord.Guild):
+    async def reset_panel(self, guild: discord.Guild, pid: str):
         """Puts the dropdown back to its placeholder after someone picked a category."""
-        cfg = self.cfg(guild.id)
-        ch = guild.get_channel(cfg["panel_channel"]) if cfg["panel_channel"] else None
-        if ch is None or not cfg["panel_message"] or not cfg["categories"]:
+        pc = self.pcfg(guild.id, pid)
+        if pc is None:
+            return
+        ch = guild.get_channel(pc["panel_channel"]) if pc["panel_channel"] else None
+        if ch is None or not pc["panel_message"] or not pc["categories"]:
             return
         try:
-            await ch.get_partial_message(cfg["panel_message"]).edit(
-                view=self.build_panel(cfg, cfg["panel"].get("_url")), attachments=[])
+            await ch.get_partial_message(pc["panel_message"]).edit(
+                view=self.build_panel(pc, pid, pc["panel"].get("_url")), attachments=[])
         except discord.HTTPException:
             pass
 
@@ -341,7 +401,7 @@ class Tickets(commands.Cog):
     def opened_embed(self, guild: discord.Guild, t: dict, *, closed: bool = False) -> discord.Embed:
         ch = guild.get_channel(t["channel"])
         e = discord.Embed(color=RED if closed else GREEN,
-                          title=f"{I.s('ticket')} Ticket #{t['num']:04d} · {'closed' if closed else 'opened'}")
+                          title=f"Ticket #{t['num']:04d} · {'closed' if closed else 'opened'}")
         e.add_field(name="Ticket", value=(ch.mention if ch else f"`{t.get('name', 'ticket')}`") + f"\n`#{t['num']:04d}`", inline=True)
         e.add_field(name="Category", value=t["category_name"], inline=True)
         e.add_field(name="Opened by", value=f"<@{t['opener']}>\n`{t['opener']}`", inline=True)
@@ -366,8 +426,9 @@ class Tickets(commands.Cog):
         except discord.HTTPException:
             pass
 
-    def log_channel(self, guild: discord.Guild, which: str) -> Optional[discord.TextChannel]:
-        cid = self.cfg(guild.id)["logs"].get(which)
+    def log_channel(self, guild: discord.Guild, which: str, pid: Optional[str] = None) -> Optional[discord.TextChannel]:
+        pc = self.pcfg(guild.id, pid) or next(iter(self.cfg(guild.id)["panels"].values()))
+        cid = pc["logs"].get(which)
         ch = guild.get_channel(cid) if cid else None
         return ch if isinstance(ch, discord.TextChannel) else None
 
@@ -379,7 +440,7 @@ class Tickets(commands.Cog):
                 .replace("{category}", safe_name(cat["name"]) or "ticket"))
         return (safe_name(name) or f"ticket-{num:04d}")[:90]
 
-    def overwrites(self, guild: discord.Guild, cfg: dict, member: discord.Member, cat: dict) -> dict:
+    def overwrites(self, guild: discord.Guild, pc: dict, member: discord.Member, cat: dict) -> dict:
         mp = guild.me.guild_permissions
 
         def po(**perms):                                 # only grant what the bot itself has (Discord refuses the rest)
@@ -388,29 +449,37 @@ class Tickets(commands.Cog):
                     embed_links=True, add_reactions=True)
         ow = {guild.default_role: discord.PermissionOverwrite(view_channel=False),
               guild.me: po(**talk), member: po(**talk)}
-        for rid in set(cfg["support_roles"]) | set(cfg["admin_roles"]) | set(cat.get("ping_roles", [])):
+        for rid in set(pc["support_roles"]) | set(pc["admin_roles"]) | set(cat.get("ping_roles", [])):
             role = guild.get_role(rid)
             if role is not None:
                 ow[role] = po(**talk)
         return ow
 
-    async def create_ticket(self, guild: discord.Guild, member: discord.Member, cat: dict, answer: Optional[str]) -> discord.TextChannel:
+    def my_tickets(self, gid: int, uid: int, pid: str) -> list:
+        """Open tickets of a member in ONE panel (every panel has its own limit - so a member can have tickets in several panels)."""
+        return [t for t in self.cfg(gid)["tickets"].values()
+                if t["opener"] == uid and (t.get("panel") or "main") == pid and not t.get("closing")]
+
+    async def create_ticket(self, guild: discord.Guild, member: discord.Member, pid: str, cat: dict, answer: Optional[str]) -> discord.TextChannel:
         cfg = self.cfg(guild.id)
+        pc = self.pcfg(guild.id, pid)
+        if pc is None:
+            raise VCError("That panel doesn't exist any more.")
         if member.id in cfg["blacklist"]:
             raise VCError("You can't open tickets here.")
-        mine = [t for t in cfg["tickets"].values() if t["opener"] == member.id]
-        if len(mine) >= max(1, cfg["max_open"]):
+        mine = self.my_tickets(guild.id, member.id, pid)
+        if len(mine) >= max(1, pc["max_open"]):
             ch = guild.get_channel(mine[0]["channel"])
-            raise VCError(f"You already have {'an open ticket' if len(mine) == 1 else 'open tickets'}: "
+            raise VCError(f"You already have {'an open ticket' if len(mine) == 1 else 'open tickets'} here: "
                           f"{ch.mention if ch else '(channel missing)'}. Close it before opening a new one.")
         num = cfg["counter"] + 1
-        parent = guild.get_channel(cat.get("parent") or cfg.get("open_category") or 0)
+        parent = guild.get_channel(cat.get("parent") or pc.get("open_category") or 0)
         if not isinstance(parent, discord.CategoryChannel):
             parent = None
-        name = self.channel_name(cfg, member, num, cat)
+        name = self.channel_name(pc, member, num, cat)
         try:
             ch = await guild.create_text_channel(
-                name, category=parent, overwrites=self.overwrites(guild, cfg, member, cat),
+                name, category=parent, overwrites=self.overwrites(guild, pc, member, cat),
                 topic=f"Ticket #{num:04d} · {cat['name']} · opened by {member} ({member.id})",
                 reason=f"Ticket #{num:04d} opened by {member}")
         except discord.Forbidden:
@@ -419,7 +488,7 @@ class Tickets(commands.Cog):
             raise VCError(f"Discord couldn't create the channel: {e.text}")
         cfg["counter"] = num
         cfg["stats"]["opened"] += 1
-        t = {"num": num, "channel": ch.id, "name": ch.name, "category": cat["id"], "category_name": cat["name"],
+        t = {"num": num, "channel": ch.id, "name": ch.name, "panel": pid, "category": cat["id"], "category_name": cat["name"],
              "question": cat.get("question"), "opener": member.id, "created": time.time(), "claimed_by": None,
              "claimed_at": None, "first_reply_by": None, "first_reply_at": None, "answer": answer, "log": None,
              "closing": False}
@@ -427,7 +496,7 @@ class Tickets(commands.Cog):
         self.save(guild.id)
 
         # the welcome message in the ticket
-        w = cfg["welcome"]
+        w = pc["welcome"]
 
         def fill(s):
             return (s.replace("{user}", member.mention).replace("{category}", cat["name"])
@@ -438,7 +507,7 @@ class Tickets(commands.Cog):
         embeds[0].add_field(name="Opened", value=stamp(t["created"], "R"), inline=True)
         if answer:
             embeds.append(discord.Embed(color=BLURPLE, title=(cat.get("question") or cat["name"])[:256], description=answer[:4000]))
-        roles = [rid for rid in dict.fromkeys(cat.get("ping_roles", []) + cfg["support_roles"]) if guild.get_role(rid)]
+        roles = [rid for rid in dict.fromkeys(cat.get("ping_roles", []) + pc["support_roles"]) if guild.get_role(rid)]
         ping = member.mention + "".join(f" <@&{r}>" for r in roles)
         try:
             msg = await ch.send(content=ping, embeds=embeds, view=self.ticket_buttons(), allowed_mentions=PEOPLE)
@@ -447,11 +516,11 @@ class Tickets(commands.Cog):
             log.warning("could not post the welcome message in %s", ch)
 
         # the "opened" log
-        lg = self.log_channel(guild, "opened")
+        lg = self.log_channel(guild, "opened", pid)
         if lg is not None:
             try:
                 v = discord.ui.View()
-                v.add_item(discord.ui.Button(label="Open ticket", url=ch.jump_url, emoji=I.e("ticket")))
+                v.add_item(discord.ui.Button(label="Open ticket", url=ch.jump_url, emoji=I.e("link")))
                 m = await lg.send(embed=self.opened_embed(guild, t), view=v, allowed_mentions=NONE)
                 t["log"] = [lg.id, m.id]
             except discord.HTTPException:
@@ -466,10 +535,11 @@ class Tickets(commands.Cog):
         t = cfg["tickets"].get(str(channel.id))
         if t is None:
             raise VCError("This isn't a ticket channel.")
-        if not self.is_staff(user):
+        pid = self.panel_of(channel.guild.id, t)[0]
+        if not self.is_staff(user, pid):
             raise VCError("Only staff can claim tickets.")
         cur = t.get("claimed_by")
-        if cur and cur != user.id and not self.is_admin(user):
+        if cur and cur != user.id and not self.is_admin(user, pid):
             raise VCError(f"<@{cur}> already claimed this ticket.")
         claimed = cur != user.id
         t["claimed_by"], t["claimed_at"] = (user.id, time.time()) if claimed else (None, None)
@@ -485,9 +555,10 @@ class Tickets(commands.Cog):
 
     # ------------------------------------------------------------ close
     def compute_stats(self, guild: discord.Guild, t: dict, msgs: list) -> dict:
+        pid = self.panel_of(guild.id, t)[0]
         humans = [m for m in msgs if not m.author.bot]
         opener = [m for m in humans if m.author.id == t["opener"]]
-        staff = [m for m in humans if m.author.id != t["opener"] and self.is_staff(guild.get_member(m.author.id))]
+        staff = [m for m in humans if m.author.id != t["opener"] and self.is_staff(guild.get_member(m.author.id), pid)]
         first = t.get("first_reply_at"), t.get("first_reply_by")
         if not first[0] and staff:
             first = staff[0].created_at.timestamp(), staff[0].author.id
@@ -512,7 +583,9 @@ class Tickets(commands.Cog):
             ("Reason", (reason or "No reason provided")[:1000], False),
         ]
 
-    async def close_ticket(self, channel: discord.TextChannel, closer: discord.Member, reason: Optional[str] = None):
+    async def close_ticket(self, channel: discord.TextChannel, closer: discord.Member, reason: Optional[str] = None,
+                           auto: bool = False):
+        """auto = closed by the bot (owner left / was kicked / was banned): the reason says why."""
         guild = channel.guild
         cfg = self.cfg(guild.id)
         t = cfg["tickets"].get(str(channel.id))
@@ -521,12 +594,14 @@ class Tickets(commands.Cog):
         if t.get("closing"):
             raise VCError("This ticket is already being closed.")
         t["closing"] = True
+        pid = self.panel_of(guild.id, t)[0]
         reason = (reason or "").strip() or None
         started = time.time()
+        who = "This ticket was closed automatically." if auto else f"{closer.mention} closed it."
         try:
             await channel.send(embed=discord.Embed(
                 color=RED, title=f"{I.s('lock')} Closing this ticket",
-                description=f"{closer.mention} closed it. Saving the transcript - this channel is deleted in **{CLOSE_DELAY} seconds**."
+                description=f"{who} Saving the transcript - this channel is deleted in **{CLOSE_DELAY} seconds**."
                             + (f"\n**Reason:** {reason[:500]}" if reason else "")), allowed_mentions=NONE)
         except discord.HTTPException:
             pass
@@ -549,7 +624,8 @@ class Tickets(commands.Cog):
                 ("Reason", esc(reason or "No reason provided")),
             ]
             page = await asyncio.to_thread(build_html, guild, channel, msgs, info,
-                                           title=f"Ticket #{t['num']:04d} - {t['category_name']}", is_staff=self.is_staff)
+                                           title=f"Ticket #{t['num']:04d} - {t['category_name']}",
+                                           is_staff=lambda m: self.is_staff(m, pid))
             data, fname = page.encode("utf-8"), f"transcript-{channel.name}.html"
             if len(data) > max(guild.filesize_limit - 65536, 1024 * 1024):
                 buf = io.BytesIO()
@@ -573,7 +649,7 @@ class Tickets(commands.Cog):
         def file():
             return discord.File(io.BytesIO(data), filename=fname)
 
-        closed_ch, trans_ch = self.log_channel(guild, "closed"), self.log_channel(guild, "transcript")
+        closed_ch, trans_ch = self.log_channel(guild, "closed", pid), self.log_channel(guild, "transcript", pid)
         if closed_ch is not None:
             try:
                 await closed_ch.send(embed=embed(f"{I.s('lock')} Ticket #{t['num']:04d} · closed", RED, fields),
@@ -589,7 +665,7 @@ class Tickets(commands.Cog):
         opener = guild.get_member(t["opener"])
         if opener is not None:
             try:
-                dm = embed(f"{I.s('ticket')} Your ticket was closed", RED,
+                dm = embed("Your ticket was closed", RED,
                            [f for f in fields if f[0] not in ("Participants", "Opened by", "Closed")])
                 dm.description = f"Your ticket in **{guild.name}** has been closed. The transcript is attached."
                 await opener.send(embed=dm, file=file())
@@ -617,8 +693,8 @@ class Tickets(commands.Cog):
             return
         action = cid[len(CID):]
         try:
-            if action == "panel":
-                await self.on_panel_pick(interaction)
+            if action == "panel" or action.startswith("panel:"):
+                await self.on_panel_pick(interaction, "main" if action == "panel" else action.split(":", 1)[1])
             elif action in ("close", "close_reason"):
                 await self.on_close_button(interaction, ask_reason=action == "close_reason")
             elif action == "claim":
@@ -632,44 +708,47 @@ class Tickets(commands.Cog):
             log.exception("ticket interaction %s crashed", action)
             await say(interaction, err("That didn't work. Try again in a moment."))
 
-    async def on_panel_pick(self, interaction: discord.Interaction):
+    async def on_panel_pick(self, interaction: discord.Interaction, pid: str):
         guild, member = interaction.guild, interaction.user
         cfg = self.cfg(guild.id)
+        pc = self.pcfg(guild.id, pid)
+        if pc is None:
+            raise VCError("This panel was deleted. Ask an admin to post a new one.")
         values = (interaction.data or {}).get("values") or []
-        cat = self.category(cfg, values[0]) if values else None
-        asyncio.create_task(self.reset_panel(guild))                 # the dropdown goes back to its placeholder
+        cat = self.category(pc, values[0]) if values else None
+        asyncio.create_task(self.reset_panel(guild, pid))            # the dropdown goes back to its placeholder
         if cat is None:
             raise VCError("That category doesn't exist any more - the panel will refresh.")
         if member.id in cfg["blacklist"]:
             raise VCError("You can't open tickets here.")
-        mine = [t for t in cfg["tickets"].values() if t["opener"] == member.id]
-        if len(mine) >= max(1, cfg["max_open"]):
+        mine = self.my_tickets(guild.id, member.id, pid)
+        if len(mine) >= max(1, pc["max_open"]):
             ch = guild.get_channel(mine[0]["channel"])
-            raise VCError(f"You already have {'an open ticket' if len(mine) == 1 else 'open tickets'}: "
+            raise VCError(f"You already have {'an open ticket' if len(mine) == 1 else 'open tickets'} here: "
                           f"{ch.mention if ch else '(channel missing)'}. Close it before opening a new one.")
         if cat.get("question"):
             async def submitted(i: discord.Interaction, vals):
                 await i.response.defer(ephemeral=True)
-                ch = await self.create_ticket(guild, member, cat, vals[0])
+                ch = await self.create_ticket(guild, member, pid, cat, vals[0])
                 await i.followup.send(embed=self.created_embed(ch), ephemeral=True)
             modal = TKModal(cat["name"], [dict(label=cat["name"], max=1000, required=True, long=True,
                                                 placeholder=cat["question"][:100])], submitted)
             return await interaction.response.send_modal(modal)
         await interaction.response.defer(ephemeral=True)
-        ch = await self.create_ticket(guild, member, cat, None)
+        ch = await self.create_ticket(guild, member, pid, cat, None)
         await interaction.followup.send(embed=self.created_embed(ch), ephemeral=True)
 
     @staticmethod
     def created_embed(ch: discord.TextChannel) -> discord.Embed:
-        return discord.Embed(color=GREEN, title=f"{I.s('ticket')} Ticket opened", description=f"Your ticket is ready: {ch.mention}")
+        return discord.Embed(color=GREEN, title="Ticket opened", description=f"Your ticket is ready: {ch.mention}")
 
     async def on_close_button(self, interaction: discord.Interaction, ask_reason: bool):
         t = self.ticket_of(interaction.channel_id, interaction.guild.id)
         if t is None:
             raise VCError("This isn't an open ticket.")
-        cfg = self.cfg(interaction.guild.id)
+        pid, pc = self.panel_of(interaction.guild.id, t)
         user = interaction.user
-        if not (self.is_staff(user) or (user.id == t["opener"] and cfg["opener_can_close"])):
+        if not (self.is_staff(user, pid) or (user.id == t["opener"] and pc["opener_can_close"])):
             raise VCError("Only staff can close this ticket.")
         if ask_reason:
             async def submitted(i: discord.Interaction, vals):
@@ -697,7 +776,7 @@ class Tickets(commands.Cog):
         t = self.cfg(message.guild.id)["tickets"].get(str(message.channel.id))
         if t is None or t.get("first_reply_at") or message.author.id == t["opener"]:
             return
-        if self.is_staff(message.author):
+        if self.is_staff(message.author, self.panel_of(message.guild.id, t)[0]):
             t["first_reply_at"], t["first_reply_by"] = message.created_at.timestamp(), message.author.id
             self.save(message.guild.id)
             await self.update_open_log(message.guild, t)
@@ -708,17 +787,73 @@ class Tickets(commands.Cog):
         if cfg["tickets"].pop(str(channel.id), None) is not None:        # deleted by hand: no transcript possible
             self.save(channel.guild.id)
 
+    # ------------------------------------------------------------ owner left / kicked / banned -> the ticket closes by itself
+    async def leave_reason(self, member: discord.Member) -> str:
+        """Why did this member go? Banned / kicked / left (the audit log and ban list are checked a moment after the event)."""
+        guild = member.guild
+        await asyncio.sleep(2)
+        try:
+            ban = await guild.fetch_ban(discord.Object(id=member.id))
+            return "User was banned from the server" + (f" (ban reason: {ban.reason[:200]})" if ban.reason else "")
+        except discord.HTTPException:                       # NotFound = not banned, Forbidden = can't tell
+            pass
+        if guild.me.guild_permissions.view_audit_log:
+            try:
+                async for entry in guild.audit_logs(limit=10, action=discord.AuditLogAction.kick):
+                    if (entry.target is not None and entry.target.id == member.id
+                            and (discord.utils.utcnow() - entry.created_at).total_seconds() < 60):
+                        return ("User was kicked from the server" + (f" by {entry.user}" if entry.user else "")
+                                + (f" (reason: {entry.reason[:200]})" if entry.reason else ""))
+            except discord.HTTPException:
+                pass
+        return "User left the server"
+
+    async def auto_close(self, guild: discord.Guild, t: dict, reason: str):
+        ch = guild.get_channel(t["channel"])
+        if ch is None:                                       # channel already gone
+            if self.cfg(guild.id)["tickets"].pop(str(t["channel"]), None) is not None:
+                self.save(guild.id)
+            return
+        try:
+            await self.close_ticket(ch, guild.me, reason, auto=True)
+        except VCError as e:
+            log.warning("auto close of %s failed: %s", ch, e)
+        except Exception:
+            log.exception("auto close of %s crashed", ch)
+
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
         cfg = self.cfg(member.guild.id)
-        for t in list(cfg["tickets"].values()):
-            if t["opener"] == member.id and not t.get("closing"):
-                ch = member.guild.get_channel(t["channel"])
-                if ch is not None:
-                    try:
-                        await ch.send(embed=discord.Embed(color=GOLD, description=f"{I.s('warning')} **{member}** left the server."))
-                    except discord.HTTPException:
-                        pass
+        mine = [t for t in cfg["tickets"].values() if t["opener"] == member.id and not t.get("closing")]
+        if not mine:
+            return
+        reason = await self.leave_reason(member)
+        for t in mine:
+            if not t.get("closing"):
+                asyncio.create_task(self.auto_close(member.guild, t, reason))
+
+    @commands.Cog.listener()
+    async def on_ready(self):
+        """Tickets whose owner left while the bot was offline are closed once at startup."""
+        if self._swept:
+            return
+        self._swept = True
+        asyncio.create_task(self.sweep())
+
+    async def sweep(self):
+        for guild in list(self.bot.guilds):
+            for t in list(self.cfg(guild.id)["tickets"].values()):
+                if t.get("closing") or guild.get_member(t["opener"]) is not None:
+                    continue
+                try:
+                    await guild.fetch_member(t["opener"])
+                    continue
+                except discord.NotFound:
+                    pass
+                except discord.HTTPException:
+                    continue
+                await self.auto_close(guild, t, "User left the server (found when I started)")
+                await asyncio.sleep(1)
 
     # ------------------------------------------------------------ commands
     @commands.group(name="ticket", aliases=["tickets", "tk"], invoke_without_command=True)
@@ -741,7 +876,8 @@ class Tickets(commands.Cog):
     async def ticket_close(self, ctx: commands.Context, *, reason: str = ""):
         """$ticket close [reason] - close this ticket (staff or the opener)."""
         t = self._need_ticket(ctx)
-        if not (self.is_staff(ctx.author) or (ctx.author.id == t["opener"] and self.cfg(ctx.guild.id)["opener_can_close"])):
+        pid, pc = self.panel_of(ctx.guild.id, t)
+        if not (self.is_staff(ctx.author, pid) or (ctx.author.id == t["opener"] and pc["opener_can_close"])):
             raise VCError("Only staff can close this ticket.")
         await self.close_ticket(ctx.channel, ctx.author, reason)
 
@@ -756,8 +892,8 @@ class Tickets(commands.Cog):
     @commands.guild_only()
     async def ticket_add(self, ctx: commands.Context, member: discord.Member):
         """$ticket add @member - let someone into this ticket (staff)."""
-        self._need_ticket(ctx)
-        if not self.is_staff(ctx.author):
+        t = self._need_ticket(ctx)
+        if not self.is_staff(ctx.author, self.panel_of(ctx.guild.id, t)[0]):
             raise VCError("Only staff can add people.")
         await ctx.channel.set_permissions(member, view_channel=True, send_messages=True, read_message_history=True,
                                           attach_files=True, embed_links=True, reason=f"Added to ticket by {ctx.author}")
@@ -768,9 +904,10 @@ class Tickets(commands.Cog):
     async def ticket_remove(self, ctx: commands.Context, member: discord.Member):
         """$ticket remove @member - take someone out of this ticket (staff)."""
         t = self._need_ticket(ctx)
-        if not self.is_staff(ctx.author):
+        pid = self.panel_of(ctx.guild.id, t)[0]
+        if not self.is_staff(ctx.author, pid):
             raise VCError("Only staff can remove people.")
-        if member.id == t["opener"] or self.is_staff(member):
+        if member.id == t["opener"] or self.is_staff(member, pid):
             raise VCError("You can't remove the ticket owner or staff.")
         await ctx.channel.set_permissions(member, overwrite=None, reason=f"Removed from ticket by {ctx.author}")
         await ctx.reply(ok(f"{member.mention} was removed from this ticket."), mention_author=False, allowed_mentions=NONE)
@@ -780,7 +917,7 @@ class Tickets(commands.Cog):
     async def ticket_rename(self, ctx: commands.Context, *, name: str):
         """$ticket rename <name> - rename this ticket channel (staff)."""
         t = self._need_ticket(ctx)
-        if not self.is_staff(ctx.author):
+        if not self.is_staff(ctx.author, self.panel_of(ctx.guild.id, t)[0]):
             raise VCError("Only staff can rename tickets.")
         clean = safe_name(name)
         if not clean:
@@ -799,7 +936,7 @@ class Tickets(commands.Cog):
         cfg = self.cfg(ctx.guild.id)
         if member is None:
             text = "\n".join(f"<@{u}>" for u in cfg["blacklist"]) or "*nobody is blacklisted*"
-            return await ctx.reply(embed=discord.Embed(color=BRAND, title=f"{I.s('ticket')} Ticket blacklist", description=text),
+            return await ctx.reply(embed=discord.Embed(color=BRAND, title="Ticket blacklist", description=text),
                                    mention_author=False, allowed_mentions=NONE)
         if member.id in cfg["blacklist"]:
             cfg["blacklist"].remove(member.id)
@@ -816,29 +953,41 @@ HOME_OPTIONS = (
     ("create", "Create category", "Add a new ticket category", "plus"),
     ("edit", "Edit category", "Name, emoji, form question, where tickets open, ping roles", "edit"),
     ("panel", "Edit panel message", "Title, text, colour and dropdown text of the panel", "message"),
-    ("welcome", "Edit ticket message", "The message inside every new ticket", "ticket"),
+    ("welcome", "Edit ticket message", "The message inside every new ticket", "headset"),
     ("banner", "Upload banner", "Image / GIF on top of the panel", "image"),
     ("logs", "Log channels", "Opened / closed / transcript logs and the tickets' Discord category", "messages"),
     ("roles", "Support roles", "Who can see, claim and close tickets", "shield_star"),
-    ("settings", "Settings", "Max tickets per member, channel name, opener may close", "settings"),
+    ("settings", "Settings", "Max tickets per member (in this panel), channel name, opener may close", "settings"),
     ("send", "Send / update panel", "Post the panel in a channel", "upload"),
 )
 
 
 class TicketAdmin(OwnedView):
-    """$ticket - everything is edited here: home -> (categories | logs | roles | send)."""
+    """$ticket - everything is edited here: pick a panel -> home -> (categories | logs | roles | send). Many panels are possible."""
 
     def __init__(self, cog: Tickets, invoker: discord.Member, owner: bool = False):
         super().__init__(invoker.id, timeout=900)
         self.cog, self.guild = cog, invoker.guild
         self.owner = owner                  # the real bot owner gets the "Dark Spider's Web" preset button (home page only)
         self.confirm = False                # preset button was pressed once, waiting for the 2nd press
+        self.confirm_del = False            # "Delete panel" was pressed once
+        self.pid = cog.default_pid(invoker.guild.id)
         self.page: str = "home"
         self.cat_id: Optional[str] = None
         self.render()
 
     @property
     def cfg(self) -> dict:
+        """The settings of the panel that is being edited (categories, texts, logs, roles, rules)."""
+        pc = self.cog.pcfg(self.guild.id, self.pid)
+        if pc is None:                       # the panel was deleted from somewhere else
+            self.pid = self.cog.default_pid(self.guild.id)
+            pc = self.cog.pcfg(self.guild.id, self.pid)
+        return pc
+
+    @property
+    def gcfg(self) -> dict:
+        """Settings shared by every panel: open tickets, counter, stats, blacklist."""
         return self.cog.cfg(self.guild.id)
 
     def ch(self, cid) -> str:
@@ -885,18 +1034,26 @@ class TicketAdmin(OwnedView):
         return e
 
     def home_embed(self) -> discord.Embed:
-        c = self.cfg
+        c, g = self.cfg, self.gcfg
         cats = ", ".join(f"{show_emoji(x.get('emoji'))} {x['name']}".strip() for x in c["categories"]) or "*none yet*"
         lg = c["logs"]
-        e = discord.Embed(color=BRAND, title=f"{I.s('ticket')} Ticket control panel", description=(
-            "Everything about tickets is edited here. Pick what to change in the menu below."))
+        mine = sum(1 for t in g["tickets"].values() if (t.get("panel") or "main") == self.pid)
+        e = discord.Embed(color=BRAND, title=f"Ticket control panel · {c['name']}", description=(
+            "Everything about this panel is edited here. Pick what to change in the menu below. "
+            "Use the **panel menu** at the bottom to switch panels or make a new one."))
         e.add_field(name=f"Categories ({len(c['categories'])})", value=cats[:1000], inline=False)
         e.add_field(name="Panel", value=(self.ch(c["panel_channel"]) if c["panel_message"] else "*not posted yet*") +
                     ("\nBanner: set" if c["panel"].get("banner") else "\nBanner: none"), inline=True)
         e.add_field(name="Logs", value=f"Opened {self.ch(lg['opened'])}\nClosed {self.ch(lg['closed'])}\nTranscript {self.ch(lg['transcript'])}", inline=True)
         e.add_field(name="Staff", value=f"Support roles: **{len(c['support_roles'])}**\nAdmin roles: **{len(c['admin_roles'])}**", inline=True)
-        e.add_field(name="Tickets", value=f"Open now: **{len(c['tickets'])}**\nOpened: **{c['stats']['opened']}** · Closed: **{c['stats']['closed']}**", inline=True)
+        e.add_field(name="Tickets", value=f"Open in this panel: **{mine}** (all panels: **{len(g['tickets'])}**)\n"
+                                          f"Opened: **{g['stats']['opened']}** · Closed: **{g['stats']['closed']}**", inline=True)
         e.add_field(name="Rules", value=f"Max open per member: **{c['max_open']}**\nChannel name: `{c['name_format']}`", inline=True)
+        panels = self.gcfg["panels"]
+        if len(panels) > 1:
+            e.add_field(name=f"Panels ({len(panels)})", inline=False, value="\n".join(
+                f"{'▸' if pid == self.pid else '•'} **{p['name']}** · {self.ch(p['panel_channel']) if p['panel_message'] else '*not posted*'} · "
+                f"{len(p['categories'])} categories" for pid, p in list(panels.items())[:10])[:1000])
         e.set_footer(text=f"In a ticket: {PREFIX}ticket close · claim · add @user · remove @user · rename")
         return e
 
@@ -918,6 +1075,23 @@ class TicketAdmin(OwnedView):
             b = discord.ui.Button(label="Send / update panel", emoji=I.e("upload"), style=discord.ButtonStyle.success, row=1)
             b.callback = self.quick_send
             self.add_item(b)
+            for label, icon, cb, style in (("Rename", "edit", self.rename_panel_btn, discord.ButtonStyle.secondary),
+                                           ("Duplicate", "swap", self.duplicate_panel_btn, discord.ButtonStyle.secondary),
+                                           ("Confirm delete" if self.confirm_del else "Delete panel", "cross", self.delete_panel_btn,
+                                            discord.ButtonStyle.danger if self.confirm_del else discord.ButtonStyle.secondary)):
+                b = discord.ui.Button(label=label, emoji=I.e(icon), style=style, row=1)
+                b.callback = cb
+                self.add_item(b)
+            panels = self.gcfg["panels"]
+            opts = [discord.SelectOption(label=p["name"][:100], value=pid, default=pid == self.pid, emoji=I.e("grid"),
+                                         description=f"{len(p['categories'])} categories · " + ("posted" if p["panel_message"] else "not posted"))
+                    for pid, p in list(panels.items())[:24]]
+            if len(panels) < MAX_PANELS:
+                opts.append(discord.SelectOption(label="New panel", value="__new__", emoji=I.e("plus"),
+                                                 description="Make another ticket panel (own categories, text, channel, logs)"))
+            sp = discord.ui.Select(placeholder=f"Panel: {self.cfg['name']}  (switch / new)", row=2, options=opts)
+            sp.callback = self.panel_pick
+            self.add_item(sp)
             if self.owner:
                 b = discord.ui.Button(label="Confirm: load Dark Spider's Web" if self.confirm else "Dark Spider's Web",
                                       emoji=I.e("crown"), row=1,
@@ -999,7 +1173,7 @@ class TicketAdmin(OwnedView):
     async def saved(self, interaction: discord.Interaction, text: str, *, panel: bool = True):
         self.cog.save(self.guild.id)
         if panel:
-            await self.cog.refresh_panel(self.guild)
+            await self.cog.refresh_panel(self.guild, self.pid)
         await say(interaction, ok(text))
         await self.refresh()
 
@@ -1032,7 +1206,7 @@ class TicketAdmin(OwnedView):
                     continue
             cat["parent"] = dcat.id
         self.cog.save(self.guild.id)
-        await self.cog.refresh_panel(self.guild)
+        await self.cog.refresh_panel(self.guild, self.pid)
         note = ("Dark Spider's Web loaded: panel text, ticket message and 2 categories. "
                 "General Support tickets open under **Support Tickets**, Partnership/Sponsors under **Partnership Tickets**"
                 + (f" (created: {', '.join(made)})" if made else "") + ". Set the logs + support roles, then post the panel.")
@@ -1042,14 +1216,77 @@ class TicketAdmin(OwnedView):
         await interaction.edit_original_response(embed=self.embed(note), view=self)
 
     async def go_home(self, interaction: discord.Interaction):
-        self.confirm = False
+        self.confirm = self.confirm_del = False
         self.page = "home"
         await self.push(interaction)
+
+    # ----- several panels
+    async def panel_pick(self, interaction: discord.Interaction):
+        v = interaction.data["values"][0]
+        self.confirm = self.confirm_del = False
+        if v == "__new__":
+            if len(self.gcfg["panels"]) >= MAX_PANELS:
+                return await say(interaction, err(f"You can have at most {MAX_PANELS} panels."))
+            return await interaction.response.send_modal(self.new_panel_modal())
+        if v in self.gcfg["panels"]:
+            self.pid, self.page = v, "home"
+        await self.push(interaction)
+
+    def new_panel_modal(self) -> TKModal:
+        async def submitted(i: discord.Interaction, v):
+            if not v[0]:
+                raise VCError("Give the panel a name.")
+            pid = uuid.uuid4().hex[:6]
+            self.gcfg["panels"][pid] = self.cog.fill_panel({"name": v[0]})
+            self.pid, self.page = pid, "home"
+            await self.saved(i, f"Panel **{v[0]}** created. Add categories, then post it in a channel.", panel=False)
+        return TKModal("New panel", [dict(label="Panel name", max=40, required=True, placeholder="Support / Reports / Staff apply")], submitted)
+
+    async def rename_panel_btn(self, interaction: discord.Interaction):
+        async def submitted(i: discord.Interaction, v):
+            if not v[0]:
+                raise VCError("Give the panel a name.")
+            self.cfg["name"] = v[0]
+            await self.saved(i, f"Panel renamed to **{v[0]}**.", panel=False)
+        await interaction.response.send_modal(TKModal("Rename panel", [dict(label="Panel name", default=self.cfg["name"], max=40, required=True)],
+                                                      submitted))
+
+    async def duplicate_panel_btn(self, interaction: discord.Interaction):
+        if len(self.gcfg["panels"]) >= MAX_PANELS:
+            return await say(interaction, err(f"You can have at most {MAX_PANELS} panels."))
+        new = copy.deepcopy(self.cfg)
+        new.update(name=f"{self.cfg['name']} (copy)"[:40], panel_channel=None, panel_message=None)
+        new["panel"].pop("_url", None)
+        pid = uuid.uuid4().hex[:6]
+        self.gcfg["panels"][pid] = new
+        self.pid = pid
+        self.cog.save(self.guild.id)
+        await self.push(interaction, f"Copied. You are now editing **{new['name']}** - post it in a channel when it is ready.")
+
+    async def delete_panel_btn(self, interaction: discord.Interaction):
+        panels = self.gcfg["panels"]
+        if len(panels) <= 1:
+            return await say(interaction, err("You need at least one panel. Make another one first, or just edit this one."))
+        if not self.confirm_del:
+            self.confirm_del = True
+            return await self.push(interaction, f"This deletes the panel **{self.cfg['name']}** and removes its message. "
+                                                "Open tickets stay open. Press the red button again to confirm.")
+        self.confirm_del = False
+        gone = panels.pop(self.pid)
+        ch = self.guild.get_channel(gone["panel_channel"]) if gone.get("panel_channel") else None
+        if ch is not None and gone.get("panel_message"):
+            try:
+                await ch.get_partial_message(gone["panel_message"]).delete()
+            except discord.HTTPException:
+                pass
+        self.pid = self.cog.default_pid(self.guild.id)
+        self.cog.save(self.guild.id)
+        await self.push(interaction, f"Panel **{gone['name']}** deleted.")
 
     async def home_pick(self, interaction: discord.Interaction):
         v = interaction.data["values"][0]
         c = self.cfg
-        self.confirm = False
+        self.confirm = self.confirm_del = False
         if v == "create":
             if len(c["categories"]) >= MAX_CATEGORIES:
                 return await say(interaction, err(f"You can have at most {MAX_CATEGORIES} categories."))
@@ -1112,7 +1349,7 @@ class TicketAdmin(OwnedView):
         if cat is not None:
             c["categories"].remove(cat)
             self.cog.save(self.guild.id)
-            await self.cog.refresh_panel(self.guild)
+            await self.cog.refresh_panel(self.guild, self.pid)
         self.page, self.cat_id = "home", None
         await self.push(interaction, f"Category **{(cat or {}).get('name', '')}** deleted. Open tickets of it stay open.")
 
@@ -1178,7 +1415,7 @@ class TicketAdmin(OwnedView):
             c.update(max_open=mx, name_format=fmt, opener_can_close=v[2].lower() not in ("no", "n", "false", "0", "off"))
             await self.saved(i, "Settings saved.", panel=False)
         return TKModal("Ticket settings", [
-            dict(label="Max open tickets per member (1-10)", default=str(c["max_open"]), max=2, required=True),
+            dict(label="Max open tickets per member here (1-10)", default=str(c["max_open"]), max=2, required=True),
             dict(label="Channel name ({user} {number} {category})", default=c["name_format"], max=60, required=True),
             dict(label="Opener may close the ticket? (yes / no)", default="yes" if c["opener_can_close"] else "no", max=3)],
             submitted)
@@ -1226,7 +1463,7 @@ class TicketAdmin(OwnedView):
             return await self.push(interaction, "Pick a channel first, then press **Post panel**.")
         await interaction.response.defer()
         try:
-            msg = await self.cog.publish_panel(self.guild)
+            msg = await self.cog.publish_panel(self.guild, self.pid)
         except VCError as e:
             return await interaction.followup.send(err(str(e)), ephemeral=True)
         self.render()

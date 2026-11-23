@@ -13,6 +13,23 @@
    Embed Links, Attach Files, Set Voice Channel Status (or Administrator). Shop roles must be **below** the bot's role.
 5. `python main.py`
 
+## What is new
+- **Giveaways** (`$giveaway`, aliases `$giveway` `$gw` `$gcreate`) - one builder panel: title, prize, description, winners, time, channel, host, colour,
+  image / thumbnail, **every emoji** and **every button** (text, emoji, colour). Prize = text + optional **role** (permanent or temporary - taken back by
+  itself, survives restarts) + optional Kon points. Requirements: roles, **N messages** (channels / categories can be excluded), **invite N people**,
+  **"say X to @person"** (e.g. `happy birthday`). People can join any time, but only members who finished **everything** when it ends can win.
+  **Save template / Load template** brings a whole giveaway back in the same style (there is also "Last giveaway I started").
+  Emojis: type an emoji, `:name:` or just the **emoji ID** - animated emojis work. `$giveaway end | reroll | cancel | list | templates | load <name>`.
+  Ended giveaways have a **Reroll** button for admins. Invite counting needs *Manage Server*.
+- **Tickets**: **many panels** (`$ticket` -> panel menu at the bottom: New / Rename / Duplicate / Delete). Every panel has its own categories, texts, banner,
+  channel, logs, roles and rules; a member can have one ticket per panel. A ticket **closes by itself** (transcript + reason) when its owner **leaves,
+  is kicked or banned** (also checked once at startup). The golden ticket icon is gone from the ticket texts.
+- **Backup**: the `$backupload` report shows what was loaded (players, shop, each feature's settings - tickets, giveaways ...), checks the file checksums,
+  and says clearly when a zip is only code (`kon_code.zip` has no data). Everything still in memory is written to the database before every backup,
+  each backup checks the database and stores the result in `DATA_MANIFEST.json`. Unknown keys in `vc_data.json` are no longer dropped.
+- `$ae` / `$as`: **Rename** button (+ `$ae rename <emoji or name> <new name>`, `$as rename <sticker> <new name>`).
+- `$aura`: random aura now goes from **-100% to +100%** (negative aura!). `$aura config` -> *Negative: ON/OFF*; fixed aura can be negative too.
+
 ## Data – everything lives in `data/` (old files in the root are moved there automatically)
 - `data/kon.db` (SQLite): points, progress, badges, shop, purchases, point log, point/shop/no-prefix/alias settings
 - `data/vc_data.json`: custom VCs + join-to-create / interface channel ids

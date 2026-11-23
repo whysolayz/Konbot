@@ -168,7 +168,93 @@
     - `1554280108632842295` → .arnav.gg
     - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
     - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
+- **tickets**:
+  - **panel_channel**: `1568343826425323692` → #⚒️〢staff-chat
+  - **panel_message**: `1573917007349289031`
+  - **panel**:
+    - **title**: Support Center
+    - **color**: 16758834
+    - **placeholder**: Choose a category...
+    - **banner**: *none*
+    - **description**: 🎫 NEED HELP? OPEN A TICKET!
+
+Facing an issue, need assistance, or wish to contact our staff team privately? Our support team is always ready to assist you!
+
+📌 HOW TO CREATE A TICKET
+
+Click the 🎫 Open Ticket button below and select the category that best describes your concern. Our relevant staff members will assist you as soon as possible.
+
+📂 TICKET CATEGORIES
+
+🛠️ Support — General assistance, queries, and server-related issues.
+
+🎉 Giveaway — Claim your giveaway rewards.
+
+🎁 Invite Reward — Claim rewards earned through inviting members.
+
+⚠️ TICKET RULES
+
+• Clearly explain your issue when opening a ticket.
+• Avoid spamming or repeatedly pinging staff members.
+• Provide relevant screenshots or evidence whenever necessary.
+• Open only one ticket per issue.
+• Do not misuse or abuse the ticket system.
+• Cooperate with staff members throughout the process.
+
+🔒 PRIVACY & CONFIDENTIALITY
+
+All tickets are private and accessible only to the ticket creator and authorized staff members.
+
+Please select the correct category to ensure faster assistance.
+
+💙 Thank you for being a part of our community!
+    - **_url**: *none*
+  - **welcome**:
+    - **title**: Welcome to your ticket
+    - **description**: Hey {user}, thanks for reaching out about **{category}**!
+Tell us what is going on in as much detail as you can - a staff member will be with you shortly.
+  - **support_roles**: *(empty)*
+  - **admin_roles**: *(empty)*
+  - **open_category**: *none*
+  - **logs**:
+    - **opened**: `1573916489734693005` → #ticket-open
+    - **closed**: `1573916520676065400` → #ticket-close
+    - **transcript**: `1573916573553397770` → #ticket-transcript
+  - **categories**:
+    - #1
+      - **id**: b1326796
+      - **name**: General Support
+      - **emoji**: 🛠️
+      - **description**: General assistance, queries, and server-related issues.
+      - **question**: *none*
+      - **parent**: `1568608614577348670` → #╰•॥ Support Tickets
+      - **ping_roles**: *(empty)*
+    - #2
+      - **id**: e14eb3f2
+      - **name**: Giveaway
+      - **emoji**: 🎉
+      - **description**: Claim your giveaway rewards.
+      - **question**: *none*
+      - **parent**: `1568608741652303942` → #╰•॥ GIVEAWAY TICKETS
+      - **ping_roles**: *(empty)*
+    - #3
+      - **id**: 3efeb3df
+      - **name**: Invite Rewards
+      - **emoji**: 🎁
+      - **description**: Claim rewards earned through inviting members.
+      - **question**: *none*
+      - **parent**: *none*
+      - **ping_roles**: *(empty)*
+  - **max_open**: 1
+  - **name_format**: ticket-{user}
+  - **opener_can_close**: yes
+  - **counter**: 0
+  - **blacklist**: *(empty)*
+  - **tickets**: *(empty)*
+  - **stats**:
+    - **opened**: 0
+    - **closed**: 0
 
 ### Players
 
-- 429 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
+- 449 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)

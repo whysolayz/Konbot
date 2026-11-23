@@ -35,6 +35,7 @@ FALLBACK = {
     "rock": "🪨", "paper": "📄", "scissors": "✂️", "tap": "👆", "team_red": "🔴", "team_blue": "🔵",     # Handfight / TimeTap
     "light_red": "🔴", "light_green": "🟢", "shield_star": "🛡️", "swap_small": "⚔️", "thumbs_up": "👍",
     "ticket": "🎫", "user_plus_arrow": "🙋", "messages": "📜", "mail": "📥",     # tickets (claim / logs / opened log)
+    "bell_ring": "🔔",                                                          # AFK mentions
 }
 
 # every icon used anywhere in the bot (kept small: emoji uploads are rate limited)

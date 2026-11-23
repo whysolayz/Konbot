@@ -33,17 +33,17 @@
       "type": "text",
       "category_id": 1488691343382286338,
       "category": "╰ ¤〢Custom VC ︲🌱︲",
-      "position": 46,
+      "position": 47,
       "currently_set": true,
       "exists_now": true
     },
     "panel_message_id": 1573473132516212869,
     "active_custom_vcs": {
-      "1573788824222302408": {
+      "1574157917777690714": {
         "owner": 650534818517483526,
         "banned": [],
         "block_drags": false,
-        "created": 1795290896.0809376
+        "created": 1795378894.1578226
       }
     }
   },
@@ -82,8 +82,22 @@
     "panel_message_id": null,
     "active_custom_vcs": {}
   },
+  "1562735431051903090": {
+    "server_name": "Dr4k3n Hangout",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
   "1564620144527806506": {
     "server_name": "𖹭.ִ𓂃Live In My Own",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1569042863465963680": {
+    "server_name": "SpiderMan",
     "join_to_create": null,
     "interface": null,
     "panel_message_id": null,

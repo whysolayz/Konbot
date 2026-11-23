@@ -1,4 +1,10 @@
-"""AFK system (same behaviour + same afk_data.json as before, now with custom icons)."""
+"""AFK system (same behaviour + same afk_data.json as before, now with custom icons).
+
+Messages: the reason sits UNDER the time, every line has a Kon icon:
+    ⏱ Time Away: 9s
+    ℹ Reason: meow
+    🔔 Mentions (Page 1/1): ...
+"""
 import json
 import os
 import re
@@ -118,12 +124,14 @@ class AFK(commands.Cog):
         away = int(time.time() - data["since"])
         start = page * MENTIONS_PER_PAGE
         chunk = mentions[start:start + MENTIONS_PER_PAGE]
-        text = "\n".join(f"**#{start + i}** [Jump to Message]({m['url']})" for i, m in enumerate(chunk, 1)) or "None"
+        text = "\n".join(f"**#{start + i}** · {m.get('author', 'someone')} · [Jump to message]({m['url']})"
+                         for i, m in enumerate(chunk, 1)) or "None"
         embed = discord.Embed(
-            description=(f"{I.s('stopwatch')} Away for **{fmt_duration(away)}** · {data['reason']}\n\n"
-                         f"**Mentions ({page + 1}/{pages}):**\n{text}"),
+            description=(f"{I.s('stopwatch')} **Time Away:** {fmt_duration(away)}\n"
+                         f"{I.s('info')} **Reason:** {data['reason']}\n\n"
+                         f"{I.s('bell_ring')} **Mentions (Page {page + 1}/{pages}):**\n{text}"),
             color=BLURPLE)
-        embed.set_author(name=f"Welcome back, {member.name}!", icon_url=member.display_avatar.url)
+        embed.set_author(name=f"Welcome back, {member.display_name}!", icon_url=member.display_avatar.url)
         embed.set_footer(text=f"{total} total mentions | {now_footer()}")
         return embed
 
@@ -154,10 +162,12 @@ class AFK(commands.Cog):
                         "url": message.jump_url,
                         "content": (message.content[:100] or "[no text]").replace("\n", " "),
                     })
-                    embeds.append(discord.Embed(
-                        description=(f"{I.s('warning')} **{user.name}** is AFK: {data['reason']}\n"
-                                     f"Since <t:{int(data['since'])}:R>"),
-                        color=BLURPLE))
+                    e = discord.Embed(
+                        description=(f"{I.s('stopwatch')} **Away since:** <t:{int(data['since'])}:R>\n"
+                                     f"{I.s('info')} **Reason:** {data['reason']}"),
+                        color=BLURPLE)
+                    e.set_author(name=f"{user.display_name} is AFK", icon_url=user.display_avatar.url)
+                    embeds.append(e)
             if embeds:
                 self.save()
                 try:
@@ -181,8 +191,9 @@ class AFK(commands.Cog):
         self.afk[ctx.author.id] = data
         await self.set_afk_nick(ctx.author, data)
         self.save()
-        await ctx.reply(embed=discord.Embed(description=f"{I.s('check')} You're AFK: {reason}", color=BLURPLE),
-                        mention_author=False)
+        e = discord.Embed(description=f"{I.s('check')} **You're now AFK**\n{I.s('info')} **Reason:** {reason}", color=BLURPLE)
+        e.set_author(name=ctx.author.display_name, icon_url=ctx.author.display_avatar.url)
+        await ctx.reply(embed=e, mention_author=False)
 
     @commands.command(name="afktag")
     @commands.has_permissions(administrator=True)

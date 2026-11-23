@@ -4,7 +4,7 @@
     "name": "Twin's Empire 2.0",
     "bot_is_in_server": true,
     "owner_id": 1538573910839140575,
-    "members": 265
+    "members": 262
   },
   "custom_vc": {
     "join_to_create_channel": null,
@@ -64,5 +64,5 @@
       ]
     }
   },
-  "players_in_database": 33
+  "players_in_database": 34
 }

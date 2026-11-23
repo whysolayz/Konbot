@@ -6,7 +6,8 @@
     $aura config             (admins) fix the aura of members / roles, random on / off, switch a person's aura off
 
 Priority: fixed aura of the MEMBER > fixed aura of their highest ROLE that has one > random aura.
-Random aura = a NEW random amount every single time the command is used.
+Random aura = a NEW random amount every single time the command is used: from -100% to +100% (negative aura is possible!).
+`$aura config` -> "Negative: OFF" brings back positive-only random aura. Fixed aura can be negative too (-100 .. 100).
 """
 import asyncio
 import random
@@ -26,12 +27,15 @@ TICKS = 3                 # the bar reaches the final value in 3 edits
 
 
 def bar(p: int) -> str:
-    """White blocks (filled) on dotted-black blocks (empty): inside the code chip `[........]` like the original message."""
-    n = round(p / 100 * SEGMENTS)
-    return "█" * n + "░" * (SEGMENTS - n)
+    """White blocks (filled) on dotted-black blocks (empty): inside the code chip `[........]` like the original message.
+    A NEGATIVE aura fills from the right side, so it is easy to tell apart (and always shows the minus sign next to it)."""
+    n = round(abs(p) / 100 * SEGMENTS)
+    return "░" * (SEGMENTS - n) + "█" * n if p < 0 else "█" * n + "░" * (SEGMENTS - n)
 
 
 def tier(p: int) -> str:
+    if p < 0:
+        return ("Cursed" if p <= -90 else "Terrible" if p <= -70 else "Bad" if p <= -40 else "Poor" if p <= -15 else "Slightly off")
     return ("Legendary" if p >= 90 else "Strong" if p >= 70 else "Average" if p >= 40 else "Weak" if p >= 15 else "Drained")
 
 
@@ -52,7 +56,9 @@ class AuraConfigView(OwnedView):
         off = [f"<@{u}>" for u in c["disabled"]]
         more = lambda l: " · ".join(l[:12]) + (f" +{len(l) - 12} more" if len(l) > 12 else "") if l else "*none*"
         return discord.Embed(title=f"{I.s('fire')} Aura Config", color=BRAND, description=(
-            f"Random: **{'ON' if c['random'] else 'OFF'}** (new amount every time)\n"
+            f"Random: **{'ON' if c['random'] else 'OFF'}** (new amount every time) · "
+            f"Negative aura: **{'ON' if c.get('negative', True) else 'OFF'}** (random goes from "
+            f"{'-100' if c.get('negative', True) else '0'}% to 100%)\n"
             f"{I.s('user_star')} **Members:** {more(mem)}\n{I.s('crown')} **Roles:** {more(rol)}\n"
             f"{I.s('ban')} **Aura off for:** {more(off)}\n"
             f"-# Member beats role · highest role wins"))
@@ -69,6 +75,8 @@ class AuraConfigView(OwnedView):
         btn("Remove", "minus", self.remove, 0)
         btn(f"Random: {'ON' if self.cfg['random'] else 'OFF'}", "refresh", self.t_random, 1,
             discord.ButtonStyle.success if self.cfg["random"] else discord.ButtonStyle.danger)
+        btn(f"Negative: {'ON' if self.cfg.get('negative', True) else 'OFF'}", "skull", self.t_negative, 1,
+            discord.ButtonStyle.success if self.cfg.get("negative", True) else discord.ButtonStyle.secondary)
         btn("Disable Person", "ban", self.t_person, 1)
         btn("Close", "cross", self.close, 1)
 
@@ -93,14 +101,14 @@ class AuraConfigView(OwnedView):
             cur = self.cfg[kind].get(str(target.id), "")
 
             async def cb(i2, v):
-                pct = parse_int(v[0], 0, 100, "Aura %")
+                pct = parse_int(v[0], -100, 100, "Aura %")
                 self.cfg[kind][str(target.id)] = pct
                 self.cog.save(self.guild.id)
                 await i2.response.send_message(ok(f"{target.mention} now has **{pct}%** aura."), ephemeral=True,
                                                allowed_mentions=discord.AllowedMentions.none())
                 await self.refresh()
             name = getattr(target, "display_name", None) or target.name
-            await i.response.send_modal(FieldsModal(f"Aura: {name}"[:45], [("Aura % (0 - 100)", str(cur), 3, True)], cb))
+            await i.response.send_modal(FieldsModal(f"Aura: {name}"[:45], [("Aura % (-100 to 100)", str(cur), 4, True)], cb))
         sel.callback = picked
         view.add_item(sel)
         await interaction.response.send_message(
@@ -144,6 +152,12 @@ class AuraConfigView(OwnedView):
         self.render()
         await interaction.response.edit_message(embed=self.embed(), view=self)
 
+    async def t_negative(self, interaction: discord.Interaction):
+        self.cfg["negative"] = not self.cfg.get("negative", True)
+        self.cog.save(self.guild.id)
+        self.render()
+        await interaction.response.edit_message(embed=self.embed(), view=self)
+
     async def t_person(self, interaction: discord.Interaction):
         """Pick a member: aura off for them. Pick them again: aura back on."""
         view = discord.ui.View(timeout=120)
@@ -181,7 +195,7 @@ class Aura(commands.Cog):
         if c is None:
             s = self.bot.db.get_settings(gid, KEY)
             c = self._cfg[gid] = {"members": dict(s.get("members", {})), "roles": dict(s.get("roles", {})),
-                                  "random": s.get("random", True), "disabled": [int(u) for u in s.get("disabled", [])]}
+                                  "random": s.get("random", True), "negative": s.get("negative", True), "disabled": [int(u) for u in s.get("disabled", [])]}
         return c
 
     def save(self, gid: int):
@@ -196,7 +210,9 @@ class Aura(commands.Cog):
         for r in sorted(member.roles, key=lambda r: r.position, reverse=True):
             if str(r.id) in c["roles"]:
                 return int(c["roles"][str(r.id)])
-        return random.randint(0, 100) if c["random"] else None
+        if not c["random"]:
+            return None
+        return random.randint(-100 if c.get("negative", True) else 0, 100)
 
     async def pick(self, ctx: commands.Context, text: str) -> discord.Member:
         for m in ctx.message.mentions:
@@ -230,10 +246,12 @@ class Aura(commands.Cog):
         if pct is None:
             return await ctx.reply(f"{member.mention} has no aura yet.", mention_author=False, allowed_mentions=mention)
 
+        head = "Negative aura this user holds!" if pct < 0 else "Aura this user holds!"
+
         def line(p: int) -> str:
-            return f"Aura this user holds! {member.mention}:\n`[{bar(p)}]` `{p}%`"
+            return f"{head} {member.mention}:\n`[{bar(p)}]` `{p}%`"
         msg = await ctx.reply(line(0), mention_author=False, allowed_mentions=mention)
-        if pct <= 0:
+        if pct == 0:
             return
         for i in range(1, TICKS + 1):                         # 3 ticks: the bar fills up and lands on the real value
             await asyncio.sleep(0.7)

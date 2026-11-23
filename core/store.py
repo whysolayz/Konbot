@@ -17,9 +17,9 @@ class Store:
             try:
                 with open(self.path, "r", encoding="utf-8") as f:
                     d = json.load(f)
-                for k in self.data:
-                    if k in d:
-                        self.data[k] = d[k]
+                if isinstance(d, dict):
+                    for k, v in d.items():          # every key stays (a key this version doesn't know is kept and saved again)
+                        self.data[k] = v
             except Exception as e:
                 print("Store load error:", e)
 

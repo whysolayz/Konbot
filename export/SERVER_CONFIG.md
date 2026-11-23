@@ -8,7 +8,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
   - **name**: Kon#9118
   - **id**: `1569712165932236842` → Kon#9118
 - **voice_mutes_running**: *(empty)*
-- **slash_sync_hash**: 8dcccfa13cfa4173e5a6adf1b70f02deced049f7
+- **slash_sync_hash**: bb87a31cf37003adf71290e3e5587b9ad38591b2
 
 ## (server 0 - bot not in it)  (`0`)
 
@@ -248,7 +248,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **type**: text
     - **category_id**: `1488691343382286338` → #╰ ¤〢Custom VC ︲🌱︲
     - **category**: ╰ ¤〢Custom VC ︲🌱︲
-    - **position**: 46
+    - **position**: 47
     - **currently_set**: yes
     - **exists_now**: yes
   - **panel_message_id**: `1573473132516212869`
@@ -284,12 +284,29 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
           - **role**: `1488691273446719489` → @ゝSocial Feed ⌝
           - **label**: Social Feeds
           - **emoji**: `<:Senpai_Information:1517499045117952060>`
+    - **points**:
+      - **chat_enabled**: yes
+      - **chat_msgs**: 10
+      - **chat_points**: 1
+      - **cooldown**: 0
+      - **chat_everywhere**: yes
+      - **enabled_channels**: *(empty)*
+      - **disabled_channels**:
+        - `1570386957056348251` → #╰ ¤〢Casino ︲☃️︲
+        - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
+      - **channel_rules**: *(empty)*
+      - **vc_enabled**: yes
+      - **vc_mins**: 1
+      - **vc_points**: 1
+      - **vc_need_others**: no
+      - **vc_need_muted**: no
+      - **vc_disabled_channels**: *(empty)*
 - **active_custom_vcs**:
-  - **1573788824222302408** → #whysolayz:
+  - **1574157917777690714** → #whysolayz:
     - **owner**: `650534818517483526` → Lazy (whysolayz)
     - **banned**: *(empty)*
     - **block_drags**: no
-    - **created**: 1795290896 (2026-11-21 19:54 UTC)
+    - **created**: 1795378894 (2026-11-22 20:21 UTC)
 
 ### Custom VC protection ($customvc config)
 
@@ -339,17 +356,18 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 - **chat_enabled**: yes
 - **chat_msgs**: 10
-- **chat_points**: 2
+- **chat_points**: 1
 - **chat_everywhere**: yes
 - **vc_enabled**: yes
 - **vc_mins**: 1
-- **vc_points**: 2
+- **vc_points**: 1
 - **vc_need_others**: no
 - **vc_need_muted**: no
 - **cooldown**: 0
 - **channel_rules**: *(empty)*
 - **disabled_channels**:
   - `1570386957056348251` → #╰ ¤〢Casino ︲☃️︲
+  - `1488691409744695417` → #🍃︲bot_usage⌝
   - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
 - **enabled_channels**: *(empty)*
 - **vc_disabled_channels**: *(empty)*
@@ -412,7 +430,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **guild_id**: `1488690726870057165` → server Dark ︲ Spider's Web
     - **role_id**: `1488691205637279785` → @ゝ8x XP Boost ⌝
     - **price**: 2000
-    - **stock**: 4
+    - **stock**: 3
     - **emoji**: `<:winner:1517495079181488280>`
     - **position**: 7
 
@@ -449,6 +467,9 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 - **manager**:
   - **role**: `1488691176306639008` → @ゝDark Manager ⌝
   - **allowed**: *none*
+- **1488691231771853098** → @︲Talented Artist」:
+  - **role**: `1488691231771853098` → @︲Talented Artist」
+  - **allowed**: *none*
 
 ### Autoreact
 
@@ -467,11 +488,11 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - `<a:Madira_eating:1570284028093792286>`
   - **743845224287043665** → !                  Whoknoe (whoknow_008):
     - `<a:Cat:1570284005067198464>`
-  - **1086203964300730449** → 𝑪𝒂𝒍𝒊𝒃𝒆𝒓 (arionx_774):
+  - **1086203964300730449** → [T Mod] Caliber (arionx_774):
     - `<a:Oliviaaa_nooooo:1570284034532188210>`
   - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
     - `<:LazyCafeCat:1570284011136491742>`
-  - **1409148182944022699** → [T MOD] BRAVY (bravyrz):
+  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
     - `<:cute:1569605481364852909>`
 
 ### Aura ($aura config)
@@ -509,28 +530,75 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **best_ms**: 1067
     - **train_best_avg**: 1172
   - **1028298097664733215** → Nope {>.<} (nontastic_player):
+    - **games**: 4
+    - **false_starts**: 1
+    - **taps**: 18
+    - **total_ms**: 23092
+    - **rounds_won**: 18
+    - **match_wins**: 2
+    - **titles**: 2
+    - **train_runs**: 1
+    - **best_clean**: 10
+    - **best_ms**: 1034
+    - **train_best_avg**: 1245
+  - **646117549670662154**:
     - **games**: 1
     - **false_starts**: 1
-    - **taps**: 2
-    - **total_ms**: 3566
-    - **rounds_won**: 2
+    - **taps**: 7
+    - **total_ms**: 8558
+    - **rounds_won**: 7
+    - **match_wins**: 0
+    - **titles**: 0
+    - **train_runs**: 1
+    - **best_clean**: 6
+    - **best_ms**: 1079
+    - **train_best_avg**: 1223
+  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+    - **games**: 1
+    - **false_starts**: 1
+    - **taps**: 10
+    - **total_ms**: 14412
+    - **rounds_won**: 10
+    - **match_wins**: 0
+    - **titles**: 0
+    - **train_runs**: 1
+    - **best_clean**: 9
+    - **best_ms**: 1088
+    - **train_best_avg**: 1441
+  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+    - **games**: 3
+    - **false_starts**: 2
+    - **taps**: 13
+    - **total_ms**: 26056
+    - **rounds_won**: 13
+    - **match_wins**: 0
+    - **titles**: 0
+    - **train_runs**: 3
+    - **best_clean**: 10
+    - **best_ms**: 1452
+    - **train_best_avg**: 2037
+  - **1418875905085935637** → 🜲 SeNvaTor 'メD | 神 (senvator.):
+    - **games**: 2
+    - **false_starts**: 1
+    - **taps**: 0
+    - **total_ms**: 0
+    - **rounds_won**: 0
     - **match_wins**: 0
     - **titles**: 0
     - **train_runs**: 0
     - **best_clean**: 0
-    - **best_ms**: 1160
 - **handfight**:
   - **650534818517483526** → Lazy (whysolayz):
-    - **games**: 5
+    - **games**: 6
     - **titles**: 4
     - **rounds_won**: 9
-    - **rounds_lost**: 3
-    - **draws**: 5
+    - **rounds_lost**: 9
+    - **draws**: 7
     - **match_wins**: 4
-    - **match_losses**: 1
-    - **rock**: 2
-    - **paper**: 6
-    - **scissors**: 9
+    - **match_losses**: 2
+    - **rock**: 3
+    - **paper**: 8
+    - **scissors**: 14
   - **1154489620499800127** → Dark Ojas (darkojas):
     - **games**: 1
     - **titles**: 0
@@ -575,7 +643,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 3
     - **paper**: 2
     - **scissors**: 1
-  - **1409148182944022699** → [T MOD] BRAVY (bravyrz):
+  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 1
@@ -619,6 +687,17 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 1
     - **paper**: 1
     - **scissors**: 0
+  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+    - **games**: 1
+    - **titles**: 1
+    - **rounds_won**: 6
+    - **rounds_lost**: 0
+    - **draws**: 2
+    - **match_wins**: 1
+    - **match_losses**: 0
+    - **rock**: 4
+    - **paper**: 2
+    - **scissors**: 2
 
 ### Webhook sender (name, avatar, embed, images)
 
@@ -711,16 +790,26 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **since**: 1795193581 (2026-11-20 16:53 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 1
-  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_):
-    - **reason**: nini tame
-    - **since**: 1795280208 (2026-11-21 16:56 UTC)
-    - **old_nick**: *none*
-    - **mentions_waiting**: 5
   - **1297140568207527966** → NiMbuu The GreAt (nimbuu.the.great):
-    - **reason**: its my birthday 🎂 🥳
-    - **since**: 1795284338 (2026-11-21 18:05 UTC)
+    - **reason**: `nini tame <:Kawaiireaction:1569605491569598577>`
+    - **since**: 1795307000 (2026-11-22 00:23 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 1
+  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_):
+    - **reason**: ok
+    - **since**: 1795370112 (2026-11-22 17:55 UTC)
+    - **old_nick**: *none*
+    - **mentions_waiting**: 0
+  - **1425991437396217960** → TheSky (sky_bauni):
+    - **reason**: gn
+    - **since**: 1795376559 (2026-11-22 19:42 UTC)
+    - **old_nick**: *none*
+    - **mentions_waiting**: 1
+  - **1538573910839140575** → Patrick Badmosh (patrickbadmosh):
+    - **reason**: `paper h acha jaaye bas <:Cat_meow:1569605495222964265>`
+    - **since**: 1795379486 (2026-11-22 20:31 UTC)
+    - **old_nick**: *none*
+    - **mentions_waiting**: 0
 
 ### EVERYTHING saved for this server (raw settings, nothing left out)
 
@@ -747,11 +836,11 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
       - `<a:Madira_eating:1570284028093792286>`
     - **743845224287043665** → !                  Whoknoe (whoknow_008):
       - `<a:Cat:1570284005067198464>`
-    - **1086203964300730449** → 𝑪𝒂𝒍𝒊𝒃𝒆𝒓 (arionx_774):
+    - **1086203964300730449** → [T Mod] Caliber (arionx_774):
       - `<a:Oliviaaa_nooooo:1570284034532188210>`
     - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
       - `<:LazyCafeCat:1570284011136491742>`
-    - **1409148182944022699** → [T MOD] BRAVY (bravyrz):
+    - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
       - `<:cute:1569605481364852909>`
 - **cmd_disable**:
   - **rules**:
@@ -778,16 +867,16 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
   - **channel**: `1572828244758241330` → #🎄︲handfight⌝
 - **handfight_stats**:
   - **650534818517483526** → Lazy (whysolayz):
-    - **games**: 5
+    - **games**: 6
     - **titles**: 4
     - **rounds_won**: 9
-    - **rounds_lost**: 3
-    - **draws**: 5
+    - **rounds_lost**: 9
+    - **draws**: 7
     - **match_wins**: 4
-    - **match_losses**: 1
-    - **rock**: 2
-    - **paper**: 6
-    - **scissors**: 9
+    - **match_losses**: 2
+    - **rock**: 3
+    - **paper**: 8
+    - **scissors**: 14
   - **1154489620499800127** → Dark Ojas (darkojas):
     - **games**: 1
     - **titles**: 0
@@ -832,7 +921,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 3
     - **paper**: 2
     - **scissors**: 1
-  - **1409148182944022699** → [T MOD] BRAVY (bravyrz):
+  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 1
@@ -876,6 +965,17 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 1
     - **paper**: 1
     - **scissors**: 0
+  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+    - **games**: 1
+    - **titles**: 1
+    - **rounds_won**: 6
+    - **rounds_lost**: 0
+    - **draws**: 2
+    - **match_wins**: 1
+    - **match_losses**: 0
+    - **rock**: 4
+    - **paper**: 2
+    - **scissors**: 2
 - **imagehost**:
   - **channel**: `1572381729233051669` → #︲🛠・bot-kon」
   - **items**:
@@ -909,17 +1009,18 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 - **points**:
   - **chat_enabled**: yes
   - **chat_msgs**: 10
-  - **chat_points**: 2
+  - **chat_points**: 1
   - **chat_everywhere**: yes
   - **vc_enabled**: yes
   - **vc_mins**: 1
-  - **vc_points**: 2
+  - **vc_points**: 1
   - **vc_need_others**: no
   - **vc_need_muted**: no
   - **cooldown**: 0
   - **channel_rules**: *(empty)*
   - **disabled_channels**:
     - `1570386957056348251` → #╰ ¤〢Casino ︲☃️︲
+    - `1488691409744695417` → #🍃︲bot_usage⌝
     - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
   - **enabled_channels**: *(empty)*
   - **vc_disabled_channels**: *(empty)*
@@ -942,8 +1043,135 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
   - **manager**:
     - **role**: `1488691176306639008` → @ゝDark Manager ⌝
     - **allowed**: *none*
+  - **1488691231771853098** → @︲Talented Artist」:
+    - **role**: `1488691231771853098` → @︲Talented Artist」
+    - **allowed**: *none*
 - **shop**:
   - **per_page**: 5
+- **tickets**:
+  - **panel_channel**: `1488691478841528410` → #🪨︲tickets⌝
+  - **panel_message**: `1573885746706776161`
+  - **panel**:
+    - **title**: __Contact Support Team__
+    - **color**: 3066993
+    - **placeholder**: Select a topic...
+    - **banner**:
+      - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+      - **ref**:
+        - **c**: `1572663742091632681`
+        - **m**: `1573875037528784936`
+    - **description**: `✉️ **Create A Ticket**- if you need support or have any important queries
+
+<:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**
+
+<:Senpai_Information:1517499045117952060> __**Ticket For Support**__ :-
+- Create Ticket For General Support
+[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]
+- Creating a ticket to be staff is strictly prohibited.
+- Tickets for fun would result in 2days mute / ban
+- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike or a serious action which will be taken by our Support Team.
+- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. So, please don't create a ticket regarding this topic.
+
+<:Spider_partner:1572638598585655296> __**Ticket for Partnership/Sponsors**__ :-
+- Create a Ticket If You Got Any Brand Deals Or Sponsor
+- Kindly Mention The Basic Details And Have Patience.
+- The Rates For Brand Deals Would Be Discussed In Ticket
+- Leaking The Information To Anyone Would Lead To Ban.
+
+<:InShot_20261122_130804475:1573966358889107600>__**Currency Loan**__ :-
+- Loan Currency with intrest.
+- follow all the rules.
+- must repay according to the rules.
+
+
+__select category from the dropdown menu to contact us__`
+    - **_url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+  - **welcome**:
+    - **title**: Help/support
+    - **description**: `<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**
+> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon.`
+  - **support_roles**: *(empty)*
+  - **admin_roles**: *(empty)*
+  - **open_category**: *none*
+  - **logs**:
+    - **opened**: `1570531039187566715` → #︲🛠・opened」
+    - **closed**: `1570531086939848776` → #︲🛠・closed」
+    - **transcript**: `1570531130938101883` → #︲🛠・transcript」
+  - **categories**:
+    - #1
+      - **id**: dsw-support
+      - **name**: General Support
+      - **emoji**: `<:Senpai_Information:1517499045117952060>`
+      - **description**: Reports, bugs, role claiming and more
+      - **question**: Kindly Mention your issue!
+      - **parent**: `1488691351246868630` → #╰ •〢General Tickets
+      - **ping_roles**:
+        - `1488691195847643227` → @ゝStaff Team ⌝
+    - #2
+      - **id**: dsw-partner
+      - **name**: Partnership/Sponsors
+      - **emoji**: `<:Spider_partner:1572638598585655296>`
+      - **description**: Brand deals and sponsors
+      - **question**: Kindly mention the basic details of your deal!
+      - **parent**: `1488691352051912706` → #╰ •〢Partnership Tickets
+      - **ping_roles**:
+        - `1488691182308692040` → @ゝDark Executive Team ⌝
+    - #3
+      - **id**: df8fd6b2
+      - **name**: Currency Loan
+      - **emoji**: `<:InShot_20261122_130804475:1573966358889107600>`
+      - **description**: *none*
+      - **question**: Kindly mention the amount
+      - **parent**: `1488691353503404204` → #╰ •〢Loan
+      - **ping_roles**:
+        - `1488691182308692040` → @ゝDark Executive Team ⌝
+  - **max_open**: 1
+  - **name_format**: ticket-{user}
+  - **opener_can_close**: no
+  - **counter**: 9
+  - **blacklist**: *(empty)*
+  - **tickets**:
+    - **1573971039388434442** → #ticket-nontastic_player:
+      - **num**: 5
+      - **channel**: `1573971039388434442` → #ticket-nontastic_player
+      - **name**: ticket-nontastic_player
+      - **category**: df8fd6b2
+      - **category_name**: Currency Loan
+      - **question**: Kindly mention the amount
+      - **opener**: `1028298097664733215` → Nope {>.<} (nontastic_player)
+      - **created**: 1795334339 (2026-11-22 07:58 UTC)
+      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+      - **claimed_at**: 1795334345 (2026-11-22 07:59 UTC)
+      - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
+      - **first_reply_at**: 1795334344 (2026-11-22 07:59 UTC)
+      - **answer**: Jitna bhi mil jaye
+      - **log**:
+        - `1570531039187566715` → #︲🛠・opened」
+        - `1573971041728991373`
+      - **closing**: no
+      - **welcome_msg**: `1573971040185356310`
+    - **1573974490554044548** → #ticket-luffy_07_09:
+      - **num**: 6
+      - **channel**: `1573974490554044548` → #ticket-luffy_07_09
+      - **name**: ticket-luffy_07_09
+      - **category**: df8fd6b2
+      - **category_name**: Currency Loan
+      - **question**: Kindly mention the amount
+      - **opener**: `1513085640642920458` → MONKEY D LUFFY (luffy_07_09)
+      - **created**: 1795335162 (2026-11-22 08:12 UTC)
+      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+      - **claimed_at**: 1795335167 (2026-11-22 08:12 UTC)
+      - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
+      - **first_reply_at**: 1795335170 (2026-11-22 08:12 UTC)
+      - **answer**: 500k
+      - **log**:
+        - `1570531039187566715` → #︲🛠・opened」
+        - `1573974493007839333`
+      - **closing**: no
+      - **welcome_msg**: `1573974491669856328`
+  - **stats**:
+    - **opened**: 9
+    - **closed**: 7
 - **tictactoe**:
   - **channel**: `1572117193712209960` → #🎄︲tic_tac_toe⌝
 - **timetap**:
@@ -962,16 +1190,63 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **best_ms**: 1067
     - **train_best_avg**: 1172
   - **1028298097664733215** → Nope {>.<} (nontastic_player):
+    - **games**: 4
+    - **false_starts**: 1
+    - **taps**: 18
+    - **total_ms**: 23092
+    - **rounds_won**: 18
+    - **match_wins**: 2
+    - **titles**: 2
+    - **train_runs**: 1
+    - **best_clean**: 10
+    - **best_ms**: 1034
+    - **train_best_avg**: 1245
+  - **646117549670662154**:
     - **games**: 1
     - **false_starts**: 1
-    - **taps**: 2
-    - **total_ms**: 3566
-    - **rounds_won**: 2
+    - **taps**: 7
+    - **total_ms**: 8558
+    - **rounds_won**: 7
+    - **match_wins**: 0
+    - **titles**: 0
+    - **train_runs**: 1
+    - **best_clean**: 6
+    - **best_ms**: 1079
+    - **train_best_avg**: 1223
+  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+    - **games**: 1
+    - **false_starts**: 1
+    - **taps**: 10
+    - **total_ms**: 14412
+    - **rounds_won**: 10
+    - **match_wins**: 0
+    - **titles**: 0
+    - **train_runs**: 1
+    - **best_clean**: 9
+    - **best_ms**: 1088
+    - **train_best_avg**: 1441
+  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+    - **games**: 3
+    - **false_starts**: 2
+    - **taps**: 13
+    - **total_ms**: 26056
+    - **rounds_won**: 13
+    - **match_wins**: 0
+    - **titles**: 0
+    - **train_runs**: 3
+    - **best_clean**: 10
+    - **best_ms**: 1452
+    - **train_best_avg**: 2037
+  - **1418875905085935637** → 🜲 SeNvaTor 'メD | 神 (senvator.):
+    - **games**: 2
+    - **false_starts**: 1
+    - **taps**: 0
+    - **total_ms**: 0
+    - **rounds_won**: 0
     - **match_wins**: 0
     - **titles**: 0
     - **train_runs**: 0
     - **best_clean**: 0
-    - **best_ms**: 1160
 - **webhook**:
   - **username**: Kon
   - **avatar**:
@@ -998,7 +1273,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 ### Players
 
-- 154 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)
+- 157 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)
 
 ## OG-Bunny  (testing server)  (`1506692944604823696`)
 
@@ -1197,7 +1472,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 ### Players
 
-- 33 players stored in `data/kon.db` (full list: `export/players_1524797937836621874.csv`)
+- 34 players stored in `data/kon.db` (full list: `export/players_1524797937836621874.csv`)
 
 ## Vortex's Empire | FREE REWARDS  (`1543872217920573493`)
 
@@ -1470,10 +1745,96 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - `1554280108632842295` → .arnav.gg
     - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
     - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
+- **tickets**:
+  - **panel_channel**: `1568343826425323692` → #⚒️〢staff-chat
+  - **panel_message**: `1573917007349289031`
+  - **panel**:
+    - **title**: Support Center
+    - **color**: 16758834
+    - **placeholder**: Choose a category...
+    - **banner**: *none*
+    - **description**: 🎫 NEED HELP? OPEN A TICKET!
+
+Facing an issue, need assistance, or wish to contact our staff team privately? Our support team is always ready to assist you!
+
+📌 HOW TO CREATE A TICKET
+
+Click the 🎫 Open Ticket button below and select the category that best describes your concern. Our relevant staff members will assist you as soon as possible.
+
+📂 TICKET CATEGORIES
+
+🛠️ Support — General assistance, queries, and server-related issues.
+
+🎉 Giveaway — Claim your giveaway rewards.
+
+🎁 Invite Reward — Claim rewards earned through inviting members.
+
+⚠️ TICKET RULES
+
+• Clearly explain your issue when opening a ticket.
+• Avoid spamming or repeatedly pinging staff members.
+• Provide relevant screenshots or evidence whenever necessary.
+• Open only one ticket per issue.
+• Do not misuse or abuse the ticket system.
+• Cooperate with staff members throughout the process.
+
+🔒 PRIVACY & CONFIDENTIALITY
+
+All tickets are private and accessible only to the ticket creator and authorized staff members.
+
+Please select the correct category to ensure faster assistance.
+
+💙 Thank you for being a part of our community!
+    - **_url**: *none*
+  - **welcome**:
+    - **title**: Welcome to your ticket
+    - **description**: Hey {user}, thanks for reaching out about **{category}**!
+Tell us what is going on in as much detail as you can - a staff member will be with you shortly.
+  - **support_roles**: *(empty)*
+  - **admin_roles**: *(empty)*
+  - **open_category**: *none*
+  - **logs**:
+    - **opened**: `1573916489734693005` → #ticket-open
+    - **closed**: `1573916520676065400` → #ticket-close
+    - **transcript**: `1573916573553397770` → #ticket-transcript
+  - **categories**:
+    - #1
+      - **id**: b1326796
+      - **name**: General Support
+      - **emoji**: 🛠️
+      - **description**: General assistance, queries, and server-related issues.
+      - **question**: *none*
+      - **parent**: `1568608614577348670` → #╰•॥ Support Tickets
+      - **ping_roles**: *(empty)*
+    - #2
+      - **id**: e14eb3f2
+      - **name**: Giveaway
+      - **emoji**: 🎉
+      - **description**: Claim your giveaway rewards.
+      - **question**: *none*
+      - **parent**: `1568608741652303942` → #╰•॥ GIVEAWAY TICKETS
+      - **ping_roles**: *(empty)*
+    - #3
+      - **id**: 3efeb3df
+      - **name**: Invite Rewards
+      - **emoji**: 🎁
+      - **description**: Claim rewards earned through inviting members.
+      - **question**: *none*
+      - **parent**: *none*
+      - **ping_roles**: *(empty)*
+  - **max_open**: 1
+  - **name_format**: ticket-{user}
+  - **opener_can_close**: yes
+  - **counter**: 0
+  - **blacklist**: *(empty)*
+  - **tickets**: *(empty)*
+  - **stats**:
+    - **opened**: 0
+    - **closed**: 0
 
 ### Players
 
-- 429 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
+- 449 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
 
 ## Soul of Nebula  (`1556044009661530124`)
 
@@ -1574,7 +1935,103 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 ### Players
 
-- 52 players stored in `data/kon.db` (full list: `export/players_1556044009661530124.csv`)
+- 58 players stored in `data/kon.db` (full list: `export/players_1556044009661530124.csv`)
+
+## Dr4k3n Hangout  (`1562735431051903090`)
+
+### Custom VC (join-to-create + control panel + live VCs)
+
+- **join_to_create_channel**: *none*
+- **interface_channel**: *none*
+- **interface_message_id**: *none*
+- **saved_setup (last known, survives channel deletion)**:
+  - **join_to_create**: *none*
+  - **interface**: *none*
+  - **panel_message_id**: *none*
+- **other_keys**: *(empty)*
+- **active_custom_vcs**: *(empty)*
+
+### Custom VC protection ($customvc config)
+
+- *not configured*
+
+### Self roles ($setsr / $editsr)
+
+- *not configured*
+
+### Points ($point config)
+
+- *not configured*
+
+### Point shop
+
+- **settings**: *none*
+- **items**: *(empty)*
+
+### No-prefix
+
+- *not configured*
+
+### Aliases
+
+- *not configured*
+
+### Role commands ($setrole)
+
+- *not configured*
+
+### Autoreact
+
+- *not configured*
+
+### Aura ($aura config)
+
+- *not configured*
+
+### Tic Tac Toe channel
+
+- *not configured*
+
+### Game channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)
+
+- **tictactoe**: *none*
+- **blacktea**: *none*
+- **timetap**: *none*
+- **handfight**: *none*
+
+### Game stats (TimeTap, Handfight)
+
+- **timetap**: *none*
+- **handfight**: *none*
+
+### Webhook sender (name, avatar, embed, images)
+
+- *not configured*
+
+### Saved images ($tolink)
+
+- *not configured*
+
+### Disabled commands
+
+- *not configured*
+
+### Extra owners ($konextra - this server only)
+
+- *(empty)*
+
+### AFK
+
+- **tag_enabled**: yes
+- **users**: *(empty)*
+
+### EVERYTHING saved for this server (raw settings, nothing left out)
+
+- *not configured*
+
+### Players
+
+- 3 players stored in `data/kon.db` (full list: `export/players_1562735431051903090.csv`)
 
 ## 𖹭.ִ𓂃Live In My Own  (`1564620144527806506`)
 
@@ -1743,6 +2200,102 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 ### Players
 
 - 2 players stored in `data/kon.db` (full list: `export/players_1564620144527806506.csv`)
+
+## SpiderMan  (`1569042863465963680`)
+
+### Custom VC (join-to-create + control panel + live VCs)
+
+- **join_to_create_channel**: *none*
+- **interface_channel**: *none*
+- **interface_message_id**: *none*
+- **saved_setup (last known, survives channel deletion)**:
+  - **join_to_create**: *none*
+  - **interface**: *none*
+  - **panel_message_id**: *none*
+- **other_keys**: *(empty)*
+- **active_custom_vcs**: *(empty)*
+
+### Custom VC protection ($customvc config)
+
+- *not configured*
+
+### Self roles ($setsr / $editsr)
+
+- *not configured*
+
+### Points ($point config)
+
+- *not configured*
+
+### Point shop
+
+- **settings**: *none*
+- **items**: *(empty)*
+
+### No-prefix
+
+- *not configured*
+
+### Aliases
+
+- *not configured*
+
+### Role commands ($setrole)
+
+- *not configured*
+
+### Autoreact
+
+- *not configured*
+
+### Aura ($aura config)
+
+- *not configured*
+
+### Tic Tac Toe channel
+
+- *not configured*
+
+### Game channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)
+
+- **tictactoe**: *none*
+- **blacktea**: *none*
+- **timetap**: *none*
+- **handfight**: *none*
+
+### Game stats (TimeTap, Handfight)
+
+- **timetap**: *none*
+- **handfight**: *none*
+
+### Webhook sender (name, avatar, embed, images)
+
+- *not configured*
+
+### Saved images ($tolink)
+
+- *not configured*
+
+### Disabled commands
+
+- *not configured*
+
+### Extra owners ($konextra - this server only)
+
+- *(empty)*
+
+### AFK
+
+- **tag_enabled**: yes
+- **users**: *(empty)*
+
+### EVERYTHING saved for this server (raw settings, nothing left out)
+
+- *not configured*
+
+### Players
+
+- 0 players stored in `data/kon.db` (full list: `export/players_1569042863465963680.csv`)
 
 ## duffer's server  (`1573601753965011035`)
 

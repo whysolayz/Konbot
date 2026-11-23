@@ -160,6 +160,24 @@ def _guild_ids(bot) -> list:
     return sorted(ids)
 
 
+def slim_settings(raw: dict) -> dict:
+    """Giveaway records hold every entry / counted message - in the readable report only their sizes are shown
+    (the full data is in data/kon.db, export/db_dump.json and export/servers/<id>/database.json)."""
+    out = dict(raw)
+    g = out.get("giveaway")
+    if isinstance(g, dict):
+        g = dict(g)
+        for pool in ("active", "ended"):
+            recs = g.get(pool)
+            if isinstance(recs, dict):
+                g[pool] = {mid: {**{k: v for k, v in r.items() if k not in ("entries", "counts", "inv", "task")},
+                                 "entries": len(r.get("entries") or []), "users_with_counted_messages": len(r.get("counts") or {}),
+                                 "inviters": len(r.get("inv") or {}), "task_done": len(r.get("task") or [])}
+                           if isinstance(r, dict) else r for mid, r in recs.items()}
+        out["giveaway"] = g
+    return out
+
+
 def collect(bot, afk_data: dict) -> dict:
     """-> {'json': bytes, 'md': bytes, 'names': {'gid:uid': name}, 'summary': [..lines for the embed..], 'files': {..}}"""
     st, db = bot.store.data, bot.db
@@ -222,7 +240,9 @@ def collect(bot, afk_data: dict) -> dict:
             "command_disable ($disablecommand)": raw_settings.get("cmd_disable"),
             "extra_owners": [res.ref(i) for i in st.get("guild_owners", {}).get(str(gid), [])],
             "afk": {"tag_enabled": afk_data.get("tag", {}).get(str(gid), True), "users": afk_view},
-            "all_settings_raw": raw_settings,
+            "tickets (panels, categories, open tickets)": raw_settings.get("tickets"),
+            "giveaways (templates, running, ended)": slim_settings({"giveaway": raw_settings.get("giveaway")}).get("giveaway"),
+            "all_settings_raw": slim_settings(raw_settings),
             "players_in_database": players,
         }
         guilds_out[str(gid)] = cfg
@@ -235,6 +255,8 @@ def collect(bot, afk_data: dict) -> dict:
                           ("Self roles ($setsr / $editsr)", "self_roles"),
                           ("Points ($point config)", "points_settings"), ("Point shop", "shop"),
                           ("No-prefix", "no_prefix"), ("Aliases", "aliases"), ("Role commands ($setrole)", "role_commands"),
+                          ("Tickets ($ticket)", "tickets (panels, categories, open tickets)"),
+                          ("Giveaways ($giveaway)", "giveaways (templates, running, ended)"),
                           ("Autoreact", "autoreact"), ("Aura ($aura config)", "aura"), ("Tic Tac Toe channel", "tictactoe"),
                           ("Game channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)", "game_channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)"),
                           ("Game stats (TimeTap, Handfight)", "game_stats (TimeTap, Handfight)"),

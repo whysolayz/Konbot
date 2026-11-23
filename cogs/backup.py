@@ -9,6 +9,12 @@ deleted (BACKUP_MODE=keep keeps them all).
 `$backupload` (owner) - attach data file(s) to the command, or REPLY to a message that has them, and everything is merged
 into the running bot. Works with: kon_data.zip (or an old full backup zip), a raw kon.db, db_dump.json, vc_data.json,
 afk_data.json, blacktea.json. Nothing is overwritten blindly: new rows are added, existing ones keep the bigger value.
+The reply shows what was loaded (players, shop, every feature's settings: tickets, giveaways, points ...), checks the
+file checksums and tells you when a file is only code (kon_code.zip has no data - nothing to load).
+
+Everything the bot saves is in kon.db (every setting of every feature) + vc_data.json + afk_data.json + blacktea.json, all inside
+kon_data.zip. Before each backup the bot first writes everything that is still only in memory (counted giveaway messages ...)
+to the database, and every backup checks the database (integrity + row counts) and records it in DATA_MANIFEST.json.
 """
 import asyncio
 import copy
@@ -23,6 +29,7 @@ import sqlite3
 import tempfile
 import time
 import zipfile
+from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
@@ -47,6 +54,50 @@ WEBHOOK_LIMIT = 10 * 1024 * 1024
 INTERVAL = 30       # seconds - periodic refresh
 REASONS = {"start": "Bot started", "interval": "Automatic (every 30s)", "change": "Change detected",
            "manual": "Manual refresh", "stop": "Bot stopped"}
+
+
+# readable names of the settings keys (kon.db -> settings table) - used by the $backupload report
+FEATURES = {
+    "points": "Points", "shop": "Shop", "customvc": "Custom VC rules", "noprefix": "No-prefix", "aliases": "Aliases",
+    "rolecmds": "Role commands", "autoreact": "Autoreact", "aura": "Aura", "cmd_disable": "Command control",
+    "tickets": "Tickets", "giveaway": "Giveaways", "tictactoe": "Tic Tac Toe", "timetap": "TimeTap",
+    "timetap_stats": "TimeTap stats", "handfight": "Handfight", "handfight_stats": "Handfight stats",
+    "webhook": "Webhook sender", "imagehost": "Image links", "imagehost_host": "Image host channel",
+}
+
+
+def feature_name(key: str) -> str:
+    return FEATURES.get(key) or key.replace("_", " ").title()
+
+
+def describe_setting(key: str, data) -> str:
+    """One short phrase about what a settings row holds (shown in the $backupload report)."""
+    if not isinstance(data, dict):
+        return ""
+    if key == "tickets":
+        panels = data.get("panels") if isinstance(data.get("panels"), dict) else {"main": data}
+        cats = sum(len(p.get("categories") or []) for p in panels.values() if isinstance(p, dict))
+        return f"{len(panels)} panel{'s' if len(panels) != 1 else ''}, {cats} categories, {len(data.get('tickets') or {})} open"
+    if key == "giveaway":
+        return (f"{len(data.get('templates') or {})} templates, {len(data.get('active') or {})} running, "
+                f"{len(data.get('ended') or {})} ended")
+    if key == "shop":
+        return "shop settings"
+    return ""
+
+
+def db_report(snapshot: str) -> dict:
+    """Checks a database snapshot (worker thread): integrity + row counts + how many settings rows of every feature."""
+    c = sqlite3.connect(snapshot)
+    try:
+        rep = {"integrity": c.execute("PRAGMA integrity_check").fetchone()[0], "tables": {}, "settings": {}}
+        for (name,) in c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'").fetchall():
+            rep["tables"][name] = c.execute(f"SELECT COUNT(*) FROM {name}").fetchone()[0]
+        for key, n in c.execute("SELECT key, COUNT(*) FROM settings GROUP BY key"):
+            rep["settings"][key] = n
+        return rep
+    finally:
+        c.close()
 
 
 def redact_env(raw: bytes) -> bytes:
@@ -107,6 +158,7 @@ def build_zip(base: Path, db_snapshot: Optional[str], meta: dict, cfg_export: Op
             if db_snapshot:
                 for name, data in export.db_extras(db_snapshot, cfg_export["names"]).items():
                     add(name, data)
+        report = db_report(db_snapshot) if db_snapshot else None
         listing = [{"path": n, "size": s, "sha1": h} for n, (s, h) in sorted(files.items())]
         code_files = [f for f in listing if not f["path"].startswith("data/")]
         data_files = [f for f in listing if f["path"].startswith("data/")]
@@ -115,9 +167,9 @@ def build_zip(base: Path, db_snapshot: Optional[str], meta: dict, cfg_export: Op
             "restore": ["unzip", "put your DISCORD_TOKEN (and BACKUP_WEBHOOK) back into .env",
                         "pip install -r requirements.txt", "python main.py",
                         "then send kon_data.zip with $backupload to bring the data back"]}, indent=2))
-        dz.writestr("DATA_MANIFEST.json", json.dumps({**meta, "kind": "data", "files": data_files,
+        dz.writestr("DATA_MANIFEST.json", json.dumps({**meta, "kind": "data", "files": data_files, "database": report,
                                                       "restore": ["send this zip with $backupload"]}, indent=2))
-    return {"code": code_buf.getvalue(), "data": data_buf.getvalue(), "digest": digest.hexdigest(), "files": files,
+    return {"code": code_buf.getvalue(), "data": data_buf.getvalue(), "digest": digest.hexdigest(), "files": files, "report": report,
             "env_keys": env_keys, "env_removed": env_removed, "raw_total": sum(s for s, _ in files.values())}
 
 
@@ -130,8 +182,9 @@ def _cols(c: sqlite3.Connection, schema: str, table: str) -> list[str]:
     return [r[1] for r in c.execute(f"PRAGMA {schema}.table_info({table})")]
 
 
-def merge_db(live: sqlite3.Connection, src_path: str, replace: bool = False) -> dict:
-    """Merge a backup database into the live one. Returns {table: rows added/changed}."""
+def merge_db(live: sqlite3.Connection, src_path: str, replace: bool = False, detail: Optional[dict] = None) -> dict:
+    """Merge a backup database into the live one. Returns {table: rows added/changed}.
+    `detail` (optional) is filled with: features {settings key: rows changed}, notes {key: text}, guilds {ids in the backup}."""
     added: dict[str, int] = {}
     chk = sqlite3.connect(src_path)
     try:
@@ -143,6 +196,10 @@ def merge_db(live: sqlite3.Connection, src_path: str, replace: bool = False) -> 
     live.execute("ATTACH DATABASE ? AS src", (src_path,))
     try:
         tables = {r[0] for r in live.execute("SELECT name FROM src.sqlite_master WHERE type='table'")}
+        if detail is not None:
+            for t in ("users", "settings", "shop_items"):
+                if t in tables:
+                    detail.setdefault("guilds", set()).update(r[0] for r in live.execute(f"SELECT DISTINCT guild_id FROM src.{t}"))
         with live:
             def n(table):
                 return live.execute(f"SELECT COUNT(*) FROM main.{table}").fetchone()[0]
@@ -175,6 +232,15 @@ def merge_db(live: sqlite3.Connection, src_path: str, replace: bool = False) -> 
                 live.execute(
                     "UPDATE shop_items SET position=(SELECT COUNT(*) FROM shop_items s2 WHERE "
                     "s2.guild_id=shop_items.guild_id AND s2.id<=shop_items.id) WHERE position IS NULL")
+                if replace:                          # a restore: the backup's price / stock / emoji / order win for items that exist
+                    live.execute(
+                        "UPDATE main.shop_items SET "
+                        "price=(SELECT s.price FROM src.shop_items s WHERE s.guild_id=main.shop_items.guild_id AND s.role_id=main.shop_items.role_id), "
+                        "stock=(SELECT s.stock FROM src.shop_items s WHERE s.guild_id=main.shop_items.guild_id AND s.role_id=main.shop_items.role_id), "
+                        "emoji=(SELECT s.emoji FROM src.shop_items s WHERE s.guild_id=main.shop_items.guild_id AND s.role_id=main.shop_items.role_id), "
+                        + ("position=COALESCE((SELECT s.position FROM src.shop_items s WHERE s.guild_id=main.shop_items.guild_id "
+                           "AND s.role_id=main.shop_items.role_id), position) " if has_pos else "position=position ")
+                        + "WHERE EXISTS (SELECT 1 FROM src.shop_items s WHERE s.guild_id=main.shop_items.guild_id AND s.role_id=main.shop_items.role_id)")
                 added["shop items"] = n("shop_items") - before
             if "purchases" in tables:
                 before = n("purchases")
@@ -201,6 +267,11 @@ def merge_db(live: sqlite3.Connection, src_path: str, replace: bool = False) -> 
                     if row is None:
                         live.execute("INSERT INTO main.settings(guild_id,key,value) VALUES(?,?,?)", (gid, key, val))
                         touched += 1
+                        if detail is not None:
+                            detail.setdefault("features", {})[key] = detail.get("features", {}).get(key, 0) + 1
+                            note = describe_setting(key, incoming)
+                            if note:
+                                detail.setdefault("notes", {}).setdefault(key, []).append(note)
                         continue
                     try:
                         current = json.loads(row[0])
@@ -211,6 +282,11 @@ def merge_db(live: sqlite3.Connection, src_path: str, replace: bool = False) -> 
                         live.execute("UPDATE main.settings SET value=? WHERE guild_id=? AND key=?",
                                      (json.dumps(merged), gid, key))
                         touched += 1
+                        if detail is not None:
+                            detail.setdefault("features", {})[key] = detail.get("features", {}).get(key, 0) + 1
+                            note = describe_setting(key, merged)
+                            if note:
+                                detail.setdefault("notes", {}).setdefault(key, []).append(note)
                 added["settings"] = touched
     finally:
         live.execute("DETACH DATABASE src")
@@ -244,6 +320,10 @@ def dump_to_db(dump: dict, path: str, live: sqlite3.Connection):
 
 
 DATA_EXT = (".zip", ".db", ".sqlite", ".sqlite3", ".json")
+
+
+class CodeBackup(VCError):
+    """The zip is a code backup (kon_code.zip): that is fine, it just has no data to load."""
 
 
 def deep_override(live, incoming):
@@ -347,7 +427,7 @@ class Backup(commands.Cog):
         async with self._lock:
             try:
                 self._first = False
-                self.store.flush()
+                self.flush_all()                         # data that is only in memory goes into the files / database first
                 snap = tempfile.NamedTemporaryFile(suffix=".db", delete=False)
                 snap.close()
                 counter = int(self.cfg.get("count", 0)) + 1
@@ -360,10 +440,15 @@ class Backup(commands.Cog):
                 finally:
                     Path(snap.name).unlink(missing_ok=True)
                 self._fp = self.fingerprint()
+                rep_ = info.get("report") or {}
+                if rep_ and rep_.get("integrity") != "ok":
+                    log.error("backup database check FAILED: %s", rep_.get("integrity"))
+                    self.last_error = f"database check: {rep_.get('integrity')}"
                 await self._push(status, reason, info, counter)
                 self._last_push = time.monotonic()
                 self.last_ok = time.time()
-                self.last_error = None
+                if not (rep_ and rep_.get("integrity") != "ok"):
+                    self.last_error = None
                 if counter == 1 or reason in ("start", "manual"):
                     log.info("backup #%d sent to webhook (%s)", counter, REASONS.get(reason, reason))
                 return True
@@ -372,6 +457,20 @@ class Backup(commands.Cog):
                 log.error("backup failed: %s", self.last_error, exc_info=True)
                 self._last_push = time.monotonic()
                 return False
+
+    def flush_all(self):
+        """Write everything that lives only in memory: vc_data.json and every cog that keeps unsaved data (giveaway counters ...)."""
+        try:
+            self.store.flush()
+        except Exception:
+            log.exception("store flush failed")
+        for cog in list(self.bot.cogs.values()):
+            fp = getattr(cog, "flush_pending", None)
+            if callable(fp):
+                try:
+                    fp()
+                except Exception:
+                    log.exception("flush of %s failed", type(cog).__name__)
 
     def export_config(self) -> Optional[dict]:
         """Readable server config (names resolved from the discord cache). Never allowed to break the backup."""
@@ -395,7 +494,8 @@ class Backup(commands.Cog):
         e.description = (f"{'Online' if online else 'Offline'} · {REASONS.get(reason, reason)} · <t:{now}:R>\n"
                          f"Code `{human(len(info['code']))}` · Data `{human(len(info['data']))}`"
                          + (f"\n{I.s('warning')} Too big to upload, status only." if skipped else ""))
-        e.set_footer(text=f"{len(self.bot.guilds)} servers · {db['users']} players · {len(self.store.data['vcs'])} VCs")
+        e.set_footer(text=f"{len(self.bot.guilds)} servers · {db['users']} players · {db['settings']} settings · "
+                          f"{len(self.store.data['vcs'])} VCs" + (" · db ✓" if (info.get("report") or {}).get("integrity") == "ok" else ""))
         return e
 
     def fmt_up(self) -> str:
@@ -514,41 +614,108 @@ class Backup(commands.Cog):
                     msg = None
             if msg is not None:
                 atts += list(msg.attachments)
-        atts = [a for a in atts if a.filename.lower().endswith(DATA_EXT)]
+        atts = [a for a in atts if a.filename.lower().endswith(DATA_EXT)][:10]
         if not atts:
             raise VCError("Reply to a data file (zip / db / json) with `$backupload`, or attach it to the command.")
-        lines = []
-        async with ctx.typing():
-            for a in atts[:10]:
-                if a.size > UPLOAD_LIMIT:
-                    lines.append(f"{I.s('cross')} `{a.filename}` is too big.")
-                    continue
+        t0 = time.monotonic()
+        status = await ctx.reply(embed=discord.Embed(
+            color=BLURPLE, description=f"{I.s('hourglass')} Loading **{len(atts)}** file{'s' if len(atts) != 1 else ''}..."),
+            mention_author=False)
+        self.flush_all()                  # unsaved in-memory data goes into the database FIRST, so the merge can't lose it
+        results, changed, problems, guilds, meta = [], 0, 0, set(), {}
+        for a in atts:
+            res = {"name": a.filename, "icon": I.s("check"), "lines": []}
+            detail: dict = {}
+            if a.size > UPLOAD_LIMIT:
+                res.update(icon=I.s("cross"), lines=["This file is too big (max 64 MB)."])
+                problems += 1
+            else:
                 try:
-                    raw = await a.read()
-                    got = await self.merge_file(raw, a.filename, replace)
+                    got = await self.merge_file(await a.read(), a.filename, replace, detail)
+                except CodeBackup as e:
+                    res.update(icon=I.s("info"), lines=[str(e)])
                 except VCError as e:
-                    lines.append(f"{I.s('cross')} `{a.filename}`: {e}")
-                    continue
+                    res.update(icon=I.s("cross"), lines=[str(e)])
+                    problems += 1
                 except (zipfile.BadZipFile, OSError, sqlite3.Error, ValueError, KeyError, TypeError, AttributeError) as e:
                     log.warning("backupload failed for %s: %r", a.filename, e, exc_info=True)
-                    lines.append(f"{I.s('cross')} `{a.filename}` couldn't be read.")
-                    continue
-                lines.append(f"{I.s('check')} `{a.filename}`: " + (", ".join(f"{v} {k}" for k, v in got.items() if v) or "nothing new"))
+                    res.update(icon=I.s("cross"), lines=["I couldn't read this file (damaged or not a Kon data file)."])
+                    problems += 1
+                else:
+                    res["lines"] = self.report_lines(got, detail)
+                    if detail.get("verified") and detail["verified"][1]:
+                        res["icon"] = I.s("warning")
+                    changed += 1 if any(got.values()) else 0
+                    guilds |= detail.get("guilds", set())
+                    meta = meta or detail.get("meta") or {}
+            results.append(res)
         self.reset_caches()
-        await ctx.reply("\n".join(lines), mention_author=False)
+        if problems:
+            title, color = "Loaded with problems", 0xFEE75C
+        elif changed:
+            title, color = "Backup loaded", 0x57F287
+        else:
+            title, color = "Everything is already in the bot", BRAND
+        e = discord.Embed(title=f"{I.s('check') if not problems else I.s('warning')} {title}", color=color)
+        head = []
+        if meta.get("backup_number"):
+            when = ""
+            try:
+                when = f" · made <t:{int(datetime.fromisoformat(meta['created']).timestamp())}:R>"
+            except (TypeError, ValueError, KeyError):
+                pass
+            head.append(f"Backup **#{meta['backup_number']}** of `{meta.get('bot', 'Kon')}`{when}")
+        head.append("**Replace** mode - the settings of the backup win." if replace else
+                    "**Merge** mode - what the bot has stays, everything missing is added. (`$backupload replace` = the backup wins)")
+        e.description = "\n".join(head)
+        for res in results:
+            e.add_field(name=f"{res['icon']} {res['name']}"[:256], value="\n".join(res["lines"])[:1024] or "-", inline=False)
+        if guilds:
+            names = [(self.bot.get_guild(g).name if self.bot.get_guild(g) else f"`{g}`") for g in sorted(guilds)]
+            e.add_field(name=f"Servers in the backup ({len(names)})", value=", ".join(names)[:1024], inline=False)
+        e.set_footer(text=f"{time.monotonic() - t0:.1f}s · live now, no restart needed")
+        try:
+            await status.edit(embed=e)
+        except discord.HTTPException:
+            await ctx.reply(embed=e, mention_author=False)
 
-    async def merge_file(self, raw: bytes, filename: str, replace: bool = False) -> dict:
+    @staticmethod
+    def report_lines(got: dict, detail: dict) -> list:
+        """What one data file changed, in plain words."""
+        lines = []
+        ver = detail.get("verified")
+        if ver:
+            lines.append(f"{I.s('check')} Checksums OK ({ver[0]} files)" if not ver[1]
+                         else f"{I.s('warning')} **{ver[1]}** file(s) don't match their checksum - the backup may be damaged")
+        counts = [f"**{got[k]:,}** {k}" for k in ("players", "badges", "shop items", "purchases") if got.get(k)]
+        if counts:
+            lines.append("• " + " · ".join(counts))
+        feats = detail.get("features") or {}
+        if got.get("settings") or feats:
+            parts = []
+            for key in sorted(feats, key=feature_name):
+                note = (detail.get("notes") or {}).get(key)
+                parts.append(feature_name(key) + (f" ({note[0]})" if note and len(note) == 1 else ""))
+            lines.append(f"• **{got.get('settings', len(feats))}** settings: " + (", ".join(parts) if parts else "merged"))
+        for k in ("VC / server settings", "AFK", "BlackTea channels", "banners"):
+            if got.get(k):
+                lines.append(f"• **{got[k]}** {k}" if k != "VC / server settings" else f"• {k} (self roles, VC panel, extra owners ...)")
+        if len(lines) == (1 if ver else 0):
+            lines.append("• already up to date - nothing new in it")
+        return lines
+
+    async def merge_file(self, raw: bytes, filename: str, replace: bool = False, detail: Optional[dict] = None) -> dict:
         """One data file (zip / db / json) -> merged into the running bot. Returns {what: count}."""
         name = filename.lower()
         if name.endswith(".zip"):
-            return await self.merge_zip(raw, replace)
+            return await self.merge_zip(raw, replace, detail)
         out: dict[str, int] = {}
         if name.endswith((".db", ".sqlite", ".sqlite3")):
             tmp = tempfile.NamedTemporaryFile(suffix=".db", delete=False)
             try:
                 tmp.write(raw)
                 tmp.close()
-                for k, v in merge_db(self.bot.db.conn, tmp.name, replace).items():
+                for k, v in merge_db(self.bot.db.conn, tmp.name, replace, detail).items():
                     out[k] = out.get(k, 0) + v
             finally:
                 Path(tmp.name).unlink(missing_ok=True)
@@ -561,7 +728,7 @@ class Backup(commands.Cog):
             try:
                 tmp.close()
                 dump_to_db(data, tmp.name, self.bot.db.conn)
-                for k, v in merge_db(self.bot.db.conn, tmp.name, replace).items():
+                for k, v in merge_db(self.bot.db.conn, tmp.name, replace, detail).items():
                     out[k] = out.get(k, 0) + v
             finally:
                 Path(tmp.name).unlink(missing_ok=True)
@@ -579,22 +746,40 @@ class Backup(commands.Cog):
             raise VCError("I don't know this json file. Use kon_data.zip, kon.db or db_dump.json.")
         return out
 
-    async def merge_zip(self, raw: bytes, replace: bool = False) -> dict:
+    async def merge_zip(self, raw: bytes, replace: bool = False, detail: Optional[dict] = None) -> dict:
         z = zipfile.ZipFile(io.BytesIO(raw))
+        names = set(z.namelist())
         found: dict[str, str] = {}
         for name in z.namelist():
             m = DATA_ENTRY.search(name.replace("\\", "/"))
             if m and ".." not in name.split("/") and not name.endswith("/"):
                 found["kon.db" if m.group(1) == "leafy.db" else m.group(1)] = name      # old Leafy backups still load
         if not found:
-            raise VCError("No `data/` folder inside.")
+            if "main.py" in names or "BACKUP_MANIFEST.json" in names or any(n.startswith("cogs/") for n in names):
+                raise CodeBackup("This is the **code** backup (bot files, assets, `.env`). It has no data inside, so there is "
+                                 "nothing to load - your data is in `kon_data.zip`. Use `tools/restore.py` to set up the code.")
+            raise VCError("There is no `data/` folder inside this zip.")
+        if detail is not None and "DATA_MANIFEST.json" in names:         # checksum of every file against the manifest
+            try:
+                mf = json.loads(z.read("DATA_MANIFEST.json"))
+                good = bad = 0
+                for f in mf.get("files", []):
+                    if f.get("path") in names:
+                        if hashlib.sha1(z.read(f["path"])).hexdigest() == f.get("sha1"):
+                            good += 1
+                        else:
+                            bad += 1
+                detail["verified"] = (good, bad)
+                detail["meta"] = {k: mf.get(k) for k in ("bot", "created", "backup_number", "reason")}
+            except (ValueError, KeyError, zipfile.BadZipFile):
+                pass
         out: dict[str, int] = {}
         if "kon.db" in found:
             tmp = tempfile.NamedTemporaryFile(suffix=".db", delete=False)
             try:
                 tmp.write(z.read(found["kon.db"]))
                 tmp.close()
-                for k, v in merge_db(self.bot.db.conn, tmp.name, replace).items():
+                for k, v in merge_db(self.bot.db.conn, tmp.name, replace, detail).items():
                     out[k] = out.get(k, 0) + v
             finally:
                 Path(tmp.name).unlink(missing_ok=True)

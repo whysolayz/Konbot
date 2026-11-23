@@ -4,7 +4,7 @@
     "name": "Dark ︲ Spider's Web",
     "bot_is_in_server": true,
     "owner_id": 1400039022855852113,
-    "members": 203
+    "members": 198
   },
   "custom_vc": {
     "join_to_create_channel": 1488691385266864208,
@@ -29,7 +29,7 @@
         "type": "text",
         "category_id": 1488691343382286338,
         "category": "╰ ¤〢Custom VC ︲🌱︲",
-        "position": 46,
+        "position": 47,
         "currently_set": true,
         "exists_now": true
       },
@@ -75,15 +75,34 @@
               "emoji": "<:Senpai_Information:1517499045117952060>"
             }
           ]
+        },
+        "points": {
+          "chat_enabled": true,
+          "chat_msgs": 10,
+          "chat_points": 1,
+          "cooldown": 0,
+          "chat_everywhere": true,
+          "enabled_channels": [],
+          "disabled_channels": [
+            "1570386957056348251",
+            "1488691349212495892"
+          ],
+          "channel_rules": [],
+          "vc_enabled": true,
+          "vc_mins": 1,
+          "vc_points": 1,
+          "vc_need_others": false,
+          "vc_need_muted": false,
+          "vc_disabled_channels": []
         }
       }
     },
     "active_custom_vcs": {
-      "1573788824222302408": {
+      "1574157917777690714": {
         "owner": 650534818517483526,
         "banned": [],
         "block_drags": false,
-        "created": 1795290896.0809376
+        "created": 1795378894.1578226
       }
     }
   },
@@ -135,17 +154,18 @@
   "points_settings": {
     "chat_enabled": true,
     "chat_msgs": 10,
-    "chat_points": 2,
+    "chat_points": 1,
     "chat_everywhere": true,
     "vc_enabled": true,
     "vc_mins": 1,
-    "vc_points": 2,
+    "vc_points": 1,
     "vc_need_others": false,
     "vc_need_muted": false,
     "cooldown": 0,
     "channel_rules": {},
     "disabled_channels": [
       1570386957056348251,
+      1488691409744695417,
       1488691349212495892
     ],
     "enabled_channels": [],
@@ -215,7 +235,7 @@
         "guild_id": 1488690726870057165,
         "role_id": 1488691205637279785,
         "price": 2000,
-        "stock": 4,
+        "stock": 3,
         "emoji": "<:winner:1517495079181488280>",
         "position": 7
       }
@@ -254,6 +274,10 @@
     },
     "manager": {
       "role": 1488691176306639008,
+      "allowed": null
+    },
+    "1488691231771853098": {
+      "role": 1488691231771853098,
       "allowed": null
     }
   },
@@ -323,30 +347,81 @@
         "train_best_avg": 1172
       },
       "1028298097664733215": {
+        "games": 4,
+        "false_starts": 1,
+        "taps": 18,
+        "total_ms": 23092,
+        "rounds_won": 18,
+        "match_wins": 2,
+        "titles": 2,
+        "train_runs": 1,
+        "best_clean": 10,
+        "best_ms": 1034,
+        "train_best_avg": 1245
+      },
+      "646117549670662154": {
         "games": 1,
         "false_starts": 1,
-        "taps": 2,
-        "total_ms": 3566,
-        "rounds_won": 2,
+        "taps": 7,
+        "total_ms": 8558,
+        "rounds_won": 7,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 1,
+        "best_clean": 6,
+        "best_ms": 1079,
+        "train_best_avg": 1223
+      },
+      "1409148182944022699": {
+        "games": 1,
+        "false_starts": 1,
+        "taps": 10,
+        "total_ms": 14412,
+        "rounds_won": 10,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 1,
+        "best_clean": 9,
+        "best_ms": 1088,
+        "train_best_avg": 1441
+      },
+      "1513085640642920458": {
+        "games": 3,
+        "false_starts": 2,
+        "taps": 13,
+        "total_ms": 26056,
+        "rounds_won": 13,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 3,
+        "best_clean": 10,
+        "best_ms": 1452,
+        "train_best_avg": 2037
+      },
+      "1418875905085935637": {
+        "games": 2,
+        "false_starts": 1,
+        "taps": 0,
+        "total_ms": 0,
+        "rounds_won": 0,
         "match_wins": 0,
         "titles": 0,
         "train_runs": 0,
-        "best_clean": 0,
-        "best_ms": 1160
+        "best_clean": 0
       }
     },
     "handfight": {
       "650534818517483526": {
-        "games": 5,
+        "games": 6,
         "titles": 4,
         "rounds_won": 9,
-        "rounds_lost": 3,
-        "draws": 5,
+        "rounds_lost": 9,
+        "draws": 7,
         "match_wins": 4,
-        "match_losses": 1,
-        "rock": 2,
-        "paper": 6,
-        "scissors": 9
+        "match_losses": 2,
+        "rock": 3,
+        "paper": 8,
+        "scissors": 14
       },
       "1154489620499800127": {
         "games": 1,
@@ -443,6 +518,18 @@
         "rock": 1,
         "paper": 1,
         "scissors": 0
+      },
+      "1513085640642920458": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 6,
+        "rounds_lost": 0,
+        "draws": 2,
+        "match_wins": 1,
+        "match_losses": 0,
+        "rock": 4,
+        "paper": 2,
+        "scissors": 2
       }
     }
   },
@@ -548,17 +635,29 @@
         "old_nick": null,
         "mentions_waiting": 1
       },
-      "1262248731353546763": {
-        "reason": "nini tame",
-        "since": 1795280207.7781858,
-        "old_nick": null,
-        "mentions_waiting": 5
-      },
       "1297140568207527966": {
-        "reason": "its my birthday 🎂 🥳",
-        "since": 1795284338.2292867,
+        "reason": "nini tame <:Kawaiireaction:1569605491569598577>",
+        "since": 1795307000.4181528,
         "old_nick": null,
         "mentions_waiting": 1
+      },
+      "1262248731353546763": {
+        "reason": "ok",
+        "since": 1795370111.743126,
+        "old_nick": null,
+        "mentions_waiting": 0
+      },
+      "1425991437396217960": {
+        "reason": "gn",
+        "since": 1795376559.0990024,
+        "old_nick": null,
+        "mentions_waiting": 1
+      },
+      "1538573910839140575": {
+        "reason": "paper h acha jaaye bas <:Cat_meow:1569605495222964265>",
+        "since": 1795379485.7904775,
+        "old_nick": null,
+        "mentions_waiting": 0
       }
     }
   },
@@ -633,16 +732,16 @@
     },
     "handfight_stats": {
       "650534818517483526": {
-        "games": 5,
+        "games": 6,
         "titles": 4,
         "rounds_won": 9,
-        "rounds_lost": 3,
-        "draws": 5,
+        "rounds_lost": 9,
+        "draws": 7,
         "match_wins": 4,
-        "match_losses": 1,
-        "rock": 2,
-        "paper": 6,
-        "scissors": 9
+        "match_losses": 2,
+        "rock": 3,
+        "paper": 8,
+        "scissors": 14
       },
       "1154489620499800127": {
         "games": 1,
@@ -739,6 +838,18 @@
         "rock": 1,
         "paper": 1,
         "scissors": 0
+      },
+      "1513085640642920458": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 6,
+        "rounds_lost": 0,
+        "draws": 2,
+        "match_wins": 1,
+        "match_losses": 0,
+        "rock": 4,
+        "paper": 2,
+        "scissors": 2
       }
     },
     "imagehost": {
@@ -782,17 +893,18 @@
     "points": {
       "chat_enabled": true,
       "chat_msgs": 10,
-      "chat_points": 2,
+      "chat_points": 1,
       "chat_everywhere": true,
       "vc_enabled": true,
       "vc_mins": 1,
-      "vc_points": 2,
+      "vc_points": 1,
       "vc_need_others": false,
       "vc_need_muted": false,
       "cooldown": 0,
       "channel_rules": {},
       "disabled_channels": [
         1570386957056348251,
+        1488691409744695417,
         1488691349212495892
       ],
       "enabled_channels": [],
@@ -822,10 +934,132 @@
       "manager": {
         "role": 1488691176306639008,
         "allowed": null
+      },
+      "1488691231771853098": {
+        "role": 1488691231771853098,
+        "allowed": null
       }
     },
     "shop": {
       "per_page": 5
+    },
+    "tickets": {
+      "panel_channel": 1488691478841528410,
+      "panel_message": 1573885746706776161,
+      "panel": {
+        "title": "__Contact Support Team__",
+        "color": 3066993,
+        "placeholder": "Select a topic...",
+        "banner": {
+          "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&",
+          "ref": {
+            "c": 1572663742091632681,
+            "m": 1573875037528784936
+          }
+        },
+        "description": "✉️ **Create A Ticket**- if you need support or have any important queries\n\n<:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**\n\n<:Senpai_Information:1517499045117952060> __**Ticket For Support**__ :-\n- Create Ticket For General Support\n[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]\n- Creating a ticket to be staff is strictly prohibited.\n- Tickets for fun would result in 2days mute / ban\n- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike or a serious action which will be taken by our Support Team.\n- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. So, please don't create a ticket regarding this topic.\n\n<:Spider_partner:1572638598585655296> __**Ticket for Partnership/Sponsors**__ :-\n- Create a Ticket If You Got Any Brand Deals Or Sponsor\n- Kindly Mention The Basic Details And Have Patience.\n- The Rates For Brand Deals Would Be Discussed In Ticket\n- Leaking The Information To Anyone Would Lead To Ban.\n\n<:InShot_20261122_130804475:1573966358889107600>__**Currency Loan**__ :-\n- Loan Currency with intrest.\n- follow all the rules.\n- must repay according to the rules.\n\n\n__select category from the dropdown menu to contact us__",
+        "_url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&"
+      },
+      "welcome": {
+        "title": "Help/support",
+        "description": "<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**\n> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon."
+      },
+      "support_roles": [],
+      "admin_roles": [],
+      "open_category": null,
+      "logs": {
+        "opened": 1570531039187566715,
+        "closed": 1570531086939848776,
+        "transcript": 1570531130938101883
+      },
+      "categories": [
+        {
+          "id": "dsw-support",
+          "name": "General Support",
+          "emoji": "<:Senpai_Information:1517499045117952060>",
+          "description": "Reports, bugs, role claiming and more",
+          "question": "Kindly Mention your issue!",
+          "parent": 1488691351246868630,
+          "ping_roles": [
+            1488691195847643227
+          ]
+        },
+        {
+          "id": "dsw-partner",
+          "name": "Partnership/Sponsors",
+          "emoji": "<:Spider_partner:1572638598585655296>",
+          "description": "Brand deals and sponsors",
+          "question": "Kindly mention the basic details of your deal!",
+          "parent": 1488691352051912706,
+          "ping_roles": [
+            1488691182308692040
+          ]
+        },
+        {
+          "id": "df8fd6b2",
+          "name": "Currency Loan",
+          "emoji": "<:InShot_20261122_130804475:1573966358889107600>",
+          "description": null,
+          "question": "Kindly mention the amount",
+          "parent": 1488691353503404204,
+          "ping_roles": [
+            1488691182308692040
+          ]
+        }
+      ],
+      "max_open": 1,
+      "name_format": "ticket-{user}",
+      "opener_can_close": false,
+      "counter": 9,
+      "blacklist": [],
+      "tickets": {
+        "1573971039388434442": {
+          "num": 5,
+          "channel": 1573971039388434442,
+          "name": "ticket-nontastic_player",
+          "category": "df8fd6b2",
+          "category_name": "Currency Loan",
+          "question": "Kindly mention the amount",
+          "opener": 1028298097664733215,
+          "created": 1795334338.8660107,
+          "claimed_by": 650534818517483526,
+          "claimed_at": 1795334344.579034,
+          "first_reply_by": 650534818517483526,
+          "first_reply_at": 1795334343.942,
+          "answer": "Jitna bhi mil jaye",
+          "log": [
+            1570531039187566715,
+            1573971041728991373
+          ],
+          "closing": false,
+          "welcome_msg": 1573971040185356310
+        },
+        "1573974490554044548": {
+          "num": 6,
+          "channel": 1573974490554044548,
+          "name": "ticket-luffy_07_09",
+          "category": "df8fd6b2",
+          "category_name": "Currency Loan",
+          "question": "Kindly mention the amount",
+          "opener": 1513085640642920458,
+          "created": 1795335161.7306697,
+          "claimed_by": 650534818517483526,
+          "claimed_at": 1795335167.3309338,
+          "first_reply_by": 650534818517483526,
+          "first_reply_at": 1795335169.809,
+          "answer": "500k",
+          "log": [
+            1570531039187566715,
+            1573974493007839333
+          ],
+          "closing": false,
+          "welcome_msg": 1573974491669856328
+        }
+      },
+      "stats": {
+        "opened": 9,
+        "closed": 7
+      }
     },
     "tictactoe": {
       "channel": 1572117193712209960
@@ -848,16 +1082,67 @@
         "train_best_avg": 1172
       },
       "1028298097664733215": {
+        "games": 4,
+        "false_starts": 1,
+        "taps": 18,
+        "total_ms": 23092,
+        "rounds_won": 18,
+        "match_wins": 2,
+        "titles": 2,
+        "train_runs": 1,
+        "best_clean": 10,
+        "best_ms": 1034,
+        "train_best_avg": 1245
+      },
+      "646117549670662154": {
         "games": 1,
         "false_starts": 1,
-        "taps": 2,
-        "total_ms": 3566,
-        "rounds_won": 2,
+        "taps": 7,
+        "total_ms": 8558,
+        "rounds_won": 7,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 1,
+        "best_clean": 6,
+        "best_ms": 1079,
+        "train_best_avg": 1223
+      },
+      "1409148182944022699": {
+        "games": 1,
+        "false_starts": 1,
+        "taps": 10,
+        "total_ms": 14412,
+        "rounds_won": 10,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 1,
+        "best_clean": 9,
+        "best_ms": 1088,
+        "train_best_avg": 1441
+      },
+      "1513085640642920458": {
+        "games": 3,
+        "false_starts": 2,
+        "taps": 13,
+        "total_ms": 26056,
+        "rounds_won": 13,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 3,
+        "best_clean": 10,
+        "best_ms": 1452,
+        "train_best_avg": 2037
+      },
+      "1418875905085935637": {
+        "games": 2,
+        "false_starts": 1,
+        "taps": 0,
+        "total_ms": 0,
+        "rounds_won": 0,
         "match_wins": 0,
         "titles": 0,
         "train_runs": 0,
-        "best_clean": 0,
-        "best_ms": 1160
+        "best_clean": 0
       }
     },
     "webhook": {
@@ -892,5 +1177,5 @@
       ]
     }
   },
-  "players_in_database": 154
+  "players_in_database": 157
 }

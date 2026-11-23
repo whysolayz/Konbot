@@ -4,9 +4,9 @@
   {
    "guild_id": 1556044009661530124,
    "user_id": 1554945105981603880,
-   "points": 2,
-   "chat_total": 128,
-   "chat_progress": 28,
+   "points": 3,
+   "chat_total": 166,
+   "chat_progress": 16,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -32,8 +32,8 @@
    "guild_id": 1556044009661530124,
    "user_id": 1449333478784110668,
    "points": 1,
-   "chat_total": 89,
-   "chat_progress": 39,
+   "chat_total": 90,
+   "chat_progress": 40,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -41,8 +41,8 @@
    "guild_id": 1556044009661530124,
    "user_id": 1421871623673348166,
    "points": 0,
-   "chat_total": 36,
-   "chat_progress": 36,
+   "chat_total": 37,
+   "chat_progress": 37,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -131,8 +131,8 @@
    "guild_id": 1556044009661530124,
    "user_id": 1499322396820242446,
    "points": 0,
-   "chat_total": 33,
-   "chat_progress": 33,
+   "chat_total": 38,
+   "chat_progress": 38,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -149,8 +149,8 @@
    "guild_id": 1556044009661530124,
    "user_id": 1556600326617042959,
    "points": 0,
-   "chat_total": 12,
-   "chat_progress": 12,
+   "chat_total": 14,
+   "chat_progress": 14,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -364,9 +364,9 @@
   {
    "guild_id": 1556044009661530124,
    "user_id": 1400054210623574096,
-   "points": 0,
-   "chat_total": 17,
-   "chat_progress": 17,
+   "points": 1,
+   "chat_total": 52,
+   "chat_progress": 2,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -391,9 +391,9 @@
   {
    "guild_id": 1556044009661530124,
    "user_id": 829689719633215498,
-   "points": 0,
-   "chat_total": 8,
-   "chat_progress": 8,
+   "points": 1,
+   "chat_total": 51,
+   "chat_progress": 1,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -419,8 +419,8 @@
    "guild_id": 1556044009661530124,
    "user_id": 1373450895660159066,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 5,
+   "chat_progress": 5,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -455,8 +455,8 @@
    "guild_id": 1556044009661530124,
    "user_id": 1545445194990616607,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 3,
+   "chat_progress": 3,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -466,6 +466,60 @@
    "points": 0,
    "chat_total": 1,
    "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1556044009661530124,
+   "user_id": 1554280108632842295,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1556044009661530124,
+   "user_id": 1409947262423142484,
+   "points": 0,
+   "chat_total": 4,
+   "chat_progress": 4,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1556044009661530124,
+   "user_id": 1261316218753908770,
+   "points": 0,
+   "chat_total": 7,
+   "chat_progress": 7,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1556044009661530124,
+   "user_id": 1398281217757024416,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1556044009661530124,
+   "user_id": 1342560572633518102,
+   "points": 0,
+   "chat_total": 8,
+   "chat_progress": 8,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1556044009661530124,
+   "user_id": 1486784274605801664,
+   "points": 0,
+   "chat_total": 3,
+   "chat_progress": 3,
    "vc_total": 0,
    "vc_progress": 0
   }
@@ -526,6 +580,30 @@
    "delta": 1,
    "reason": "chat",
    "ts": 1795262328.7661633
+  },
+  {
+   "id": 17764,
+   "guild_id": 1556044009661530124,
+   "user_id": 829689719633215498,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795360304.9237943
+  },
+  {
+   "id": 18111,
+   "guild_id": 1556044009661530124,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795373002.2201242
+  },
+  {
+   "id": 18417,
+   "guild_id": 1556044009661530124,
+   "user_id": 1400054210623574096,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795385217.5569959
   }
  ]
 }

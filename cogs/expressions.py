@@ -11,9 +11,10 @@
 
     $ei [search | here | <emoji id>]  -> list animated emojis with their IDs (all servers you share with Kon), or look up one ID
 
-After adding, the message has two buttons: **Undo** (delete everything that command just added) and **Remove**
-(pick which of them to delete). Text versions:
+After adding, the message has three buttons: **Undo** (delete everything that command just added), **Remove**
+(pick which of them to delete) and **Rename** (pick one, type a new name). Text versions:
     $ae undo  |  $ae remove <:emoji:> or name ...        $as undo  |  $as remove <sticker name>
+    $ae rename <:emoji:> or name <new name>             $as rename <sticker name> <new name>
 """
 import asyncio
 import io
@@ -30,7 +31,7 @@ from core import emoji as emojis
 from core.config import BLURPLE
 from core.errors import VCError
 from core.icons import I, err, ok
-from core.ui import OwnedView, replied_message
+from core.ui import FieldsModal, OwnedView, replied_message
 
 log = logging.getLogger("kon.expressions")
 
@@ -177,6 +178,7 @@ class UndoView(OwnedView):
         self.cog, self.ctx, self.kind, self.items, self.text = cog, ctx, kind, list(items), text
         self.undo_btn.emoji = I.e("refresh")
         self.remove_btn.emoji = I.e("minus")
+        self.rename_btn.emoji = I.e("edit")
 
     def alive(self):
         g = self.ctx.guild
@@ -219,6 +221,43 @@ class UndoView(OwnedView):
         sel.callback = picked
         view.add_item(sel)
         await interaction.response.send_message(f"Remove which {self.kind}s?", view=view, ephemeral=True)
+
+    @discord.ui.button(label="Rename", style=discord.ButtonStyle.primary)
+    async def rename_btn(self, interaction: discord.Interaction, _):
+        items = self.alive()[:25]
+        if not items:
+            return await interaction.response.send_message(err("Nothing left to rename."), ephemeral=True)
+        if len(items) == 1:
+            return await interaction.response.send_modal(self.rename_modal(items[0]))
+        opts = [discord.SelectOption(label=i.name[:100], value=str(i.id),
+                                     emoji=i if self.kind == "emoji" else None) for i in items]
+        view = discord.ui.View(timeout=120)
+        sel = discord.ui.Select(placeholder=f"Select the {self.kind} to rename...", options=opts)
+
+        async def picked(i: discord.Interaction):
+            chosen = next((x for x in items if x.id == int(sel.values[0])), None)
+            if chosen is None:
+                return await i.response.send_message(err("That one is gone."), ephemeral=True)
+            await i.response.send_modal(self.rename_modal(chosen))
+        sel.callback = picked
+        view.add_item(sel)
+        await interaction.response.send_message(f"Rename which {self.kind}?", view=view, ephemeral=True)
+
+    def rename_modal(self, item) -> FieldsModal:
+        hi = 32 if self.kind == "emoji" else 30
+
+        async def done(i: discord.Interaction, v):
+            old = item.name
+            new = await self.cog.rename_item(self.ctx.guild, self.kind, item, v[0], f"rename by {i.user} ({i.user.id})")
+            await i.response.send_message(ok(f"Renamed **{old}** to **{new.name}**."), ephemeral=True)
+            self.items = [new if x.id == new.id else x for x in self.items]
+            self.text = self.text.replace(f":{old}:", f":{new.name}:").replace(f"**{old}**", f"**{new.name}**")
+            if self.message:
+                try:
+                    await self.message.edit(content=self.text)
+                except discord.HTTPException:
+                    pass
+        return FieldsModal(f"Rename {self.kind}"[:45], [("New name", item.name, hi, True)], done)
 
     async def on_timeout(self):
         if self.message:
@@ -283,6 +322,35 @@ class Expressions(commands.Cog):
         self.last.pop((ctx.guild.id, kind), None) if undo else None
         await ctx.reply(ok(f"{'Undone. ' if undo else ''}Removed **{n}** {kind}{'s' if n != 1 else ''}."), mention_author=False)
 
+    async def rename_item(self, guild: discord.Guild, kind: str, item, new_name: str, reason: str):
+        """Rename one emoji / sticker of this server. Returns the updated object."""
+        name = safe_name(new_name.strip().strip(":"), 2, 32 if kind == "emoji" else 30)
+        try:
+            new = await item.edit(name=name, reason=reason)
+        except discord.Forbidden:
+            raise VCError("I need **Manage Expressions** to rename that.")
+        except discord.HTTPException as e:
+            raise VCError(f"Discord said no: {e.text or 'rename failed'}")
+        for key in ((guild.id, kind),):                                # keep the "last added" list ($ae undo) pointing at the new object
+            self.last[key] = [new if x.id == item.id else x for x in self.last.get(key, [])]
+        return new if new is not None else item
+
+    async def text_rename(self, ctx: commands.Context, kind: str, words: str):
+        """$ae rename <:emoji:> or name <new name>   |   $as rename <sticker name> <new name>"""
+        pool = ctx.guild.emojis if kind == "emoji" else ctx.guild.stickers
+        cmd = "ae" if kind == "emoji" else "as"
+        parts = words.split()
+        usage = f"Use `${cmd} rename " + ("<emoji or name> <new name>`" if kind == "emoji" else "<sticker name> <new name>`")
+        if len(parts) < 2:
+            raise VCError(usage)
+        m = CUSTOM.fullmatch(parts[0])
+        target = next((e for e in pool if (e.id == int(m.group(3)) if m else e.name.lower() == parts[0].lower().strip(":"))), None)
+        if target is None:
+            raise VCError(f"That {kind} isn't in this server.\n{usage}")
+        old = target.name
+        new = await self.rename_item(ctx.guild, kind, target, parts[1], f"${cmd} rename by {ctx.author} ({ctx.author.id})")
+        await ctx.reply(ok(f"Renamed **{old}** to **{new.name}**" + (f" {new}" if kind == "emoji" else "") + "."), mention_author=False)
+
     @staticmethod
     def check_perms(ctx: commands.Context):
         me = ctx.guild.me.guild_permissions
@@ -299,6 +367,8 @@ class Expressions(commands.Cog):
         head, _, rest = text.strip().partition(" ")
         if head.lower() in ("undo", "remove", "delete", "del"):
             return await self.text_remove(ctx, "emoji", rest, undo=head.lower() == "undo")
+        if head.lower() in ("rename", "rn"):
+            return await self.text_rename(ctx, "emoji", rest)
         found: dict[int, tuple[str, bool]] = {}              # id -> (name, animated)
         sources = [text]
         msg = await replied_message(ctx)
@@ -388,6 +458,8 @@ class Expressions(commands.Cog):
         head, _, rest = name.strip().partition(" ")
         if head.lower() in ("undo", "remove", "delete", "del"):
             return await self.text_remove(ctx, "sticker", rest, undo=head.lower() == "undo")
+        if head.lower() in ("rename", "rn"):
+            return await self.text_rename(ctx, "sticker", rest)
         msg = await replied_message(ctx)
         stickers = list(msg.stickers) if msg is not None else []
         stickers = stickers or list(ctx.message.stickers)
