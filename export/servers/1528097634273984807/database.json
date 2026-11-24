@@ -1,0 +1,38 @@
+{
+ "server_id": 1528097634273984807,
+ "users": [
+  {
+   "guild_id": 1528097634273984807,
+   "user_id": 1354716937741140072,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1528097634273984807,
+   "user_id": 1432257270527561839,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1528097634273984807,
+   "user_id": 1502683350316351549,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  }
+ ],
+ "channel_progress": [],
+ "badges": [],
+ "shop_items": [],
+ "purchases": [],
+ "settings": [],
+ "point_log": []
+}

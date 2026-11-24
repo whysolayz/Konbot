@@ -35,7 +35,7 @@
 
 - **role**: *none*
 - **users**:
-  - `1554945105981603880` → Mexzon (mexzon_0205)
+  - `1554945105981603880` → Kartik (mexzon_0205)
   - `829689719633215498` → Vortex (_vortextheog)
 
 ### Aliases
@@ -43,6 +43,14 @@
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
 
 - *not configured*
 
@@ -96,7 +104,7 @@
 - **noprefix**:
   - **role**: *none*
   - **users**:
-    - `1554945105981603880` → Mexzon (mexzon_0205)
+    - `1554945105981603880` → Kartik (mexzon_0205)
     - `829689719633215498` → Vortex (_vortextheog)
 
 ### Players

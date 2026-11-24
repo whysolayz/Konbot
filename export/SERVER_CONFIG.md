@@ -53,6 +53,14 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 - *not configured*
 
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
+
+- *not configured*
+
 ### Autoreact
 
 - *not configured*
@@ -151,6 +159,71 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 - *not configured*
 
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
+
+- **counter**: 0
+- **templates**:
+  - **discord nitro**:
+    - **name**: Discord Nitro
+    - **saved**: 1795484561 (2026-11-24 01:42 UTC)
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Discord Nitro
+      - **description**: Click the button below to enter!
+      - **winners**: 1
+      - **duration**: 60
+      - **color**: 16758834
+      - **image**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574600939871014972/giveaway_image_1154838258027606117.png?ex=6b063ce6&is=6b04eb66&hm=85b6b232c36047b4d3a3d857e50d5742fbd8ccf57ce14744a87754eb69e3e414&
+        - **ref**:
+          - **c**: `1572663742091632681` → #🌼︲kon_image
+          - **m**: `1574600940089254029`
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574600978500550676/giveaway_thumbnail_1154838258027606117.gif?ex=6b063cef&is=6b04eb6f&hm=912f1dea7b40ed2654cdbe493fd1dc07e4ccb672c3a494a24883959263f3d60e&
+        - **ref**:
+          - **c**: `1572663742091632681` → #🌼︲kon_image
+          - **m**: `1574600978706202664`
+      - **channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+      - **emojis**: *(empty)*
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<:giveaway:1543990569901236294>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: `<a:IND_AzyLsdDance:1573015221843529768>`
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: :Madira_spy:
+          - **show**: yes
+      - **prize_role**:
+        - **role**: *none*
+        - **mode**: permanent
+        - **seconds**: 604800
+      - **points**: 0
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 0
+          - **exclude**: *(empty)*
+        - **invites**: 0
+        - **task**:
+          - **enabled**: yes
+          - **phrase**: Happy Birthday
+          - **target**: `650534818517483526` → Lazy (whysolayz)
+          - **channel**: *none*
+- **active**: *(empty)*
+- **ended**: *(empty)*
+- **temp_roles**: *(empty)*
+- **last**: *none*
+
 ### Autoreact
 
 - *not configured*
@@ -207,6 +280,65 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 ### EVERYTHING saved for this server (raw settings, nothing left out)
 
+- **giveaway**:
+  - **counter**: 0
+  - **templates**:
+    - **discord nitro**:
+      - **name**: Discord Nitro
+      - **saved**: 1795484561 (2026-11-24 01:42 UTC)
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Discord Nitro
+        - **description**: Click the button below to enter!
+        - **winners**: 1
+        - **duration**: 60
+        - **color**: 16758834
+        - **image**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574600939871014972/giveaway_image_1154838258027606117.png?ex=6b063ce6&is=6b04eb66&hm=85b6b232c36047b4d3a3d857e50d5742fbd8ccf57ce14744a87754eb69e3e414&
+          - **ref**:
+            - **c**: `1572663742091632681` → #🌼︲kon_image
+            - **m**: `1574600940089254029`
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574600978500550676/giveaway_thumbnail_1154838258027606117.gif?ex=6b063cef&is=6b04eb6f&hm=912f1dea7b40ed2654cdbe493fd1dc07e4ccb672c3a494a24883959263f3d60e&
+          - **ref**:
+            - **c**: `1572663742091632681` → #🌼︲kon_image
+            - **m**: `1574600978706202664`
+        - **channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+        - **emojis**: *(empty)*
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<:giveaway:1543990569901236294>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: `<a:IND_AzyLsdDance:1573015221843529768>`
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: :Madira_spy:
+            - **show**: yes
+        - **prize_role**:
+          - **role**: *none*
+          - **mode**: permanent
+          - **seconds**: 604800
+        - **points**: 0
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 0
+            - **exclude**: *(empty)*
+          - **invites**: 0
+          - **task**:
+            - **enabled**: yes
+            - **phrase**: Happy Birthday
+            - **target**: `650534818517483526` → Lazy (whysolayz)
+            - **channel**: *none*
+  - **active**: *(empty)*
+  - **ended**: *(empty)*
+  - **temp_roles**: *(empty)*
+  - **last**: *none*
 - **imagehost**:
   - **channel**: *none*
   - **items**:
@@ -302,11 +434,11 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
       - **vc_need_muted**: no
       - **vc_disabled_channels**: *(empty)*
 - **active_custom_vcs**:
-  - **1574157917777690714** → #whysolayz:
-    - **owner**: `650534818517483526` → Lazy (whysolayz)
+  - **1574573744746139838** → #whysolayz:
+    - **owner**: `650534818517483526` → Aalsi (whysolayz)
     - **banned**: *(empty)*
     - **block_drags**: no
-    - **created**: 1795378894 (2026-11-22 20:21 UTC)
+    - **created**: 1795478035 (2026-11-23 23:53 UTC)
 
 ### Custom VC protection ($customvc config)
 
@@ -382,7 +514,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **guild_id**: `1488690726870057165` → server Dark ︲ Spider's Web
     - **role_id**: `1570572186958172180` → @ゝFool ⌝
     - **price**: 250
-    - **stock**: 4
+    - **stock**: 2
     - **emoji**: `<:Kartik_what:1570284014797852802>`
     - **position**: 1
   - #2
@@ -406,7 +538,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **guild_id**: `1488690726870057165` → server Dark ︲ Spider's Web
     - **role_id**: `1488691206891503758` → @ゝNot Bull ⌝
     - **price**: 500
-    - **stock**: 3
+    - **stock**: 2
     - **emoji**: `<:cute:1569605481364852909>`
     - **position**: 4
   - #5
@@ -438,9 +570,8 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 - **role**: `1569999856171229255` → @︲No Prefix 」
 - **users**:
-  - `1262248731353546763` → [AFK]We Know Cuz It's Fact...... (anshumanfr_)
   - `1418875905085935637` → 🜲 SeNvaTor 'メD | 神 (senvator.)
-  - `650534818517483526` → Lazy (whysolayz)
+  - `650534818517483526` → Aalsi (whysolayz)
   - `1473667943186305172` → [T MOD] Viru (thviru)
 
 ### Aliases
@@ -470,6 +601,185 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 - **1488691231771853098** → @︲Talented Artist」:
   - **role**: `1488691231771853098` → @︲Talented Artist」
   - **allowed**: *none*
+- **tmod**:
+  - **role**: `1488691194220384338` → @ゝTrial Mod ⌝
+  - **allowed**: *none*
+- **staff**:
+  - **role**: `1488691195847643227` → @ゝStaff Team ⌝
+  - **allowed**: *none*
+
+### Tickets ($ticket)
+
+- **panels**:
+  - **main**:
+    - **name**: Main panel
+    - **panel_channel**: `1488691478841528410` → #🪨︲tickets⌝
+    - **panel_message**: `1573885746706776161`
+    - **panel**:
+      - **title**: __Contact Support Team__
+      - **color**: 3066993
+      - **placeholder**: Select a topic...
+      - **banner**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1573875037528784936`
+      - **description**: `✉️ **Create A Ticket**- if you need support or have any important queries
+
+<:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**
+
+<:Senpai_Information:1517499045117952060> __**Ticket For Support**__ :-
+- Create Ticket For General Support
+[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]
+- Creating a ticket to be staff is strictly prohibited.
+- Tickets for fun would result in 2days mute / ban
+- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike or a serious action which will be taken by our Support Team.
+- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. So, please don't create a ticket regarding this topic.
+
+<:Spider_partner:1572638598585655296> __**Ticket for Partnership/Sponsors**__ :-
+- Create a Ticket If You Got Any Brand Deals Or Sponsor
+- Kindly Mention The Basic Details And Have Patience.
+- The Rates For Brand Deals Would Be Discussed In Ticket
+- Leaking The Information To Anyone Would Lead To Ban.
+
+<:InShot_20261122_130804475:1573966358889107600>__**Currency Loan**__ :-
+- Loan Currency with intrest.
+- follow all the rules.
+- must repay according to the rules.
+
+
+__select category from the dropdown menu to contact us__`
+      - **_url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+    - **welcome**:
+      - **title**: Help/support
+      - **description**: `<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**
+> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon.`
+    - **support_roles**:
+      - `1488691195847643227` → @ゝStaff Team ⌝
+    - **admin_roles**:
+      - `1488691182308692040` → @ゝDark Executive Team ⌝
+    - **open_category**: *none*
+    - **logs**:
+      - **opened**: `1570531039187566715` → #︲🛠・opened」
+      - **closed**: `1570531086939848776` → #︲🛠・closed」
+      - **transcript**: `1570531130938101883` → #︲🛠・transcript」
+    - **categories**:
+      - #1
+        - **id**: dsw-support
+        - **name**: General Support
+        - **emoji**: `<:Senpai_Information:1517499045117952060>`
+        - **description**: Reports, bugs, role claiming and more
+        - **question**: Kindly Mention your issue!
+        - **parent**: `1488691351246868630` → #╰ •〢General Tickets
+        - **ping_roles**:
+          - `1488691195847643227` → @ゝStaff Team ⌝
+      - #2
+        - **id**: dsw-partner
+        - **name**: Partnership/Sponsors
+        - **emoji**: `<:Spider_partner:1572638598585655296>`
+        - **description**: Brand deals and sponsors
+        - **question**: Kindly mention the basic details of your deal!
+        - **parent**: `1488691352051912706` → #╰ •〢Partnership Tickets
+        - **ping_roles**:
+          - `1488691182308692040` → @ゝDark Executive Team ⌝
+      - #3
+        - **id**: df8fd6b2
+        - **name**: Currency Loan
+        - **emoji**: `<:InShot_20261122_130804475:1573966358889107600>`
+        - **description**: *none*
+        - **question**: Kindly mention the amount
+        - **parent**: `1488691353503404204` → #╰ •〢Loan
+        - **ping_roles**:
+          - `1488691182308692040` → @ゝDark Executive Team ⌝
+    - **max_open**: 1
+    - **name_format**: ticket-{user}
+    - **opener_can_close**: no
+- **counter**: 13
+- **blacklist**: *(empty)*
+- **tickets**:
+  - **1573971039388434442** → #ticket-nontastic_player:
+    - **num**: 5
+    - **channel**: `1573971039388434442` → #ticket-nontastic_player
+    - **name**: ticket-nontastic_player
+    - **category**: df8fd6b2
+    - **category_name**: Currency Loan
+    - **question**: Kindly mention the amount
+    - **opener**: `1028298097664733215` → Nope {>.<} (nontastic_player)
+    - **created**: 1795334339 (2026-11-22 07:58 UTC)
+    - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **claimed_at**: 1795334345 (2026-11-22 07:59 UTC)
+    - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **first_reply_at**: 1795334344 (2026-11-22 07:59 UTC)
+    - **answer**: Jitna bhi mil jaye
+    - **log**:
+      - `1570531039187566715` → #︲🛠・opened」
+      - `1573971041728991373`
+    - **closing**: no
+    - **welcome_msg**: `1573971040185356310`
+  - **1573974490554044548** → #ticket-luffy_07_09:
+    - **num**: 6
+    - **channel**: `1573974490554044548` → #ticket-luffy_07_09
+    - **name**: ticket-luffy_07_09
+    - **category**: df8fd6b2
+    - **category_name**: Currency Loan
+    - **question**: Kindly mention the amount
+    - **opener**: `1513085640642920458` → Luffy !¡ (luffy_07_09)
+    - **created**: 1795335162 (2026-11-22 08:12 UTC)
+    - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **claimed_at**: 1795335167 (2026-11-22 08:12 UTC)
+    - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **first_reply_at**: 1795335170 (2026-11-22 08:12 UTC)
+    - **answer**: 500k
+    - **log**:
+      - `1570531039187566715` → #︲🛠・opened」
+      - `1573974493007839333`
+    - **closing**: no
+    - **welcome_msg**: `1573974491669856328`
+  - **1574458190815559732** → #ticket-yourzoru:
+    - **num**: 12
+    - **channel**: `1574458190815559732` → #ticket-yourzoru
+    - **name**: ticket-yourzoru
+    - **category**: df8fd6b2
+    - **category_name**: Currency Loan
+    - **question**: Kindly mention the amount
+    - **opener**: `1407327765933461606` → !ꜱᴇɴᴘᴀɪ_xᴅ (yourzoru)
+    - **created**: 1795450485 (2026-11-23 16:14 UTC)
+    - **claimed_by**: `1492686665142239372` → [T MOD] Dark buddy (senpaispider_1_)
+    - **claimed_at**: 1795484312 (2026-11-24 01:38 UTC)
+    - **first_reply_by**: `1554945105981603880` → [H MOD] Kartik (mexzon_0205)
+    - **first_reply_at**: 1795450512 (2026-11-23 16:15 UTC)
+    - **answer**: 10m ka loan demdo
+    - **log**:
+      - `1570531039187566715` → #︲🛠・opened」
+      - `1574458194493972553`
+    - **closing**: no
+    - **welcome_msg**: `1574458192396689620`
+  - **1574463439118532689** → #ticket-wh0_is_vexy:
+    - **num**: 13
+    - **channel**: `1574463439118532689` → #ticket-wh0_is_vexy
+    - **name**: ticket-wh0_is_vexy
+    - **category**: dsw-support
+    - **category_name**: General Support
+    - **question**: Kindly Mention your issue!
+    - **opener**: `1455775148962746411` → $ VEXY (wh0_is_vexy)
+    - **created**: 1795451737 (2026-11-23 16:35 UTC)
+    - **claimed_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+    - **claimed_at**: 1795451811 (2026-11-23 16:36 UTC)
+    - **first_reply_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+    - **first_reply_at**: 1795451826 (2026-11-23 16:37 UTC)
+    - **answer**: I wanna apply for admin or staff managements
+    - **log**:
+      - `1570531039187566715` → #︲🛠・opened」
+      - `1574463448887328848`
+    - **closing**: no
+    - **welcome_msg**: `1574463442205548566`
+- **stats**:
+  - **opened**: 13
+  - **closed**: 9
+
+### Giveaways ($giveaway)
+
+- *not configured*
 
 ### Autoreact
 
@@ -480,25 +790,25 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
   - `1488691206891503758` → @ゝNot Bull ⌝
   - `1488691206375608330` → @ゝLoop ⌝
 - **users**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - `<:darkManager:1573139364727230675>`
   - **1425991437396217960** → TheSky (sky_bauni):
     - `<a:Nova_Quenn:1572638654252187669>`
-  - **1548153523709943863** → 🜲 | Aizal (meerab_76):
+  - **1548153523709943863**:
     - `<a:Madira_eating:1570284028093792286>`
   - **743845224287043665** → !                  Whoknoe (whoknow_008):
     - `<a:Cat:1570284005067198464>`
-  - **1086203964300730449** → [T Mod] Caliber (arionx_774):
+  - **1086203964300730449** → [AFK][T Mod] Caliber (arionx_774):
     - `<a:Oliviaaa_nooooo:1570284034532188210>`
   - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
     - `<:LazyCafeCat:1570284011136491742>`
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - `<:cute:1569605481364852909>`
 
 ### Aura ($aura config)
 
 - **members**:
-  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_): 99
+  - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_): 99
 - **roles**: *(empty)*
 - **random**: yes
 - **disabled**: *(empty)*
@@ -517,7 +827,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 ### Game stats (TimeTap, Handfight)
 
 - **timetap**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 14
@@ -553,7 +863,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **best_clean**: 6
     - **best_ms**: 1079
     - **train_best_avg**: 1223
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - **games**: 1
     - **false_starts**: 1
     - **taps**: 10
@@ -565,7 +875,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **best_clean**: 9
     - **best_ms**: 1088
     - **train_best_avg**: 1441
-  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+  - **1513085640642920458** → Luffy !¡ (luffy_07_09):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 13
@@ -588,7 +898,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **train_runs**: 0
     - **best_clean**: 0
 - **handfight**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 6
     - **titles**: 4
     - **rounds_won**: 9
@@ -621,7 +931,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 2
     - **paper**: 4
     - **scissors**: 1
-  - **1554945105981603880** → [H MOD] Mexzon (mexzon_0205):
+  - **1554945105981603880** → [H MOD] Kartik (mexzon_0205):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -643,7 +953,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 3
     - **paper**: 2
     - **scissors**: 1
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 1
@@ -654,7 +964,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 3
     - **paper**: 3
     - **scissors**: 4
-  - **1433650059043405959** → none (billu2368):
+  - **1433650059043405959** → rizzler is goat (billu2368):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 4
@@ -676,7 +986,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 3
     - **paper**: 1
     - **scissors**: 2
-  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_):
+  - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -687,7 +997,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 1
     - **paper**: 1
     - **scissors**: 0
-  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+  - **1513085640642920458** → Luffy !¡ (luffy_07_09):
     - **games**: 1
     - **titles**: 1
     - **rounds_won**: 6
@@ -734,7 +1044,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **url**: https://cdn.discordapp.com/attachments/1572381729233051669/1572382140719566910/img-1.jpg?ex=6afe2a7b&is=6afcd8fb&hm=7dc1873b7f51d216fcd45fa9d66a08d3670041fe7dcdf081e0dd6ef0b57cb025&
     - **t**: jpg
     - **s**: 99697
-    - **by**: `650534818517483526` → Lazy (whysolayz)
+    - **by**: `650534818517483526` → Aalsi (whysolayz)
     - **ts**: 1794955515
 
 ### Disabled commands
@@ -763,8 +1073,8 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 ### Extra owners ($konextra - this server only)
 
 - #1
-  - **id**: `1262248731353546763` → [AFK]We Know Cuz It's Fact...... (anshumanfr_)
-  - **name**: [AFK]We Know Cuz It's Fact...... (anshumanfr_)
+  - **id**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+  - **name**: We Know Cuz It's Fact...... (anshumanfr_)
   - **found**: yes
 - #2
   - **id**: `1154489620499800127` → Dark Ojas (darkojas)
@@ -795,19 +1105,14 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **since**: 1795307000 (2026-11-22 00:23 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 1
-  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_):
-    - **reason**: ok
-    - **since**: 1795370112 (2026-11-22 17:55 UTC)
+  - **1414153115602518067** → 🜲 Shaitan Ladka ツ (shaitan_ladka):
+    - **reason**: AFK
+    - **since**: 1795454451 (2026-11-23 17:20 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 0
-  - **1425991437396217960** → TheSky (sky_bauni):
-    - **reason**: gn
-    - **since**: 1795376559 (2026-11-22 19:42 UTC)
-    - **old_nick**: *none*
-    - **mentions_waiting**: 1
   - **1538573910839140575** → Patrick Badmosh (patrickbadmosh):
-    - **reason**: `paper h acha jaaye bas <:Cat_meow:1569605495222964265>`
-    - **since**: 1795379486 (2026-11-22 20:31 UTC)
+    - **reason**: sleep
+    - **since**: 1795457916 (2026-11-23 18:18 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 0
 
@@ -816,7 +1121,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 - **aliases**: *(empty)*
 - **aura**:
   - **members**:
-    - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_): 99
+    - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_): 99
   - **roles**: *(empty)*
   - **random**: yes
   - **disabled**: *(empty)*
@@ -828,19 +1133,19 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - `1488691206891503758` → @ゝNot Bull ⌝
     - `1488691206375608330` → @ゝLoop ⌝
   - **users**:
-    - **650534818517483526** → Lazy (whysolayz):
+    - **650534818517483526** → Aalsi (whysolayz):
       - `<:darkManager:1573139364727230675>`
     - **1425991437396217960** → TheSky (sky_bauni):
       - `<a:Nova_Quenn:1572638654252187669>`
-    - **1548153523709943863** → 🜲 | Aizal (meerab_76):
+    - **1548153523709943863**:
       - `<a:Madira_eating:1570284028093792286>`
     - **743845224287043665** → !                  Whoknoe (whoknow_008):
       - `<a:Cat:1570284005067198464>`
-    - **1086203964300730449** → [T Mod] Caliber (arionx_774):
+    - **1086203964300730449** → [AFK][T Mod] Caliber (arionx_774):
       - `<a:Oliviaaa_nooooo:1570284034532188210>`
     - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
       - `<:LazyCafeCat:1570284011136491742>`
-    - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+    - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
       - `<:cute:1569605481364852909>`
 - **cmd_disable**:
   - **rules**:
@@ -866,7 +1171,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 - **handfight**:
   - **channel**: `1572828244758241330` → #🎄︲handfight⌝
 - **handfight_stats**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 6
     - **titles**: 4
     - **rounds_won**: 9
@@ -899,7 +1204,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 2
     - **paper**: 4
     - **scissors**: 1
-  - **1554945105981603880** → [H MOD] Mexzon (mexzon_0205):
+  - **1554945105981603880** → [H MOD] Kartik (mexzon_0205):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -921,7 +1226,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 3
     - **paper**: 2
     - **scissors**: 1
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 1
@@ -932,7 +1237,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 3
     - **paper**: 3
     - **scissors**: 4
-  - **1433650059043405959** → none (billu2368):
+  - **1433650059043405959** → rizzler is goat (billu2368):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 4
@@ -954,7 +1259,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 3
     - **paper**: 1
     - **scissors**: 2
-  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_):
+  - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -965,7 +1270,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **rock**: 1
     - **paper**: 1
     - **scissors**: 0
-  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+  - **1513085640642920458** → Luffy !¡ (luffy_07_09):
     - **games**: 1
     - **titles**: 1
     - **rounds_won**: 6
@@ -985,13 +1290,13 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
       - **url**: https://cdn.discordapp.com/attachments/1572381729233051669/1572382140719566910/img-1.jpg?ex=6afe2a7b&is=6afcd8fb&hm=7dc1873b7f51d216fcd45fa9d66a08d3670041fe7dcdf081e0dd6ef0b57cb025&
       - **t**: jpg
       - **s**: 99697
-      - **by**: `650534818517483526` → Lazy (whysolayz)
+      - **by**: `650534818517483526` → Aalsi (whysolayz)
       - **ts**: 1794955515
 - **ludo**:
   - **channel**: `1573551510984462436` → *not found (deleted / bot not in server)*
 - **ludo_games**: *(empty)*
 - **ludo_stats**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 1
     - **wins**: 1
     - **kills**: 0
@@ -1002,9 +1307,8 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 - **noprefix**:
   - **role**: `1569999856171229255` → @︲No Prefix 」
   - **users**:
-    - `1262248731353546763` → [AFK]We Know Cuz It's Fact...... (anshumanfr_)
     - `1418875905085935637` → 🜲 SeNvaTor 'メD | 神 (senvator.)
-    - `650534818517483526` → Lazy (whysolayz)
+    - `650534818517483526` → Aalsi (whysolayz)
     - `1473667943186305172` → [T MOD] Viru (thviru)
 - **points**:
   - **chat_enabled**: yes
@@ -1046,21 +1350,30 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
   - **1488691231771853098** → @︲Talented Artist」:
     - **role**: `1488691231771853098` → @︲Talented Artist」
     - **allowed**: *none*
+  - **tmod**:
+    - **role**: `1488691194220384338` → @ゝTrial Mod ⌝
+    - **allowed**: *none*
+  - **staff**:
+    - **role**: `1488691195847643227` → @ゝStaff Team ⌝
+    - **allowed**: *none*
 - **shop**:
   - **per_page**: 5
 - **tickets**:
-  - **panel_channel**: `1488691478841528410` → #🪨︲tickets⌝
-  - **panel_message**: `1573885746706776161`
-  - **panel**:
-    - **title**: __Contact Support Team__
-    - **color**: 3066993
-    - **placeholder**: Select a topic...
-    - **banner**:
-      - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
-      - **ref**:
-        - **c**: `1572663742091632681`
-        - **m**: `1573875037528784936`
-    - **description**: `✉️ **Create A Ticket**- if you need support or have any important queries
+  - **panels**:
+    - **main**:
+      - **name**: Main panel
+      - **panel_channel**: `1488691478841528410` → #🪨︲tickets⌝
+      - **panel_message**: `1573885746706776161`
+      - **panel**:
+        - **title**: __Contact Support Team__
+        - **color**: 3066993
+        - **placeholder**: Select a topic...
+        - **banner**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1573875037528784936`
+        - **description**: `✉️ **Create A Ticket**- if you need support or have any important queries
 
 <:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**
 
@@ -1085,50 +1398,52 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 
 __select category from the dropdown menu to contact us__`
-    - **_url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
-  - **welcome**:
-    - **title**: Help/support
-    - **description**: `<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**
+        - **_url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+      - **welcome**:
+        - **title**: Help/support
+        - **description**: `<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**
 > Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon.`
-  - **support_roles**: *(empty)*
-  - **admin_roles**: *(empty)*
-  - **open_category**: *none*
-  - **logs**:
-    - **opened**: `1570531039187566715` → #︲🛠・opened」
-    - **closed**: `1570531086939848776` → #︲🛠・closed」
-    - **transcript**: `1570531130938101883` → #︲🛠・transcript」
-  - **categories**:
-    - #1
-      - **id**: dsw-support
-      - **name**: General Support
-      - **emoji**: `<:Senpai_Information:1517499045117952060>`
-      - **description**: Reports, bugs, role claiming and more
-      - **question**: Kindly Mention your issue!
-      - **parent**: `1488691351246868630` → #╰ •〢General Tickets
-      - **ping_roles**:
+      - **support_roles**:
         - `1488691195847643227` → @ゝStaff Team ⌝
-    - #2
-      - **id**: dsw-partner
-      - **name**: Partnership/Sponsors
-      - **emoji**: `<:Spider_partner:1572638598585655296>`
-      - **description**: Brand deals and sponsors
-      - **question**: Kindly mention the basic details of your deal!
-      - **parent**: `1488691352051912706` → #╰ •〢Partnership Tickets
-      - **ping_roles**:
+      - **admin_roles**:
         - `1488691182308692040` → @ゝDark Executive Team ⌝
-    - #3
-      - **id**: df8fd6b2
-      - **name**: Currency Loan
-      - **emoji**: `<:InShot_20261122_130804475:1573966358889107600>`
-      - **description**: *none*
-      - **question**: Kindly mention the amount
-      - **parent**: `1488691353503404204` → #╰ •〢Loan
-      - **ping_roles**:
-        - `1488691182308692040` → @ゝDark Executive Team ⌝
-  - **max_open**: 1
-  - **name_format**: ticket-{user}
-  - **opener_can_close**: no
-  - **counter**: 9
+      - **open_category**: *none*
+      - **logs**:
+        - **opened**: `1570531039187566715` → #︲🛠・opened」
+        - **closed**: `1570531086939848776` → #︲🛠・closed」
+        - **transcript**: `1570531130938101883` → #︲🛠・transcript」
+      - **categories**:
+        - #1
+          - **id**: dsw-support
+          - **name**: General Support
+          - **emoji**: `<:Senpai_Information:1517499045117952060>`
+          - **description**: Reports, bugs, role claiming and more
+          - **question**: Kindly Mention your issue!
+          - **parent**: `1488691351246868630` → #╰ •〢General Tickets
+          - **ping_roles**:
+            - `1488691195847643227` → @ゝStaff Team ⌝
+        - #2
+          - **id**: dsw-partner
+          - **name**: Partnership/Sponsors
+          - **emoji**: `<:Spider_partner:1572638598585655296>`
+          - **description**: Brand deals and sponsors
+          - **question**: Kindly mention the basic details of your deal!
+          - **parent**: `1488691352051912706` → #╰ •〢Partnership Tickets
+          - **ping_roles**:
+            - `1488691182308692040` → @ゝDark Executive Team ⌝
+        - #3
+          - **id**: df8fd6b2
+          - **name**: Currency Loan
+          - **emoji**: `<:InShot_20261122_130804475:1573966358889107600>`
+          - **description**: *none*
+          - **question**: Kindly mention the amount
+          - **parent**: `1488691353503404204` → #╰ •〢Loan
+          - **ping_roles**:
+            - `1488691182308692040` → @ゝDark Executive Team ⌝
+      - **max_open**: 1
+      - **name_format**: ticket-{user}
+      - **opener_can_close**: no
+  - **counter**: 13
   - **blacklist**: *(empty)*
   - **tickets**:
     - **1573971039388434442** → #ticket-nontastic_player:
@@ -1140,9 +1455,9 @@ __select category from the dropdown menu to contact us__`
       - **question**: Kindly mention the amount
       - **opener**: `1028298097664733215` → Nope {>.<} (nontastic_player)
       - **created**: 1795334339 (2026-11-22 07:58 UTC)
-      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+      - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
       - **claimed_at**: 1795334345 (2026-11-22 07:59 UTC)
-      - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
+      - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
       - **first_reply_at**: 1795334344 (2026-11-22 07:59 UTC)
       - **answer**: Jitna bhi mil jaye
       - **log**:
@@ -1157,11 +1472,11 @@ __select category from the dropdown menu to contact us__`
       - **category**: df8fd6b2
       - **category_name**: Currency Loan
       - **question**: Kindly mention the amount
-      - **opener**: `1513085640642920458` → MONKEY D LUFFY (luffy_07_09)
+      - **opener**: `1513085640642920458` → Luffy !¡ (luffy_07_09)
       - **created**: 1795335162 (2026-11-22 08:12 UTC)
-      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+      - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
       - **claimed_at**: 1795335167 (2026-11-22 08:12 UTC)
-      - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
+      - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
       - **first_reply_at**: 1795335170 (2026-11-22 08:12 UTC)
       - **answer**: 500k
       - **log**:
@@ -1169,15 +1484,53 @@ __select category from the dropdown menu to contact us__`
         - `1573974493007839333`
       - **closing**: no
       - **welcome_msg**: `1573974491669856328`
+    - **1574458190815559732** → #ticket-yourzoru:
+      - **num**: 12
+      - **channel**: `1574458190815559732` → #ticket-yourzoru
+      - **name**: ticket-yourzoru
+      - **category**: df8fd6b2
+      - **category_name**: Currency Loan
+      - **question**: Kindly mention the amount
+      - **opener**: `1407327765933461606` → !ꜱᴇɴᴘᴀɪ_xᴅ (yourzoru)
+      - **created**: 1795450485 (2026-11-23 16:14 UTC)
+      - **claimed_by**: `1492686665142239372` → [T MOD] Dark buddy (senpaispider_1_)
+      - **claimed_at**: 1795484312 (2026-11-24 01:38 UTC)
+      - **first_reply_by**: `1554945105981603880` → [H MOD] Kartik (mexzon_0205)
+      - **first_reply_at**: 1795450512 (2026-11-23 16:15 UTC)
+      - **answer**: 10m ka loan demdo
+      - **log**:
+        - `1570531039187566715` → #︲🛠・opened」
+        - `1574458194493972553`
+      - **closing**: no
+      - **welcome_msg**: `1574458192396689620`
+    - **1574463439118532689** → #ticket-wh0_is_vexy:
+      - **num**: 13
+      - **channel**: `1574463439118532689` → #ticket-wh0_is_vexy
+      - **name**: ticket-wh0_is_vexy
+      - **category**: dsw-support
+      - **category_name**: General Support
+      - **question**: Kindly Mention your issue!
+      - **opener**: `1455775148962746411` → $ VEXY (wh0_is_vexy)
+      - **created**: 1795451737 (2026-11-23 16:35 UTC)
+      - **claimed_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+      - **claimed_at**: 1795451811 (2026-11-23 16:36 UTC)
+      - **first_reply_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+      - **first_reply_at**: 1795451826 (2026-11-23 16:37 UTC)
+      - **answer**: I wanna apply for admin or staff managements
+      - **log**:
+        - `1570531039187566715` → #︲🛠・opened」
+        - `1574463448887328848`
+      - **closing**: no
+      - **welcome_msg**: `1574463442205548566`
   - **stats**:
-    - **opened**: 9
-    - **closed**: 7
+    - **opened**: 13
+    - **closed**: 9
 - **tictactoe**:
   - **channel**: `1572117193712209960` → #🎄︲tic_tac_toe⌝
 - **timetap**:
   - **channel**: `1572828188332007465` → #🎄︲timetap⌝
 - **timetap_stats**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 14
@@ -1213,7 +1566,7 @@ __select category from the dropdown menu to contact us__`
     - **best_clean**: 6
     - **best_ms**: 1079
     - **train_best_avg**: 1223
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - **games**: 1
     - **false_starts**: 1
     - **taps**: 10
@@ -1225,7 +1578,7 @@ __select category from the dropdown menu to contact us__`
     - **best_clean**: 9
     - **best_ms**: 1088
     - **train_best_avg**: 1441
-  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+  - **1513085640642920458** → Luffy !¡ (luffy_07_09):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 13
@@ -1273,7 +1626,7 @@ __select category from the dropdown menu to contact us__`
 
 ### Players
 
-- 157 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)
+- 159 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)
 
 ## OG-Bunny  (testing server)  (`1506692944604823696`)
 
@@ -1315,6 +1668,14 @@ __select category from the dropdown menu to contact us__`
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
 
 - *not configured*
 
@@ -1417,6 +1778,14 @@ __select category from the dropdown menu to contact us__`
 
 - *not configured*
 
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
+
+- *not configured*
+
 ### Autoreact
 
 - *not configured*
@@ -1472,7 +1841,111 @@ __select category from the dropdown menu to contact us__`
 
 ### Players
 
-- 34 players stored in `data/kon.db` (full list: `export/players_1524797937836621874.csv`)
+- 35 players stored in `data/kon.db` (full list: `export/players_1524797937836621874.csv`)
+
+## 𖹭.ִ𓂃 NorthHaven™ | Chill • Gaming • Events • Giveaways  (`1528097634273984807`)
+
+### Custom VC (join-to-create + control panel + live VCs)
+
+- **join_to_create_channel**: *none*
+- **interface_channel**: *none*
+- **interface_message_id**: *none*
+- **saved_setup (last known, survives channel deletion)**:
+  - **join_to_create**: *none*
+  - **interface**: *none*
+  - **panel_message_id**: *none*
+- **other_keys**: *(empty)*
+- **active_custom_vcs**: *(empty)*
+
+### Custom VC protection ($customvc config)
+
+- *not configured*
+
+### Self roles ($setsr / $editsr)
+
+- *not configured*
+
+### Points ($point config)
+
+- *not configured*
+
+### Point shop
+
+- **settings**: *none*
+- **items**: *(empty)*
+
+### No-prefix
+
+- *not configured*
+
+### Aliases
+
+- *not configured*
+
+### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
+
+- *not configured*
+
+### Autoreact
+
+- *not configured*
+
+### Aura ($aura config)
+
+- *not configured*
+
+### Tic Tac Toe channel
+
+- *not configured*
+
+### Game channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)
+
+- **tictactoe**: *none*
+- **blacktea**: *none*
+- **timetap**: *none*
+- **handfight**: *none*
+
+### Game stats (TimeTap, Handfight)
+
+- **timetap**: *none*
+- **handfight**: *none*
+
+### Webhook sender (name, avatar, embed, images)
+
+- *not configured*
+
+### Saved images ($tolink)
+
+- *not configured*
+
+### Disabled commands
+
+- *not configured*
+
+### Extra owners ($konextra - this server only)
+
+- *(empty)*
+
+### AFK
+
+- **tag_enabled**: yes
+- **users**: *(empty)*
+
+### EVERYTHING saved for this server (raw settings, nothing left out)
+
+- *not configured*
+
+### Players
+
+- 3 players stored in `data/kon.db` (full list: `export/players_1528097634273984807.csv`)
 
 ## Vortex's Empire | FREE REWARDS  (`1543872217920573493`)
 
@@ -1509,7 +1982,7 @@ __select category from the dropdown menu to contact us__`
 
 - **role**: *none*
 - **users**:
-  - `1554945105981603880` → Mexzon (mexzon_0205)
+  - `1554945105981603880` → Kartik (mexzon_0205)
   - `829689719633215498` → Vortex (_vortextheog)
 
 ### Aliases
@@ -1517,6 +1990,14 @@ __select category from the dropdown menu to contact us__`
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
 
 - *not configured*
 
@@ -1570,7 +2051,7 @@ __select category from the dropdown menu to contact us__`
 - **noprefix**:
   - **role**: *none*
   - **users**:
-    - `1554945105981603880` → Mexzon (mexzon_0205)
+    - `1554945105981603880` → Kartik (mexzon_0205)
     - `829689719633215498` → Vortex (_vortextheog)
 
 ### Players
@@ -1610,7 +2091,7 @@ __select category from the dropdown menu to contact us__`
   - #1
     - **id**: 8
     - **guild_id**: `1547650379448188999` → server The Blaze Nebula | Drag GW
-    - **role_id**: `1566249609846726758` → @2x luck
+    - **role_id**: `1566249609846726758` → *not found (deleted / bot not in server)*
     - **price**: 100
     - **stock**: 2
     - **emoji**: ☘️
@@ -1628,25 +2109,117 @@ __select category from the dropdown menu to contact us__`
 
 - **role**: *none*
 - **users**:
-  - `1385099857781329961` → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113)
+  - `1385099857781329961` → Alonefox (d3adb9y1113)
   - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
   - `1504536783898021908` → T-Mod | om pandey (om61006)
   - `1562817118641062029` → Raven (_raven.exe09)
   - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
   - `1519731963244580987` → Blaze zzz (btwkartikxz)
-  - `1340198074387267634` → TacticalShower (.mlx_rinn)
+  - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
   - `1554945105981603880` → Mexzon | Blaze (mexzon_0205)
   - `829689719633215498` → Vortex (_vortextheog)
   - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
   - `1554280108632842295` → .arnav.gg
   - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
-  - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
+  - `1543476735469691002` → [AFK] MOD | Batak Sir (ryomentheog.)
 
 ### Aliases
 
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- **panel_channel**: `1568343826425323692` → #⚒️〢staff-chat
+- **panel_message**: `1573917007349289031`
+- **panel**:
+  - **title**: Support Center
+  - **color**: 16758834
+  - **placeholder**: Choose a category...
+  - **banner**: *none*
+  - **description**: 🎫 NEED HELP? OPEN A TICKET!
+
+Facing an issue, need assistance, or wish to contact our staff team privately? Our support team is always ready to assist you!
+
+📌 HOW TO CREATE A TICKET
+
+Click the 🎫 Open Ticket button below and select the category that best describes your concern. Our relevant staff members will assist you as soon as possible.
+
+📂 TICKET CATEGORIES
+
+🛠️ Support — General assistance, queries, and server-related issues.
+
+🎉 Giveaway — Claim your giveaway rewards.
+
+🎁 Invite Reward — Claim rewards earned through inviting members.
+
+⚠️ TICKET RULES
+
+• Clearly explain your issue when opening a ticket.
+• Avoid spamming or repeatedly pinging staff members.
+• Provide relevant screenshots or evidence whenever necessary.
+• Open only one ticket per issue.
+• Do not misuse or abuse the ticket system.
+• Cooperate with staff members throughout the process.
+
+🔒 PRIVACY & CONFIDENTIALITY
+
+All tickets are private and accessible only to the ticket creator and authorized staff members.
+
+Please select the correct category to ensure faster assistance.
+
+💙 Thank you for being a part of our community!
+  - **_url**: *none*
+- **welcome**:
+  - **title**: Welcome to your ticket
+  - **description**: Hey {user}, thanks for reaching out about **{category}**!
+Tell us what is going on in as much detail as you can - a staff member will be with you shortly.
+- **support_roles**: *(empty)*
+- **admin_roles**: *(empty)*
+- **open_category**: *none*
+- **logs**:
+  - **opened**: `1573916489734693005` → #ticket-open
+  - **closed**: `1573916520676065400` → #ticket-close
+  - **transcript**: `1573916573553397770` → #ticket-transcript
+- **categories**:
+  - #1
+    - **id**: b1326796
+    - **name**: General Support
+    - **emoji**: 🛠️
+    - **description**: General assistance, queries, and server-related issues.
+    - **question**: *none*
+    - **parent**: `1568608614577348670` → #╰•॥ Support Tickets
+    - **ping_roles**: *(empty)*
+  - #2
+    - **id**: e14eb3f2
+    - **name**: Giveaway
+    - **emoji**: 🎉
+    - **description**: Claim your giveaway rewards.
+    - **question**: *none*
+    - **parent**: `1568608741652303942` → #╰•॥ GIVEAWAY TICKETS
+    - **ping_roles**: *(empty)*
+  - #3
+    - **id**: 3efeb3df
+    - **name**: Invite Rewards
+    - **emoji**: 🎁
+    - **description**: Claim rewards earned through inviting members.
+    - **question**: *none*
+    - **parent**: *none*
+    - **ping_roles**: *(empty)*
+- **max_open**: 1
+- **name_format**: ticket-{user}
+- **opener_can_close**: yes
+- **counter**: 0
+- **blacklist**: *(empty)*
+- **tickets**: *(empty)*
+- **stats**:
+  - **opened**: 0
+  - **closed**: 0
+
+### Giveaways ($giveaway)
 
 - *not configured*
 
@@ -1666,8 +2239,10 @@ __select category from the dropdown menu to contact us__`
     - `<a:disco:1572571259601031259>`
   - **1554945105981603880** → Mexzon | Blaze (mexzon_0205):
     - `<:nebula_hawww:1563397980332105730>`
-  - **1385099857781329961** → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113):
+  - **1385099857781329961** → Alonefox (d3adb9y1113):
     - `<:Cute_Cry:1549341301282185329>`
+  - **1433650059043405959** → MOD | RIZZLER (billu2368):
+    - `<:Nebula_cutie:1563397790627795025>`
 
 ### Aura ($aura config)
 
@@ -1708,7 +2283,12 @@ __select category from the dropdown menu to contact us__`
 ### AFK
 
 - **tag_enabled**: yes
-- **users**: *(empty)*
+- **users**:
+  - **1543476735469691002** → [AFK] MOD | Batak Sir (ryomentheog.):
+    - **reason**: 😔 soon
+    - **since**: 1795451396 (2026-11-23 16:29 UTC)
+    - **old_nick**: MOD | Batak Sir
+    - **mentions_waiting**: 1
 
 ### EVERYTHING saved for this server (raw settings, nothing left out)
 
@@ -1727,24 +2307,26 @@ __select category from the dropdown menu to contact us__`
       - `<a:disco:1572571259601031259>`
     - **1554945105981603880** → Mexzon | Blaze (mexzon_0205):
       - `<:nebula_hawww:1563397980332105730>`
-    - **1385099857781329961** → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113):
+    - **1385099857781329961** → Alonefox (d3adb9y1113):
       - `<:Cute_Cry:1549341301282185329>`
+    - **1433650059043405959** → MOD | RIZZLER (billu2368):
+      - `<:Nebula_cutie:1563397790627795025>`
 - **noprefix**:
   - **role**: *none*
   - **users**:
-    - `1385099857781329961` → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113)
+    - `1385099857781329961` → Alonefox (d3adb9y1113)
     - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
     - `1504536783898021908` → T-Mod | om pandey (om61006)
     - `1562817118641062029` → Raven (_raven.exe09)
     - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
     - `1519731963244580987` → Blaze zzz (btwkartikxz)
-    - `1340198074387267634` → TacticalShower (.mlx_rinn)
+    - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
     - `1554945105981603880` → Mexzon | Blaze (mexzon_0205)
     - `829689719633215498` → Vortex (_vortextheog)
     - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
     - `1554280108632842295` → .arnav.gg
     - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
-    - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
+    - `1543476735469691002` → [AFK] MOD | Batak Sir (ryomentheog.)
 - **tickets**:
   - **panel_channel**: `1568343826425323692` → #⚒️〢staff-chat
   - **panel_message**: `1573917007349289031`
@@ -1834,7 +2416,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 ### Players
 
-- 449 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
+- 456 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
 
 ## Soul of Nebula  (`1556044009661530124`)
 
@@ -1871,13 +2453,21 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 - **role**: *none*
 - **users**:
-  - `1554945105981603880` → Mexzon (mexzon_0205)
+  - `1554945105981603880` → Kartik (mexzon_0205)
 
 ### Aliases
 
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
 
 - *not configured*
 
@@ -1931,11 +2521,11 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 - **noprefix**:
   - **role**: *none*
   - **users**:
-    - `1554945105981603880` → Mexzon (mexzon_0205)
+    - `1554945105981603880` → Kartik (mexzon_0205)
 
 ### Players
 
-- 58 players stored in `data/kon.db` (full list: `export/players_1556044009661530124.csv`)
+- 64 players stored in `data/kon.db` (full list: `export/players_1556044009661530124.csv`)
 
 ## Dr4k3n Hangout  (`1562735431051903090`)
 
@@ -1977,6 +2567,14 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
 
 - *not configured*
 
@@ -2031,7 +2629,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 ### Players
 
-- 3 players stored in `data/kon.db` (full list: `export/players_1562735431051903090.csv`)
+- 5 players stored in `data/kon.db` (full list: `export/players_1562735431051903090.csv`)
 
 ## 𖹭.ִ𓂃Live In My Own  (`1564620144527806506`)
 
@@ -2125,6 +2723,14 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
 
 - *not configured*
 
@@ -2244,6 +2850,14 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 - *not configured*
 
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
+
+- *not configured*
+
 ### Autoreact
 
 - *not configured*
@@ -2337,6 +2951,14 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
 
 - *not configured*
 

@@ -1,18 +1,20 @@
-"""Giveaways - one panel (`$giveaway`) to build everything, saved templates, requirements and role / points prizes.
+"""Giveaways - an easy setup panel (`$giveaway`), a one-line quick start, templates, rules and role / points rewards.
 
-$giveaway                    the builder panel: title, prize, winners, time, emojis, colour, image, buttons, requirements
-$giveaway end [id]           end a running giveaway right now (reply to it, or give its message id / #number)
-$giveaway reroll [id] [n]    pick new winner(s) of an ended giveaway
-$giveaway cancel [id]        cancel a running giveaway (no winners)
-$giveaway list               running + recently ended giveaways
-$giveaway templates          saved templates (`$giveaway load <name>` opens the builder with one)
+$giveaway                      the setup panel:  1 Details (needed) · 2 Rules · 3 Rewards · 4 Style · Templates  ->  Start
+$giveaway 1h 1 Discord Nitro   QUICK START: <time> <winners> <prize> - starts right away in this channel (`$giveaway 30m 2w Steam key`)
+$giveaway help                 a short guide in plain words
+$giveaway end [id]             end a running giveaway right now (reply to it, or give its message id / #number)
+$giveaway reroll [id] [n]      pick new winner(s) of an ended giveaway
+$giveaway cancel [id]          cancel a running giveaway (no winners)
+$giveaway list                 running + recently ended giveaways
+$giveaway templates            saved templates (`$giveaway load <name>` opens the panel with one)
 
-PRIZE      text + optional ROLE reward (permanent or temporary - it is removed again by itself) + optional Kon points
-REQUIRE    role(s) · N messages (channels / categories can be excluded) · invite N people · "say X to @person"
-           Members can join any time, but only people who completed EVERYTHING when it ends can win ("no task = no reward").
-EMOJIS     every emoji and every button (label / emoji / colour) is editable. Type an emoji, `:name:` or just an emoji ID -
-           animated emojis work too (no Nitro needed).
-TEMPLATES  "Save template" keeps the whole giveaway (look, emojis, buttons, prize, requirements) - "Load template" brings it back.
+DETAILS    prize, winners, time, title, description
+RULES      role(s) · N messages (channels / categories can be skipped) · invite N people · "say X to @person"
+           Members can join any time, but only people who finished EVERY rule when it ends can win ("no task = no reward").
+REWARDS    optional ROLE (permanent or temporary - it is removed again by itself) + optional Kon points
+STYLE      ready-made emoji sets, colours, image / thumbnail, any single emoji, join / entries / progress buttons
+TEMPLATES  "Save" keeps the whole giveaway (details, rules, rewards, style) - "Load" brings it back.
 
 Everything is saved in kon.db (settings key "giveaway"), so it is part of every backup / `$backupload`.
 Buttons use fixed custom ids ("kon_gw:...") and are handled in on_interaction, so they keep working after a restart.
@@ -21,6 +23,7 @@ import asyncio
 import copy
 import datetime as dt
 import logging
+import re
 import time
 from typing import Optional
 
@@ -819,13 +822,63 @@ class Giveaway(commands.Cog):
             raise VCError("I couldn't find that giveaway. Reply to its message, or use its number / message id (`$giveaway list`).")
         return rec
 
+    async def quick_start(self, ctx: commands.Context, text: str):
+        """$giveaway 1h 1 Discord Nitro  ->  <time> <winners> <prize>"""
+        usage = (f"Quick start looks like `{PREFIX}giveaway 1h 1 Discord Nitro` - **time**, **winners**, **prize**.\n"
+                 f"Time: `30m` `2h` `1d` `1w` (no spaces). Winners: `1`, `3` or `3w`. Or use `{PREFIX}giveaway` for the full panel.")
+        parts = text.split(None, 2)
+        if len(parts) < 3:
+            raise VCError(usage)
+        secs = gl.parse_duration(parts[0])
+        wtxt = re.sub(r"(?i)w(inners?)?$", "", parts[1])
+        if secs is None or not gl.MIN_DURATION <= secs <= gl.MAX_DURATION or not wtxt.isdigit():
+            raise VCError(usage)
+        winners, prize = int(wtxt), parts[2].strip()
+        if not 1 <= winners <= gl.MAX_WINNERS:
+            raise VCError(f"Winners must be between 1 and {gl.MAX_WINNERS}.")
+        if len(prize) > 100:
+            raise VCError("The prize text can be 100 characters at most.")
+        cfg = gl.new_config()
+        cfg.update(prize=prize, winners=winners, duration=secs)
+        rec, msg = await self.post_giveaway(ctx.guild, ctx.channel, cfg, ctx.author.id)
+        await ctx.reply(ok(f"Giveaway **#{rec['n']}** started - ends <t:{int(rec['end'])}:R>.\n"
+                           f"-# Want rules, rewards or a different look next time? Use `{PREFIX}giveaway`."), mention_author=False)
+
     @commands.group(name="giveaway", aliases=["giveway", "gw", "gcreate"], invoke_without_command=True)
     @commands.guild_only()
     @kon_admin_gw()
-    async def giveaway(self, ctx: commands.Context):
-        """$giveaway - open the giveaway builder (prize, time, emojis, buttons, requirements, templates)."""
+    async def giveaway(self, ctx: commands.Context, *, quick: Optional[str] = None):
+        """$giveaway - open the setup panel. Or start fast: $giveaway 1h 1 Discord Nitro (time, winners, prize)."""
+        if quick:
+            return await self.quick_start(ctx, quick.strip())
         view = GiveawayBuilder(self, ctx.author, ctx.guild, ctx.channel)
         view.message = await ctx.reply(embeds=await view.embeds(), view=view, mention_author=False)
+
+    @giveaway.command(name="help", aliases=["guide", "how"])
+    @commands.guild_only()
+    @kon_admin_gw()
+    async def giveaway_help(self, ctx: commands.Context):
+        """$giveaway help - how giveaways work, in plain words."""
+        p = PREFIX
+        e = discord.Embed(color=BRAND, title=f"{I.s('gift')} Giveaways - quick guide")
+        e.add_field(name="Start one", inline=False, value=(
+            f"• `{p}giveaway` - the setup panel. Press **1 Details**, then **Start giveaway**. Steps 2-4 are optional.\n"
+            f"• `{p}giveaway 1h 1 Discord Nitro` - fastest way: **time**, **winners**, **prize**. It starts right here.\n"
+            f"• `{p}giveaway load <name>` - open the panel with a saved template."))
+        e.add_field(name="What the steps do", inline=False, value=(
+            "**1 Details** - prize, winners, time, title, description.\n"
+            "**2 Rules** - who can win: a role, N messages, N invites, or \"say this text\" (optionally to a person / in a channel).\n"
+            "**3 Rewards** - give winners a role (permanent or temporary) and / or Kon points.\n"
+            "**4 Style** - emoji set, colour, image, thumbnail, buttons.\n"
+            "**Templates** - save the whole giveaway and start it again later."))
+        e.add_field(name="How winners are picked", inline=False, value=(
+            "People join with the button. When time is up I pick **randomly** only from people who finished **every rule**. "
+            "Winners get a message, a DM (if their DMs are open) and the rewards."))
+        e.add_field(name="Manage", inline=False, value=(
+            f"• `{p}giveaway end` - end now · `{p}giveaway cancel` - cancel (no winners)\n"
+            f"• `{p}giveaway reroll [n]` - new winner(s) · `{p}giveaway list` - all giveaways\n"
+            "-# Reply to the giveaway message instead of typing its number. Ended giveaways also have a **Reroll** button."))
+        await ctx.reply(embed=e, mention_author=False)
 
     @giveaway.command(name="end", aliases=["stop"])
     @commands.guild_only()
@@ -901,9 +954,50 @@ class Giveaway(commands.Cog):
         view.message = await ctx.reply(embeds=await view.embeds(), view=view, mention_author=False)
 
 
-# ------------------------------------------------------------------ the builder panel
+# ------------------------------------------------------------------ the setup panel
+EMOJI_PACKS = {
+    "classic": ("Classic", {}),
+    "party": ("Party", {"title": "🎊", "prize": "🎁", "winners": "👑", "host": "🥳", "ends": "⏳", "req": "📜",
+                        "entries": "🎟️", "done": "✅", "todo": "❌", "ended": "🏁"}),
+    "gold": ("Gold", {"title": "✨", "prize": "💎", "winners": "🏆", "host": "👑", "ends": "⏰", "req": "📋",
+                      "entries": "🪙", "done": "✅", "todo": "❌", "ended": "🔒"}),
+    "hearts": ("Hearts", {"title": "💖", "prize": "🎁", "winners": "💝", "host": "💌", "ends": "🌸", "req": "📝",
+                          "entries": "💞", "done": "💚", "todo": "💔", "ended": "🔒"}),
+    "fire": ("Fire", {"title": "🔥", "prize": "💰", "winners": "🏆", "host": "😎", "ends": "⏰", "req": "📋",
+                      "entries": "👥", "done": "✅", "todo": "❌", "ended": "🔒"}),
+    "minimal": ("Minimal (almost no emojis)", {"title": "", "prize": "", "winners": "", "host": "", "ends": "", "req": "",
+                                               "entries": "", "done": "✅", "todo": "❌", "ended": ""}),
+}
+
+# slot key -> (name shown in the panel, where it appears)
+EMOJI_SLOTS = {
+    "title": ("Title", "next to the giveaway title"),
+    "prize": ("Prize", "in front of the prize line"),
+    "winners": ("Winners", "in front of the winners line"),
+    "host": ("Host", "in front of the host line"),
+    "ends": ("Time", "in front of the end time"),
+    "req": ("Rules heading", "above the list of rules"),
+    "entries": ("Entries", "in the entries info"),
+    "done": ("Rule finished", "tick next to a finished rule"),
+    "todo": ("Rule missing", "cross next to a missing rule"),
+    "ended": ("Ended", "when the giveaway is over"),
+}
+
+COLOURS = [("Gold", 0xFFB832), ("Blurple", 0x5865F2), ("Green", 0x57F287), ("Red", 0xED4245), ("Pink", 0xFF73FA),
+           ("Blue", 0x3498DB), ("Purple", 0x9B59B6), ("Orange", 0xE67E22), ("White", 0xF2F3F5)]
+BUTTON_COLOURS = [("Blurple", "primary"), ("Green", "success"), ("Grey", "secondary"), ("Red", "danger")]
+TIME_HELP = "30m · 2h · 1d · 1w"
+OFF_WORDS = ("no", "n", "off", "hide", "false", "0")
+
+
 class GiveawayBuilder(OwnedView):
-    """$giveaway - home -> (basic info | prize | requirements -> task | look & emojis | buttons | templates) -> Start."""
+    """$giveaway - one simple panel.  Home = 4 steps:  1 Details (needed)  ·  2 Rules  ·  3 Rewards  ·  4 Style  (+ Templates)  -> Start.
+
+    Pages: home | rules -> task | rewards | style -> emojis / buttons | templates.  "Back" always goes one step up.
+    """
+
+    PREVIEW_PAGES = {"home", "style", "emojis", "buttons"}
+    PARENT = {"task": "rules", "emojis": "style", "buttons": "style"}
 
     def __init__(self, cog: Giveaway, invoker: discord.Member, guild: discord.Guild, channel, cfg: Optional[dict] = None,
                  name: Optional[str] = None):
@@ -918,7 +1012,7 @@ class GiveawayBuilder(OwnedView):
         self.note = ""
         self.render()
 
-    # ----- small helpers
+    # ------------------------------------------------------------ small helpers
     @property
     def req(self) -> dict:
         return self.cfg["req"]
@@ -926,94 +1020,144 @@ class GiveawayBuilder(OwnedView):
     def chan(self, cid) -> str:
         return f"<#{cid}>" if cid else "*not set*"
 
-    async def norm(self, text: str, default: str = "") -> str:
-        """What was typed -> an emoji string. Empty = `default`, 'none' = no emoji."""
-        t = (text or "").strip()
-        if not t:
-            return default
-        if t.lower() in ("none", "off", "hide", "-"):
-            return ""
-        return await emojis.normalize(self.cog.bot, self.guild, t) or ""
+    def has_prize(self) -> bool:
+        return bool((self.cfg.get("prize") or "").strip())
 
     def prec(self) -> dict:
         return {"cfg": self.cfg, "host": self.host_id, "end": int(time.time() + int(self.cfg["duration"])),
                 "status": "active", "entries": [], "n": None}
 
-    # ----- embeds
+    def pack_name(self) -> str:
+        have = self.cfg.get("emojis") or {}
+        for _key, (name, pack) in EMOJI_PACKS.items():
+            if have == pack:
+                return name
+        return "Custom"
+
+    def colour_name(self) -> str:
+        c = int(self.cfg.get("color") or BRAND)
+        for name, val in COLOURS:
+            if val == c:
+                return name
+        return f"#{c:06X}"
+
+    def rules_short(self) -> str:
+        r, bits = self.req, []
+        if r.get("roles"):
+            bits.append(f"{len(r['roles'])} role{'s' if len(r['roles']) != 1 else ''}")
+        if (r.get("messages") or {}).get("count"):
+            bits.append(f"{int(r['messages']['count']):,} messages")
+        if r.get("invites"):
+            bits.append(f"{int(r['invites'])} invite{'s' if int(r['invites']) != 1 else ''}")
+        t = r.get("task") or {}
+        if t.get("enabled") and t.get("phrase"):
+            bits.append(f"say \"{t['phrase'][:25]}\"")
+        return " · ".join(bits) if bits else "none - everyone who joins can win"
+
+    def rewards_short(self) -> str:
+        pr, bits = self.cfg["prize_role"], []
+        role = self.guild.get_role(int(pr["role"])) if pr.get("role") else None
+        if role:
+            bits.append(f"role {role.mention} ({'temporary' if pr.get('mode') == 'temporary' else 'permanent'})")
+        if self.cfg.get("points"):
+            bits.append(f"{int(self.cfg['points']):,} points")
+        return " · ".join(bits) if bits else "none - the prize text only"
+
+    def style_short(self) -> str:
+        c = self.cfg
+        bits = [f"colour {self.colour_name()}", f"emojis: {self.pack_name()}"]
+        if c.get("image"):
+            bits.append("image")
+        if c.get("thumbnail"):
+            bits.append("thumbnail")
+        return " · ".join(bits)
+
+    # ------------------------------------------------------------ embeds
     async def embeds(self) -> list:
         note, self.note = self.note, ""
-        page = self.page_embed(note)
-        prev = self.cog.embed_for(self.guild, self.prec(), (self.cfg.get("image") or {}).get("url"),
-                                  (self.cfg.get("thumbnail") or {}).get("url"))
-        prev.set_author(name="Preview - this is how the giveaway will look")
-        return [page, prev]
-
-    def emoji_line(self) -> str:
-        return " ".join(f"{gl.emoji_of(self.cfg, k) or '·'}" for k in gl.EMOJI_FIELDS)
+        out = [self.page_embed(note)]
+        if self.page in self.PREVIEW_PAGES:
+            prev = self.cog.embed_for(self.guild, self.prec(), (self.cfg.get("image") or {}).get("url"),
+                                      (self.cfg.get("thumbnail") or {}).get("url"))
+            prev.set_author(name="Preview - this is how the giveaway will look")
+            out.append(prev)
+        return out
 
     def page_embed(self, note: str) -> discord.Embed:
         c, p = self.cfg, self.page
-        if p == "prize":
-            pr = c["prize_role"]
-            role = self.guild.get_role(int(pr["role"])) if pr.get("role") else None
-            e = discord.Embed(color=BRAND, title=f"{I.s('gift')} Prize & rewards", description=(
-                "Winners can get a **role** (permanent, or temporary - I take it back by myself) and / or **Kon points**. "
-                "The prize text itself is set in **Basic info**.\n\n"
-                f"**Role:** {role.mention if role else '*none*'}"
-                + (f" · **{'Permanent' if pr.get('mode') != 'temporary' else 'Temporary - ' + gl.fmt_dur(pr.get('seconds') or 0)}**" if role else "")
-                + f"\n**Points:** {int(c.get('points') or 0):,}"))
-        elif p == "req":
+        if p == "rules":
             lines = self.cog.req_lines(self.guild, c)
-            e = discord.Embed(color=BRAND, title=f"{I.s('shield_check')} Requirements", description=(
-                "People can join any time, but **only members who finished every requirement when the giveaway ends can win** - "
-                "no task, no reward.\n\n" + ("\n".join(lines) if lines else "*No requirements - anyone can win.*")))
-            e.set_footer(text="Messages are counted from the moment the giveaway starts. Invites need the Manage Server permission.")
+            e = discord.Embed(color=BRAND, title=f"{I.s('shield_check')} Step 2 · Rules - who can win?", description=(
+                "Everyone can press **Join**, but only people who finish **all** the rules before the end can win.\n"
+                "Use the menu for roles and the buttons for the other rules. Everything is optional.\n\n"
+                + ("\n".join(lines) if lines else "*No rules - everyone who joins can win.*")))
+            e.set_footer(text="Messages are counted from the moment the giveaway starts · invites need the Manage Server permission")
         elif p == "task":
             t = self.req["task"]
-            who = "<@" + str(t["target"]) + ">" if t.get("target") else "*anyone / nobody needed*"
+            who = f"<@{t['target']}>" if t.get("target") else "*nobody needed*"
             where = self.chan(t.get("channel")) if t.get("channel") else "*any channel*"
-            e = discord.Embed(color=BRAND, title=f"{I.s('message')} \"Say it\" task", description=(
-                "Members must write a message with your **text** (for example `happy birthday`). Optionally they must also "
-                "**mention or reply to a person**, and / or do it in one **channel**. I put a ✅ under the message when it counts.\n\n"
-                f"**Status:** {'ON' if t.get('enabled') else 'OFF'}\n**Text:** {t.get('phrase') or '*not set*'}\n"
-                f"**Person:** {who}\n**Only in:** {where}"))
-        elif p == "look":
-            e = discord.Embed(color=BRAND, title=f"{I.s('palette')} Look & emojis", description=(
-                "Every emoji is editable: type an emoji, `:name:` or just the **emoji ID** - animated emojis work too, no Nitro needed. "
-                "Empty = default, `none` = hide it.\n\n"
-                f"{self.emoji_line()}\n-# title · prize · winners · host · ends · requirements · entries · done · missing · ended\n\n"
-                f"**Colour:** `#{int(c.get('color') or BRAND):06X}` · **Image:** {'set' if c.get('image') else 'none'} · "
-                f"**Thumbnail:** {'set' if c.get('thumbnail') else 'none'}"))
+            e = discord.Embed(color=BRAND, title=f"{I.s('messages')} Rule · say a message", description=(
+                "Members must **write a message** that contains your text. You can also make them **mention / reply to one person** "
+                "and / or write it in **one channel**. I add a ✅ under their message when it counts.\n\n"
+                f"**Status:** {'ON' if t.get('enabled') else 'OFF'}\n**Text:** {t.get('phrase') or '*not set - press Set the text*'}\n"
+                f"**Say it to:** {who}\n**Only in:** {where}\n\n"
+                "-# Example: text `happy birthday`, person @Kon, channel #chat -> \"happy birthday @Kon\" in #chat"))
+        elif p == "rewards":
+            pr = c["prize_role"]
+            role = self.guild.get_role(int(pr["role"])) if pr.get("role") else None
+            e = discord.Embed(color=BRAND, title=f"{I.s('gift')} Step 3 · Rewards", description=(
+                "The prize text comes from **Details**. Here you can also hand out a **role** and / or **points** to every winner "
+                "- automatically.\n\n"
+                f"**Role:** {role.mention if role else '*none - pick one in the menu*'}"
+                + (f" · **{'Permanent' if pr.get('mode') != 'temporary' else 'Temporary - ' + gl.fmt_dur(pr.get('seconds') or 0)}**" if role else "")
+                + f"\n**Points:** {int(c.get('points') or 0):,}"))
+            e.set_footer(text="A temporary role is taken back by itself, even after a restart")
+        elif p == "style":
+            e = discord.Embed(color=BRAND, title=f"{I.s('palette')} Step 4 · Style", description=(
+                "Pick a ready-made **emoji set** and a **colour** from the menus - or go deeper with the buttons.\n\n"
+                f"**Emoji set:** {self.pack_name()} · **Colour:** {self.colour_name()}\n"
+                f"**Image:** {'set' if c.get('image') else 'none'} · **Thumbnail:** {'set' if c.get('thumbnail') else 'none'}"))
+        elif p == "emojis":
+            lines = [f"{gl.emoji_of(c, k) or '·'}  **{name}** - {where}" for k, (name, where) in EMOJI_SLOTS.items()]
+            e = discord.Embed(color=BRAND, title=f"{I.s('sparkles')} Edit emojis", description=(
+                "Pick one in the menu to change it. You can use a normal emoji, `:name:` or an **emoji ID** (animated ones work too).\n"
+                "Type `none` to hide it, leave it empty to go back to the default.\n\n" + "\n".join(lines)))
         elif p == "buttons":
             b = c["buttons"]
-            e = discord.Embed(color=BRAND, title=f"{I.s('tap')} Buttons", description=(
-                f"**Join:** {b['join'].get('emoji') or '·'} {b['join'].get('label')} · colour `{b['join'].get('style')}`\n"
+            colour = next((n for n, v in BUTTON_COLOURS if v == b["join"].get("style")), "Blurple")
+            e = discord.Embed(color=BRAND, title=f"{I.s('tap')} Buttons under the giveaway", description=(
+                f"**Join button:** {b['join'].get('emoji') or '·'} {b['join'].get('label')} · {colour}\n"
                 f"**Entries counter:** {b['entries'].get('emoji') or '·'} · {'shown' if b['entries'].get('show', True) else 'hidden'}\n"
-                f"**Progress:** {b['progress'].get('emoji') or '·'} {b['progress'].get('label')} · "
-                f"{'shown' if b['progress'].get('show', True) else 'hidden'} *(only appears when there are requirements)*\n\n"
-                "Emojis can be animated - use the emoji ID."))
-        elif p == "load":
+                f"**Progress button:** {b['progress'].get('emoji') or '·'} {b['progress'].get('label')} · "
+                f"{'shown' if b['progress'].get('show', True) else 'hidden'} *(only appears when there are rules)*"))
+        elif p == "templates":
             d = self.cog.data(self.guild.id)
             names = "\n".join(f"• **{v['name']}** · {(v['cfg'].get('prize') or '-')[:40]}" for v in d["templates"].values())
             e = discord.Embed(color=BRAND, title=f"{I.s('folder')} Templates", description=(
-                "Pick a template to load it - the look, emojis, buttons, prize and requirements come back exactly as saved.\n\n"
-                + (names or "*No templates yet. Build a giveaway and press **Save template**.*")))
+                "A template keeps the **whole giveaway** (prize, rules, rewards, style) so you can start it again with one click.\n"
+                "• **Save** the giveaway you are building now\n• **Load** one (or your last giveaway) from the first menu\n\n"
+                + (names or "*No templates yet.*")))
         else:
             d = self.cog.data(self.guild.id)
-            e = discord.Embed(color=BRAND, title=f"{I.s('gift')} Giveaway builder", description=(
-                "Set everything with the buttons, check the preview below, then press **Start**."))
-            e.add_field(name="Basics", inline=False, value=(
-                f"Title: **{c['title']}**\nPrize: **{self.cog.prize_text(self.guild, c) if c.get('prize') else '*not set*'}**\n"
-                f"Winners: **{c['winners']}** · Time: **{gl.fmt_dur(c['duration'])}**"))
-            e.add_field(name="Post in", value=f"{self.chan(self.channel_id)}\nHost: <@{self.host_id}>", inline=True)
-            reqs = self.cog.req_lines(self.guild, c)
-            e.add_field(name="Requirements", value=("\n".join(reqs)[:1000] if reqs else "*none - anyone can win*"), inline=True)
+            if self.has_prize():
+                step1 = (f"{I.s('check')} **{c['prize']}** · {c['winners']} winner{'s' if c['winners'] != 1 else ''} · "
+                         f"{gl.fmt_dur(c['duration'])}")
+            else:
+                step1 = f"{I.s('warning')} Not done yet - press **1 Details**"
+            e = discord.Embed(color=BRAND, title=f"{I.s('gift')} Giveaway setup", description=(
+                "Go through the buttons from left to right. Only **step 1** is needed - then press **Start giveaway**."))
+            e.add_field(name="1 · Details (needed)", value=step1, inline=False)
+            e.add_field(name="2 · Rules (optional)", value=self.rules_short(), inline=False)
+            e.add_field(name="3 · Rewards (optional)", value=self.rewards_short(), inline=False)
+            e.add_field(name="4 · Style (optional)", value=self.style_short(), inline=False)
+            e.add_field(name="Post in", value=self.chan(self.channel_id), inline=True)
+            e.add_field(name="Hosted by", value=f"<@{self.host_id}>", inline=True)
             e.set_footer(text=(f"Template: {self.loaded} · " if self.loaded else "") + f"{len(d['templates'])} saved templates")
         if note:
             e.add_field(name="Note", value=note[:1000], inline=False)
         return e
 
-    # ----- components
+    # ------------------------------------------------------------ components
     def btn(self, label, icon, cb, *, style=discord.ButtonStyle.secondary, row=0, disabled=False):
         b = discord.ui.Button(label=label, emoji=I.e(icon) if icon else None, style=style, row=row, disabled=disabled)
         b.callback = cb
@@ -1026,6 +1170,9 @@ class GiveawayBuilder(OwnedView):
             await self.push(interaction)
         return cb
 
+    def back(self, row: int):
+        self.btn("Back", "left", self.goto(self.PARENT.get(self.page, "home")), row=row)
+
     def objs(self, ids, getter) -> list:
         return [o for o in (getter(int(i)) for i in ids or []) if o is not None]
 
@@ -1033,90 +1180,127 @@ class GiveawayBuilder(OwnedView):
         self.clear_items()
         c, p, g = self.cfg, self.page, self.guild
         if p == "home":
-            self.btn("Basic info", "edit", self.basic_btn, style=discord.ButtonStyle.primary, row=0)
-            self.btn("Prize", "gift", self.goto("prize"), row=0)
-            self.btn("Requirements", "shield_check", self.goto("req"), row=0)
-            self.btn("Look & emojis", "palette", self.goto("look"), row=0)
-            self.btn("Buttons", "tap", self.goto("buttons"), row=0)
+            self.btn("1 Details", "edit", self.details_btn, style=discord.ButtonStyle.primary, row=0)
+            self.btn("2 Rules", "shield_check", self.goto("rules"), row=0)
+            self.btn("3 Rewards", "gift", self.goto("rewards"), row=0)
+            self.btn("4 Style", "palette", self.goto("style"), row=0)
+            self.btn("Templates", "folder", self.goto("templates"), row=0)
             ch = g.get_channel(self.channel_id)
             s = discord.ui.ChannelSelect(placeholder="Post the giveaway in...", row=1, min_values=1, max_values=1,
                                          channel_types=[discord.ChannelType.text, discord.ChannelType.news],
                                          default_values=[ch] if ch else [])
             s.callback = lambda i, s=s: self.pick_channel(i, s)
             self.add_item(s)
-            self.btn("Save template", "upload", self.save_btn, row=2)
-            self.btn("Load template", "folder", self.goto("load"), row=2)
-            self.btn("Reset", "refresh", self.reset_btn, row=2)
-            self.btn("Start giveaway", "sparkles", self.start_btn, style=discord.ButtonStyle.success, row=3)
-            self.btn("Close", "cross", self.close_btn, style=discord.ButtonStyle.danger, row=3)
             host = g.get_member(self.host_id)
-            u = discord.ui.UserSelect(placeholder="Hosted by (default: you)...", row=4, min_values=1, max_values=1,
+            u = discord.ui.UserSelect(placeholder="Hosted by (default: you)...", row=2, min_values=1, max_values=1,
                                       default_values=[host] if host else [])
             u.callback = lambda i, u=u: self.pick_host(i, u)
             self.add_item(u)
-        elif p == "prize":
-            pr = c["prize_role"]
-            self.btn("Points reward", "coins", self.points_btn, row=0)
-            self.btn("Role: " + ("Temporary" if pr.get("mode") == "temporary" else "Permanent"), "clock", self.mode_btn, row=0)
-            self.btn("Role time", "hourglass", self.time_btn, row=0, disabled=pr.get("mode") != "temporary")
-            self.btn("Clear role", "cross", self.clear_role_btn, row=0, disabled=not pr.get("role"))
-            self.btn("Back", "left", self.goto("home"), row=0)
-            role = g.get_role(int(pr["role"])) if pr.get("role") else None
-            s = discord.ui.RoleSelect(placeholder="Role the winners get...", row=1, min_values=0, max_values=1,
-                                      default_values=[role] if role else [])
-            s.callback = lambda i, s=s: self.pick_role(i, s)
-            self.add_item(s)
-        elif p == "req":
-            self.btn("Messages", "message", self.msgs_btn, row=0)
-            self.btn("Invites", "user_add", self.invites_btn, row=0)
-            self.btn("Say it task", "messages", self.goto("task"), row=0)
-            self.btn("Clear all", "cross", self.clear_req_btn, style=discord.ButtonStyle.danger, row=0)
-            self.btn("Back", "left", self.goto("home"), row=0)
+            self.btn("Start giveaway", "sparkles", self.start_btn, style=discord.ButtonStyle.success, row=3,
+                     disabled=not self.has_prize())
+            self.btn("Reset", "refresh", self.reset_btn, row=3)
+            self.btn("Close", "cross", self.close_btn, style=discord.ButtonStyle.danger, row=3)
+        elif p == "rules":
             roles = self.objs(self.req["roles"], g.get_role)
-            s = discord.ui.RoleSelect(placeholder="Members need these roles to join...", row=1, min_values=0, max_values=10,
+            s = discord.ui.RoleSelect(placeholder="Must have a role to join (optional)...", row=0, min_values=0, max_values=10,
                                       default_values=roles)
             s.callback = lambda i, s=s: self.pick_req_roles(i, s)
             self.add_item(s)
-            ex = self.objs(self.req["messages"]["exclude"], g.get_channel)[:25]
-            s = discord.ui.ChannelSelect(placeholder="Messages here are NOT counted (channels / categories)...", row=2,
-                                         min_values=0, max_values=25, channel_types=CHANNEL_TYPES, default_values=ex)
-            s.callback = lambda i, s=s: self.pick_exclude(i, s)
-            self.add_item(s)
-            self.btn("Roles needed: " + ("ALL" if self.req.get("roles_mode") == "all" else "ANY ONE"), "swap", self.roles_mode_btn, row=3)
+            m, inv, t = self.req["messages"]["count"], self.req["invites"], self.req["task"]
+            self.btn(f"Messages: {m:,}" if m else "Messages: off", "message", self.msgs_btn, row=1,
+                     style=discord.ButtonStyle.success if m else discord.ButtonStyle.secondary)
+            self.btn(f"Invites: {inv}" if inv else "Invites: off", "user_add", self.invites_btn, row=1,
+                     style=discord.ButtonStyle.success if inv else discord.ButtonStyle.secondary)
+            on = bool(t.get("enabled") and t.get("phrase"))
+            self.btn("Say a message: ON" if on else "Say a message: off", "messages", self.goto("task"), row=1,
+                     style=discord.ButtonStyle.success if on else discord.ButtonStyle.secondary)
+            self.btn("Roles needed: " + ("ALL" if self.req.get("roles_mode") == "all" else "ANY ONE"), "swap",
+                     self.roles_mode_btn, row=1, disabled=len(self.req["roles"]) < 2)
+            if m:
+                ex = self.objs(self.req["messages"]["exclude"], g.get_channel)[:25]
+                s = discord.ui.ChannelSelect(placeholder="Don't count messages in these channels (optional)...", row=2,
+                                             min_values=0, max_values=25, channel_types=CHANNEL_TYPES, default_values=ex)
+                s.callback = lambda i, s=s: self.pick_exclude(i, s)
+                self.add_item(s)
+            self.btn("Clear all rules", "cross", self.clear_req_btn, style=discord.ButtonStyle.danger, row=3)
+            self.back(3)
         elif p == "task":
             t = self.req["task"]
             self.btn("Set the text", "edit", self.task_text_btn, style=discord.ButtonStyle.primary, row=0)
-            self.btn("Task: ON" if t.get("enabled") else "Task: OFF", "check" if t.get("enabled") else "cross", self.task_toggle_btn,
+            self.btn("ON" if t.get("enabled") else "OFF", "check" if t.get("enabled") else "cross", self.task_toggle_btn,
                      style=discord.ButtonStyle.success if t.get("enabled") else discord.ButtonStyle.secondary, row=0)
-            self.btn("Back", "left", self.goto("req"), row=0)
+            self.back(0)
             tgt = g.get_member(int(t["target"])) if t.get("target") else None
-            u = discord.ui.UserSelect(placeholder="Person they have to say it to (optional)...", row=1, min_values=0, max_values=1,
+            u = discord.ui.UserSelect(placeholder="Say it to this person (optional)...", row=1, min_values=0, max_values=1,
                                       default_values=[tgt] if tgt else [])
             u.callback = lambda i, u=u: self.pick_task_target(i, u)
             self.add_item(u)
             ch = g.get_channel(int(t["channel"])) if t.get("channel") else None
-            s = discord.ui.ChannelSelect(placeholder="Only counts in this channel (optional)...", row=2, min_values=0, max_values=1,
+            s = discord.ui.ChannelSelect(placeholder="Only in this channel (optional)...", row=2, min_values=0, max_values=1,
                                          channel_types=[discord.ChannelType.text, discord.ChannelType.news],
                                          default_values=[ch] if ch else [])
             s.callback = lambda i, s=s: self.pick_task_channel(i, s)
             self.add_item(s)
-        elif p == "look":
-            self.btn("Emojis 1/2", "sparkles", self.emojis1_btn, style=discord.ButtonStyle.primary, row=0)
-            self.btn("Emojis 2/2", "sparkles", self.emojis2_btn, style=discord.ButtonStyle.primary, row=0)
-            self.btn("Colour", "palette", self.color_btn, row=0)
-            self.btn("Image", "image", self.image_btn, row=0)
-            self.btn("Thumbnail", "image", self.thumb_btn, row=0)
-            self.btn("Reset emojis", "refresh", self.reset_emojis_btn, row=1)
-            self.btn("Back", "left", self.goto("home"), row=1)
+        elif p == "rewards":
+            pr = c["prize_role"]
+            role = g.get_role(int(pr["role"])) if pr.get("role") else None
+            s = discord.ui.RoleSelect(placeholder="Role every winner gets (optional)...", row=0, min_values=0, max_values=1,
+                                      default_values=[role] if role else [])
+            s.callback = lambda i, s=s: self.pick_role(i, s)
+            self.add_item(s)
+            pts = int(c.get("points") or 0)
+            self.btn(f"Points: {pts:,}" if pts else "Points: none", "coins", self.points_btn, row=1,
+                     style=discord.ButtonStyle.success if pts else discord.ButtonStyle.secondary)
+            self.btn("Role: " + ("Temporary" if pr.get("mode") == "temporary" else "Permanent"), "clock", self.mode_btn, row=1,
+                     disabled=not role)
+            self.btn("Role time: " + gl.fmt_dur(pr.get("seconds") or 0).replace(" ", ""), "hourglass", self.time_btn, row=1,
+                     disabled=not (role and pr.get("mode") == "temporary"))
+            self.btn("Remove role", "cross", self.clear_role_btn, row=2, disabled=not role)
+            self.back(2)
+        elif p == "style":
+            have = self.pack_name()
+            s = discord.ui.Select(placeholder=f"Emoji set: {have} (tap to change)...", row=0, options=[
+                discord.SelectOption(label=name, value=key, default=(name == have)) for key, (name, _p) in EMOJI_PACKS.items()])
+            s.callback = lambda i, s=s: self.pick_pack(i, s)
+            self.add_item(s)
+            cur = int(c.get("color") or BRAND)
+            opts = [discord.SelectOption(label=name, value=f"{val:06X}", default=(val == cur)) for name, val in COLOURS]
+            opts.append(discord.SelectOption(label="Other colour (hex code)...", value="custom"))
+            s = discord.ui.Select(placeholder=f"Colour: {self.colour_name()} (tap to change)...", row=1, options=opts)
+            s.callback = lambda i, s=s: self.pick_colour(i, s)
+            self.add_item(s)
+            self.btn("Image", "image", self.image_btn, row=2, style=discord.ButtonStyle.success if c.get("image") else discord.ButtonStyle.secondary)
+            self.btn("Thumbnail", "image", self.thumb_btn, row=2,
+                     style=discord.ButtonStyle.success if c.get("thumbnail") else discord.ButtonStyle.secondary)
+            self.btn("Edit emojis", "sparkles", self.goto("emojis"), row=2)
+            self.btn("Buttons", "tap", self.goto("buttons"), row=2)
+            self.back(2)
+        elif p == "emojis":
+            s = discord.ui.Select(placeholder="Which emoji do you want to change?", row=0, options=[
+                discord.SelectOption(label=name, value=key, description=where[:100]) for key, (name, where) in EMOJI_SLOTS.items()])
+            s.callback = lambda i, s=s: self.pick_slot(i, s)
+            self.add_item(s)
+            self.btn("Reset all emojis", "refresh", self.reset_emojis_btn, row=1)
+            self.back(1)
         elif p == "buttons":
-            self.btn("Join button", "tap", self.join_btn, style=discord.ButtonStyle.primary, row=0)
-            self.btn("Entries button", "users", self.entries_btn, row=0)
-            self.btn("Progress button", "target", self.progress_btn, row=0)
-            self.btn("Back", "left", self.goto("home"), row=0)
-        elif p == "load":
+            j = c["buttons"]["join"]
+            s = discord.ui.Select(placeholder="Join button colour...", row=0, options=[
+                discord.SelectOption(label=name, value=val, default=(val == j.get("style"))) for name, val in BUTTON_COLOURS])
+            s.callback = lambda i, s=s: self.pick_join_colour(i, s)
+            self.add_item(s)
+            self.btn("Edit Join button", "tap", self.join_btn, style=discord.ButtonStyle.primary, row=1)
+            self.btn("Edit Progress button", "target", self.progress_btn, row=1)
+            self.btn("Entries emoji", "users", self.entries_emoji_btn, row=1)
+            en, pg = c["buttons"]["entries"].get("show", True), c["buttons"]["progress"].get("show", True)
+            self.btn("Entries counter: " + ("shown" if en else "hidden"), "users", self.toggle_entries_btn, row=2,
+                     style=discord.ButtonStyle.success if en else discord.ButtonStyle.secondary)
+            self.btn("Progress button: " + ("shown" if pg else "hidden"), "target", self.toggle_progress_btn, row=2,
+                     style=discord.ButtonStyle.success if pg else discord.ButtonStyle.secondary)
+            self.back(2)
+        elif p == "templates":
             d = self.cog.data(g.id)
-            opts = [discord.SelectOption(label=v["name"][:100], value=k, description=(v["cfg"].get("prize") or "-")[:100], emoji=I.e("gift"))
-                    for k, v in list(d["templates"].items())[:25]]
+            opts = [discord.SelectOption(label=v["name"][:100], value=k, description=(v["cfg"].get("prize") or "-")[:100],
+                                         emoji=I.e("gift")) for k, v in list(d["templates"].items())[:25]]
             if d.get("last"):
                 opts.insert(0, discord.SelectOption(label="Last giveaway I started", value="__last__", emoji=I.e("clock"),
                                                     description=(d["last"].get("prize") or "-")[:100]))
@@ -1130,7 +1314,8 @@ class GiveawayBuilder(OwnedView):
                     discord.SelectOption(label=v["name"][:100], value=k, emoji=I.e("cross")) for k, v in list(d["templates"].items())[:25]])
                 s.callback = lambda i, s=s: self.delete_pick(i, s)
                 self.add_item(s)
-            self.btn("Back", "left", self.goto("home"), row=2)
+            self.btn("Save this giveaway as template", "upload", self.save_btn, style=discord.ButtonStyle.primary, row=2)
+            self.back(2)
 
     async def push(self, interaction: discord.Interaction, note: str = ""):
         self.note = note or self.note
@@ -1138,7 +1323,7 @@ class GiveawayBuilder(OwnedView):
         await interaction.response.edit_message(embeds=await self.embeds(), view=self)
 
     async def refresh(self):
-        """After a modal / upload: redraw the builder message (the interaction itself was answered already)."""
+        """After a modal / upload: redraw the panel message (the interaction itself was answered already)."""
         self.render()
         if self.message:
             try:
@@ -1149,7 +1334,7 @@ class GiveawayBuilder(OwnedView):
     def modal(self, title, fields, cb) -> GModal:
         return GModal(self, title, fields, cb)
 
-    # ----- home
+    # ------------------------------------------------------------ home
     async def pick_channel(self, interaction, sel):
         self.channel_id = sel.values[0].id
         await self.push(interaction)
@@ -1160,57 +1345,41 @@ class GiveawayBuilder(OwnedView):
 
     async def close_btn(self, interaction: discord.Interaction):
         self.stop()
-        await interaction.response.edit_message(content="Giveaway builder closed.", embeds=[], view=None)
+        await interaction.response.edit_message(content="Giveaway setup closed.", embeds=[], view=None)
 
     async def reset_btn(self, interaction: discord.Interaction):
         self.cfg, self.loaded = gl.new_config(), None
-        await self.push(interaction, "Everything is back to the defaults.")
+        await self.push(interaction, "Everything is back to the start.")
 
-    async def basic_btn(self, interaction: discord.Interaction):
+    async def details_btn(self, interaction: discord.Interaction):
         c = self.cfg
 
         async def submitted(i, v):
-            title, prize, desc, winners, dur = v
+            prize, winners, dur, title, desc = v
             if not prize:
-                raise VCError("Give the giveaway a prize.")
+                raise VCError("Write the prize first (for example `Discord Nitro`).")
             try:
                 w = int(winners or "1")
             except ValueError:
-                raise VCError("Winners must be a number.")
+                raise VCError("Winners must be a number, like `1` or `3`.")
             if not 1 <= w <= gl.MAX_WINNERS:
-                raise VCError(f"Winners must be 1-{gl.MAX_WINNERS}.")
+                raise VCError(f"Winners must be between 1 and {gl.MAX_WINNERS}.")
             secs = gl.parse_duration(dur or "1h")
             if secs is None or not gl.MIN_DURATION <= secs <= gl.MAX_DURATION:
-                raise VCError("Time must look like `30m`, `2h`, `1d 12h` or `1w` (10 seconds - 90 days).")
-            c.update(title=title or "GIVEAWAY", prize=prize, description=desc, winners=w, duration=secs)
-        await interaction.response.send_modal(self.modal("Basic info", [
-            dict(label="Title", default=c["title"], max=40, placeholder="GIVEAWAY"),
+                raise VCError("Time must look like `30m`, `2h`, `1d 12h` or `1w` (10 seconds up to 90 days).")
+            c.update(prize=prize, winners=w, duration=secs, title=title or "GIVEAWAY", description=desc)
+        await interaction.response.send_modal(self.modal("Step 1 · Details", [
             dict(label="Prize", default=c["prize"], max=100, required=True, placeholder="Discord Nitro"),
-            dict(label="Description (optional)", default=c["description"], max=300, long=True),
-            dict(label="Winners", default=str(c["winners"]), max=2, required=True),
-            dict(label="Time (30m, 2h, 1d 12h, 1w)", default=gl.fmt_dur(c["duration"]).replace(" ", ""), max=20, required=True)], submitted))
-
-    async def save_btn(self, interaction: discord.Interaction):
-        async def submitted(i, v):
-            name = v[0]
-            if not name:
-                raise VCError("Give the template a name.")
-            d = self.cog.data(self.guild.id)
-            if name.lower() not in d["templates"] and len(d["templates"]) >= gl.MAX_TEMPLATES:
-                raise VCError(f"You can keep {gl.MAX_TEMPLATES} templates - delete one first (Load template).")
-            t = copy.deepcopy(self.cfg)
-            t["channel"] = self.channel_id
-            d["templates"][name.lower()] = {"name": name, "saved": time.time(), "cfg": t}
-            self.cog.save(self.guild.id)
-            self.loaded = name
-            self.note = f"Template **{name}** saved. Load it any time with **Load template** (or `{PREFIX}giveaway load {name}`)."
-        await interaction.response.send_modal(self.modal("Save template", [
-            dict(label="Template name", default=self.loaded or (self.cfg.get("prize") or "")[:30], max=40, required=True)], submitted))
+            dict(label="How many winners?", default=str(c["winners"]), max=2, required=True, placeholder="1"),
+            dict(label=f"How long? ({TIME_HELP})", default=gl.fmt_dur(c["duration"]).replace(" ", ""), max=20, required=True,
+                 placeholder="1h"),
+            dict(label="Title (optional)", default=c["title"], max=40, placeholder="GIVEAWAY"),
+            dict(label="Description (optional)", default=c["description"], max=300, long=True)], submitted))
 
     async def start_btn(self, interaction: discord.Interaction):
         c = self.cfg
-        if not (c.get("prize") or "").strip():
-            return await self.push(interaction, f"{I.s('warning')} Set a prize first (**Basic info**).")
+        if not self.has_prize():
+            return await self.push(interaction, f"{I.s('warning')} Press **1 Details** and write the prize first.")
         channel = self.guild.get_channel(self.channel_id)
         if channel is None:
             return await self.push(interaction, f"{I.s('warning')} Pick a channel for the giveaway.")
@@ -1223,88 +1392,45 @@ class GiveawayBuilder(OwnedView):
         self.stop()
         e = discord.Embed(color=GREEN, title=f"{I.s('check')} Giveaway #{rec['n']} is live",
                           description=f"Posted in {channel.mention} · ends <t:{int(rec['end'])}:R>\n[Jump to the giveaway]({msg.jump_url})")
-        e.set_footer(text=f"{PREFIX}giveaway end / reroll / cancel · it is saved as 'Last giveaway' in Load template")
+        e.set_footer(text=f"{PREFIX}giveaway end / reroll / cancel · it is saved as 'Last giveaway' under Templates")
         await interaction.edit_original_response(content=None, embeds=[e], view=None)
 
     async def _with_note(self, note: str) -> list:
         self.note = note
         return await self.embeds()
 
-    # ----- prize
-    async def points_btn(self, interaction: discord.Interaction):
-        async def submitted(i, v):
-            try:
-                n = int(v[0] or "0")
-            except ValueError:
-                raise VCError("Points must be a number.")
-            if not 0 <= n <= 10_000_000:
-                raise VCError("Points must be 0 - 10,000,000.")
-            self.cfg["points"] = n
-        await interaction.response.send_modal(self.modal("Points reward", [
-            dict(label="Kon points every winner gets (0 = none)", default=str(self.cfg.get("points") or 0), max=8)], submitted))
-
-    async def mode_btn(self, interaction: discord.Interaction):
-        pr = self.cfg["prize_role"]
-        pr["mode"] = "permanent" if pr.get("mode") == "temporary" else "temporary"
-        await self.push(interaction)
-
-    async def time_btn(self, interaction: discord.Interaction):
-        pr = self.cfg["prize_role"]
-
-        async def submitted(i, v):
-            secs = gl.parse_duration(v[0])
-            if secs is None or secs < 60 or secs > 365 * 86400:
-                raise VCError("Use something like `12h`, `7d` or `4w` (1 minute - 1 year).")
-            pr["seconds"] = secs
-        await interaction.response.send_modal(self.modal("Temporary role time", [
-            dict(label="How long do winners keep the role?", default=gl.fmt_dur(pr.get("seconds") or 86400).replace(" ", ""), max=20,
-                 required=True, placeholder="7d")], submitted))
-
-    async def clear_role_btn(self, interaction: discord.Interaction):
-        self.cfg["prize_role"]["role"] = None
-        await self.push(interaction)
-
-    async def pick_role(self, interaction, sel):
-        pr = self.cfg["prize_role"]
-        old = pr.get("role")
-        pr["role"] = sel.values[0].id if sel.values else None
-        try:
-            self.cog.check_role_reward(self.guild, self.cfg)
-        except VCError as e:
-            pr["role"] = old
-            return await self.push(interaction, f"{I.s('warning')} {e}")
-        await self.push(interaction)
-
-    # ----- requirements
+    # ------------------------------------------------------------ rules
     async def msgs_btn(self, interaction: discord.Interaction):
         async def submitted(i, v):
             try:
                 n = int(v[0] or "0")
             except ValueError:
-                raise VCError("Messages must be a number.")
+                raise VCError("Write a number, like `50`.")
             if not 0 <= n <= 100000:
                 raise VCError("Messages must be 0 - 100,000.")
             self.req["messages"]["count"] = n
-        await interaction.response.send_modal(self.modal("Message requirement", [
-            dict(label="Messages needed (0 = off)", default=str(self.req["messages"]["count"]), max=6, placeholder="250")], submitted))
+        await interaction.response.send_modal(self.modal("Rule · messages", [
+            dict(label="How many messages must they send? (0 = off)", default=str(self.req["messages"]["count"]), max=6,
+                 placeholder="50")], submitted))
 
     async def invites_btn(self, interaction: discord.Interaction):
         async def submitted(i, v):
             try:
                 n = int(v[0] or "0")
             except ValueError:
-                raise VCError("Invites must be a number.")
+                raise VCError("Write a number, like `2`.")
             if not 0 <= n <= 1000:
                 raise VCError("Invites must be 0 - 1000.")
             if n and not self.guild.me.guild_permissions.manage_guild:
                 raise VCError("I need the **Manage Server** permission to count invites - give it to me first.")
             self.req["invites"] = n
-        await interaction.response.send_modal(self.modal("Invite requirement", [
-            dict(label="People to invite (0 = off)", default=str(self.req["invites"]), max=4, placeholder="2")], submitted))
+        await interaction.response.send_modal(self.modal("Rule · invites", [
+            dict(label="How many people must they invite? (0 = off)", default=str(self.req["invites"]), max=4,
+                 placeholder="2")], submitted))
 
     async def clear_req_btn(self, interaction: discord.Interaction):
         self.cfg["req"] = copy.deepcopy(gl.DEFAULT_CFG["req"])
-        await self.push(interaction, "All requirements removed.")
+        await self.push(interaction, "All rules removed - everyone who joins can win.")
 
     async def roles_mode_btn(self, interaction: discord.Interaction):
         self.req["roles_mode"] = "any" if self.req.get("roles_mode") == "all" else "all"
@@ -1325,13 +1451,14 @@ class GiveawayBuilder(OwnedView):
             if not v[0]:
                 raise VCError("Write the text people have to say.")
             t["phrase"], t["enabled"] = v[0], True
-        await interaction.response.send_modal(self.modal("\"Say it\" task", [
-            dict(label="Text they have to say", default=t.get("phrase"), max=100, required=True, placeholder="happy birthday")], submitted))
+        await interaction.response.send_modal(self.modal("Rule · say a message", [
+            dict(label="Text they have to say", default=t.get("phrase"), max=100, required=True, placeholder="happy birthday")],
+            submitted))
 
     async def task_toggle_btn(self, interaction: discord.Interaction):
         t = self.req["task"]
         if not t.get("enabled") and not t.get("phrase"):
-            return await interaction.response.send_modal(GModal(self, "\"Say it\" task", [
+            return await interaction.response.send_modal(GModal(self, "Rule · say a message", [
                 dict(label="Text they have to say", max=100, required=True, placeholder="happy birthday")], self._set_phrase))
         t["enabled"] = not t.get("enabled")
         await self.push(interaction)
@@ -1349,40 +1476,73 @@ class GiveawayBuilder(OwnedView):
         self.req["task"]["channel"] = sel.values[0].id if sel.values else None
         await self.push(interaction)
 
-    # ----- look & emojis
-    def emoji_modal(self, keys: list, title: str) -> GModal:
+    # ------------------------------------------------------------ rewards
+    async def points_btn(self, interaction: discord.Interaction):
         async def submitted(i, v):
-            em = self.cfg.setdefault("emojis", {})
-            for k, text in zip(keys, v):
-                if not text:
-                    em.pop(k, None)
-                elif text.lower() in ("none", "off", "hide", "-"):
-                    em[k] = ""
-                else:
-                    em[k] = await self.norm(text)
-        return self.modal(title, [dict(label=gl.EMOJI_FIELDS[k][0], default=gl.emoji_of(self.cfg, k) or "none", max=80,
-                                       placeholder="emoji, :name: or emoji ID") for k in keys], submitted)
+            try:
+                n = int(v[0].replace(",", "") or "0")
+            except ValueError:
+                raise VCError("Points must be a number.")
+            if not 0 <= n <= 10_000_000:
+                raise VCError("Points must be 0 - 10,000,000.")
+            self.cfg["points"] = n
+        await interaction.response.send_modal(self.modal("Reward · points", [
+            dict(label="Kon points for every winner (0 = none)", default=str(self.cfg.get("points") or 0), max=10)], submitted))
 
-    async def emojis1_btn(self, interaction: discord.Interaction):
-        await interaction.response.send_modal(self.emoji_modal(["title", "prize", "winners", "host", "ends"], "Emojis 1/2"))
+    async def mode_btn(self, interaction: discord.Interaction):
+        pr = self.cfg["prize_role"]
+        pr["mode"] = "permanent" if pr.get("mode") == "temporary" else "temporary"
+        await self.push(interaction)
 
-    async def emojis2_btn(self, interaction: discord.Interaction):
-        await interaction.response.send_modal(self.emoji_modal(["req", "entries", "done", "todo", "ended"], "Emojis 2/2"))
+    async def time_btn(self, interaction: discord.Interaction):
+        pr = self.cfg["prize_role"]
 
-    async def reset_emojis_btn(self, interaction: discord.Interaction):
-        self.cfg["emojis"] = {}
-        await self.push(interaction, "Emojis are back to the defaults.")
-
-    async def color_btn(self, interaction: discord.Interaction):
         async def submitted(i, v):
-            t = v[0].lstrip("#").lower()
+            secs = gl.parse_duration(v[0])
+            if secs is None or secs < 60 or secs > 365 * 86400:
+                raise VCError("Use something like `12h`, `7d` or `4w` (1 minute - 1 year).")
+            pr["seconds"] = secs
+        await interaction.response.send_modal(self.modal("Temporary role time", [
+            dict(label="How long do winners keep the role?", default=gl.fmt_dur(pr.get("seconds") or 86400).replace(" ", ""),
+                 max=20, required=True, placeholder="7d")], submitted))
+
+    async def clear_role_btn(self, interaction: discord.Interaction):
+        self.cfg["prize_role"]["role"] = None
+        await self.push(interaction)
+
+    async def pick_role(self, interaction, sel):
+        pr = self.cfg["prize_role"]
+        old = pr.get("role")
+        pr["role"] = sel.values[0].id if sel.values else None
+        try:
+            self.cog.check_role_reward(self.guild, self.cfg)
+        except VCError as e:
+            pr["role"] = old
+            return await self.push(interaction, f"{I.s('warning')} {e}")
+        await self.push(interaction)
+
+    # ------------------------------------------------------------ style
+    async def pick_pack(self, interaction, sel):
+        _name, pack = EMOJI_PACKS[sel.values[0]]
+        self.cfg["emojis"] = dict(pack)
+        await self.push(interaction)
+
+    async def pick_colour(self, interaction, sel):
+        v = sel.values[0]
+        if v != "custom":
+            self.cfg["color"] = int(v, 16)
+            return await self.push(interaction)
+
+        async def submitted(i, vals):
+            t = vals[0].lstrip("#").lower()
             if t.startswith("0x"):
                 t = t[2:]
             if len(t) != 6 or any(ch not in "0123456789abcdef" for ch in t):
                 raise VCError("Colour must be a hex code like `#FFB832`.")
             self.cfg["color"] = int(t, 16)
-        await interaction.response.send_modal(self.modal("Embed colour", [
-            dict(label="Hex colour", default=f"#{int(self.cfg.get('color') or BRAND):06X}", max=9, required=True)], submitted))
+        await interaction.response.send_modal(self.modal("Colour", [
+            dict(label="Hex colour code", default=f"#{int(self.cfg.get('color') or BRAND):06X}", max=9, required=True,
+                 placeholder="#FFB832")], submitted))
 
     async def _image(self, interaction: discord.Interaction, key: str, title: str):
         async def done(i: discord.Interaction, item):
@@ -1399,47 +1559,101 @@ class GiveawayBuilder(OwnedView):
     async def thumb_btn(self, interaction: discord.Interaction):
         await self._image(interaction, "thumbnail", "Giveaway thumbnail")
 
+    # ----- emojis
+    async def pick_slot(self, interaction: discord.Interaction, sel):
+        key = sel.values[0]
+        name, where = EMOJI_SLOTS[key]
+
+        async def submitted(i, v):
+            em = self.cfg.setdefault("emojis", {})
+            text = v[0]
+            if not text:
+                em.pop(key, None)
+            elif text.lower() in ("none", "off", "hide", "-"):
+                em[key] = ""
+            else:
+                em[key] = await emojis.normalize(self.cog.bot, self.guild, text) or ""
+        await interaction.response.send_modal(self.modal(f"Emoji · {name}", [
+            dict(label="Emoji (emoji, :name:, ID, none)", default=gl.emoji_of(self.cfg, key) or "none", max=80,
+                 placeholder="🎉  or  :name:  or  emoji ID")], submitted))
+
+    async def reset_emojis_btn(self, interaction: discord.Interaction):
+        self.cfg["emojis"] = {}
+        await self.push(interaction, "Emojis are back to the default set.")
+
     # ----- buttons
+    async def pick_join_colour(self, interaction, sel):
+        self.cfg["buttons"]["join"]["style"] = sel.values[0]
+        await self.push(interaction)
+
     async def join_btn(self, interaction: discord.Interaction):
         j = self.cfg["buttons"]["join"]
         d = gl.DEFAULT_CFG["buttons"]["join"]
 
         async def submitted(i, v):
-            label, emoji, style, ended = v
-            st = gl.BUTTON_STYLES.get(style.lower() or "blurple")
-            if st is None:
-                raise VCError("Colour must be `blurple`, `green`, `grey` or `red`.")
-            j.update(label=label or d["label"], emoji=await self.norm(emoji, d["emoji"]), style=st, ended_label=ended or d["ended_label"])
-        rev = {"primary": "blurple", "success": "green", "secondary": "grey", "danger": "red"}
+            label, emoji, ended = v
+            j.update(label=label or d["label"], emoji=await self._emoji_or(emoji, d["emoji"]), ended_label=ended or d["ended_label"])
         await interaction.response.send_modal(self.modal("Join button", [
             dict(label="Button text", default=j.get("label"), max=80),
-            dict(label="Button emoji (emoji / :name: / ID / none)", default=j.get("emoji") or "none", max=80),
-            dict(label="Colour (blurple / green / grey / red)", default=rev.get(j.get("style"), "blurple"), max=10),
-            dict(label="Text after the giveaway ended", default=j.get("ended_label"), max=80)], submitted))
-
-    async def entries_btn(self, interaction: discord.Interaction):
-        b = self.cfg["buttons"]["entries"]
-        d = gl.DEFAULT_CFG["buttons"]["entries"]
-
-        async def submitted(i, v):
-            b.update(emoji=await self.norm(v[0], d["emoji"]), show=v[1].lower() not in ("no", "n", "off", "hide", "false", "0"))
-        await interaction.response.send_modal(self.modal("Entries button", [
-            dict(label="Emoji (emoji / :name: / ID / none)", default=b.get("emoji") or "none", max=80),
-            dict(label="Show the entries counter? (yes / no)", default="yes" if b.get("show", True) else "no", max=3)], submitted))
+            dict(label="Emoji (emoji, :name:, ID, none)", default=j.get("emoji") or "none", max=80),
+            dict(label="Button text after it ended", default=j.get("ended_label"), max=80)], submitted))
 
     async def progress_btn(self, interaction: discord.Interaction):
         b = self.cfg["buttons"]["progress"]
         d = gl.DEFAULT_CFG["buttons"]["progress"]
 
         async def submitted(i, v):
-            b.update(label=v[0] or d["label"], emoji=await self.norm(v[1], d["emoji"]),
-                     show=v[2].lower() not in ("no", "n", "off", "hide", "false", "0"))
+            b.update(label=v[0] or d["label"], emoji=await self._emoji_or(v[1], d["emoji"]))
         await interaction.response.send_modal(self.modal("Progress button", [
             dict(label="Button text", default=b.get("label"), max=80),
-            dict(label="Emoji (emoji / :name: / ID / none)", default=b.get("emoji") or "none", max=80),
-            dict(label="Show it? (yes / no)", default="yes" if b.get("show", True) else "no", max=3)], submitted))
+            dict(label="Emoji (emoji, :name:, ID, none)", default=b.get("emoji") or "none", max=80)], submitted))
 
-    # ----- templates
+    async def entries_emoji_btn(self, interaction: discord.Interaction):
+        b = self.cfg["buttons"]["entries"]
+        d = gl.DEFAULT_CFG["buttons"]["entries"]
+
+        async def submitted(i, v):
+            b["emoji"] = await self._emoji_or(v[0], d["emoji"])
+        await interaction.response.send_modal(self.modal("Entries counter", [
+            dict(label="Emoji (emoji, :name:, ID, none)", default=b.get("emoji") or "none", max=80)], submitted))
+
+    async def _emoji_or(self, text: str, default: str) -> str:
+        """Typed text -> emoji string. Empty = default, none = no emoji (bad input raises a clear error)."""
+        t = (text or "").strip()
+        if not t:
+            return default
+        if t.lower() in ("none", "off", "hide", "-"):
+            return ""
+        return await emojis.normalize(self.cog.bot, self.guild, t) or ""
+
+    async def toggle_entries_btn(self, interaction: discord.Interaction):
+        b = self.cfg["buttons"]["entries"]
+        b["show"] = not b.get("show", True)
+        await self.push(interaction)
+
+    async def toggle_progress_btn(self, interaction: discord.Interaction):
+        b = self.cfg["buttons"]["progress"]
+        b["show"] = not b.get("show", True)
+        await self.push(interaction)
+
+    # ------------------------------------------------------------ templates
+    async def save_btn(self, interaction: discord.Interaction):
+        async def submitted(i, v):
+            name = v[0]
+            if not name:
+                raise VCError("Give the template a name.")
+            d = self.cog.data(self.guild.id)
+            if name.lower() not in d["templates"] and len(d["templates"]) >= gl.MAX_TEMPLATES:
+                raise VCError(f"You can keep {gl.MAX_TEMPLATES} templates - delete one first.")
+            t = copy.deepcopy(self.cfg)
+            t["channel"] = self.channel_id
+            d["templates"][name.lower()] = {"name": name, "saved": time.time(), "cfg": t}
+            self.cog.save(self.guild.id)
+            self.loaded = name
+            self.note = f"Template **{name}** saved. Load it any time here, or with `{PREFIX}giveaway load {name}`."
+        await interaction.response.send_modal(self.modal("Save template", [
+            dict(label="Template name", default=self.loaded or (self.cfg.get("prize") or "")[:30], max=40, required=True)], submitted))
+
     async def load_pick(self, interaction: discord.Interaction, sel):
         d = self.cog.data(self.guild.id)
         key = sel.values[0]
@@ -1452,7 +1666,7 @@ class GiveawayBuilder(OwnedView):
         if ch and self.guild.get_channel(ch):
             self.channel_id = ch
         self.page = "home"
-        await self.push(interaction, f"Loaded **{self.loaded or 'your last giveaway'}**. Change anything you like, then press **Start**.")
+        await self.push(interaction, f"Loaded **{self.loaded or 'your last giveaway'}**. Change anything you like, then press **Start giveaway**.")
 
     async def delete_pick(self, interaction: discord.Interaction, sel):
         d = self.cog.data(self.guild.id)

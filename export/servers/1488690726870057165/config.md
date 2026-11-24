@@ -79,11 +79,11 @@
       - **vc_need_muted**: no
       - **vc_disabled_channels**: *(empty)*
 - **active_custom_vcs**:
-  - **1574157917777690714** → #whysolayz:
-    - **owner**: `650534818517483526` → Lazy (whysolayz)
+  - **1574573744746139838** → #whysolayz:
+    - **owner**: `650534818517483526` → Aalsi (whysolayz)
     - **banned**: *(empty)*
     - **block_drags**: no
-    - **created**: 1795378894 (2026-11-22 20:21 UTC)
+    - **created**: 1795478035 (2026-11-23 23:53 UTC)
 
 ### Custom VC protection ($customvc config)
 
@@ -159,7 +159,7 @@
     - **guild_id**: `1488690726870057165` → server Dark ︲ Spider's Web
     - **role_id**: `1570572186958172180` → @ゝFool ⌝
     - **price**: 250
-    - **stock**: 4
+    - **stock**: 2
     - **emoji**: `<:Kartik_what:1570284014797852802>`
     - **position**: 1
   - #2
@@ -183,7 +183,7 @@
     - **guild_id**: `1488690726870057165` → server Dark ︲ Spider's Web
     - **role_id**: `1488691206891503758` → @ゝNot Bull ⌝
     - **price**: 500
-    - **stock**: 3
+    - **stock**: 2
     - **emoji**: `<:cute:1569605481364852909>`
     - **position**: 4
   - #5
@@ -215,9 +215,8 @@
 
 - **role**: `1569999856171229255` → @︲No Prefix 」
 - **users**:
-  - `1262248731353546763` → [AFK]We Know Cuz It's Fact...... (anshumanfr_)
   - `1418875905085935637` → 🜲 SeNvaTor 'メD | 神 (senvator.)
-  - `650534818517483526` → Lazy (whysolayz)
+  - `650534818517483526` → Aalsi (whysolayz)
   - `1473667943186305172` → [T MOD] Viru (thviru)
 
 ### Aliases
@@ -247,6 +246,185 @@
 - **1488691231771853098** → @︲Talented Artist」:
   - **role**: `1488691231771853098` → @︲Talented Artist」
   - **allowed**: *none*
+- **tmod**:
+  - **role**: `1488691194220384338` → @ゝTrial Mod ⌝
+  - **allowed**: *none*
+- **staff**:
+  - **role**: `1488691195847643227` → @ゝStaff Team ⌝
+  - **allowed**: *none*
+
+### Tickets ($ticket)
+
+- **panels**:
+  - **main**:
+    - **name**: Main panel
+    - **panel_channel**: `1488691478841528410` → #🪨︲tickets⌝
+    - **panel_message**: `1573885746706776161`
+    - **panel**:
+      - **title**: __Contact Support Team__
+      - **color**: 3066993
+      - **placeholder**: Select a topic...
+      - **banner**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1573875037528784936`
+      - **description**: `✉️ **Create A Ticket**- if you need support or have any important queries
+
+<:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**
+
+<:Senpai_Information:1517499045117952060> __**Ticket For Support**__ :-
+- Create Ticket For General Support
+[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]
+- Creating a ticket to be staff is strictly prohibited.
+- Tickets for fun would result in 2days mute / ban
+- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike or a serious action which will be taken by our Support Team.
+- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. So, please don't create a ticket regarding this topic.
+
+<:Spider_partner:1572638598585655296> __**Ticket for Partnership/Sponsors**__ :-
+- Create a Ticket If You Got Any Brand Deals Or Sponsor
+- Kindly Mention The Basic Details And Have Patience.
+- The Rates For Brand Deals Would Be Discussed In Ticket
+- Leaking The Information To Anyone Would Lead To Ban.
+
+<:InShot_20261122_130804475:1573966358889107600>__**Currency Loan**__ :-
+- Loan Currency with intrest.
+- follow all the rules.
+- must repay according to the rules.
+
+
+__select category from the dropdown menu to contact us__`
+      - **_url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+    - **welcome**:
+      - **title**: Help/support
+      - **description**: `<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**
+> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon.`
+    - **support_roles**:
+      - `1488691195847643227` → @ゝStaff Team ⌝
+    - **admin_roles**:
+      - `1488691182308692040` → @ゝDark Executive Team ⌝
+    - **open_category**: *none*
+    - **logs**:
+      - **opened**: `1570531039187566715` → #︲🛠・opened」
+      - **closed**: `1570531086939848776` → #︲🛠・closed」
+      - **transcript**: `1570531130938101883` → #︲🛠・transcript」
+    - **categories**:
+      - #1
+        - **id**: dsw-support
+        - **name**: General Support
+        - **emoji**: `<:Senpai_Information:1517499045117952060>`
+        - **description**: Reports, bugs, role claiming and more
+        - **question**: Kindly Mention your issue!
+        - **parent**: `1488691351246868630` → #╰ •〢General Tickets
+        - **ping_roles**:
+          - `1488691195847643227` → @ゝStaff Team ⌝
+      - #2
+        - **id**: dsw-partner
+        - **name**: Partnership/Sponsors
+        - **emoji**: `<:Spider_partner:1572638598585655296>`
+        - **description**: Brand deals and sponsors
+        - **question**: Kindly mention the basic details of your deal!
+        - **parent**: `1488691352051912706` → #╰ •〢Partnership Tickets
+        - **ping_roles**:
+          - `1488691182308692040` → @ゝDark Executive Team ⌝
+      - #3
+        - **id**: df8fd6b2
+        - **name**: Currency Loan
+        - **emoji**: `<:InShot_20261122_130804475:1573966358889107600>`
+        - **description**: *none*
+        - **question**: Kindly mention the amount
+        - **parent**: `1488691353503404204` → #╰ •〢Loan
+        - **ping_roles**:
+          - `1488691182308692040` → @ゝDark Executive Team ⌝
+    - **max_open**: 1
+    - **name_format**: ticket-{user}
+    - **opener_can_close**: no
+- **counter**: 13
+- **blacklist**: *(empty)*
+- **tickets**:
+  - **1573971039388434442** → #ticket-nontastic_player:
+    - **num**: 5
+    - **channel**: `1573971039388434442` → #ticket-nontastic_player
+    - **name**: ticket-nontastic_player
+    - **category**: df8fd6b2
+    - **category_name**: Currency Loan
+    - **question**: Kindly mention the amount
+    - **opener**: `1028298097664733215` → Nope {>.<} (nontastic_player)
+    - **created**: 1795334339 (2026-11-22 07:58 UTC)
+    - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **claimed_at**: 1795334345 (2026-11-22 07:59 UTC)
+    - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **first_reply_at**: 1795334344 (2026-11-22 07:59 UTC)
+    - **answer**: Jitna bhi mil jaye
+    - **log**:
+      - `1570531039187566715` → #︲🛠・opened」
+      - `1573971041728991373`
+    - **closing**: no
+    - **welcome_msg**: `1573971040185356310`
+  - **1573974490554044548** → #ticket-luffy_07_09:
+    - **num**: 6
+    - **channel**: `1573974490554044548` → #ticket-luffy_07_09
+    - **name**: ticket-luffy_07_09
+    - **category**: df8fd6b2
+    - **category_name**: Currency Loan
+    - **question**: Kindly mention the amount
+    - **opener**: `1513085640642920458` → Luffy !¡ (luffy_07_09)
+    - **created**: 1795335162 (2026-11-22 08:12 UTC)
+    - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **claimed_at**: 1795335167 (2026-11-22 08:12 UTC)
+    - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **first_reply_at**: 1795335170 (2026-11-22 08:12 UTC)
+    - **answer**: 500k
+    - **log**:
+      - `1570531039187566715` → #︲🛠・opened」
+      - `1573974493007839333`
+    - **closing**: no
+    - **welcome_msg**: `1573974491669856328`
+  - **1574458190815559732** → #ticket-yourzoru:
+    - **num**: 12
+    - **channel**: `1574458190815559732` → #ticket-yourzoru
+    - **name**: ticket-yourzoru
+    - **category**: df8fd6b2
+    - **category_name**: Currency Loan
+    - **question**: Kindly mention the amount
+    - **opener**: `1407327765933461606` → !ꜱᴇɴᴘᴀɪ_xᴅ (yourzoru)
+    - **created**: 1795450485 (2026-11-23 16:14 UTC)
+    - **claimed_by**: `1492686665142239372` → [T MOD] Dark buddy (senpaispider_1_)
+    - **claimed_at**: 1795484312 (2026-11-24 01:38 UTC)
+    - **first_reply_by**: `1554945105981603880` → [H MOD] Kartik (mexzon_0205)
+    - **first_reply_at**: 1795450512 (2026-11-23 16:15 UTC)
+    - **answer**: 10m ka loan demdo
+    - **log**:
+      - `1570531039187566715` → #︲🛠・opened」
+      - `1574458194493972553`
+    - **closing**: no
+    - **welcome_msg**: `1574458192396689620`
+  - **1574463439118532689** → #ticket-wh0_is_vexy:
+    - **num**: 13
+    - **channel**: `1574463439118532689` → #ticket-wh0_is_vexy
+    - **name**: ticket-wh0_is_vexy
+    - **category**: dsw-support
+    - **category_name**: General Support
+    - **question**: Kindly Mention your issue!
+    - **opener**: `1455775148962746411` → $ VEXY (wh0_is_vexy)
+    - **created**: 1795451737 (2026-11-23 16:35 UTC)
+    - **claimed_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+    - **claimed_at**: 1795451811 (2026-11-23 16:36 UTC)
+    - **first_reply_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+    - **first_reply_at**: 1795451826 (2026-11-23 16:37 UTC)
+    - **answer**: I wanna apply for admin or staff managements
+    - **log**:
+      - `1570531039187566715` → #︲🛠・opened」
+      - `1574463448887328848`
+    - **closing**: no
+    - **welcome_msg**: `1574463442205548566`
+- **stats**:
+  - **opened**: 13
+  - **closed**: 9
+
+### Giveaways ($giveaway)
+
+- *not configured*
 
 ### Autoreact
 
@@ -257,25 +435,25 @@
   - `1488691206891503758` → @ゝNot Bull ⌝
   - `1488691206375608330` → @ゝLoop ⌝
 - **users**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - `<:darkManager:1573139364727230675>`
   - **1425991437396217960** → TheSky (sky_bauni):
     - `<a:Nova_Quenn:1572638654252187669>`
-  - **1548153523709943863** → 🜲 | Aizal (meerab_76):
+  - **1548153523709943863**:
     - `<a:Madira_eating:1570284028093792286>`
   - **743845224287043665** → !                  Whoknoe (whoknow_008):
     - `<a:Cat:1570284005067198464>`
-  - **1086203964300730449** → [T Mod] Caliber (arionx_774):
+  - **1086203964300730449** → [AFK][T Mod] Caliber (arionx_774):
     - `<a:Oliviaaa_nooooo:1570284034532188210>`
   - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
     - `<:LazyCafeCat:1570284011136491742>`
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - `<:cute:1569605481364852909>`
 
 ### Aura ($aura config)
 
 - **members**:
-  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_): 99
+  - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_): 99
 - **roles**: *(empty)*
 - **random**: yes
 - **disabled**: *(empty)*
@@ -294,7 +472,7 @@
 ### Game stats (TimeTap, Handfight)
 
 - **timetap**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 14
@@ -330,7 +508,7 @@
     - **best_clean**: 6
     - **best_ms**: 1079
     - **train_best_avg**: 1223
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - **games**: 1
     - **false_starts**: 1
     - **taps**: 10
@@ -342,7 +520,7 @@
     - **best_clean**: 9
     - **best_ms**: 1088
     - **train_best_avg**: 1441
-  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+  - **1513085640642920458** → Luffy !¡ (luffy_07_09):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 13
@@ -365,7 +543,7 @@
     - **train_runs**: 0
     - **best_clean**: 0
 - **handfight**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 6
     - **titles**: 4
     - **rounds_won**: 9
@@ -398,7 +576,7 @@
     - **rock**: 2
     - **paper**: 4
     - **scissors**: 1
-  - **1554945105981603880** → [H MOD] Mexzon (mexzon_0205):
+  - **1554945105981603880** → [H MOD] Kartik (mexzon_0205):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -420,7 +598,7 @@
     - **rock**: 3
     - **paper**: 2
     - **scissors**: 1
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 1
@@ -431,7 +609,7 @@
     - **rock**: 3
     - **paper**: 3
     - **scissors**: 4
-  - **1433650059043405959** → none (billu2368):
+  - **1433650059043405959** → rizzler is goat (billu2368):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 4
@@ -453,7 +631,7 @@
     - **rock**: 3
     - **paper**: 1
     - **scissors**: 2
-  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_):
+  - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -464,7 +642,7 @@
     - **rock**: 1
     - **paper**: 1
     - **scissors**: 0
-  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+  - **1513085640642920458** → Luffy !¡ (luffy_07_09):
     - **games**: 1
     - **titles**: 1
     - **rounds_won**: 6
@@ -511,7 +689,7 @@
     - **url**: https://cdn.discordapp.com/attachments/1572381729233051669/1572382140719566910/img-1.jpg?ex=6afe2a7b&is=6afcd8fb&hm=7dc1873b7f51d216fcd45fa9d66a08d3670041fe7dcdf081e0dd6ef0b57cb025&
     - **t**: jpg
     - **s**: 99697
-    - **by**: `650534818517483526` → Lazy (whysolayz)
+    - **by**: `650534818517483526` → Aalsi (whysolayz)
     - **ts**: 1794955515
 
 ### Disabled commands
@@ -540,8 +718,8 @@
 ### Extra owners ($konextra - this server only)
 
 - #1
-  - **id**: `1262248731353546763` → [AFK]We Know Cuz It's Fact...... (anshumanfr_)
-  - **name**: [AFK]We Know Cuz It's Fact...... (anshumanfr_)
+  - **id**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+  - **name**: We Know Cuz It's Fact...... (anshumanfr_)
   - **found**: yes
 - #2
   - **id**: `1154489620499800127` → Dark Ojas (darkojas)
@@ -572,19 +750,14 @@
     - **since**: 1795307000 (2026-11-22 00:23 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 1
-  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_):
-    - **reason**: ok
-    - **since**: 1795370112 (2026-11-22 17:55 UTC)
+  - **1414153115602518067** → 🜲 Shaitan Ladka ツ (shaitan_ladka):
+    - **reason**: AFK
+    - **since**: 1795454451 (2026-11-23 17:20 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 0
-  - **1425991437396217960** → TheSky (sky_bauni):
-    - **reason**: gn
-    - **since**: 1795376559 (2026-11-22 19:42 UTC)
-    - **old_nick**: *none*
-    - **mentions_waiting**: 1
   - **1538573910839140575** → Patrick Badmosh (patrickbadmosh):
-    - **reason**: `paper h acha jaaye bas <:Cat_meow:1569605495222964265>`
-    - **since**: 1795379486 (2026-11-22 20:31 UTC)
+    - **reason**: sleep
+    - **since**: 1795457916 (2026-11-23 18:18 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 0
 
@@ -593,7 +766,7 @@
 - **aliases**: *(empty)*
 - **aura**:
   - **members**:
-    - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_): 99
+    - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_): 99
   - **roles**: *(empty)*
   - **random**: yes
   - **disabled**: *(empty)*
@@ -605,19 +778,19 @@
     - `1488691206891503758` → @ゝNot Bull ⌝
     - `1488691206375608330` → @ゝLoop ⌝
   - **users**:
-    - **650534818517483526** → Lazy (whysolayz):
+    - **650534818517483526** → Aalsi (whysolayz):
       - `<:darkManager:1573139364727230675>`
     - **1425991437396217960** → TheSky (sky_bauni):
       - `<a:Nova_Quenn:1572638654252187669>`
-    - **1548153523709943863** → 🜲 | Aizal (meerab_76):
+    - **1548153523709943863**:
       - `<a:Madira_eating:1570284028093792286>`
     - **743845224287043665** → !                  Whoknoe (whoknow_008):
       - `<a:Cat:1570284005067198464>`
-    - **1086203964300730449** → [T Mod] Caliber (arionx_774):
+    - **1086203964300730449** → [AFK][T Mod] Caliber (arionx_774):
       - `<a:Oliviaaa_nooooo:1570284034532188210>`
     - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
       - `<:LazyCafeCat:1570284011136491742>`
-    - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+    - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
       - `<:cute:1569605481364852909>`
 - **cmd_disable**:
   - **rules**:
@@ -643,7 +816,7 @@
 - **handfight**:
   - **channel**: `1572828244758241330` → #🎄︲handfight⌝
 - **handfight_stats**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 6
     - **titles**: 4
     - **rounds_won**: 9
@@ -676,7 +849,7 @@
     - **rock**: 2
     - **paper**: 4
     - **scissors**: 1
-  - **1554945105981603880** → [H MOD] Mexzon (mexzon_0205):
+  - **1554945105981603880** → [H MOD] Kartik (mexzon_0205):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -698,7 +871,7 @@
     - **rock**: 3
     - **paper**: 2
     - **scissors**: 1
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 1
@@ -709,7 +882,7 @@
     - **rock**: 3
     - **paper**: 3
     - **scissors**: 4
-  - **1433650059043405959** → none (billu2368):
+  - **1433650059043405959** → rizzler is goat (billu2368):
     - **games**: 2
     - **titles**: 1
     - **rounds_won**: 4
@@ -731,7 +904,7 @@
     - **rock**: 3
     - **paper**: 1
     - **scissors**: 2
-  - **1262248731353546763** → [AFK]We Know Cuz It's Fact...... (anshumanfr_):
+  - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -742,7 +915,7 @@
     - **rock**: 1
     - **paper**: 1
     - **scissors**: 0
-  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+  - **1513085640642920458** → Luffy !¡ (luffy_07_09):
     - **games**: 1
     - **titles**: 1
     - **rounds_won**: 6
@@ -762,13 +935,13 @@
       - **url**: https://cdn.discordapp.com/attachments/1572381729233051669/1572382140719566910/img-1.jpg?ex=6afe2a7b&is=6afcd8fb&hm=7dc1873b7f51d216fcd45fa9d66a08d3670041fe7dcdf081e0dd6ef0b57cb025&
       - **t**: jpg
       - **s**: 99697
-      - **by**: `650534818517483526` → Lazy (whysolayz)
+      - **by**: `650534818517483526` → Aalsi (whysolayz)
       - **ts**: 1794955515
 - **ludo**:
   - **channel**: `1573551510984462436` → *not found (deleted / bot not in server)*
 - **ludo_games**: *(empty)*
 - **ludo_stats**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 1
     - **wins**: 1
     - **kills**: 0
@@ -779,9 +952,8 @@
 - **noprefix**:
   - **role**: `1569999856171229255` → @︲No Prefix 」
   - **users**:
-    - `1262248731353546763` → [AFK]We Know Cuz It's Fact...... (anshumanfr_)
     - `1418875905085935637` → 🜲 SeNvaTor 'メD | 神 (senvator.)
-    - `650534818517483526` → Lazy (whysolayz)
+    - `650534818517483526` → Aalsi (whysolayz)
     - `1473667943186305172` → [T MOD] Viru (thviru)
 - **points**:
   - **chat_enabled**: yes
@@ -823,21 +995,30 @@
   - **1488691231771853098** → @︲Talented Artist」:
     - **role**: `1488691231771853098` → @︲Talented Artist」
     - **allowed**: *none*
+  - **tmod**:
+    - **role**: `1488691194220384338` → @ゝTrial Mod ⌝
+    - **allowed**: *none*
+  - **staff**:
+    - **role**: `1488691195847643227` → @ゝStaff Team ⌝
+    - **allowed**: *none*
 - **shop**:
   - **per_page**: 5
 - **tickets**:
-  - **panel_channel**: `1488691478841528410` → #🪨︲tickets⌝
-  - **panel_message**: `1573885746706776161`
-  - **panel**:
-    - **title**: __Contact Support Team__
-    - **color**: 3066993
-    - **placeholder**: Select a topic...
-    - **banner**:
-      - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
-      - **ref**:
-        - **c**: `1572663742091632681`
-        - **m**: `1573875037528784936`
-    - **description**: `✉️ **Create A Ticket**- if you need support or have any important queries
+  - **panels**:
+    - **main**:
+      - **name**: Main panel
+      - **panel_channel**: `1488691478841528410` → #🪨︲tickets⌝
+      - **panel_message**: `1573885746706776161`
+      - **panel**:
+        - **title**: __Contact Support Team__
+        - **color**: 3066993
+        - **placeholder**: Select a topic...
+        - **banner**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1573875037528784936`
+        - **description**: `✉️ **Create A Ticket**- if you need support or have any important queries
 
 <:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**
 
@@ -862,50 +1043,52 @@
 
 
 __select category from the dropdown menu to contact us__`
-    - **_url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
-  - **welcome**:
-    - **title**: Help/support
-    - **description**: `<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**
+        - **_url**: https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&
+      - **welcome**:
+        - **title**: Help/support
+        - **description**: `<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**
 > Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon.`
-  - **support_roles**: *(empty)*
-  - **admin_roles**: *(empty)*
-  - **open_category**: *none*
-  - **logs**:
-    - **opened**: `1570531039187566715` → #︲🛠・opened」
-    - **closed**: `1570531086939848776` → #︲🛠・closed」
-    - **transcript**: `1570531130938101883` → #︲🛠・transcript」
-  - **categories**:
-    - #1
-      - **id**: dsw-support
-      - **name**: General Support
-      - **emoji**: `<:Senpai_Information:1517499045117952060>`
-      - **description**: Reports, bugs, role claiming and more
-      - **question**: Kindly Mention your issue!
-      - **parent**: `1488691351246868630` → #╰ •〢General Tickets
-      - **ping_roles**:
+      - **support_roles**:
         - `1488691195847643227` → @ゝStaff Team ⌝
-    - #2
-      - **id**: dsw-partner
-      - **name**: Partnership/Sponsors
-      - **emoji**: `<:Spider_partner:1572638598585655296>`
-      - **description**: Brand deals and sponsors
-      - **question**: Kindly mention the basic details of your deal!
-      - **parent**: `1488691352051912706` → #╰ •〢Partnership Tickets
-      - **ping_roles**:
+      - **admin_roles**:
         - `1488691182308692040` → @ゝDark Executive Team ⌝
-    - #3
-      - **id**: df8fd6b2
-      - **name**: Currency Loan
-      - **emoji**: `<:InShot_20261122_130804475:1573966358889107600>`
-      - **description**: *none*
-      - **question**: Kindly mention the amount
-      - **parent**: `1488691353503404204` → #╰ •〢Loan
-      - **ping_roles**:
-        - `1488691182308692040` → @ゝDark Executive Team ⌝
-  - **max_open**: 1
-  - **name_format**: ticket-{user}
-  - **opener_can_close**: no
-  - **counter**: 9
+      - **open_category**: *none*
+      - **logs**:
+        - **opened**: `1570531039187566715` → #︲🛠・opened」
+        - **closed**: `1570531086939848776` → #︲🛠・closed」
+        - **transcript**: `1570531130938101883` → #︲🛠・transcript」
+      - **categories**:
+        - #1
+          - **id**: dsw-support
+          - **name**: General Support
+          - **emoji**: `<:Senpai_Information:1517499045117952060>`
+          - **description**: Reports, bugs, role claiming and more
+          - **question**: Kindly Mention your issue!
+          - **parent**: `1488691351246868630` → #╰ •〢General Tickets
+          - **ping_roles**:
+            - `1488691195847643227` → @ゝStaff Team ⌝
+        - #2
+          - **id**: dsw-partner
+          - **name**: Partnership/Sponsors
+          - **emoji**: `<:Spider_partner:1572638598585655296>`
+          - **description**: Brand deals and sponsors
+          - **question**: Kindly mention the basic details of your deal!
+          - **parent**: `1488691352051912706` → #╰ •〢Partnership Tickets
+          - **ping_roles**:
+            - `1488691182308692040` → @ゝDark Executive Team ⌝
+        - #3
+          - **id**: df8fd6b2
+          - **name**: Currency Loan
+          - **emoji**: `<:InShot_20261122_130804475:1573966358889107600>`
+          - **description**: *none*
+          - **question**: Kindly mention the amount
+          - **parent**: `1488691353503404204` → #╰ •〢Loan
+          - **ping_roles**:
+            - `1488691182308692040` → @ゝDark Executive Team ⌝
+      - **max_open**: 1
+      - **name_format**: ticket-{user}
+      - **opener_can_close**: no
+  - **counter**: 13
   - **blacklist**: *(empty)*
   - **tickets**:
     - **1573971039388434442** → #ticket-nontastic_player:
@@ -917,9 +1100,9 @@ __select category from the dropdown menu to contact us__`
       - **question**: Kindly mention the amount
       - **opener**: `1028298097664733215` → Nope {>.<} (nontastic_player)
       - **created**: 1795334339 (2026-11-22 07:58 UTC)
-      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+      - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
       - **claimed_at**: 1795334345 (2026-11-22 07:59 UTC)
-      - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
+      - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
       - **first_reply_at**: 1795334344 (2026-11-22 07:59 UTC)
       - **answer**: Jitna bhi mil jaye
       - **log**:
@@ -934,11 +1117,11 @@ __select category from the dropdown menu to contact us__`
       - **category**: df8fd6b2
       - **category_name**: Currency Loan
       - **question**: Kindly mention the amount
-      - **opener**: `1513085640642920458` → MONKEY D LUFFY (luffy_07_09)
+      - **opener**: `1513085640642920458` → Luffy !¡ (luffy_07_09)
       - **created**: 1795335162 (2026-11-22 08:12 UTC)
-      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+      - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
       - **claimed_at**: 1795335167 (2026-11-22 08:12 UTC)
-      - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
+      - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
       - **first_reply_at**: 1795335170 (2026-11-22 08:12 UTC)
       - **answer**: 500k
       - **log**:
@@ -946,15 +1129,53 @@ __select category from the dropdown menu to contact us__`
         - `1573974493007839333`
       - **closing**: no
       - **welcome_msg**: `1573974491669856328`
+    - **1574458190815559732** → #ticket-yourzoru:
+      - **num**: 12
+      - **channel**: `1574458190815559732` → #ticket-yourzoru
+      - **name**: ticket-yourzoru
+      - **category**: df8fd6b2
+      - **category_name**: Currency Loan
+      - **question**: Kindly mention the amount
+      - **opener**: `1407327765933461606` → !ꜱᴇɴᴘᴀɪ_xᴅ (yourzoru)
+      - **created**: 1795450485 (2026-11-23 16:14 UTC)
+      - **claimed_by**: `1492686665142239372` → [T MOD] Dark buddy (senpaispider_1_)
+      - **claimed_at**: 1795484312 (2026-11-24 01:38 UTC)
+      - **first_reply_by**: `1554945105981603880` → [H MOD] Kartik (mexzon_0205)
+      - **first_reply_at**: 1795450512 (2026-11-23 16:15 UTC)
+      - **answer**: 10m ka loan demdo
+      - **log**:
+        - `1570531039187566715` → #︲🛠・opened」
+        - `1574458194493972553`
+      - **closing**: no
+      - **welcome_msg**: `1574458192396689620`
+    - **1574463439118532689** → #ticket-wh0_is_vexy:
+      - **num**: 13
+      - **channel**: `1574463439118532689` → #ticket-wh0_is_vexy
+      - **name**: ticket-wh0_is_vexy
+      - **category**: dsw-support
+      - **category_name**: General Support
+      - **question**: Kindly Mention your issue!
+      - **opener**: `1455775148962746411` → $ VEXY (wh0_is_vexy)
+      - **created**: 1795451737 (2026-11-23 16:35 UTC)
+      - **claimed_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+      - **claimed_at**: 1795451811 (2026-11-23 16:36 UTC)
+      - **first_reply_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
+      - **first_reply_at**: 1795451826 (2026-11-23 16:37 UTC)
+      - **answer**: I wanna apply for admin or staff managements
+      - **log**:
+        - `1570531039187566715` → #︲🛠・opened」
+        - `1574463448887328848`
+      - **closing**: no
+      - **welcome_msg**: `1574463442205548566`
   - **stats**:
-    - **opened**: 9
-    - **closed**: 7
+    - **opened**: 13
+    - **closed**: 9
 - **tictactoe**:
   - **channel**: `1572117193712209960` → #🎄︲tic_tac_toe⌝
 - **timetap**:
   - **channel**: `1572828188332007465` → #🎄︲timetap⌝
 - **timetap_stats**:
-  - **650534818517483526** → Lazy (whysolayz):
+  - **650534818517483526** → Aalsi (whysolayz):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 14
@@ -990,7 +1211,7 @@ __select category from the dropdown menu to contact us__`
     - **best_clean**: 6
     - **best_ms**: 1079
     - **train_best_avg**: 1223
-  - **1409148182944022699** → Deleted_user_981649627401 (deleted_user_981649627401):
+  - **1409148182944022699** → [T MOD] BRAVY (deleted_user_981649627401):
     - **games**: 1
     - **false_starts**: 1
     - **taps**: 10
@@ -1002,7 +1223,7 @@ __select category from the dropdown menu to contact us__`
     - **best_clean**: 9
     - **best_ms**: 1088
     - **train_best_avg**: 1441
-  - **1513085640642920458** → MONKEY D LUFFY (luffy_07_09):
+  - **1513085640642920458** → Luffy !¡ (luffy_07_09):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 13
@@ -1050,4 +1271,4 @@ __select category from the dropdown menu to contact us__`
 
 ### Players
 
-- 157 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)
+- 159 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)

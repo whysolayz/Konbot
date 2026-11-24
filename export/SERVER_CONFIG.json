@@ -59,6 +59,8 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {
         "imagehost_host": {
           "channel": 1572663742091632681,
@@ -73,7 +75,7 @@
         "name": "Lazy",
         "bot_is_in_server": true,
         "owner_id": 650534818517483526,
-        "members": 9
+        "members": 10
       },
       "custom_vc": {
         "join_to_create_channel": null,
@@ -131,7 +133,158 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": {
+        "counter": 0,
+        "templates": {
+          "discord nitro": {
+            "name": "Discord Nitro",
+            "saved": 1795484561.1722157,
+            "cfg": {
+              "title": "GIVEAWAY",
+              "prize": "Discord Nitro",
+              "description": "Click the button below to enter!",
+              "winners": 1,
+              "duration": 60,
+              "color": 16758834,
+              "image": {
+                "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574600939871014972/giveaway_image_1154838258027606117.png?ex=6b063ce6&is=6b04eb66&hm=85b6b232c36047b4d3a3d857e50d5742fbd8ccf57ce14744a87754eb69e3e414&",
+                "ref": {
+                  "c": 1572663742091632681,
+                  "m": 1574600940089254029
+                }
+              },
+              "thumbnail": {
+                "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574600978500550676/giveaway_thumbnail_1154838258027606117.gif?ex=6b063cef&is=6b04eb6f&hm=912f1dea7b40ed2654cdbe493fd1dc07e4ccb672c3a494a24883959263f3d60e&",
+                "ref": {
+                  "c": 1572663742091632681,
+                  "m": 1574600978706202664
+                }
+              },
+              "channel": 1567856391396261898,
+              "emojis": {},
+              "buttons": {
+                "join": {
+                  "label": "Join Giveaway",
+                  "emoji": "<:giveaway:1543990569901236294>",
+                  "style": "primary",
+                  "ended_label": "Giveaway Ended"
+                },
+                "entries": {
+                  "emoji": "<a:IND_AzyLsdDance:1573015221843529768>",
+                  "show": true
+                },
+                "progress": {
+                  "label": "My Progress",
+                  "emoji": ":Madira_spy:",
+                  "show": true
+                }
+              },
+              "prize_role": {
+                "role": null,
+                "mode": "permanent",
+                "seconds": 604800
+              },
+              "points": 0,
+              "req": {
+                "roles": [],
+                "roles_mode": "any",
+                "messages": {
+                  "count": 0,
+                  "exclude": []
+                },
+                "invites": 0,
+                "task": {
+                  "enabled": true,
+                  "phrase": "Happy Birthday",
+                  "target": 650534818517483526,
+                  "channel": null
+                }
+              }
+            }
+          }
+        },
+        "active": {},
+        "ended": {},
+        "temp_roles": [],
+        "last": null
+      },
       "all_settings_raw": {
+        "giveaway": {
+          "counter": 0,
+          "templates": {
+            "discord nitro": {
+              "name": "Discord Nitro",
+              "saved": 1795484561.1722157,
+              "cfg": {
+                "title": "GIVEAWAY",
+                "prize": "Discord Nitro",
+                "description": "Click the button below to enter!",
+                "winners": 1,
+                "duration": 60,
+                "color": 16758834,
+                "image": {
+                  "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574600939871014972/giveaway_image_1154838258027606117.png?ex=6b063ce6&is=6b04eb66&hm=85b6b232c36047b4d3a3d857e50d5742fbd8ccf57ce14744a87754eb69e3e414&",
+                  "ref": {
+                    "c": 1572663742091632681,
+                    "m": 1574600940089254029
+                  }
+                },
+                "thumbnail": {
+                  "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574600978500550676/giveaway_thumbnail_1154838258027606117.gif?ex=6b063cef&is=6b04eb6f&hm=912f1dea7b40ed2654cdbe493fd1dc07e4ccb672c3a494a24883959263f3d60e&",
+                  "ref": {
+                    "c": 1572663742091632681,
+                    "m": 1574600978706202664
+                  }
+                },
+                "channel": 1567856391396261898,
+                "emojis": {},
+                "buttons": {
+                  "join": {
+                    "label": "Join Giveaway",
+                    "emoji": "<:giveaway:1543990569901236294>",
+                    "style": "primary",
+                    "ended_label": "Giveaway Ended"
+                  },
+                  "entries": {
+                    "emoji": "<a:IND_AzyLsdDance:1573015221843529768>",
+                    "show": true
+                  },
+                  "progress": {
+                    "label": "My Progress",
+                    "emoji": ":Madira_spy:",
+                    "show": true
+                  }
+                },
+                "prize_role": {
+                  "role": null,
+                  "mode": "permanent",
+                  "seconds": 604800
+                },
+                "points": 0,
+                "req": {
+                  "roles": [],
+                  "roles_mode": "any",
+                  "messages": {
+                    "count": 0,
+                    "exclude": []
+                  },
+                  "invites": 0,
+                  "task": {
+                    "enabled": true,
+                    "phrase": "Happy Birthday",
+                    "target": 650534818517483526,
+                    "channel": null
+                  }
+                }
+              }
+            }
+          },
+          "active": {},
+          "ended": {},
+          "temp_roles": [],
+          "last": null
+        },
         "imagehost": {
           "channel": null,
           "items": {
@@ -155,7 +308,7 @@
         "name": "Dark ︲ Spider's Web",
         "bot_is_in_server": true,
         "owner_id": 1400039022855852113,
-        "members": 198
+        "members": 202
       },
       "custom_vc": {
         "join_to_create_channel": 1488691385266864208,
@@ -249,11 +402,11 @@
           }
         },
         "active_custom_vcs": {
-          "1574157917777690714": {
+          "1574573744746139838": {
             "owner": 650534818517483526,
             "banned": [],
             "block_drags": false,
-            "created": 1795378894.1578226
+            "created": 1795478035.092992
           }
         }
       },
@@ -332,7 +485,7 @@
             "guild_id": 1488690726870057165,
             "role_id": 1570572186958172180,
             "price": 250,
-            "stock": 4,
+            "stock": 2,
             "emoji": "<:Kartik_what:1570284014797852802>",
             "position": 1
           },
@@ -359,7 +512,7 @@
             "guild_id": 1488690726870057165,
             "role_id": 1488691206891503758,
             "price": 500,
-            "stock": 3,
+            "stock": 2,
             "emoji": "<:cute:1569605481364852909>",
             "position": 4
           },
@@ -395,7 +548,6 @@
       "no_prefix": {
         "role": 1569999856171229255,
         "users": [
-          1262248731353546763,
           1418875905085935637,
           650534818517483526,
           1473667943186305172
@@ -429,6 +581,14 @@
         },
         "1488691231771853098": {
           "role": 1488691231771853098,
+          "allowed": null
+        },
+        "tmod": {
+          "role": 1488691194220384338,
+          "allowed": null
+        },
+        "staff": {
+          "role": 1488691195847643227,
           "allowed": null
         }
       },
@@ -756,7 +916,7 @@
       "extra_owners": [
         {
           "id": 1262248731353546763,
-          "name": "[AFK]We Know Cuz It's Fact...... (anshumanfr_)",
+          "name": "We Know Cuz It's Fact...... (anshumanfr_)",
           "found": true
         },
         {
@@ -792,26 +952,190 @@
             "old_nick": null,
             "mentions_waiting": 1
           },
-          "1262248731353546763": {
-            "reason": "ok",
-            "since": 1795370111.743126,
+          "1414153115602518067": {
+            "reason": "AFK",
+            "since": 1795454451.183054,
             "old_nick": null,
             "mentions_waiting": 0
           },
-          "1425991437396217960": {
-            "reason": "gn",
-            "since": 1795376559.0990024,
-            "old_nick": null,
-            "mentions_waiting": 1
-          },
           "1538573910839140575": {
-            "reason": "paper h acha jaaye bas <:Cat_meow:1569605495222964265>",
-            "since": 1795379485.7904775,
+            "reason": "sleep",
+            "since": 1795457916.0341663,
             "old_nick": null,
             "mentions_waiting": 0
           }
         }
       },
+      "tickets (panels, categories, open tickets)": {
+        "panels": {
+          "main": {
+            "name": "Main panel",
+            "panel_channel": 1488691478841528410,
+            "panel_message": 1573885746706776161,
+            "panel": {
+              "title": "__Contact Support Team__",
+              "color": 3066993,
+              "placeholder": "Select a topic...",
+              "banner": {
+                "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&",
+                "ref": {
+                  "c": 1572663742091632681,
+                  "m": 1573875037528784936
+                }
+              },
+              "description": "✉️ **Create A Ticket**- if you need support or have any important queries\n\n<:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**\n\n<:Senpai_Information:1517499045117952060> __**Ticket For Support**__ :-\n- Create Ticket For General Support\n[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]\n- Creating a ticket to be staff is strictly prohibited.\n- Tickets for fun would result in 2days mute / ban\n- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike or a serious action which will be taken by our Support Team.\n- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. So, please don't create a ticket regarding this topic.\n\n<:Spider_partner:1572638598585655296> __**Ticket for Partnership/Sponsors**__ :-\n- Create a Ticket If You Got Any Brand Deals Or Sponsor\n- Kindly Mention The Basic Details And Have Patience.\n- The Rates For Brand Deals Would Be Discussed In Ticket\n- Leaking The Information To Anyone Would Lead To Ban.\n\n<:InShot_20261122_130804475:1573966358889107600>__**Currency Loan**__ :-\n- Loan Currency with intrest.\n- follow all the rules.\n- must repay according to the rules.\n\n\n__select category from the dropdown menu to contact us__",
+              "_url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&"
+            },
+            "welcome": {
+              "title": "Help/support",
+              "description": "<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**\n> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon."
+            },
+            "support_roles": [
+              1488691195847643227
+            ],
+            "admin_roles": [
+              1488691182308692040
+            ],
+            "open_category": null,
+            "logs": {
+              "opened": 1570531039187566715,
+              "closed": 1570531086939848776,
+              "transcript": 1570531130938101883
+            },
+            "categories": [
+              {
+                "id": "dsw-support",
+                "name": "General Support",
+                "emoji": "<:Senpai_Information:1517499045117952060>",
+                "description": "Reports, bugs, role claiming and more",
+                "question": "Kindly Mention your issue!",
+                "parent": 1488691351246868630,
+                "ping_roles": [
+                  1488691195847643227
+                ]
+              },
+              {
+                "id": "dsw-partner",
+                "name": "Partnership/Sponsors",
+                "emoji": "<:Spider_partner:1572638598585655296>",
+                "description": "Brand deals and sponsors",
+                "question": "Kindly mention the basic details of your deal!",
+                "parent": 1488691352051912706,
+                "ping_roles": [
+                  1488691182308692040
+                ]
+              },
+              {
+                "id": "df8fd6b2",
+                "name": "Currency Loan",
+                "emoji": "<:InShot_20261122_130804475:1573966358889107600>",
+                "description": null,
+                "question": "Kindly mention the amount",
+                "parent": 1488691353503404204,
+                "ping_roles": [
+                  1488691182308692040
+                ]
+              }
+            ],
+            "max_open": 1,
+            "name_format": "ticket-{user}",
+            "opener_can_close": false
+          }
+        },
+        "counter": 13,
+        "blacklist": [],
+        "tickets": {
+          "1573971039388434442": {
+            "num": 5,
+            "channel": 1573971039388434442,
+            "name": "ticket-nontastic_player",
+            "category": "df8fd6b2",
+            "category_name": "Currency Loan",
+            "question": "Kindly mention the amount",
+            "opener": 1028298097664733215,
+            "created": 1795334338.8660107,
+            "claimed_by": 650534818517483526,
+            "claimed_at": 1795334344.579034,
+            "first_reply_by": 650534818517483526,
+            "first_reply_at": 1795334343.942,
+            "answer": "Jitna bhi mil jaye",
+            "log": [
+              1570531039187566715,
+              1573971041728991373
+            ],
+            "closing": false,
+            "welcome_msg": 1573971040185356310
+          },
+          "1573974490554044548": {
+            "num": 6,
+            "channel": 1573974490554044548,
+            "name": "ticket-luffy_07_09",
+            "category": "df8fd6b2",
+            "category_name": "Currency Loan",
+            "question": "Kindly mention the amount",
+            "opener": 1513085640642920458,
+            "created": 1795335161.7306697,
+            "claimed_by": 650534818517483526,
+            "claimed_at": 1795335167.3309338,
+            "first_reply_by": 650534818517483526,
+            "first_reply_at": 1795335169.809,
+            "answer": "500k",
+            "log": [
+              1570531039187566715,
+              1573974493007839333
+            ],
+            "closing": false,
+            "welcome_msg": 1573974491669856328
+          },
+          "1574458190815559732": {
+            "num": 12,
+            "channel": 1574458190815559732,
+            "name": "ticket-yourzoru",
+            "category": "df8fd6b2",
+            "category_name": "Currency Loan",
+            "question": "Kindly mention the amount",
+            "opener": 1407327765933461606,
+            "created": 1795450484.8535337,
+            "claimed_by": 1492686665142239372,
+            "claimed_at": 1795484311.6963713,
+            "first_reply_by": 1554945105981603880,
+            "first_reply_at": 1795450511.518,
+            "answer": "10m ka loan demdo",
+            "log": [
+              1570531039187566715,
+              1574458194493972553
+            ],
+            "closing": false,
+            "welcome_msg": 1574458192396689620
+          },
+          "1574463439118532689": {
+            "num": 13,
+            "channel": 1574463439118532689,
+            "name": "ticket-wh0_is_vexy",
+            "category": "dsw-support",
+            "category_name": "General Support",
+            "question": "Kindly Mention your issue!",
+            "opener": 1455775148962746411,
+            "created": 1795451736.6423857,
+            "claimed_by": 1262248731353546763,
+            "claimed_at": 1795451811.0530272,
+            "first_reply_by": 1262248731353546763,
+            "first_reply_at": 1795451825.534,
+            "answer": "I wanna apply for admin or staff managements",
+            "log": [
+              1570531039187566715,
+              1574463448887328848
+            ],
+            "closing": false,
+            "welcome_msg": 1574463442205548566
+          }
+        },
+        "stats": {
+          "opened": 13,
+          "closed": 9
+        }
+      },
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {
         "aliases": {},
         "aura": {
@@ -1035,7 +1359,6 @@
         "noprefix": {
           "role": 1569999856171229255,
           "users": [
-            1262248731353546763,
             1418875905085935637,
             650534818517483526,
             1473667943186305172
@@ -1089,79 +1412,96 @@
           "1488691231771853098": {
             "role": 1488691231771853098,
             "allowed": null
+          },
+          "tmod": {
+            "role": 1488691194220384338,
+            "allowed": null
+          },
+          "staff": {
+            "role": 1488691195847643227,
+            "allowed": null
           }
         },
         "shop": {
           "per_page": 5
         },
         "tickets": {
-          "panel_channel": 1488691478841528410,
-          "panel_message": 1573885746706776161,
-          "panel": {
-            "title": "__Contact Support Team__",
-            "color": 3066993,
-            "placeholder": "Select a topic...",
-            "banner": {
-              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&",
-              "ref": {
-                "c": 1572663742091632681,
-                "m": 1573875037528784936
-              }
-            },
-            "description": "✉️ **Create A Ticket**- if you need support or have any important queries\n\n<:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**\n\n<:Senpai_Information:1517499045117952060> __**Ticket For Support**__ :-\n- Create Ticket For General Support\n[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]\n- Creating a ticket to be staff is strictly prohibited.\n- Tickets for fun would result in 2days mute / ban\n- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike or a serious action which will be taken by our Support Team.\n- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. So, please don't create a ticket regarding this topic.\n\n<:Spider_partner:1572638598585655296> __**Ticket for Partnership/Sponsors**__ :-\n- Create a Ticket If You Got Any Brand Deals Or Sponsor\n- Kindly Mention The Basic Details And Have Patience.\n- The Rates For Brand Deals Would Be Discussed In Ticket\n- Leaking The Information To Anyone Would Lead To Ban.\n\n<:InShot_20261122_130804475:1573966358889107600>__**Currency Loan**__ :-\n- Loan Currency with intrest.\n- follow all the rules.\n- must repay according to the rules.\n\n\n__select category from the dropdown menu to contact us__",
-            "_url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&"
-          },
-          "welcome": {
-            "title": "Help/support",
-            "description": "<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**\n> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon."
-          },
-          "support_roles": [],
-          "admin_roles": [],
-          "open_category": null,
-          "logs": {
-            "opened": 1570531039187566715,
-            "closed": 1570531086939848776,
-            "transcript": 1570531130938101883
-          },
-          "categories": [
-            {
-              "id": "dsw-support",
-              "name": "General Support",
-              "emoji": "<:Senpai_Information:1517499045117952060>",
-              "description": "Reports, bugs, role claiming and more",
-              "question": "Kindly Mention your issue!",
-              "parent": 1488691351246868630,
-              "ping_roles": [
+          "panels": {
+            "main": {
+              "name": "Main panel",
+              "panel_channel": 1488691478841528410,
+              "panel_message": 1573885746706776161,
+              "panel": {
+                "title": "__Contact Support Team__",
+                "color": 3066993,
+                "placeholder": "Select a topic...",
+                "banner": {
+                  "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&",
+                  "ref": {
+                    "c": 1572663742091632681,
+                    "m": 1573875037528784936
+                  }
+                },
+                "description": "✉️ **Create A Ticket**- if you need support or have any important queries\n\n<:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**\n\n<:Senpai_Information:1517499045117952060> __**Ticket For Support**__ :-\n- Create Ticket For General Support\n[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]\n- Creating a ticket to be staff is strictly prohibited.\n- Tickets for fun would result in 2days mute / ban\n- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike or a serious action which will be taken by our Support Team.\n- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. So, please don't create a ticket regarding this topic.\n\n<:Spider_partner:1572638598585655296> __**Ticket for Partnership/Sponsors**__ :-\n- Create a Ticket If You Got Any Brand Deals Or Sponsor\n- Kindly Mention The Basic Details And Have Patience.\n- The Rates For Brand Deals Would Be Discussed In Ticket\n- Leaking The Information To Anyone Would Lead To Ban.\n\n<:InShot_20261122_130804475:1573966358889107600>__**Currency Loan**__ :-\n- Loan Currency with intrest.\n- follow all the rules.\n- must repay according to the rules.\n\n\n__select category from the dropdown menu to contact us__",
+                "_url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&"
+              },
+              "welcome": {
+                "title": "Help/support",
+                "description": "<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**\n> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon."
+              },
+              "support_roles": [
                 1488691195847643227
-              ]
-            },
-            {
-              "id": "dsw-partner",
-              "name": "Partnership/Sponsors",
-              "emoji": "<:Spider_partner:1572638598585655296>",
-              "description": "Brand deals and sponsors",
-              "question": "Kindly mention the basic details of your deal!",
-              "parent": 1488691352051912706,
-              "ping_roles": [
+              ],
+              "admin_roles": [
                 1488691182308692040
-              ]
-            },
-            {
-              "id": "df8fd6b2",
-              "name": "Currency Loan",
-              "emoji": "<:InShot_20261122_130804475:1573966358889107600>",
-              "description": null,
-              "question": "Kindly mention the amount",
-              "parent": 1488691353503404204,
-              "ping_roles": [
-                1488691182308692040
-              ]
+              ],
+              "open_category": null,
+              "logs": {
+                "opened": 1570531039187566715,
+                "closed": 1570531086939848776,
+                "transcript": 1570531130938101883
+              },
+              "categories": [
+                {
+                  "id": "dsw-support",
+                  "name": "General Support",
+                  "emoji": "<:Senpai_Information:1517499045117952060>",
+                  "description": "Reports, bugs, role claiming and more",
+                  "question": "Kindly Mention your issue!",
+                  "parent": 1488691351246868630,
+                  "ping_roles": [
+                    1488691195847643227
+                  ]
+                },
+                {
+                  "id": "dsw-partner",
+                  "name": "Partnership/Sponsors",
+                  "emoji": "<:Spider_partner:1572638598585655296>",
+                  "description": "Brand deals and sponsors",
+                  "question": "Kindly mention the basic details of your deal!",
+                  "parent": 1488691352051912706,
+                  "ping_roles": [
+                    1488691182308692040
+                  ]
+                },
+                {
+                  "id": "df8fd6b2",
+                  "name": "Currency Loan",
+                  "emoji": "<:InShot_20261122_130804475:1573966358889107600>",
+                  "description": null,
+                  "question": "Kindly mention the amount",
+                  "parent": 1488691353503404204,
+                  "ping_roles": [
+                    1488691182308692040
+                  ]
+                }
+              ],
+              "max_open": 1,
+              "name_format": "ticket-{user}",
+              "opener_can_close": false
             }
-          ],
-          "max_open": 1,
-          "name_format": "ticket-{user}",
-          "opener_can_close": false,
-          "counter": 9,
+          },
+          "counter": 13,
           "blacklist": [],
           "tickets": {
             "1573971039388434442": {
@@ -1205,11 +1545,53 @@
               ],
               "closing": false,
               "welcome_msg": 1573974491669856328
+            },
+            "1574458190815559732": {
+              "num": 12,
+              "channel": 1574458190815559732,
+              "name": "ticket-yourzoru",
+              "category": "df8fd6b2",
+              "category_name": "Currency Loan",
+              "question": "Kindly mention the amount",
+              "opener": 1407327765933461606,
+              "created": 1795450484.8535337,
+              "claimed_by": 1492686665142239372,
+              "claimed_at": 1795484311.6963713,
+              "first_reply_by": 1554945105981603880,
+              "first_reply_at": 1795450511.518,
+              "answer": "10m ka loan demdo",
+              "log": [
+                1570531039187566715,
+                1574458194493972553
+              ],
+              "closing": false,
+              "welcome_msg": 1574458192396689620
+            },
+            "1574463439118532689": {
+              "num": 13,
+              "channel": 1574463439118532689,
+              "name": "ticket-wh0_is_vexy",
+              "category": "dsw-support",
+              "category_name": "General Support",
+              "question": "Kindly Mention your issue!",
+              "opener": 1455775148962746411,
+              "created": 1795451736.6423857,
+              "claimed_by": 1262248731353546763,
+              "claimed_at": 1795451811.0530272,
+              "first_reply_by": 1262248731353546763,
+              "first_reply_at": 1795451825.534,
+              "answer": "I wanna apply for admin or staff managements",
+              "log": [
+                1570531039187566715,
+                1574463448887328848
+              ],
+              "closing": false,
+              "welcome_msg": 1574463442205548566
             }
           },
           "stats": {
-            "opened": 9,
-            "closed": 7
+            "opened": 13,
+            "closed": 9
           }
         },
         "tictactoe": {
@@ -1328,7 +1710,7 @@
           ]
         }
       },
-      "players_in_database": 157
+      "players_in_database": 159
     },
     "1506692944604823696": {
       "server": {
@@ -1381,6 +1763,8 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {},
       "players_in_database": 2
     },
@@ -1441,6 +1825,8 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {
         "noprefix": {
           "role": null,
@@ -1450,7 +1836,63 @@
           ]
         }
       },
-      "players_in_database": 34
+      "players_in_database": 35
+    },
+    "1528097634273984807": {
+      "server": {
+        "id": 1528097634273984807,
+        "name": "𖹭.ִ𓂃 NorthHaven™ | Chill • Gaming • Events • Giveaways",
+        "bot_is_in_server": true,
+        "owner_id": 1483807914249420950,
+        "members": 59
+      },
+      "custom_vc": {
+        "join_to_create_channel": null,
+        "interface_channel": null,
+        "interface_message_id": null,
+        "saved_setup (last known, survives channel deletion)": {
+          "join_to_create": null,
+          "interface": null,
+          "panel_message_id": null
+        },
+        "other_keys": {},
+        "active_custom_vcs": {}
+      },
+      "self_roles": null,
+      "points_settings": null,
+      "shop": {
+        "settings": null,
+        "items": []
+      },
+      "no_prefix": null,
+      "aliases": null,
+      "role_commands": null,
+      "autoreact": null,
+      "aura": null,
+      "custom_vc_rules": null,
+      "tictactoe": null,
+      "game_channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)": {
+        "tictactoe": null,
+        "blacktea": null,
+        "timetap": null,
+        "handfight": null
+      },
+      "game_stats (TimeTap, Handfight)": {
+        "timetap": null,
+        "handfight": null
+      },
+      "webhook_sender (name, avatar, embed, images)": null,
+      "saved_images ($tolink names -> links)": null,
+      "command_disable ($disablecommand)": null,
+      "extra_owners": [],
+      "afk": {
+        "tag_enabled": true,
+        "users": {}
+      },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
+      "all_settings_raw": {},
+      "players_in_database": 3
     },
     "1543872217920573493": {
       "server": {
@@ -1509,6 +1951,8 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {
         "noprefix": {
           "role": null,
@@ -1526,7 +1970,7 @@
         "name": "The Blaze Nebula | Drag GW",
         "bot_is_in_server": true,
         "owner_id": 1519731963244580987,
-        "members": 1027
+        "members": 1014
       },
       "custom_vc": {
         "join_to_create_channel": null,
@@ -1608,6 +2052,9 @@
           ],
           "1385099857781329961": [
             "<:Cute_Cry:1549341301282185329>"
+          ],
+          "1433650059043405959": [
+            "<:Nebula_cutie:1563397790627795025>"
           ]
         }
       },
@@ -1630,8 +2077,79 @@
       "extra_owners": [],
       "afk": {
         "tag_enabled": true,
-        "users": {}
+        "users": {
+          "1543476735469691002": {
+            "reason": "😔 soon",
+            "since": 1795451396.3415875,
+            "old_nick": "MOD | Batak Sir",
+            "mentions_waiting": 1
+          }
+        }
       },
+      "tickets (panels, categories, open tickets)": {
+        "panel_channel": 1568343826425323692,
+        "panel_message": 1573917007349289031,
+        "panel": {
+          "title": "Support Center",
+          "color": 16758834,
+          "placeholder": "Choose a category...",
+          "banner": null,
+          "description": "🎫 NEED HELP? OPEN A TICKET!\n\nFacing an issue, need assistance, or wish to contact our staff team privately? Our support team is always ready to assist you!\n\n📌 HOW TO CREATE A TICKET\n\nClick the 🎫 Open Ticket button below and select the category that best describes your concern. Our relevant staff members will assist you as soon as possible.\n\n📂 TICKET CATEGORIES\n\n🛠️ Support — General assistance, queries, and server-related issues.\n\n🎉 Giveaway — Claim your giveaway rewards.\n\n🎁 Invite Reward — Claim rewards earned through inviting members.\n\n⚠️ TICKET RULES\n\n• Clearly explain your issue when opening a ticket.\n• Avoid spamming or repeatedly pinging staff members.\n• Provide relevant screenshots or evidence whenever necessary.\n• Open only one ticket per issue.\n• Do not misuse or abuse the ticket system.\n• Cooperate with staff members throughout the process.\n\n🔒 PRIVACY & CONFIDENTIALITY\n\nAll tickets are private and accessible only to the ticket creator and authorized staff members.\n\nPlease select the correct category to ensure faster assistance.\n\n💙 Thank you for being a part of our community!",
+          "_url": null
+        },
+        "welcome": {
+          "title": "Welcome to your ticket",
+          "description": "Hey {user}, thanks for reaching out about **{category}**!\nTell us what is going on in as much detail as you can - a staff member will be with you shortly."
+        },
+        "support_roles": [],
+        "admin_roles": [],
+        "open_category": null,
+        "logs": {
+          "opened": 1573916489734693005,
+          "closed": 1573916520676065400,
+          "transcript": 1573916573553397770
+        },
+        "categories": [
+          {
+            "id": "b1326796",
+            "name": "General Support",
+            "emoji": "🛠️",
+            "description": "General assistance, queries, and server-related issues.",
+            "question": null,
+            "parent": 1568608614577348670,
+            "ping_roles": []
+          },
+          {
+            "id": "e14eb3f2",
+            "name": "Giveaway",
+            "emoji": "🎉",
+            "description": "Claim your giveaway rewards.",
+            "question": null,
+            "parent": 1568608741652303942,
+            "ping_roles": []
+          },
+          {
+            "id": "3efeb3df",
+            "name": "Invite Rewards",
+            "emoji": "🎁",
+            "description": "Claim rewards earned through inviting members.",
+            "question": null,
+            "parent": null,
+            "ping_roles": []
+          }
+        ],
+        "max_open": 1,
+        "name_format": "ticket-{user}",
+        "opener_can_close": true,
+        "counter": 0,
+        "blacklist": [],
+        "tickets": {},
+        "stats": {
+          "opened": 0,
+          "closed": 0
+        }
+      },
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {
         "autoreact": {
           "roles": [],
@@ -1656,6 +2174,9 @@
             ],
             "1385099857781329961": [
               "<:Cute_Cry:1549341301282185329>"
+            ],
+            "1433650059043405959": [
+              "<:Nebula_cutie:1563397790627795025>"
             ]
           }
         },
@@ -1741,7 +2262,7 @@
           }
         }
       },
-      "players_in_database": 449
+      "players_in_database": 456
     },
     "1556044009661530124": {
       "server": {
@@ -1749,7 +2270,7 @@
         "name": "Soul of Nebula",
         "bot_is_in_server": true,
         "owner_id": 1554945105981603880,
-        "members": 399
+        "members": 384
       },
       "custom_vc": {
         "join_to_create_channel": null,
@@ -1799,6 +2320,8 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {
         "noprefix": {
           "role": null,
@@ -1807,7 +2330,7 @@
           ]
         }
       },
-      "players_in_database": 58
+      "players_in_database": 64
     },
     "1562735431051903090": {
       "server": {
@@ -1815,7 +2338,7 @@
         "name": "Dr4k3n Hangout",
         "bot_is_in_server": true,
         "owner_id": 1556600326617042959,
-        "members": 191
+        "members": 189
       },
       "custom_vc": {
         "join_to_create_channel": null,
@@ -1860,8 +2383,10 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {},
-      "players_in_database": 3
+      "players_in_database": 5
     },
     "1564620144527806506": {
       "server": {
@@ -1982,6 +2507,8 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {
         "noprefix": {
           "role": null,
@@ -2062,6 +2589,8 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {},
       "players_in_database": 0
     },
@@ -2116,6 +2645,8 @@
         "tag_enabled": true,
         "users": {}
       },
+      "tickets (panels, categories, open tickets)": null,
+      "giveaways (templates, running, ended)": null,
       "all_settings_raw": {},
       "players_in_database": 0
     }

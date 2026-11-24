@@ -43,6 +43,14 @@
 
 - *not configured*
 
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
+
+- *not configured*
+
 ### Autoreact
 
 - *not configured*
@@ -94,4 +102,4 @@
 
 ### Players
 
-- 3 players stored in `data/kon.db` (full list: `export/players_1562735431051903090.csv`)
+- 5 players stored in `data/kon.db` (full list: `export/players_1562735431051903090.csv`)

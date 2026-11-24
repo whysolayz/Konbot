@@ -49,30 +49,30 @@
         }
       ]
     },
-    "1262248731353546763": {
-      "reason": "ok",
-      "since": 1795370111.743126,
+    "1543476735469691002": {
+      "reason": "😔 soon",
+      "since": 1795451396.3415875,
+      "guild_id": 1547650379448188999,
+      "old_nick": "MOD | Batak Sir",
+      "mentions": [
+        {
+          "author": "Mexzon | Blaze",
+          "channel_id": 1568343826425323692,
+          "url": "https://discord.com/channels/1547650379448188999/1568343826425323692/1574462101349470251",
+          "content": "<:spider_Sad_alone:1313413270912110654>"
+        }
+      ]
+    },
+    "1414153115602518067": {
+      "reason": "AFK",
+      "since": 1795454451.183054,
       "guild_id": 1488690726870057165,
       "old_nick": null,
       "mentions": []
     },
-    "1425991437396217960": {
-      "reason": "gn",
-      "since": 1795376559.0990024,
-      "guild_id": 1488690726870057165,
-      "old_nick": null,
-      "mentions": [
-        {
-          "author": "Lazy",
-          "channel_id": 1488691402039627776,
-          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1574157201910800395",
-          "content": "<:Cat_meow:1569605495222964265>"
-        }
-      ]
-    },
     "1538573910839140575": {
-      "reason": "paper h acha jaaye bas <:Cat_meow:1569605495222964265>",
-      "since": 1795379485.7904775,
+      "reason": "sleep",
+      "since": 1795457916.0341663,
       "guild_id": 1488690726870057165,
       "old_nick": null,
       "mentions": []

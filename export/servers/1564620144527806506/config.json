@@ -117,6 +117,8 @@
     "tag_enabled": true,
     "users": {}
   },
+  "tickets (panels, categories, open tickets)": null,
+  "giveaways (templates, running, ended)": null,
   "all_settings_raw": {
     "noprefix": {
       "role": null,

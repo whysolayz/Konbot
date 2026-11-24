@@ -33,7 +33,7 @@
   - #1
     - **id**: 8
     - **guild_id**: `1547650379448188999` → server The Blaze Nebula | Drag GW
-    - **role_id**: `1566249609846726758` → @2x luck
+    - **role_id**: `1566249609846726758` → *not found (deleted / bot not in server)*
     - **price**: 100
     - **stock**: 2
     - **emoji**: ☘️
@@ -51,25 +51,117 @@
 
 - **role**: *none*
 - **users**:
-  - `1385099857781329961` → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113)
+  - `1385099857781329961` → Alonefox (d3adb9y1113)
   - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
   - `1504536783898021908` → T-Mod | om pandey (om61006)
   - `1562817118641062029` → Raven (_raven.exe09)
   - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
   - `1519731963244580987` → Blaze zzz (btwkartikxz)
-  - `1340198074387267634` → TacticalShower (.mlx_rinn)
+  - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
   - `1554945105981603880` → Mexzon | Blaze (mexzon_0205)
   - `829689719633215498` → Vortex (_vortextheog)
   - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
   - `1554280108632842295` → .arnav.gg
   - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
-  - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
+  - `1543476735469691002` → [AFK] MOD | Batak Sir (ryomentheog.)
 
 ### Aliases
 
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- **panel_channel**: `1568343826425323692` → #⚒️〢staff-chat
+- **panel_message**: `1573917007349289031`
+- **panel**:
+  - **title**: Support Center
+  - **color**: 16758834
+  - **placeholder**: Choose a category...
+  - **banner**: *none*
+  - **description**: 🎫 NEED HELP? OPEN A TICKET!
+
+Facing an issue, need assistance, or wish to contact our staff team privately? Our support team is always ready to assist you!
+
+📌 HOW TO CREATE A TICKET
+
+Click the 🎫 Open Ticket button below and select the category that best describes your concern. Our relevant staff members will assist you as soon as possible.
+
+📂 TICKET CATEGORIES
+
+🛠️ Support — General assistance, queries, and server-related issues.
+
+🎉 Giveaway — Claim your giveaway rewards.
+
+🎁 Invite Reward — Claim rewards earned through inviting members.
+
+⚠️ TICKET RULES
+
+• Clearly explain your issue when opening a ticket.
+• Avoid spamming or repeatedly pinging staff members.
+• Provide relevant screenshots or evidence whenever necessary.
+• Open only one ticket per issue.
+• Do not misuse or abuse the ticket system.
+• Cooperate with staff members throughout the process.
+
+🔒 PRIVACY & CONFIDENTIALITY
+
+All tickets are private and accessible only to the ticket creator and authorized staff members.
+
+Please select the correct category to ensure faster assistance.
+
+💙 Thank you for being a part of our community!
+  - **_url**: *none*
+- **welcome**:
+  - **title**: Welcome to your ticket
+  - **description**: Hey {user}, thanks for reaching out about **{category}**!
+Tell us what is going on in as much detail as you can - a staff member will be with you shortly.
+- **support_roles**: *(empty)*
+- **admin_roles**: *(empty)*
+- **open_category**: *none*
+- **logs**:
+  - **opened**: `1573916489734693005` → #ticket-open
+  - **closed**: `1573916520676065400` → #ticket-close
+  - **transcript**: `1573916573553397770` → #ticket-transcript
+- **categories**:
+  - #1
+    - **id**: b1326796
+    - **name**: General Support
+    - **emoji**: 🛠️
+    - **description**: General assistance, queries, and server-related issues.
+    - **question**: *none*
+    - **parent**: `1568608614577348670` → #╰•॥ Support Tickets
+    - **ping_roles**: *(empty)*
+  - #2
+    - **id**: e14eb3f2
+    - **name**: Giveaway
+    - **emoji**: 🎉
+    - **description**: Claim your giveaway rewards.
+    - **question**: *none*
+    - **parent**: `1568608741652303942` → #╰•॥ GIVEAWAY TICKETS
+    - **ping_roles**: *(empty)*
+  - #3
+    - **id**: 3efeb3df
+    - **name**: Invite Rewards
+    - **emoji**: 🎁
+    - **description**: Claim rewards earned through inviting members.
+    - **question**: *none*
+    - **parent**: *none*
+    - **ping_roles**: *(empty)*
+- **max_open**: 1
+- **name_format**: ticket-{user}
+- **opener_can_close**: yes
+- **counter**: 0
+- **blacklist**: *(empty)*
+- **tickets**: *(empty)*
+- **stats**:
+  - **opened**: 0
+  - **closed**: 0
+
+### Giveaways ($giveaway)
 
 - *not configured*
 
@@ -89,8 +181,10 @@
     - `<a:disco:1572571259601031259>`
   - **1554945105981603880** → Mexzon | Blaze (mexzon_0205):
     - `<:nebula_hawww:1563397980332105730>`
-  - **1385099857781329961** → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113):
+  - **1385099857781329961** → Alonefox (d3adb9y1113):
     - `<:Cute_Cry:1549341301282185329>`
+  - **1433650059043405959** → MOD | RIZZLER (billu2368):
+    - `<:Nebula_cutie:1563397790627795025>`
 
 ### Aura ($aura config)
 
@@ -131,7 +225,12 @@
 ### AFK
 
 - **tag_enabled**: yes
-- **users**: *(empty)*
+- **users**:
+  - **1543476735469691002** → [AFK] MOD | Batak Sir (ryomentheog.):
+    - **reason**: 😔 soon
+    - **since**: 1795451396 (2026-11-23 16:29 UTC)
+    - **old_nick**: MOD | Batak Sir
+    - **mentions_waiting**: 1
 
 ### EVERYTHING saved for this server (raw settings, nothing left out)
 
@@ -150,24 +249,26 @@
       - `<a:disco:1572571259601031259>`
     - **1554945105981603880** → Mexzon | Blaze (mexzon_0205):
       - `<:nebula_hawww:1563397980332105730>`
-    - **1385099857781329961** → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113):
+    - **1385099857781329961** → Alonefox (d3adb9y1113):
       - `<:Cute_Cry:1549341301282185329>`
+    - **1433650059043405959** → MOD | RIZZLER (billu2368):
+      - `<:Nebula_cutie:1563397790627795025>`
 - **noprefix**:
   - **role**: *none*
   - **users**:
-    - `1385099857781329961` → 𝑎𝑙𝒐𝑛𝑒𝐟𝐨𝑥 (d3adb9y1113)
+    - `1385099857781329961` → Alonefox (d3adb9y1113)
     - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
     - `1504536783898021908` → T-Mod | om pandey (om61006)
     - `1562817118641062029` → Raven (_raven.exe09)
     - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
     - `1519731963244580987` → Blaze zzz (btwkartikxz)
-    - `1340198074387267634` → TacticalShower (.mlx_rinn)
+    - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
     - `1554945105981603880` → Mexzon | Blaze (mexzon_0205)
     - `829689719633215498` → Vortex (_vortextheog)
     - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
     - `1554280108632842295` → .arnav.gg
     - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
-    - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
+    - `1543476735469691002` → [AFK] MOD | Batak Sir (ryomentheog.)
 - **tickets**:
   - **panel_channel**: `1568343826425323692` → #⚒️〢staff-chat
   - **panel_message**: `1573917007349289031`
@@ -257,4 +358,4 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 ### Players
 
-- 449 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
+- 456 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)

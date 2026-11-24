@@ -35,13 +35,21 @@
 
 - **role**: *none*
 - **users**:
-  - `1554945105981603880` → Mexzon (mexzon_0205)
+  - `1554945105981603880` → Kartik (mexzon_0205)
 
 ### Aliases
 
 - *not configured*
 
 ### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
 
 - *not configured*
 
@@ -95,8 +103,8 @@
 - **noprefix**:
   - **role**: *none*
   - **users**:
-    - `1554945105981603880` → Mexzon (mexzon_0205)
+    - `1554945105981603880` → Kartik (mexzon_0205)
 
 ### Players
 
-- 58 players stored in `data/kon.db` (full list: `export/players_1556044009661530124.csv`)
+- 64 players stored in `data/kon.db` (full list: `export/players_1556044009661530124.csv`)

@@ -39,11 +39,11 @@
     },
     "panel_message_id": 1573473132516212869,
     "active_custom_vcs": {
-      "1574157917777690714": {
+      "1574573744746139838": {
         "owner": 650534818517483526,
         "banned": [],
         "block_drags": false,
-        "created": 1795378894.1578226
+        "created": 1795478035.092992
       }
     }
   },
@@ -56,6 +56,13 @@
   },
   "1524797937836621874": {
     "server_name": "Twin's Empire 2.0",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1528097634273984807": {
+    "server_name": "𖹭.ִ𓂃 NorthHaven™ | Chill • Gaming • Events • Giveaways",
     "join_to_create": null,
     "interface": null,
     "panel_message_id": null,

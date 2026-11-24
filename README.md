@@ -14,13 +14,13 @@
 5. `python main.py`
 
 ## What is new
-- **Giveaways** (`$giveaway`, aliases `$giveway` `$gw` `$gcreate`) - one builder panel: title, prize, description, winners, time, channel, host, colour,
-  image / thumbnail, **every emoji** and **every button** (text, emoji, colour). Prize = text + optional **role** (permanent or temporary - taken back by
-  itself, survives restarts) + optional Kon points. Requirements: roles, **N messages** (channels / categories can be excluded), **invite N people**,
-  **"say X to @person"** (e.g. `happy birthday`). People can join any time, but only members who finished **everything** when it ends can win.
-  **Save template / Load template** brings a whole giveaway back in the same style (there is also "Last giveaway I started").
-  Emojis: type an emoji, `:name:` or just the **emoji ID** - animated emojis work. `$giveaway end | reroll | cancel | list | templates | load <name>`.
-  Ended giveaways have a **Reroll** button for admins. Invite counting needs *Manage Server*.
+- **Giveaways** (`$giveaway`, aliases `$giveway` `$gw` `$gcreate`) - now **easy**: one panel with 4 steps. **1 Details** (prize, winners, time, title,
+  description - the only step you need) · **2 Rules** (role, **N messages** with channels / categories skipped, **invite N people**, **"say X to @person"**) ·
+  **3 Rewards** (a **role** - permanent or temporary, taken back by itself - and / or Kon points) · **4 Style** (ready-made **emoji sets**, colours, image /
+  thumbnail, any single emoji, Join / Entries / Progress buttons). **Templates** save a whole giveaway; "Last giveaway I started" is always there.
+  **Quick start:** `$giveaway 1h 1 Discord Nitro` = time, winners, prize - it starts right away. `$giveaway help` explains everything.
+  People can join any time, but only members who finished **every rule** when it ends can win. `$giveaway end | reroll | cancel | list | templates | load <name>`.
+  Ended giveaways have a **Reroll** button for admins. Invite counting needs *Manage Server*. Old templates and backups keep working.
 - **Tickets**: **many panels** (`$ticket` -> panel menu at the bottom: New / Rename / Duplicate / Delete). Every panel has its own categories, texts, banner,
   channel, logs, roles and rules; a member can have one ticket per panel. A ticket **closes by itself** (transcript + reason) when its owner **leaves,
   is kicked or banned** (also checked once at startup). The golden ticket icon is gone from the ticket texts.

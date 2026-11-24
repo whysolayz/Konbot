@@ -49,6 +49,8 @@
     "tag_enabled": true,
     "users": {}
   },
+  "tickets (panels, categories, open tickets)": null,
+  "giveaways (templates, running, ended)": null,
   "all_settings_raw": {},
   "players_in_database": 0
 }

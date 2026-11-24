@@ -6,6 +6,21 @@
   "vc_data.mutes": {},
   "vc_data.guild_owners": [],
   "vc_data.vc_setup": {},
-  "afk_data.afk": {},
+  "afk_data.afk": {
+    "1543476735469691002": {
+      "reason": "😔 soon",
+      "since": 1795451396.3415875,
+      "guild_id": 1547650379448188999,
+      "old_nick": "MOD | Batak Sir",
+      "mentions": [
+        {
+          "author": "Mexzon | Blaze",
+          "channel_id": 1568343826425323692,
+          "url": "https://discord.com/channels/1547650379448188999/1568343826425323692/1574462101349470251",
+          "content": "<:spider_Sad_alone:1313413270912110654>"
+        }
+      ]
+    }
+  },
   "afk_data.tag": true
 }

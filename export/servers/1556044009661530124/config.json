@@ -4,7 +4,7 @@
     "name": "Soul of Nebula",
     "bot_is_in_server": true,
     "owner_id": 1554945105981603880,
-    "members": 399
+    "members": 384
   },
   "custom_vc": {
     "join_to_create_channel": null,
@@ -54,6 +54,8 @@
     "tag_enabled": true,
     "users": {}
   },
+  "tickets (panels, categories, open tickets)": null,
+  "giveaways (templates, running, ended)": null,
   "all_settings_raw": {
     "noprefix": {
       "role": null,
@@ -62,5 +64,5 @@
       ]
     }
   },
-  "players_in_database": 58
+  "players_in_database": 64
 }

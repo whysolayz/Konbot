@@ -43,6 +43,14 @@
 
 - *not configured*
 
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
+
+- *not configured*
+
 ### Autoreact
 
 - *not configured*
