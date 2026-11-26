@@ -107,4 +107,4 @@
 
 ### Players
 
-- 64 players stored in `data/kon.db` (full list: `export/players_1556044009661530124.csv`)
+- 69 players stored in `data/kon.db` (full list: `export/players_1556044009661530124.csv`)

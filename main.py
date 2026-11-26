@@ -8,7 +8,7 @@ import time
 import discord
 from discord.ext import commands
 
-from core import ratelimit
+from core import names, ratelimit
 from core.config import AUTO_SYNC, DB_FILE, OWNER_IDS, PREFIX, TOKEN, VC_FILE
 from core.db import DB
 from core.icons import I
@@ -185,6 +185,9 @@ class Kon(commands.Bot):
 
         for ext in EXTENSIONS:
             await self.load_extension(ext)
+        clash = names.apply(self)                  # friendly new command names (old names stay as aliases)
+        if clash:
+            log.warning("new command names not added (already taken): %s", ", ".join(clash))
         self.add_view(PanelView(self.vc_service))  # persistent control-panel buttons
         self.add_view(PanelView(self.vc_service, prefix="leafy"))   # panels posted before the Kon rebrand
 

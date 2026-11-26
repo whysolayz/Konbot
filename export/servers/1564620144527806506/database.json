@@ -4,8 +4,8 @@
   {
    "guild_id": 1564620144527806506,
    "user_id": 1483807914249420950,
-   "points": 1407,
-   "chat_total": 66,
+   "points": 1507,
+   "chat_total": 67,
    "chat_progress": 0,
    "vc_total": 0,
    "vc_progress": 0
@@ -330,6 +330,14 @@
    "delta": 100,
    "reason": "chat",
    "ts": 1795439100.6551242
+  },
+  {
+   "id": 22397,
+   "guild_id": 1564620144527806506,
+   "user_id": 1483807914249420950,
+   "delta": 100,
+   "reason": "chat",
+   "ts": 1795606459.4728117
   }
  ]
 }

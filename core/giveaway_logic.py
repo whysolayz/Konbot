@@ -12,6 +12,8 @@ import string
 import time
 from typing import Iterable, Optional
 
+from .icons import FALLBACK, I
+
 BRAND = 0xFFB832
 
 UNITS = {"w": 604800, "d": 86400, "h": 3600, "m": 60, "s": 1}
@@ -26,17 +28,18 @@ KEEP_ENDED_DAYS = 45
 # ------------------------------------------------------------------ emojis + buttons
 # key -> (label in the editor, default). Anything can be replaced with a unicode emoji, <:name:id>, <a:name:id> or a bare emoji ID.
 EMOJI_FIELDS = {
-    "title": ("Title emoji", "🎉"),
-    "prize": ("Prize emoji", "🎁"),
-    "winners": ("Winners emoji", "🏆"),
-    "host": ("Host emoji", "👤"),
-    "ends": ("Ends emoji", "⏰"),
-    "req": ("Requirements emoji", "📋"),
-    "entries": ("Entries emoji", "👥"),
-    "done": ("Requirement done emoji", "✅"),
-    "todo": ("Requirement missing emoji", "❌"),
-    "ended": ("Ended emoji", "🔒"),
+    "title": ("Title emoji", "sparkles"),
+    "prize": ("Prize emoji", "gift"),
+    "winners": ("Winners emoji", "trophy"),
+    "host": ("Host emoji", "member"),
+    "ends": ("Ends emoji", "clock"),
+    "req": ("Requirements emoji", "menu"),
+    "entries": ("Entries emoji", "users"),
+    "done": ("Requirement done emoji", "check"),
+    "todo": ("Requirement missing emoji", "cross"),
+    "ended": ("Ended emoji", "lock"),
 }
+# The defaults are names of Kon's own icons (assets/icons). They are turned into the real icon when shown.
 DEFAULT_EMOJIS = {k: v[1] for k, v in EMOJI_FIELDS.items()}
 
 BUTTON_STYLES = {"blurple": "primary", "blue": "primary", "primary": "primary",
@@ -56,9 +59,9 @@ DEFAULT_CFG = {
     "channel": None,                  # where the giveaway is posted (saved in templates too)
     "emojis": {},                     # key -> emoji string; missing = default, "" = hidden
     "buttons": {
-        "join": {"label": "Join Giveaway", "emoji": "🎉", "style": "primary", "ended_label": "Giveaway Ended"},
-        "entries": {"emoji": "👥", "show": True},
-        "progress": {"label": "My Progress", "emoji": "📊", "show": True},
+        "join": {"label": "Join Giveaway", "emoji": "gift", "style": "primary", "ended_label": "Giveaway Ended"},
+        "entries": {"emoji": "users", "show": True},
+        "progress": {"label": "My Progress", "emoji": "target", "show": True},
     },
     "prize_role": {"role": None, "mode": "permanent", "seconds": 7 * 86400},
     "points": 0,
@@ -93,11 +96,12 @@ def full_config(incoming: Optional[dict]) -> dict:
 
 
 def emoji_of(cfg: dict, key: str) -> str:
-    """The emoji (as text) to show for `key`: the saved one, the default, or "" when it was hidden."""
+    """The emoji (as text) to show for `key`: the saved one, the default, or "" when it was hidden.
+    A Kon icon name (like "gift") becomes the real Kon icon."""
     saved = (cfg.get("emojis") or {}).get(key)
     if saved is None:
-        return DEFAULT_EMOJIS.get(key, "")
-    return saved
+        saved = DEFAULT_EMOJIS.get(key, "")
+    return I.s(saved) if saved in FALLBACK else saved
 
 
 # ------------------------------------------------------------------ time

@@ -36,7 +36,7 @@
 - **role**: *none*
 - **users**:
   - `1554945105981603880` → Kartik (mexzon_0205)
-  - `829689719633215498` → Vortex (_vortextheog)
+  - `829689719633215498` → !Lol Vortex (_vortextheog)
 
 ### Aliases
 
@@ -105,7 +105,7 @@
   - **role**: *none*
   - **users**:
     - `1554945105981603880` → Kartik (mexzon_0205)
-    - `829689719633215498` → Vortex (_vortextheog)
+    - `829689719633215498` → !Lol Vortex (_vortextheog)
 
 ### Players
 

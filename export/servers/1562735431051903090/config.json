@@ -4,7 +4,7 @@
     "name": "Dr4k3n Hangout",
     "bot_is_in_server": true,
     "owner_id": 1556600326617042959,
-    "members": 189
+    "members": 185
   },
   "custom_vc": {
     "join_to_create_channel": null,
@@ -52,5 +52,5 @@
   "tickets (panels, categories, open tickets)": null,
   "giveaways (templates, running, ended)": null,
   "all_settings_raw": {},
-  "players_in_database": 5
+  "players_in_database": 13
 }

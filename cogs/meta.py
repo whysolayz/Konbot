@@ -1,15 +1,17 @@
 """$konping / $koninfo, $help (clean command list - everybody only sees what THEY can use) and $konextra."""
 import inspect
+import math
 import time
+from collections import deque
 from typing import Optional
 
 import platform
 
 import discord
 from discord import app_commands
-from discord.ext import commands
+from discord.ext import commands, tasks
 
-from core import checks
+from core import checks, flair, names
 from core.config import BLURPLE, BRAND, PREFIX
 from core.errors import VCError
 from core.icons import I, ok
@@ -72,9 +74,9 @@ DESC = {
     "customvc": "Set the join-to-create channel", "customvc config": "Who can't be vc-banned, kicked or muted", "interface": "Post the voice control panel",
     "sync": "Sync slash commands", "backup": "Backup status", "backup refresh": "Back up right now",
     "backupload": "Reply to a data file (zip / db / json) with this to merge it (`replace` = backup wins)", "backup config": "Send the readable config + players list",
-    "konping": "Latency, uptime and status", "koninfo": "Servers, members and bot stats",
+    "konping": "Heartbeat graph, latency, uptime and status", "koninfo": "Servers, members and bot stats",
     "aura": "Show your aura (or @member's) - random aura can be negative too", "aura config": "Fix aura, random on/off, switch a person off",
-    "transfer": "Move roles from one member to another (Kon admins)",
+    "transfer": "Role Transfer Studio - pick who gives and who gets roles with menus (also for people who LEFT: `$transfer <user id|name> @to`), untick roles, Undo, History (Kon admins)",
     "tictactoe": "Tic Tac Toe info", "tictactoe play": "Challenge a member (only in the game channel)",
     "tictactoe admin": "Set the Tic Tac Toe channel (`$tictactoe set` opens a channel menu)",
     "games": "All games, the channel each one works in and how to start them",
@@ -358,12 +360,29 @@ class Meta(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.started = time.time()
+        self.beats: deque = deque(maxlen=24)          # gateway latency every 30 s = the last 12 minutes (for $pulse)
+        self.sampler.start()
+
+    def cog_unload(self):
+        self.sampler.cancel()
+
+    @tasks.loop(seconds=30)
+    async def sampler(self):
+        ms = self.bot.latency * 1000
+        if math.isfinite(ms):
+            self.beats.append(ms)
+
+    @sampler.before_loop
+    async def _sampler_wait(self):
+        await self.bot.wait_until_ready()
 
     # ---------- $kon / $konping / $koninfo ----------
-    @commands.hybrid_command(name="konping", aliases=["kping"], description="Show Kon's latency and uptime")
+    @commands.hybrid_command(name="konping", aliases=["kping"], description="Kon's pulse: latency graph, uptime and status")
     async def kon_ping(self, ctx: commands.Context):
-        """$konping - latency, uptime and status."""
+        """$pulse - Kon's heartbeat: live latency, a graph of the last 12 minutes, uptime and status."""
         ws = self.bot.latency * 1000
+        if not math.isfinite(ws):
+            ws = 0.0
         t0 = time.perf_counter()
         msg = await ctx.reply(f"{I.s('refresh')} Pinging...", mention_author=False)
         api = (time.perf_counter() - t0) * 1000
@@ -375,12 +394,19 @@ class Meta(commands.Cog):
             return I.s("light_green") if ms < good else (I.s("warning") if ms < ok_ else I.s("light_red"))
         worst = max(ws / 150, api / 300, db / 20)
         status, color = (("Active", BRAND) if worst < 1 else ("Slow", 0xF58219) if worst < 2.5 else ("Struggling", 0xED4245))
-        e = discord.Embed(title=f"{I.s('sparkles')} Kon Ping", color=color, description=(
+        if math.isfinite(ws) and ws > 0:
+            self.beats.append(ws)
+        graph = ""
+        if len(self.beats) >= 3:
+            b = list(self.beats)
+            graph = (f"\n\n**Heartbeat** · last {len(b) * 30 // 60 or 1} min\n`{flair.spark(b, 0, max(200, max(b)))}`\n"
+                     f"-# best `{min(b):.0f}` · average `{sum(b) / len(b):.0f}` · worst `{max(b):.0f}` ms")
+        e = discord.Embed(title=f"{I.s('sparkles')} Kon Pulse", color=color, description=(
             f"{I.s('check')} **Status:** `{status}`\n"
             f"{I.s('signal')} **Gateway latency:** `{ws:.0f} ms` {dot(ws, 150, 300)}\n"
             f"{I.s('bolt')} **API latency:** `{api:.0f} ms` {dot(api, 300, 700)}\n"
             f"{I.s('folder')} **Database:** `{db:.1f} ms` {dot(db, 20, 100)}\n"
-            f"{I.s('clock')} **Uptime:** `{fmt_secs(time.time() - self.started)}`"))
+            f"{I.s('clock')} **Uptime:** `{fmt_secs(time.time() - self.started)}`") + graph)
         await msg.edit(content=None, embed=e)
 
     @commands.hybrid_command(name="koninfo", aliases=["kinfo"], description="Servers, members and stats of Kon")
@@ -393,11 +419,18 @@ class Meta(commands.Cog):
     # ---------- $help ----------
     async def command_help(self, ctx: commands.Context, cmd: commands.Command) -> discord.Embed:
         level = await access_level(ctx, cmd)
-        usage = f"{PREFIX}{cmd.qualified_name} {cmd.signature}".strip()
+        shown = names.shown(cmd.qualified_name)
+        usage = f"{PREFIX}{shown} {cmd.signature}".strip()
         text = describe(cmd) or (cmd.help or "").split("\n")[0] or "—"
         e = discord.Embed(title=f"{I.s('terminal')} {usage}", color=BRAND, description=text)
-        if cmd.aliases:
-            e.add_field(name="Aliases", value=" ".join(f"`{PREFIX}{a}`" for a in cmd.aliases), inline=True)
+        root = cmd
+        while root.parent is not None:
+            root = root.parent
+        if root.name in names.NEW_NAMES and shown != cmd.qualified_name:
+            e.add_field(name="Old name", value=f"`{PREFIX}{cmd.qualified_name}` (still works)", inline=True)
+        others = [a for a in cmd.aliases if a != names.NEW_NAMES.get(cmd.name)]
+        if others:
+            e.add_field(name="Aliases", value=" ".join(f"`{PREFIX}{a}`" for a in others[:10]), inline=True)
         e.add_field(name="Who", value={"member": "Everyone", "admin": "Admins", "owner": "Owner"}.get(level, "Everyone"), inline=True)
         cat = CATEGORIES.get(cmd.cog_name or "Meta", (cmd.cog_name or "General", "menu"))[0]
         e.add_field(name="Category", value=cat, inline=True)
@@ -408,7 +441,7 @@ class Meta(commands.Cog):
                 if await access_level(ctx, sc) is None or sc.hidden:
                     continue
                 d = describe(sc)
-                lines.append(f"`{PREFIX}{sc.qualified_name} {sc.signature}`".replace(" `", "`") + (f" — {d}" if d else ""))
+                lines.append(f"`{PREFIX}{names.shown(sc.qualified_name)} {sc.signature}`".replace(" `", "`") + (f" — {d}" if d else ""))
             if lines:
                 e.add_field(name="Subcommands", value="\n".join(lines)[:1000], inline=False)
         return e
@@ -456,8 +489,34 @@ class Meta(commands.Cog):
             if cmd is not None and not cmd.hidden and await access_level(ctx, cmd) is not None:
                 return await ctx.reply(embed=await self.command_help(ctx, cmd), mention_author=False,
                                        allowed_mentions=discord.AllowedMentions.none())
+            found = await self.search_help(ctx, q)                 # "$help mute" -> every command about muting
+            if found is not None:
+                return await ctx.reply(embed=found, view=view, mention_author=False,
+                                       allowed_mentions=discord.AllowedMentions.none())
         view.message = await ctx.reply(embed=view.overview(), view=view, mention_author=False,
                                        allowed_mentions=discord.AllowedMentions.none())
+
+    async def search_help(self, ctx: commands.Context, q: str) -> Optional[discord.Embed]:
+        """Find commands by new name, old name, alias or what they do (only commands this person may use)."""
+        entries, by_key = [], {}
+        for cmd in self.bot.walk_commands():
+            if cmd.name == "rolecmd" or cmd.hidden or await access_level(ctx, cmd) is None:
+                continue
+            nm = {cmd.qualified_name, names.shown(cmd.qualified_name), *[f"{cmd.full_parent_name} {a}".strip() for a in cmd.aliases]}
+            words = [w for n in nm for w in n.split()] + list(nm)
+            entries.append((cmd.qualified_name, words, describe(cmd)))
+            by_key[cmd.qualified_name] = cmd
+        hits = flair.search_commands(q, entries, limit=8)
+        if not hits:
+            return None
+        lines = []
+        for key in hits:
+            cmd = by_key[key]
+            d = short(describe(cmd), 60)
+            lines.append(f"`{PREFIX}{names.shown(key)} {cmd.signature}`".replace(" `", "`") + (f" — {d}" if d else ""))
+        e = discord.Embed(title=f"{I.s('target')} Commands for “{q[:40]}”", color=BRAND, description="\n".join(lines))
+        e.set_footer(text=f"{PREFIX}help <command> for details")
+        return e
 
     @staticmethod
     def _cog_bucket(pages: dict, cog: str) -> tuple:
@@ -474,7 +533,7 @@ class Meta(commands.Cog):
         cog = cmd.cog_name or "Meta"
         if cog == "Interface":
             cog = "Admin"
-        usage = f"{PREFIX}{cmd.qualified_name} {cmd.signature}".strip()
+        usage = f"{PREFIX}{names.shown(cmd.qualified_name)} {cmd.signature}".strip()
         desc = short(describe(cmd))
         badge = {"admin": f" {I.s('lock')}", "owner": f" {I.s('crown')}"}.get(level, "")
         line = ("↳ " if cmd.parent is not None else "") + f"`{usage}`" + (f" — {desc}" if desc else "") + badge

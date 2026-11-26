@@ -672,7 +672,7 @@ class Giveaway(commands.Cog):
                     rec["task"].append(m.author.id)
                     changed = True
                     try:
-                        await m.add_reaction("✅")
+                        await m.add_reaction(I.e("check") or "✅")
                     except discord.HTTPException:
                         pass
         if changed:
@@ -956,7 +956,7 @@ class Giveaway(commands.Cog):
 
 # ------------------------------------------------------------------ the setup panel
 EMOJI_PACKS = {
-    "classic": ("Classic", {}),
+    "classic": ("Kon Icons (default)", {}),
     "party": ("Party", {"title": "🎊", "prize": "🎁", "winners": "👑", "host": "🥳", "ends": "⏳", "req": "📜",
                         "entries": "🎟️", "done": "✅", "todo": "❌", "ended": "🏁"}),
     "gold": ("Gold", {"title": "✨", "prize": "💎", "winners": "🏆", "host": "👑", "ends": "⏰", "req": "📋",

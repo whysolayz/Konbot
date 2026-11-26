@@ -1,0 +1,36 @@
+{
+  "server_id": 1553315223732232192,
+  "vc_data.guilds": {
+    "panel_ver": "4346b0875c598f7e",
+    "interface": 1575128339776151652,
+    "panel_msg": 1575128486752952452,
+    "create": 1575128383052845156
+  },
+  "vc_data.selfroles": {},
+  "vc_data.vcs": {},
+  "vc_data.mutes": {},
+  "vc_data.guild_owners": [],
+  "vc_data.vc_setup": {
+    "create": {
+      "id": 1575128383052845156,
+      "name": "𐏓・⚙️・Custom Vc",
+      "type": "voice",
+      "category_id": 1575128061848854588,
+      "category": "𐏓・⚙️・Custom Vocalizations",
+      "position": 3,
+      "bitrate": 64000,
+      "user_limit": 1
+    },
+    "interface": {
+      "id": 1575128339776151652,
+      "name": "𐏓・⚙️・interface",
+      "type": "text",
+      "category_id": 1575128061848854588,
+      "category": "𐏓・⚙️・Custom Vocalizations",
+      "position": 56
+    },
+    "panel_message_id": 1575128486752952452
+  },
+  "afk_data.afk": {},
+  "afk_data.tag": true
+}

@@ -7,6 +7,9 @@
 
 Priority: fixed aura of the MEMBER > fixed aura of their highest ROLE that has one > random aura.
 Random aura = a NEW random amount every single time the command is used: from -100% to +100% (negative aura is possible!).
+The bar always fills from the LEFT, for positive and negative aura alike (a negative one shows the minus sign).
+AURA MEMORY: every random reading is remembered (last 24 per member). Under the bar a small line shows the graph of the last
+readings, the best one, a streak ("3 positive in a row") and personal records - fixed auras are not logged.
 `$aura config` -> "Negative: OFF" brings back positive-only random aura. Fixed aura can be negative too (-100 .. 100).
 """
 import asyncio
@@ -16,6 +19,7 @@ from typing import Optional
 import discord
 from discord.ext import commands
 
+from core import flair
 from core.config import BLURPLE, BRAND
 from core.errors import VCError
 from core.icons import I, err, ok
@@ -28,9 +32,11 @@ TICKS = 3                 # the bar reaches the final value in 3 edits
 
 def bar(p: int) -> str:
     """White blocks (filled) on dotted-black blocks (empty): inside the code chip `[........]` like the original message.
-    A NEGATIVE aura fills from the right side, so it is easy to tell apart (and always shows the minus sign next to it)."""
-    n = round(abs(p) / 100 * SEGMENTS)
-    return "░" * (SEGMENTS - n) + "█" * n if p < 0 else "█" * n + "░" * (SEGMENTS - n)
+    Positive AND negative aura both fill from the LEFT side (negative used to start from the right = looked backwards).
+    A negative aura is told apart by the minus sign and the "Negative aura" title, not by a mirrored bar.
+    int(x + 0.5) rounds half UP (Python's round() is banker's rounding: 5% -> 0 blocks, 15% -> 2 blocks)."""
+    n = max(0, min(SEGMENTS, int(abs(p) / 100 * SEGMENTS + 0.5)))
+    return "█" * n + "░" * (SEGMENTS - n)
 
 
 def tier(p: int) -> str:
@@ -214,6 +220,27 @@ class Aura(commands.Cog):
             return None
         return random.randint(-100 if c.get("negative", True) else 0, 100)
 
+    def is_fixed(self, member: discord.Member) -> bool:
+        c = self.cfg(member.guild.id)
+        return str(member.id) in c["members"] or any(str(r.id) in c["roles"] for r in member.roles)
+
+    def memory(self, gid: int, uid: int, now: int) -> str:
+        """The small line under a random reading: graph of the last readings, best, streak, personal records.
+        Aura is random every time - this is what makes your readings add up to something."""
+        hist = self.bot.db.aura_history(gid, uid, 12)          # newest first, includes `now`
+        if len(hist) < 2:
+            return ""
+        prev = hist[1:]
+        bits = [f"`{flair.spark(list(reversed(hist)), -100, 100)}`", f"best `{max(hist)}%`"]
+        sign, n = flair.streak(hist)
+        if n >= 2 and sign:
+            bits.append(f"{n} {'positive' if sign > 0 else 'negative'} in a row")
+        if len(prev) >= 3 and now > max(prev):
+            bits.append("new personal best")
+        elif len(prev) >= 3 and now < min(prev):
+            bits.append("new personal low")
+        return "\n-# " + " · ".join(bits)
+
     async def pick(self, ctx: commands.Context, text: str) -> discord.Member:
         for m in ctx.message.mentions:
             if isinstance(m, discord.Member) and not m.bot:
@@ -248,15 +275,23 @@ class Aura(commands.Cog):
 
         head = "Negative aura this user holds!" if pct < 0 else "Aura this user holds!"
 
-        def line(p: int) -> str:
-            return f"{head} {member.mention}:\n`[{bar(p)}]` `{p}%`"
-        msg = await ctx.reply(line(0), mention_author=False, allowed_mentions=mention)
+        note = ""
+        if not self.is_fixed(member):                          # random readings are remembered (see memory())
+            try:
+                self.bot.db.log_aura(ctx.guild.id, member.id, pct)
+                note = self.memory(ctx.guild.id, member.id, pct)
+            except Exception:
+                note = ""                                      # memory is a bonus: never break $aura for it
+
+        def line(p: int, last: bool = False) -> str:
+            return f"{head} {member.mention}:\n`[{bar(p)}]` `{p}%`" + (note if last else "")
+        msg = await ctx.reply(line(0, pct == 0), mention_author=False, allowed_mentions=mention)
         if pct == 0:
             return
         for i in range(1, TICKS + 1):                         # 3 ticks: the bar fills up and lands on the real value
             await asyncio.sleep(0.7)
             try:
-                await msg.edit(content=line(round(pct * i / TICKS)), allowed_mentions=mention)
+                await msg.edit(content=line(round(pct * i / TICKS), i == TICKS), allowed_mentions=mention)
             except discord.HTTPException:
                 break
 

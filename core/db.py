@@ -37,6 +37,19 @@ CREATE TABLE IF NOT EXISTS point_log(
 CREATE TABLE IF NOT EXISTS settings(
   guild_id INTEGER NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL,
   PRIMARY KEY(guild_id, key));
+CREATE TABLE IF NOT EXISTS left_members(
+  guild_id INTEGER NOT NULL, user_id INTEGER NOT NULL,
+  name TEXT NOT NULL DEFAULT '', roles TEXT NOT NULL DEFAULT '[]', left_ts REAL NOT NULL,
+  PRIMARY KEY(guild_id, user_id));
+CREATE TABLE IF NOT EXISTS aura_log(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  guild_id INTEGER NOT NULL, user_id INTEGER NOT NULL, ts REAL NOT NULL, value INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS aura_log_user ON aura_log(guild_id, user_id, id);
+CREATE TABLE IF NOT EXISTS transfer_log(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  guild_id INTEGER NOT NULL, ts REAL NOT NULL, actor_id INTEGER NOT NULL,
+  source_id INTEGER NOT NULL, source_name TEXT NOT NULL DEFAULT '', target_id INTEGER NOT NULL,
+  roles TEXT NOT NULL DEFAULT '[]', left_member INTEGER NOT NULL DEFAULT 0, undone INTEGER NOT NULL DEFAULT 0);
 """
 
 
@@ -50,6 +63,7 @@ class DB:
         self.conn.executescript(SCHEMA)
         self._migrate()
         self.prune_logs()
+        self.prune_left()
 
     def _migrate(self):
         """shop_items.position = order of the roles in the shop ($pointshop config -> Position)."""
@@ -72,6 +86,99 @@ class DB:
     def prune_logs(self, days=90):
         with self.conn:
             self.conn.execute("DELETE FROM point_log WHERE ts<?", (time.time() - days * 86400,))
+
+    # ---------- members who left ($transfer <user id> @new) ----------
+    def save_left(self, gid, uid, name, role_ids):
+        """Remember the roles a member had when they left, so $transfer can hand them over later."""
+        with self.conn:
+            self.conn.execute(
+                "INSERT OR REPLACE INTO left_members(guild_id,user_id,name,roles,left_ts) VALUES(?,?,?,?,?)",
+                (gid, uid, name[:100], json.dumps([int(r) for r in role_ids]), time.time()))
+
+    def get_left(self, gid, uid):
+        r = self.conn.execute("SELECT * FROM left_members WHERE guild_id=? AND user_id=?", (gid, uid)).fetchone()
+        if not r:
+            return None
+        d = dict(r)
+        d["roles"] = json.loads(d["roles"] or "[]")
+        return d
+
+    def list_left(self, gid, limit=15) -> list:
+        rows = self.conn.execute("SELECT * FROM left_members WHERE guild_id=? ORDER BY left_ts DESC LIMIT ?",
+                                 (gid, limit)).fetchall()
+        out = []
+        for r in rows:
+            d = dict(r)
+            d["roles"] = json.loads(d["roles"] or "[]")
+            out.append(d)
+        return out
+
+    # ---------- aura memory ($aura shows the last readings of a member) ----------
+    AURA_KEEP = 24
+
+    def log_aura(self, gid, uid, value: int):
+        with self.conn:
+            self.conn.execute("INSERT INTO aura_log(guild_id,user_id,ts,value) VALUES(?,?,?,?)", (gid, uid, time.time(), int(value)))
+            self.conn.execute(
+                "DELETE FROM aura_log WHERE guild_id=? AND user_id=? AND id NOT IN "
+                "(SELECT id FROM aura_log WHERE guild_id=? AND user_id=? ORDER BY id DESC LIMIT ?)",
+                (gid, uid, gid, uid, self.AURA_KEEP))
+
+    def aura_history(self, gid, uid, limit=12) -> list:
+        """values, NEWEST first"""
+        rows = self.conn.execute("SELECT value FROM aura_log WHERE guild_id=? AND user_id=? ORDER BY id DESC LIMIT ?",
+                                 (gid, uid, limit)).fetchall()
+        return [r["value"] for r in rows]
+
+    def aura_rank(self, gid, uid) -> tuple:
+        """(this member's best reading, how many members have readings) - for 'best in the server'"""
+        best = self.conn.execute("SELECT MAX(value) m FROM aura_log WHERE guild_id=? AND user_id=?", (gid, uid)).fetchone()["m"]
+        n = self.conn.execute("SELECT COUNT(DISTINCT user_id) c FROM aura_log WHERE guild_id=?", (gid,)).fetchone()["c"]
+        return best, n
+
+    def find_left(self, gid, text: str, limit=5) -> list:
+        """Leavers whose saved name contains `text` (so `$transfer nickname @new` works without the ID)."""
+        like = "%" + text.replace("%", "").replace("_", "").lower() + "%"
+        rows = self.conn.execute("SELECT * FROM left_members WHERE guild_id=? AND lower(name) LIKE ? "
+                                 "ORDER BY left_ts DESC LIMIT ?", (gid, like, limit)).fetchall()
+        out = []
+        for r in rows:
+            d = dict(r)
+            d["roles"] = json.loads(d["roles"] or "[]")
+            out.append(d)
+        return out
+
+    def log_transfer(self, gid, actor, source_id, source_name, target_id, role_ids, left: bool) -> int:
+        with self.conn:
+            cur = self.conn.execute(
+                "INSERT INTO transfer_log(guild_id,ts,actor_id,source_id,source_name,target_id,roles,left_member) "
+                "VALUES(?,?,?,?,?,?,?,?)",
+                (gid, time.time(), actor, source_id, source_name[:100], target_id,
+                 json.dumps([int(r) for r in role_ids]), 1 if left else 0))
+            return cur.lastrowid
+
+    def mark_undone(self, log_id: int):
+        with self.conn:
+            self.conn.execute("UPDATE transfer_log SET undone=1 WHERE id=?", (log_id,))
+
+    def transfer_history(self, gid, limit=10) -> list:
+        rows = self.conn.execute("SELECT * FROM transfer_log WHERE guild_id=? ORDER BY ts DESC LIMIT ?",
+                                 (gid, limit)).fetchall()
+        out = []
+        for r in rows:
+            d = dict(r)
+            d["roles"] = json.loads(d["roles"] or "[]")
+            out.append(d)
+        return out
+
+    def forget_left(self, gid, uid):
+        """A member who comes back no longer needs a 'left' record."""
+        with self.conn:
+            self.conn.execute("DELETE FROM left_members WHERE guild_id=? AND user_id=?", (gid, uid))
+
+    def prune_left(self, days=180):
+        with self.conn:
+            self.conn.execute("DELETE FROM left_members WHERE left_ts<?", (time.time() - days * 86400,))
 
     def close(self):
         try:

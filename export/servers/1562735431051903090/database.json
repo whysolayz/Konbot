@@ -5,8 +5,8 @@
    "guild_id": 1562735431051903090,
    "user_id": 1556600326617042959,
    "points": 0,
-   "chat_total": 14,
-   "chat_progress": 14,
+   "chat_total": 49,
+   "chat_progress": 49,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -23,8 +23,8 @@
    "guild_id": 1562735431051903090,
    "user_id": 1469909207670194478,
    "points": 0,
-   "chat_total": 4,
-   "chat_progress": 4,
+   "chat_total": 6,
+   "chat_progress": 6,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -40,6 +40,78 @@
   {
    "guild_id": 1562735431051903090,
    "user_id": 1083318196859314256,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1562735431051903090,
+   "user_id": 1552658690979401742,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1562735431051903090,
+   "user_id": 1552267079393218590,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1562735431051903090,
+   "user_id": 1331525919227248643,
+   "points": 0,
+   "chat_total": 6,
+   "chat_progress": 6,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1562735431051903090,
+   "user_id": 1499051197708107897,
+   "points": 0,
+   "chat_total": 12,
+   "chat_progress": 12,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1562735431051903090,
+   "user_id": 1368592187138248857,
+   "points": 0,
+   "chat_total": 12,
+   "chat_progress": 12,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1562735431051903090,
+   "user_id": 1210959012380680252,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1562735431051903090,
+   "user_id": 1554945105981603880,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1562735431051903090,
+   "user_id": 1566815333447372985,
    "points": 0,
    "chat_total": 1,
    "chat_progress": 1,

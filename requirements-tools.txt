@@ -1,4 +1,3 @@
-# only needed to regenerate icons/panel:  python tools/make_assets.py
+# only needed to regenerate the icons + voice panel:  python tools/make_icons.py
 pillow
 numpy
-scipy

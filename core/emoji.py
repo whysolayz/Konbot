@@ -20,6 +20,7 @@ import aiohttp
 import discord
 
 from .errors import VCError
+from .icons import FALLBACK, I
 
 log = logging.getLogger("kon.emoji")
 
@@ -190,6 +191,11 @@ def to_partial_checked(text: Optional[str]) -> Optional[discord.PartialEmoji]:
     """Stored emoji string -> PartialEmoji for a button / select (None if there is nothing usable)."""
     if not text:
         return None
+    name = text.strip()
+    if name in FALLBACK:                              # a Kon icon name ("gift") -> the uploaded Kon icon
+        e = I.map.get(name)
+        return (discord.PartialEmoji(name=e.name, id=e.id, animated=e.animated) if e
+                else discord.PartialEmoji(name=FALLBACK[name]))
     try:
         pe = discord.PartialEmoji.from_str(text.strip())
     except Exception:

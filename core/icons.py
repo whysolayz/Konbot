@@ -22,7 +22,7 @@ FALLBACK = {
     "lock": "🔒", "unlock": "🔓", "hide": "🙈", "show": "👁️", "logout": "🚪", "ban": "🚫",
     "user_add": "➕", "users": "👥", "signal": "📶", "edit": "✏️", "volume": "🔊", "crown": "👑",
     "check": "✅", "cross": "❌", "hourglass": "⏳", "clock": "⏱️", "info": "ℹ️", "mute": "🔇",
-    "swap": "🔁", "left": "◀️", "right": "▶️", "speaker": "🔊", "mic": "🎙️", "settings": "⚙️",
+    "swap": "🔁", "left": "◀️", "right": "▶️", "speaker": "🔊", "settings": "⚙️",
     "warning": "⚠️", "tools": "🛠️", "bolt": "⚡", "refresh": "🔄", "shield_check": "🛡️",
     "user_minus": "➖", "leaf": "🍃", "member": "👤", "headset": "🎧", "help": "❓",
     "check_outline": "✅", "cross_filled": "❌", "home": "🏠", "menu": "📋", "sparkles": "✨",
@@ -36,10 +36,11 @@ FALLBACK = {
     "light_red": "🔴", "light_green": "🟢", "shield_star": "🛡️", "swap_small": "⚔️", "thumbs_up": "👍",
     "ticket": "🎫", "user_plus_arrow": "🙋", "messages": "📜", "mail": "📥",     # tickets (claim / logs / opened log)
     "bell_ring": "🔔",                                                          # AFK mentions
+    "prev": "◀️", "next": "▶️", "rewind": "⏪", "fast_forward": "⏩",             # page buttons ($links)
 }
 
 # every icon used anywhere in the bot (kept small: emoji uploads are rate limited)
-USED = list(FALLBACK.keys() - {"member"})
+USED = list(FALLBACK.keys())
 
 
 class Icons:

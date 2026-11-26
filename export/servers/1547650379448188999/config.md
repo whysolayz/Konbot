@@ -54,16 +54,16 @@
   - `1385099857781329961` → Alonefox (d3adb9y1113)
   - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
   - `1504536783898021908` → T-Mod | om pandey (om61006)
-  - `1562817118641062029` → Raven (_raven.exe09)
+  - `1562817118641062029` → Aint replying (growup.buddyy)
   - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
   - `1519731963244580987` → Blaze zzz (btwkartikxz)
   - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
-  - `1554945105981603880` → Mexzon | Blaze (mexzon_0205)
-  - `829689719633215498` → Vortex (_vortextheog)
   - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
   - `1554280108632842295` → .arnav.gg
-  - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
-  - `1543476735469691002` → [AFK] MOD | Batak Sir (ryomentheog.)
+  - `1423371939556233247` → 1 April 2027 (whitebeardxz)
+  - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
+  - `1575313903104172175` → Nebulix (Nebulix#6028)
+  - `829689719633215498` → !Lol Vortex (_vortextheog)
 
 ### Aliases
 
@@ -169,9 +169,9 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 - **roles**: *(empty)*
 - **users**:
-  - **1562817118641062029** → Raven (_raven.exe09):
+  - **1562817118641062029** → Aint replying (growup.buddyy):
     - `<a:Oliviaaa_nooooo:1570865411195543645>`
-  - **829689719633215498** → Vortex (_vortextheog):
+  - **829689719633215498** → !Lol Vortex (_vortextheog):
     - `<:nebula_Bored:1561078200325382194>`
   - **1556600326617042959** → 4LC_DR4K3N (4lc_dr4k3n):
     - `<:Nebula_Angry:1549341308546449459>`
@@ -225,21 +225,16 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 ### AFK
 
 - **tag_enabled**: yes
-- **users**:
-  - **1543476735469691002** → [AFK] MOD | Batak Sir (ryomentheog.):
-    - **reason**: 😔 soon
-    - **since**: 1795451396 (2026-11-23 16:29 UTC)
-    - **old_nick**: MOD | Batak Sir
-    - **mentions_waiting**: 1
+- **users**: *(empty)*
 
 ### EVERYTHING saved for this server (raw settings, nothing left out)
 
 - **autoreact**:
   - **roles**: *(empty)*
   - **users**:
-    - **1562817118641062029** → Raven (_raven.exe09):
+    - **1562817118641062029** → Aint replying (growup.buddyy):
       - `<a:Oliviaaa_nooooo:1570865411195543645>`
-    - **829689719633215498** → Vortex (_vortextheog):
+    - **829689719633215498** → !Lol Vortex (_vortextheog):
       - `<:nebula_Bored:1561078200325382194>`
     - **1556600326617042959** → 4LC_DR4K3N (4lc_dr4k3n):
       - `<:Nebula_Angry:1549341308546449459>`
@@ -259,16 +254,16 @@ Tell us what is going on in as much detail as you can - a staff member will be w
     - `1385099857781329961` → Alonefox (d3adb9y1113)
     - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
     - `1504536783898021908` → T-Mod | om pandey (om61006)
-    - `1562817118641062029` → Raven (_raven.exe09)
+    - `1562817118641062029` → Aint replying (growup.buddyy)
     - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
     - `1519731963244580987` → Blaze zzz (btwkartikxz)
     - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
-    - `1554945105981603880` → Mexzon | Blaze (mexzon_0205)
-    - `829689719633215498` → Vortex (_vortextheog)
     - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
     - `1554280108632842295` → .arnav.gg
-    - `1423371939556233247` → Life is hard 💔🥀 (whitebeardxz)
-    - `1543476735469691002` → [AFK] MOD | Batak Sir (ryomentheog.)
+    - `1423371939556233247` → 1 April 2027 (whitebeardxz)
+    - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
+    - `1575313903104172175` → Nebulix (Nebulix#6028)
+    - `829689719633215498` → !Lol Vortex (_vortextheog)
 - **tickets**:
   - **panel_channel**: `1568343826425323692` → #⚒️〢staff-chat
   - **panel_message**: `1573917007349289031`
@@ -358,4 +353,4 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 ### Players
 
-- 456 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
+- 464 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)

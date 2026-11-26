@@ -13,6 +13,57 @@
    Embed Links, Attach Files, Set Voice Channel Status (or Administrator). Shop roles must be **below** the bot's role.
 5. `python main.py`
 
+## Kon names, Studio & touches nobody else has (latest)
+Every command got a friendlier name. **The old names keep working** (they are aliases), saved aliases / `$cmdoff` rules / the dashboard are untouched, and `$help` shows the new name with "Old name: ...".
+
+| new name | old name |
+|---|---|
+| `$room` | `$vcinfo` |
+| `$lock` | `$vclock` |
+| `$unlock` | `$vcunlock` |
+| `$hide` | `$vchide` |
+| `$reveal` | `$vcunhide` |
+| `$boot` | `$vckick` |
+| `$banish` | `$vcban` |
+| `$pardon` | `$vcunban` |
+| `$allow` | `$vcpermit` |
+| `$allowall` | `$vcpermitall` |
+| `$handover` | `$vctransfer` |
+| `$hush` | `$vcmute` |
+| `$unhush` | `$vcunmute` |
+| `$deaf` | `$vcdeafen` |
+| `$undeaf` | `$vcundeafen` |
+| `$hushall` | `$vcmuteall` |
+| `$unhushall` | `$vcunmuteall` |
+| `$banlist` | `$vcbans` |
+| `$claim` | `$vcclaim` |
+| `$limit` | `$vclimit` |
+| `$rename` | `$vcrename` |
+| `$topic` | `$vcstatus` |
+| `$quality` | `$vcbitrate` |
+| `$nodrag` | `$denydrags` |
+| `$pullme` | `$dragme` |
+| `$pulse` | `$konping` |
+| `$about` | `$koninfo` |
+| `$coowner` | `$konextra` |
+| `$afkbadge` | `$afktag` |
+| `$getemoji` | `$addemoji` |
+| `$getsticker` | `$addsticker` |
+| `$panel` | `$interface` |
+| `$vcsetup` | `$customvc` |
+| `$restore` | `$backupload` |
+| `$cmdoff` | `$disablecommand` |
+| `$cmdon` | `$enablecommand` |
+| `$cleanbots` | `$purgebot` |
+| `$clean` | `$purgemember` |
+| `$rolepanel` | `$setsr` |
+| `$editpanel` | `$editsr` |
+| `$points` | `$point` |
+
+New touches: **`$transfer` Studio** (works for people who left) · **`$pulse`** heartbeat graph of the last 12 minutes · **`$aura` memory** (graph of your last readings, best, streak, personal records) ·
+**`$help <word>`** searches commands by name / old name / what they do · **did-you-mean** for a mistyped command · **clean report** after `$clean` / `$cleanbots` · giveaway uses Kon icons.
+Icons are drawn by `python tools/make_icons.py` (Kon Glass style).
+
 ## What is new
 - **Giveaways** (`$giveaway`, aliases `$giveway` `$gw` `$gcreate`) - now **easy**: one panel with 4 steps. **1 Details** (prize, winners, time, title,
   description - the only step you need) · **2 Rules** (role, **N messages** with channels / categories skipped, **invite N people**, **"say X to @person"**) ·
@@ -109,6 +160,9 @@ Messages older than 14 days can't be bulk-deleted by Discord and are skipped.
 
 ## New in this version
 - **`$aura [@member]`** - plain message `Aura this user holds! @user:` + `[██████░░░░]` `60%`; the bar fills slowly (message is edited), dotted blocks turn white. **`$aura config`** (admins): fix aura % per member / role, random on/off.
+- **`$transfer` = Role Transfer Studio.** Open it with menus (From / To / role ticks), or `$transfer @from @to [@roles]`.
+  It also works for people who already **LEFT**: pick them in the "Someone who left" menu or type `$transfer <user id | saved name> @to`
+  (Kon saves a member's roles the moment they leave - 180 days). Live preview with skip reasons, **Undo** (10 min), **History**.
 - **`$transfer @from @to [@roles]`** - move roles between members (bot owner, `$konextra` owners and server Administrators). Shows a
   preview with Confirm / Cancel. The VC command is now only `$vctransfer` (`$vct`).
 - **`$point config`** redesigned: *Main* page (chat / VC rules, switches) + *Channels* page (menus to switch points OFF in channels /
@@ -118,7 +172,7 @@ Messages older than 14 days can't be bulk-deleted by Discord and are skipped.
 - **TimeTap** (reaction game): `$timetap` (alias `$tt`) works only in the channel set with `$timetap set` (or `$timetap channel`). You pick the mode yourself, nothing is automatic and nothing starts until the host presses **Start**: **Training** (solo, 10 rounds, stats + personal records), **Duo** (1v1), **Trio** (1v1, the winner then faces the 3rd player), **Squad** (Red vs Blue, 2v2 up to 5v5, equal teams, even players only; Join Red / Join Blue / Leave). Squad: players are paired red[i] vs blue[i]; the team with more match wins takes it, a tie is settled by a decider between a winner of each team. A match = first to 3 round wins. The button is **red** - the first to tap after it turns **green** wins the round. Tapping while red = false start = -1 heart (3 hearts each, 0 = eliminated) and a 0.5s lock-out. The green signal comes after a random 1-8s (no countdown). Eliminated players spectate the live board (current match, up next, still in, out). `$timetap stats [@member]` = best / average reaction, match wins, titles, false starts, personal records; `$timetap stop`.
 - **Handfight** (rock paper scissors): `$handfight` (alias `$hf`), channel with `$handfight set`. Modes **Duo** and **Squad** (same Red/Blue team system, even players only, no autostart). Picks are secret (ephemeral buttons), draws are replayed, first to 2 round wins takes a match. `$handfight stats`, `$handfight stop`.
 - **`$games`** shows every game with the channel it is set to. Every game (`tictactoe`, `blacktea`, `timetap`, `handfight`) uses the same setup: `$<game> set` opens a channel select menu - nobody has to ping a channel. The channels and the TimeTap / Handfight stats are stored in `kon.db` (BlackTea's channel in `data/blacktea.json`), so they are part of every automatic backup and of `$backup config`.
-- New icons (`rock`, `paper`, `scissors`, `tap`, `team_red`, `team_blue`, `light_red`, `light_green`) are in `assets/icons` (drawn by `tools/make_game_icons.py`) and are uploaded as Kon application emojis on the first start.
+- New icons (`rock`, `paper`, `scissors`, `tap`, `team_red`, `team_blue`, `light_red`, `light_green`) are in `assets/icons` (drawn by `tools/make_icons.py`) and are uploaded as Kon application emojis on the first start.
 - **`$konping`** (redesigned, custom icons) and **`$koninfo`** (servers, total members, stats; server list = bot owner only).
   `$kon` alone no longer pings, it shows a short intro.
 - **`$pb`** says "Successfully purged N bot messages." and also removes the no-prefix commands (plain `afk`, `profile` ...).

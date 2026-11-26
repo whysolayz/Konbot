@@ -1,0 +1,105 @@
+{
+  "server": {
+    "id": 1561595482604703805,
+    "name": "Phantom Family",
+    "bot_is_in_server": true,
+    "owner_id": 1536636111722643457,
+    "members": 69
+  },
+  "custom_vc": {
+    "join_to_create_channel": 1571375173926654022,
+    "interface_channel": 1571375053285757028,
+    "interface_message_id": 1575134338125799445,
+    "saved_setup (last known, survives channel deletion)": {
+      "join_to_create": {
+        "id": 1571375173926654022,
+        "name": "・🍀〢Custom Vcゝ",
+        "type": "voice",
+        "category_id": 1571374990505287721,
+        "category": "ㆍ🍀〢Custom VCsゝ",
+        "position": 0,
+        "bitrate": 64000,
+        "user_limit": 1,
+        "currently_set": true,
+        "exists_now": true
+      },
+      "interface": {
+        "id": 1571375053285757028,
+        "name": "・🍀〢interfaceゝ",
+        "type": "text",
+        "category_id": 1571374990505287721,
+        "category": "ㆍ🍀〢Custom VCsゝ",
+        "position": 19,
+        "currently_set": true,
+        "exists_now": true
+      },
+      "panel_message_id": 1575134338125799445
+    },
+    "other_keys": {
+      "panel_ver": "4346b0875c598f7e"
+    },
+    "active_custom_vcs": {}
+  },
+  "self_roles": null,
+  "points_settings": null,
+  "shop": {
+    "settings": null,
+    "items": []
+  },
+  "no_prefix": {
+    "role": null,
+    "users": [
+      1536636111722643457
+    ]
+  },
+  "aliases": null,
+  "role_commands": null,
+  "autoreact": {
+    "roles": [],
+    "users": {
+      "1536636111722643457": [
+        "<:PF_RAJAJI:1561613810882707488>"
+      ]
+    }
+  },
+  "aura": null,
+  "custom_vc_rules": null,
+  "tictactoe": null,
+  "game_channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)": {
+    "tictactoe": null,
+    "blacktea": null,
+    "timetap": null,
+    "handfight": null
+  },
+  "game_stats (TimeTap, Handfight)": {
+    "timetap": null,
+    "handfight": null
+  },
+  "webhook_sender (name, avatar, embed, images)": null,
+  "saved_images ($tolink names -> links)": null,
+  "command_disable ($disablecommand)": null,
+  "extra_owners": [],
+  "afk": {
+    "tag_enabled": true,
+    "users": {}
+  },
+  "tickets (panels, categories, open tickets)": null,
+  "giveaways (templates, running, ended)": null,
+  "all_settings_raw": {
+    "autoreact": {
+      "roles": [],
+      "users": {
+        "1536636111722643457": [
+          "<:PF_RAJAJI:1561613810882707488>"
+        ]
+      }
+    },
+    "noprefix": {
+      "role": null,
+      "users": [
+        1536636111722643457
+      ]
+    }
+  },
+  "players_in_database": 3
+}

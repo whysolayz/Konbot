@@ -39,11 +39,11 @@
     },
     "panel_message_id": 1573473132516212869,
     "active_custom_vcs": {
-      "1574573744746139838": {
-        "owner": 650534818517483526,
+      "1575383150224474122": {
+        "owner": 1299765230011678834,
         "banned": [],
         "block_drags": false,
-        "created": 1795478035.092992
+        "created": 1795671014.9377165
       }
     }
   },
@@ -82,11 +82,65 @@
     "panel_message_id": null,
     "active_custom_vcs": {}
   },
+  "1553315223732232192": {
+    "server_name": "Amoxy's Nation",
+    "join_to_create": {
+      "id": 1575128383052845156,
+      "name": "𐏓・⚙️・Custom Vc",
+      "type": "voice",
+      "category_id": 1575128061848854588,
+      "category": "𐏓・⚙️・Custom Vocalizations",
+      "position": 3,
+      "bitrate": 64000,
+      "user_limit": 1,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "interface": {
+      "id": 1575128339776151652,
+      "name": "𐏓・⚙️・interface",
+      "type": "text",
+      "category_id": 1575128061848854588,
+      "category": "𐏓・⚙️・Custom Vocalizations",
+      "position": 56,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "panel_message_id": 1575128486752952452,
+    "active_custom_vcs": {}
+  },
   "1556044009661530124": {
     "server_name": "Soul of Nebula",
     "join_to_create": null,
     "interface": null,
     "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1561595482604703805": {
+    "server_name": "Phantom Family",
+    "join_to_create": {
+      "id": 1571375173926654022,
+      "name": "・🍀〢Custom Vcゝ",
+      "type": "voice",
+      "category_id": 1571374990505287721,
+      "category": "ㆍ🍀〢Custom VCsゝ",
+      "position": 0,
+      "bitrate": 64000,
+      "user_limit": 1,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "interface": {
+      "id": 1571375053285757028,
+      "name": "・🍀〢interfaceゝ",
+      "type": "text",
+      "category_id": 1571374990505287721,
+      "category": "ㆍ🍀〢Custom VCsゝ",
+      "position": 19,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "panel_message_id": 1575134338125799445,
     "active_custom_vcs": {}
   },
   "1562735431051903090": {
@@ -110,8 +164,42 @@
     "panel_message_id": null,
     "active_custom_vcs": {}
   },
+  "1569526897614786571": {
+    "server_name": "! Pʜᴀɴᴛᴏᴍ's server",
+    "join_to_create": {
+      "id": 1569527658491027588,
+      "name": "╰•⛄┊ Creator Channel⌝",
+      "type": "voice",
+      "category_id": 1569527460997890109,
+      "category": "╰〢⛄• Custom VC ⌝",
+      "position": 0,
+      "bitrate": 64000,
+      "user_limit": 0,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "interface": {
+      "id": 1569527494518775910,
+      "name": "╭•⛄┊interface⌝",
+      "type": "text",
+      "category_id": 1569527460997890109,
+      "category": "╰〢⛄• Custom VC ⌝",
+      "position": 0,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "panel_message_id": 1574825347176734811,
+    "active_custom_vcs": {}
+  },
   "1573601753965011035": {
     "server_name": "duffer's server",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1574603839133192317": {
+    "server_name": "Blaze Paradox",
     "join_to_create": null,
     "interface": null,
     "panel_message_id": null,

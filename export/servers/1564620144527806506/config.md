@@ -39,7 +39,7 @@
     - **no_prefix**:
       - **role**: 
       - **users**:
-        - `1502683350316351549` → ♡˖✦ Sweet Cherry ✦˖♡ (lovebird_1)
+        - `1502683350316351549` → ♡˖✦ Night Berry ✦˖♡ (lovebird_1)
 - **active_custom_vcs**: *(empty)*
 
 ### Custom VC protection ($customvc config)
@@ -85,7 +85,7 @@
 
 - **role**: *none*
 - **users**:
-  - `1502683350316351549` → ♡˖✦ Sweet Cherry ✦˖♡ (lovebird_1)
+  - `1502683350316351549` → ♡˖✦ Night Berry ✦˖♡ (lovebird_1)
 
 ### Aliases
 
@@ -153,7 +153,7 @@
 - **noprefix**:
   - **role**: *none*
   - **users**:
-    - `1502683350316351549` → ♡˖✦ Sweet Cherry ✦˖♡ (lovebird_1)
+    - `1502683350316351549` → ♡˖✦ Night Berry ✦˖♡ (lovebird_1)
 - **points**:
   - **chat_enabled**: yes
   - **chat_msgs**: 1

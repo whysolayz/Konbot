@@ -79,11 +79,11 @@
       - **vc_need_muted**: no
       - **vc_disabled_channels**: *(empty)*
 - **active_custom_vcs**:
-  - **1574573744746139838** → #whysolayz:
-    - **owner**: `650534818517483526` → Aalsi (whysolayz)
+  - **1575383150224474122** → #subha hogayi kya:
+    - **owner**: `1299765230011678834` → Meow-Gamer (soul_reaperx2)
     - **banned**: *(empty)*
     - **block_drags**: no
-    - **created**: 1795478035 (2026-11-23 23:53 UTC)
+    - **created**: 1795671015 (2026-11-26 05:30 UTC)
 
 ### Custom VC protection ($customvc config)
 
@@ -167,7 +167,7 @@
     - **guild_id**: `1488690726870057165` → server Dark ︲ Spider's Web
     - **role_id**: `1488691208019771402` → @ゝAura Gold ⌝
     - **price**: 500
-    - **stock**: 4
+    - **stock**: 3
     - **emoji**: `<:Kool:1569605493607890995>`
     - **position**: 2
   - #3
@@ -216,8 +216,9 @@
 - **role**: `1569999856171229255` → @︲No Prefix 」
 - **users**:
   - `1418875905085935637` → 🜲 SeNvaTor 'メD | 神 (senvator.)
-  - `650534818517483526` → Aalsi (whysolayz)
+  - `650534818517483526` → Lazy (whysolayz)
   - `1473667943186305172` → [T MOD] Viru (thviru)
+  - `1502959831772823762` → DeadSoul (.thedeadsoul)
 
 ### Aliases
 
@@ -339,7 +340,7 @@ __select category from the dropdown menu to contact us__`
     - **max_open**: 1
     - **name_format**: ticket-{user}
     - **opener_can_close**: no
-- **counter**: 13
+- **counter**: 17
 - **blacklist**: *(empty)*
 - **tickets**:
   - **1573971039388434442** → #ticket-nontastic_player:
@@ -351,9 +352,9 @@ __select category from the dropdown menu to contact us__`
     - **question**: Kindly mention the amount
     - **opener**: `1028298097664733215` → Nope {>.<} (nontastic_player)
     - **created**: 1795334339 (2026-11-22 07:58 UTC)
-    - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
     - **claimed_at**: 1795334345 (2026-11-22 07:59 UTC)
-    - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
     - **first_reply_at**: 1795334344 (2026-11-22 07:59 UTC)
     - **answer**: Jitna bhi mil jaye
     - **log**:
@@ -370,9 +371,9 @@ __select category from the dropdown menu to contact us__`
     - **question**: Kindly mention the amount
     - **opener**: `1513085640642920458` → Luffy !¡ (luffy_07_09)
     - **created**: 1795335162 (2026-11-22 08:12 UTC)
-    - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
     - **claimed_at**: 1795335167 (2026-11-22 08:12 UTC)
-    - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
+    - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
     - **first_reply_at**: 1795335170 (2026-11-22 08:12 UTC)
     - **answer**: 500k
     - **log**:
@@ -389,8 +390,8 @@ __select category from the dropdown menu to contact us__`
     - **question**: Kindly mention the amount
     - **opener**: `1407327765933461606` → !ꜱᴇɴᴘᴀɪ_xᴅ (yourzoru)
     - **created**: 1795450485 (2026-11-23 16:14 UTC)
-    - **claimed_by**: `1492686665142239372` → [T MOD] Dark buddy (senpaispider_1_)
-    - **claimed_at**: 1795484312 (2026-11-24 01:38 UTC)
+    - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+    - **claimed_at**: 1795495873 (2026-11-24 04:51 UTC)
     - **first_reply_by**: `1554945105981603880` → [H MOD] Kartik (mexzon_0205)
     - **first_reply_at**: 1795450512 (2026-11-23 16:15 UTC)
     - **answer**: 10m ka loan demdo
@@ -399,32 +400,547 @@ __select category from the dropdown menu to contact us__`
       - `1574458194493972553`
     - **closing**: no
     - **welcome_msg**: `1574458192396689620`
-  - **1574463439118532689** → #ticket-wh0_is_vexy:
-    - **num**: 13
-    - **channel**: `1574463439118532689` → #ticket-wh0_is_vexy
-    - **name**: ticket-wh0_is_vexy
-    - **category**: dsw-support
-    - **category_name**: General Support
-    - **question**: Kindly Mention your issue!
-    - **opener**: `1455775148962746411` → $ VEXY (wh0_is_vexy)
-    - **created**: 1795451737 (2026-11-23 16:35 UTC)
-    - **claimed_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
-    - **claimed_at**: 1795451811 (2026-11-23 16:36 UTC)
-    - **first_reply_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
-    - **first_reply_at**: 1795451826 (2026-11-23 16:37 UTC)
-    - **answer**: I wanna apply for admin or staff managements
-    - **log**:
-      - `1570531039187566715` → #︲🛠・opened」
-      - `1574463448887328848`
-    - **closing**: no
-    - **welcome_msg**: `1574463442205548566`
 - **stats**:
-  - **opened**: 13
-  - **closed**: 9
+  - **opened**: 17
+  - **closed**: 14
 
 ### Giveaways ($giveaway)
 
-- *not configured*
+- **counter**: 5
+- **templates**:
+  - **bauni**:
+    - **name**: Bauni
+    - **saved**: 1795489723 (2026-11-24 03:08 UTC)
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Role
+      - **description**: Click the button below to enter!
+      - **winners**: 2
+      - **duration**: 86400
+      - **color**: 10181046
+      - **image**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622625496436830`
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06512b&is=6b04ffab&hm=c4796c70563ab85d7474fec6b78b04352403c2e59898060ef778cb6a0d0e89ed&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622703137194117`
+      - **channel**: `1488691409744695417` → #🍃︲bot_usage⌝
+      - **emojis**:
+        - **title**: `<a:spider_disc:1517500076782649477>`
+        - **prize**: `<a:giveaway:1571559456037277837>`
+        - **winners**: `<a:dancing_star:1572638621813440643>`
+        - **host**: `<a:Madira_yo:1570284031457890314>`
+        - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+        - **req**: `<a:exo_announce:1565559608502657125>`
+        - **entries**: `<a:Spider_Hero:1517496670697422918>`
+        - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+        - **done**: `<:spider_mastiii:1573018958813208587>`
+        - **ended**: `<:53joker:1572657288915845301>`
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<a:Madira_dance:1570574375160385546>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: :scrajj
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: `<a:Cat:1570284005067198464>`
+          - **show**: yes
+      - **prize_role**:
+        - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+        - **mode**: temporary
+        - **seconds**: 604800
+      - **points**: 500
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 0
+          - **exclude**: *(empty)*
+        - **invites**: 0
+        - **task**:
+          - **enabled**: yes
+          - **phrase**: bauni
+          - **target**: `1425991437396217960`
+          - **channel**: *none*
+- **active**: *(empty)*
+- **ended**:
+  - **1574623540207026270**:
+    - **n**: 1
+    - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+    - **ch**: `1572381729233051669` → #︲🛠・bot-kon」
+    - **msg**: `1574623540207026270`
+    - **host**: `650534818517483526` → Lazy (whysolayz)
+    - **start**: 1795489907 (2026-11-24 03:11 UTC)
+    - **end**: 1795576306
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Role
+      - **description**: Click the button below to enter!
+      - **winners**: 2
+      - **duration**: 86400
+      - **color**: 10181046
+      - **image**: *none*
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622703137194117`
+      - **channel**: *none*
+      - **emojis**:
+        - **title**: `<a:spider_disc:1517500076782649477>`
+        - **prize**: `<a:giveaway:1571559456037277837>`
+        - **winners**: `<a:dancing_star:1572638621813440643>`
+        - **host**: `<a:Madira_yo:1570284031457890314>`
+        - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+        - **req**: `<a:exo_announce:1565559608502657125>`
+        - **entries**: `<a:Spider_Hero:1517496670697422918>`
+        - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+        - **done**: `<:spider_mastiii:1573018958813208587>`
+        - **ended**: `<:53joker:1572657288915845301>`
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<a:Madira_dance:1570574375160385546>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: `<a:scrajj:1570284076609568919>`
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: `<a:Cat:1570284005067198464>`
+          - **show**: yes
+      - **prize_role**:
+        - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+        - **mode**: temporary
+        - **seconds**: 604800
+      - **points**: 500
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 0
+          - **exclude**: *(empty)*
+        - **invites**: 0
+        - **task**:
+          - **enabled**: yes
+          - **phrase**: bauni
+          - **target**: `1425991437396217960`
+          - **channel**: *none*
+    - **status**: ended
+    - **valid**: 1
+    - **ended**: 1795576310 (2026-11-25 03:11 UTC)
+    - **winners**:
+      - `650534818517483526` → Lazy (whysolayz)
+    - **entries**: 1
+    - **users_with_counted_messages**: 0
+    - **inviters**: 0
+    - **task_done**: 7
+  - **1574624507035918348**:
+    - **n**: 2
+    - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+    - **ch**: `1517397020049014926` → #🌿︲giveaway⌝
+    - **msg**: `1574624507035918348`
+    - **host**: `650534818517483526` → Lazy (whysolayz)
+    - **start**: 1795490137 (2026-11-24 03:15 UTC)
+    - **end**: 1795576537
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Role
+      - **description**: Click the button below to enter!
+      - **winners**: 2
+      - **duration**: 86400
+      - **color**: 10181046
+      - **image**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622625496436830`
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622703137194117`
+      - **channel**: `1488691409744695417` → #🍃︲bot_usage⌝
+      - **emojis**:
+        - **title**: `<a:spider_disc:1517500076782649477>`
+        - **prize**: `<a:giveaway:1571559456037277837>`
+        - **winners**: `<a:dancing_star:1572638621813440643>`
+        - **host**: `<a:Madira_yo:1570284031457890314>`
+        - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+        - **req**: `<a:exo_announce:1565559608502657125>`
+        - **entries**: `<a:Spider_Hero:1517496670697422918>`
+        - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+        - **done**: `<:spider_mastiii:1573018958813208587>`
+        - **ended**: `<:53joker:1572657288915845301>`
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<a:Madira_dance:1570574375160385546>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: `<a:scrajj:1570284076609568919>`
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: `<a:Cat:1570284005067198464>`
+          - **show**: yes
+      - **prize_role**:
+        - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+        - **mode**: temporary
+        - **seconds**: 604800
+      - **points**: 500
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 0
+          - **exclude**: *(empty)*
+        - **invites**: 0
+        - **task**:
+          - **enabled**: yes
+          - **phrase**: bauni
+          - **target**: `1425991437396217960`
+          - **channel**: *none*
+    - **status**: ended
+    - **valid**: 7
+    - **ended**: 1795576540 (2026-11-25 03:15 UTC)
+    - **winners**:
+      - `1414153115602518067` → 🜲 Shaitan Ladka ツ (shaitan_ladka)
+      - `1262248731353546763` → Anshu >_< (anshumanfr_)
+    - **entries**: 7
+    - **users_with_counted_messages**: 0
+    - **inviters**: 0
+    - **task_done**: 7
+  - **1574630785024135219**:
+    - **n**: 3
+    - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+    - **ch**: `1517397020049014926` → #🌿︲giveaway⌝
+    - **msg**: `1574630785024135219`
+    - **host**: `650534818517483526` → Lazy (whysolayz)
+    - **start**: 1795491634 (2026-11-24 03:40 UTC)
+    - **end**: 1795578034
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Role
+      - **description**: Click the button below to enter!
+      - **winners**: 2
+      - **duration**: 86400
+      - **color**: 10181046
+      - **image**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622625496436830`
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622703137194117`
+      - **channel**: `1517397020049014926` → #🌿︲giveaway⌝
+      - **emojis**:
+        - **title**: `<a:spider_disc:1517500076782649477>`
+        - **prize**: `<a:giveaway:1571559456037277837>`
+        - **winners**: `<a:dancing_star:1572638621813440643>`
+        - **host**: `<a:Madira_yo:1570284031457890314>`
+        - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+        - **req**: `<a:exo_announce:1565559608502657125>`
+        - **entries**: `<a:Spider_Hero:1517496670697422918>`
+        - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+        - **done**: `<:spider_mastiii:1573018958813208587>`
+        - **ended**: `<:53joker:1572657288915845301>`
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<a:Madira_dance:1570574375160385546>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: `<a:scrajj:1570284076609568919>`
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: `<a:Cat:1570284005067198464>`
+          - **show**: yes
+      - **prize_role**:
+        - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+        - **mode**: temporary
+        - **seconds**: 604800
+      - **points**: 500
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 250
+          - **exclude**:
+            - `1570388866702245948` → #☃️︲enchanted_shop⌝
+            - `1570388769394135150` → #☃️︲currency_arena⌝
+            - `1517463305768144906` → #🎄︲owo⌝
+            - `1488691409744695417` → #🍃︲bot_usage⌝
+            - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
+        - **invites**: 0
+        - **task**:
+          - **enabled**: no
+          - **phrase**: happy birthday
+          - **target**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+          - **channel**: *none*
+    - **status**: ended
+    - **valid**: 0
+    - **ended**: 1795578036 (2026-11-25 03:40 UTC)
+    - **winners**: *(empty)*
+    - **entries**: 0
+    - **users_with_counted_messages**: 38
+    - **inviters**: 0
+    - **task_done**: 0
+  - **1574631196334362695**:
+    - **n**: 4
+    - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+    - **ch**: `1517397020049014926` → #🌿︲giveaway⌝
+    - **msg**: `1574631196334362695`
+    - **host**: `650534818517483526` → Lazy (whysolayz)
+    - **start**: 1795491732 (2026-11-24 03:42 UTC)
+    - **end**: 1795578131
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Role
+      - **description**: Click the button below to enter!
+      - **winners**: 2
+      - **duration**: 86400
+      - **color**: 10181046
+      - **image**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622625496436830`
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622703137194117`
+      - **channel**: `1517397020049014926` → #🌿︲giveaway⌝
+      - **emojis**:
+        - **title**: `<a:spider_disc:1517500076782649477>`
+        - **prize**: `<a:giveaway:1571559456037277837>`
+        - **winners**: `<a:dancing_star:1572638621813440643>`
+        - **host**: `<a:Madira_yo:1570284031457890314>`
+        - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+        - **req**: `<a:exo_announce:1565559608502657125>`
+        - **entries**: `<a:Spider_Hero:1517496670697422918>`
+        - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+        - **done**: `<:spider_mastiii:1573018958813208587>`
+        - **ended**: `<:53joker:1572657288915845301>`
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<a:Madira_dance:1570574375160385546>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: `<a:scrajj:1570284076609568919>`
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: `<a:Cat:1570284005067198464>`
+          - **show**: yes
+      - **prize_role**:
+        - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+        - **mode**: temporary
+        - **seconds**: 604800
+      - **points**: 500
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 250
+          - **exclude**:
+            - `1570386957056348251` → #╰ ¤〢Casino ︲☃️︲
+            - `1488691409744695417` → #🍃︲bot_usage⌝
+            - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
+        - **invites**: 0
+        - **task**:
+          - **enabled**: no
+          - **phrase**: happy birthday
+          - **target**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+          - **channel**: *none*
+    - **status**: ended
+    - **valid**: 1
+    - **ended**: 1795578131 (2026-11-25 03:42 UTC)
+    - **winners**:
+      - `650534818517483526` → Lazy (whysolayz)
+    - **entries**: 4
+    - **users_with_counted_messages**: 38
+    - **inviters**: 0
+    - **task_done**: 0
+  - **1574634081432379435**:
+    - **n**: 5
+    - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+    - **ch**: `1517397020049014926` → #🌿︲giveaway⌝
+    - **msg**: `1574634081432379435`
+    - **host**: `650534818517483526` → Lazy (whysolayz)
+    - **start**: 1795492420 (2026-11-24 03:53 UTC)
+    - **end**: 1795578819
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Role
+      - **description**: Click the button below to enter!
+      - **winners**: 2
+      - **duration**: 86400
+      - **color**: 10181046
+      - **image**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622625496436830`
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06f9eb&is=6b05a86b&hm=78e13cd5040bf687a215738813968088bb4558d3d7a4098c20c79ff6400c458e&
+        - **ref**:
+          - **c**: `1572663742091632681`
+          - **m**: `1574622703137194117`
+      - **channel**: `1517397020049014926` → #🌿︲giveaway⌝
+      - **emojis**:
+        - **title**: `<a:spider_disc:1517500076782649477>`
+        - **prize**: `<a:giveaway:1571559456037277837>`
+        - **winners**: `<a:dancing_star:1572638621813440643>`
+        - **host**: `<a:Madira_yo:1570284031457890314>`
+        - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+        - **req**: `<a:exo_announce:1565559608502657125>`
+        - **entries**: `<a:Spider_Hero:1517496670697422918>`
+        - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+        - **done**: `<:spider_mastiii:1573018958813208587>`
+        - **ended**: `<:53joker:1572657288915845301>`
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<a:Madira_dance:1570574375160385546>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: `<a:scrajj:1570284076609568919>`
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: `<a:Cat:1570284005067198464>`
+          - **show**: yes
+      - **prize_role**:
+        - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+        - **mode**: permanent
+        - **seconds**: 604800
+      - **points**: 0
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 0
+          - **exclude**:
+            - `1570386957056348251` → #╰ ¤〢Casino ︲☃️︲
+            - `1488691409744695417` → #🍃︲bot_usage⌝
+            - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
+        - **invites**: 0
+        - **task**:
+          - **enabled**: no
+          - **phrase**: happy birthday
+          - **target**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+          - **channel**: *none*
+    - **status**: ended
+    - **valid**: 14
+    - **ended**: 1795578822 (2026-11-25 03:53 UTC)
+    - **winners**:
+      - `743845224287043665` → !             Whoknow (whoknow_008)
+      - `1455775148962746411` → $ VEXY (wh0_is_vexy)
+    - **entries**: 14
+    - **users_with_counted_messages**: 0
+    - **inviters**: 0
+    - **task_done**: 0
+- **temp_roles**:
+  - #1
+    - **u**: `650534818517483526` → Lazy (whysolayz)
+    - **r**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+    - **exp**: 1796181110 (2026-12-02 03:11 UTC)
+    - **gw**: 1
+    - **tries**: 0
+  - #2
+    - **u**: `1414153115602518067` → 🜲 Shaitan Ladka ツ (shaitan_ladka)
+    - **r**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+    - **exp**: 1796181340 (2026-12-02 03:15 UTC)
+    - **gw**: 2
+    - **tries**: 0
+  - #3
+    - **u**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+    - **r**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+    - **exp**: 1796181340 (2026-12-02 03:15 UTC)
+    - **gw**: 2
+    - **tries**: 0
+- **last**:
+  - **title**: GIVEAWAY
+  - **prize**: Role
+  - **description**: Click the button below to enter!
+  - **winners**: 2
+  - **duration**: 86400
+  - **color**: 10181046
+  - **image**:
+    - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+    - **ref**:
+      - **c**: `1572663742091632681`
+      - **m**: `1574622625496436830`
+  - **thumbnail**:
+    - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06512b&is=6b04ffab&hm=c4796c70563ab85d7474fec6b78b04352403c2e59898060ef778cb6a0d0e89ed&
+    - **ref**:
+      - **c**: `1572663742091632681`
+      - **m**: `1574622703137194117`
+  - **channel**: `1517397020049014926` → #🌿︲giveaway⌝
+  - **emojis**:
+    - **title**: `<a:spider_disc:1517500076782649477>`
+    - **prize**: `<a:giveaway:1571559456037277837>`
+    - **winners**: `<a:dancing_star:1572638621813440643>`
+    - **host**: `<a:Madira_yo:1570284031457890314>`
+    - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+    - **req**: `<a:exo_announce:1565559608502657125>`
+    - **entries**: `<a:Spider_Hero:1517496670697422918>`
+    - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+    - **done**: `<:spider_mastiii:1573018958813208587>`
+    - **ended**: `<:53joker:1572657288915845301>`
+  - **buttons**:
+    - **join**:
+      - **label**: Join Giveaway
+      - **emoji**: `<a:Madira_dance:1570574375160385546>`
+      - **style**: primary
+      - **ended_label**: Giveaway Ended
+    - **entries**:
+      - **emoji**: `<a:scrajj:1570284076609568919>`
+      - **show**: yes
+    - **progress**:
+      - **label**: My Progress
+      - **emoji**: `<a:Cat:1570284005067198464>`
+      - **show**: yes
+  - **prize_role**:
+    - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+    - **mode**: permanent
+    - **seconds**: 604800
+  - **points**: 0
+  - **req**:
+    - **roles**: *(empty)*
+    - **roles_mode**: any
+    - **messages**:
+      - **count**: 0
+      - **exclude**:
+        - `1570386957056348251` → #╰ ¤〢Casino ︲☃️︲
+        - `1488691409744695417` → #🍃︲bot_usage⌝
+        - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
+    - **invites**: 0
+    - **task**:
+      - **enabled**: no
+      - **phrase**: happy birthday
+      - **target**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+      - **channel**: *none*
 
 ### Autoreact
 
@@ -435,15 +951,15 @@ __select category from the dropdown menu to contact us__`
   - `1488691206891503758` → @ゝNot Bull ⌝
   - `1488691206375608330` → @ゝLoop ⌝
 - **users**:
-  - **650534818517483526** → Aalsi (whysolayz):
-    - `<:darkManager:1573139364727230675>`
-  - **1425991437396217960** → TheSky (sky_bauni):
+  - **650534818517483526** → Lazy (whysolayz):
+    - `<:LazyCafeDogesh:1570285024895434802>`
+  - **1425991437396217960**:
     - `<a:Nova_Quenn:1572638654252187669>`
   - **1548153523709943863**:
     - `<a:Madira_eating:1570284028093792286>`
-  - **743845224287043665** → !                  Whoknoe (whoknow_008):
+  - **743845224287043665** → !             Whoknow (whoknow_008):
     - `<a:Cat:1570284005067198464>`
-  - **1086203964300730449** → [AFK][T Mod] Caliber (arionx_774):
+  - **1086203964300730449** → [T Mod] Caliber (arionx_774):
     - `<a:Oliviaaa_nooooo:1570284034532188210>`
   - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
     - `<:LazyCafeCat:1570284011136491742>`
@@ -453,7 +969,7 @@ __select category from the dropdown menu to contact us__`
 ### Aura ($aura config)
 
 - **members**:
-  - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_): 99
+  - **1262248731353546763** → Anshu >_< (anshumanfr_): 99
 - **roles**: *(empty)*
 - **random**: yes
 - **disabled**: *(empty)*
@@ -472,7 +988,7 @@ __select category from the dropdown menu to contact us__`
 ### Game stats (TimeTap, Handfight)
 
 - **timetap**:
-  - **650534818517483526** → Aalsi (whysolayz):
+  - **650534818517483526** → Lazy (whysolayz):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 14
@@ -543,7 +1059,7 @@ __select category from the dropdown menu to contact us__`
     - **train_runs**: 0
     - **best_clean**: 0
 - **handfight**:
-  - **650534818517483526** → Aalsi (whysolayz):
+  - **650534818517483526** → Lazy (whysolayz):
     - **games**: 6
     - **titles**: 4
     - **rounds_won**: 9
@@ -565,7 +1081,7 @@ __select category from the dropdown menu to contact us__`
     - **rock**: 0
     - **paper**: 2
     - **scissors**: 0
-  - **1425991437396217960** → TheSky (sky_bauni):
+  - **1425991437396217960**:
     - **games**: 1
     - **titles**: 1
     - **rounds_won**: 2
@@ -631,7 +1147,7 @@ __select category from the dropdown menu to contact us__`
     - **rock**: 3
     - **paper**: 1
     - **scissors**: 2
-  - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_):
+  - **1262248731353546763** → Anshu >_< (anshumanfr_):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -689,7 +1205,7 @@ __select category from the dropdown menu to contact us__`
     - **url**: https://cdn.discordapp.com/attachments/1572381729233051669/1572382140719566910/img-1.jpg?ex=6afe2a7b&is=6afcd8fb&hm=7dc1873b7f51d216fcd45fa9d66a08d3670041fe7dcdf081e0dd6ef0b57cb025&
     - **t**: jpg
     - **s**: 99697
-    - **by**: `650534818517483526` → Aalsi (whysolayz)
+    - **by**: `650534818517483526` → Lazy (whysolayz)
     - **ts**: 1794955515
 
 ### Disabled commands
@@ -718,8 +1234,8 @@ __select category from the dropdown menu to contact us__`
 ### Extra owners ($konextra - this server only)
 
 - #1
-  - **id**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
-  - **name**: We Know Cuz It's Fact...... (anshumanfr_)
+  - **id**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+  - **name**: Anshu >_< (anshumanfr_)
   - **found**: yes
 - #2
   - **id**: `1154489620499800127` → Dark Ojas (darkojas)
@@ -740,33 +1256,18 @@ __select category from the dropdown menu to contact us__`
     - **since**: 1794852924 (2026-11-16 18:15 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 1
-  - **743845224287043665** → !                  Whoknoe (whoknow_008):
-    - **reason**: Aaya wait
-    - **since**: 1795193581 (2026-11-20 16:53 UTC)
+  - **1476239945172648142** → THUNDER (thunderz_gamer1):
+    - **reason**: `||<@1418875905085935637> Tu Randiiiii hai <:Roast:1569605305011015711>||`
+    - **since**: 1795630338 (2026-11-25 18:12 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 1
-  - **1297140568207527966** → NiMbuu The GreAt (nimbuu.the.great):
-    - **reason**: `nini tame <:Kawaiireaction:1569605491569598577>`
-    - **since**: 1795307000 (2026-11-22 00:23 UTC)
-    - **old_nick**: *none*
-    - **mentions_waiting**: 1
-  - **1414153115602518067** → 🜲 Shaitan Ladka ツ (shaitan_ladka):
-    - **reason**: AFK
-    - **since**: 1795454451 (2026-11-23 17:20 UTC)
-    - **old_nick**: *none*
-    - **mentions_waiting**: 0
-  - **1538573910839140575** → Patrick Badmosh (patrickbadmosh):
-    - **reason**: sleep
-    - **since**: 1795457916 (2026-11-23 18:18 UTC)
-    - **old_nick**: *none*
-    - **mentions_waiting**: 0
 
 ### EVERYTHING saved for this server (raw settings, nothing left out)
 
 - **aliases**: *(empty)*
 - **aura**:
   - **members**:
-    - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_): 99
+    - **1262248731353546763** → Anshu >_< (anshumanfr_): 99
   - **roles**: *(empty)*
   - **random**: yes
   - **disabled**: *(empty)*
@@ -778,15 +1279,15 @@ __select category from the dropdown menu to contact us__`
     - `1488691206891503758` → @ゝNot Bull ⌝
     - `1488691206375608330` → @ゝLoop ⌝
   - **users**:
-    - **650534818517483526** → Aalsi (whysolayz):
-      - `<:darkManager:1573139364727230675>`
-    - **1425991437396217960** → TheSky (sky_bauni):
+    - **650534818517483526** → Lazy (whysolayz):
+      - `<:LazyCafeDogesh:1570285024895434802>`
+    - **1425991437396217960**:
       - `<a:Nova_Quenn:1572638654252187669>`
     - **1548153523709943863**:
       - `<a:Madira_eating:1570284028093792286>`
-    - **743845224287043665** → !                  Whoknoe (whoknow_008):
+    - **743845224287043665** → !             Whoknow (whoknow_008):
       - `<a:Cat:1570284005067198464>`
-    - **1086203964300730449** → [AFK][T Mod] Caliber (arionx_774):
+    - **1086203964300730449** → [T Mod] Caliber (arionx_774):
       - `<a:Oliviaaa_nooooo:1570284034532188210>`
     - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
       - `<:LazyCafeCat:1570284011136491742>`
@@ -813,10 +1314,546 @@ __select category from the dropdown menu to contact us__`
       - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
       - `1488691338026418288` → #╰ ¤〢Lounge ︲🍃︲
       - `1488691331848208415` → #╰ ¤〢Dashboard ︲🌿︲
+- **giveaway**:
+  - **counter**: 5
+  - **templates**:
+    - **bauni**:
+      - **name**: Bauni
+      - **saved**: 1795489723 (2026-11-24 03:08 UTC)
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Role
+        - **description**: Click the button below to enter!
+        - **winners**: 2
+        - **duration**: 86400
+        - **color**: 10181046
+        - **image**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622625496436830`
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06512b&is=6b04ffab&hm=c4796c70563ab85d7474fec6b78b04352403c2e59898060ef778cb6a0d0e89ed&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622703137194117`
+        - **channel**: `1488691409744695417` → #🍃︲bot_usage⌝
+        - **emojis**:
+          - **title**: `<a:spider_disc:1517500076782649477>`
+          - **prize**: `<a:giveaway:1571559456037277837>`
+          - **winners**: `<a:dancing_star:1572638621813440643>`
+          - **host**: `<a:Madira_yo:1570284031457890314>`
+          - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+          - **req**: `<a:exo_announce:1565559608502657125>`
+          - **entries**: `<a:Spider_Hero:1517496670697422918>`
+          - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+          - **done**: `<:spider_mastiii:1573018958813208587>`
+          - **ended**: `<:53joker:1572657288915845301>`
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<a:Madira_dance:1570574375160385546>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: :scrajj
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: `<a:Cat:1570284005067198464>`
+            - **show**: yes
+        - **prize_role**:
+          - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+          - **mode**: temporary
+          - **seconds**: 604800
+        - **points**: 500
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 0
+            - **exclude**: *(empty)*
+          - **invites**: 0
+          - **task**:
+            - **enabled**: yes
+            - **phrase**: bauni
+            - **target**: `1425991437396217960`
+            - **channel**: *none*
+  - **active**: *(empty)*
+  - **ended**:
+    - **1574623540207026270**:
+      - **n**: 1
+      - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+      - **ch**: `1572381729233051669` → #︲🛠・bot-kon」
+      - **msg**: `1574623540207026270`
+      - **host**: `650534818517483526` → Lazy (whysolayz)
+      - **start**: 1795489907 (2026-11-24 03:11 UTC)
+      - **end**: 1795576306
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Role
+        - **description**: Click the button below to enter!
+        - **winners**: 2
+        - **duration**: 86400
+        - **color**: 10181046
+        - **image**: *none*
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622703137194117`
+        - **channel**: *none*
+        - **emojis**:
+          - **title**: `<a:spider_disc:1517500076782649477>`
+          - **prize**: `<a:giveaway:1571559456037277837>`
+          - **winners**: `<a:dancing_star:1572638621813440643>`
+          - **host**: `<a:Madira_yo:1570284031457890314>`
+          - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+          - **req**: `<a:exo_announce:1565559608502657125>`
+          - **entries**: `<a:Spider_Hero:1517496670697422918>`
+          - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+          - **done**: `<:spider_mastiii:1573018958813208587>`
+          - **ended**: `<:53joker:1572657288915845301>`
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<a:Madira_dance:1570574375160385546>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: `<a:scrajj:1570284076609568919>`
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: `<a:Cat:1570284005067198464>`
+            - **show**: yes
+        - **prize_role**:
+          - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+          - **mode**: temporary
+          - **seconds**: 604800
+        - **points**: 500
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 0
+            - **exclude**: *(empty)*
+          - **invites**: 0
+          - **task**:
+            - **enabled**: yes
+            - **phrase**: bauni
+            - **target**: `1425991437396217960`
+            - **channel**: *none*
+      - **status**: ended
+      - **valid**: 1
+      - **ended**: 1795576310 (2026-11-25 03:11 UTC)
+      - **winners**:
+        - `650534818517483526` → Lazy (whysolayz)
+      - **entries**: 1
+      - **users_with_counted_messages**: 0
+      - **inviters**: 0
+      - **task_done**: 7
+    - **1574624507035918348**:
+      - **n**: 2
+      - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+      - **ch**: `1517397020049014926` → #🌿︲giveaway⌝
+      - **msg**: `1574624507035918348`
+      - **host**: `650534818517483526` → Lazy (whysolayz)
+      - **start**: 1795490137 (2026-11-24 03:15 UTC)
+      - **end**: 1795576537
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Role
+        - **description**: Click the button below to enter!
+        - **winners**: 2
+        - **duration**: 86400
+        - **color**: 10181046
+        - **image**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622625496436830`
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622703137194117`
+        - **channel**: `1488691409744695417` → #🍃︲bot_usage⌝
+        - **emojis**:
+          - **title**: `<a:spider_disc:1517500076782649477>`
+          - **prize**: `<a:giveaway:1571559456037277837>`
+          - **winners**: `<a:dancing_star:1572638621813440643>`
+          - **host**: `<a:Madira_yo:1570284031457890314>`
+          - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+          - **req**: `<a:exo_announce:1565559608502657125>`
+          - **entries**: `<a:Spider_Hero:1517496670697422918>`
+          - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+          - **done**: `<:spider_mastiii:1573018958813208587>`
+          - **ended**: `<:53joker:1572657288915845301>`
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<a:Madira_dance:1570574375160385546>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: `<a:scrajj:1570284076609568919>`
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: `<a:Cat:1570284005067198464>`
+            - **show**: yes
+        - **prize_role**:
+          - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+          - **mode**: temporary
+          - **seconds**: 604800
+        - **points**: 500
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 0
+            - **exclude**: *(empty)*
+          - **invites**: 0
+          - **task**:
+            - **enabled**: yes
+            - **phrase**: bauni
+            - **target**: `1425991437396217960`
+            - **channel**: *none*
+      - **status**: ended
+      - **valid**: 7
+      - **ended**: 1795576540 (2026-11-25 03:15 UTC)
+      - **winners**:
+        - `1414153115602518067` → 🜲 Shaitan Ladka ツ (shaitan_ladka)
+        - `1262248731353546763` → Anshu >_< (anshumanfr_)
+      - **entries**: 7
+      - **users_with_counted_messages**: 0
+      - **inviters**: 0
+      - **task_done**: 7
+    - **1574630785024135219**:
+      - **n**: 3
+      - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+      - **ch**: `1517397020049014926` → #🌿︲giveaway⌝
+      - **msg**: `1574630785024135219`
+      - **host**: `650534818517483526` → Lazy (whysolayz)
+      - **start**: 1795491634 (2026-11-24 03:40 UTC)
+      - **end**: 1795578034
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Role
+        - **description**: Click the button below to enter!
+        - **winners**: 2
+        - **duration**: 86400
+        - **color**: 10181046
+        - **image**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622625496436830`
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622703137194117`
+        - **channel**: `1517397020049014926` → #🌿︲giveaway⌝
+        - **emojis**:
+          - **title**: `<a:spider_disc:1517500076782649477>`
+          - **prize**: `<a:giveaway:1571559456037277837>`
+          - **winners**: `<a:dancing_star:1572638621813440643>`
+          - **host**: `<a:Madira_yo:1570284031457890314>`
+          - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+          - **req**: `<a:exo_announce:1565559608502657125>`
+          - **entries**: `<a:Spider_Hero:1517496670697422918>`
+          - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+          - **done**: `<:spider_mastiii:1573018958813208587>`
+          - **ended**: `<:53joker:1572657288915845301>`
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<a:Madira_dance:1570574375160385546>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: `<a:scrajj:1570284076609568919>`
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: `<a:Cat:1570284005067198464>`
+            - **show**: yes
+        - **prize_role**:
+          - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+          - **mode**: temporary
+          - **seconds**: 604800
+        - **points**: 500
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 250
+            - **exclude**:
+              - `1570388866702245948` → #☃️︲enchanted_shop⌝
+              - `1570388769394135150` → #☃️︲currency_arena⌝
+              - `1517463305768144906` → #🎄︲owo⌝
+              - `1488691409744695417` → #🍃︲bot_usage⌝
+              - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
+          - **invites**: 0
+          - **task**:
+            - **enabled**: no
+            - **phrase**: happy birthday
+            - **target**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+            - **channel**: *none*
+      - **status**: ended
+      - **valid**: 0
+      - **ended**: 1795578036 (2026-11-25 03:40 UTC)
+      - **winners**: *(empty)*
+      - **entries**: 0
+      - **users_with_counted_messages**: 38
+      - **inviters**: 0
+      - **task_done**: 0
+    - **1574631196334362695**:
+      - **n**: 4
+      - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+      - **ch**: `1517397020049014926` → #🌿︲giveaway⌝
+      - **msg**: `1574631196334362695`
+      - **host**: `650534818517483526` → Lazy (whysolayz)
+      - **start**: 1795491732 (2026-11-24 03:42 UTC)
+      - **end**: 1795578131
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Role
+        - **description**: Click the button below to enter!
+        - **winners**: 2
+        - **duration**: 86400
+        - **color**: 10181046
+        - **image**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622625496436830`
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622703137194117`
+        - **channel**: `1517397020049014926` → #🌿︲giveaway⌝
+        - **emojis**:
+          - **title**: `<a:spider_disc:1517500076782649477>`
+          - **prize**: `<a:giveaway:1571559456037277837>`
+          - **winners**: `<a:dancing_star:1572638621813440643>`
+          - **host**: `<a:Madira_yo:1570284031457890314>`
+          - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+          - **req**: `<a:exo_announce:1565559608502657125>`
+          - **entries**: `<a:Spider_Hero:1517496670697422918>`
+          - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+          - **done**: `<:spider_mastiii:1573018958813208587>`
+          - **ended**: `<:53joker:1572657288915845301>`
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<a:Madira_dance:1570574375160385546>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: `<a:scrajj:1570284076609568919>`
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: `<a:Cat:1570284005067198464>`
+            - **show**: yes
+        - **prize_role**:
+          - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+          - **mode**: temporary
+          - **seconds**: 604800
+        - **points**: 500
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 250
+            - **exclude**:
+              - `1570386957056348251` → #╰ ¤〢Casino ︲☃️︲
+              - `1488691409744695417` → #🍃︲bot_usage⌝
+              - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
+          - **invites**: 0
+          - **task**:
+            - **enabled**: no
+            - **phrase**: happy birthday
+            - **target**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+            - **channel**: *none*
+      - **status**: ended
+      - **valid**: 1
+      - **ended**: 1795578131 (2026-11-25 03:42 UTC)
+      - **winners**:
+        - `650534818517483526` → Lazy (whysolayz)
+      - **entries**: 4
+      - **users_with_counted_messages**: 38
+      - **inviters**: 0
+      - **task_done**: 0
+    - **1574634081432379435**:
+      - **n**: 5
+      - **gid**: `1488690726870057165` → server Dark ︲ Spider's Web
+      - **ch**: `1517397020049014926` → #🌿︲giveaway⌝
+      - **msg**: `1574634081432379435`
+      - **host**: `650534818517483526` → Lazy (whysolayz)
+      - **start**: 1795492420 (2026-11-24 03:53 UTC)
+      - **end**: 1795578819
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Role
+        - **description**: Click the button below to enter!
+        - **winners**: 2
+        - **duration**: 86400
+        - **color**: 10181046
+        - **image**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622625496436830`
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06f9eb&is=6b05a86b&hm=78e13cd5040bf687a215738813968088bb4558d3d7a4098c20c79ff6400c458e&
+          - **ref**:
+            - **c**: `1572663742091632681`
+            - **m**: `1574622703137194117`
+        - **channel**: `1517397020049014926` → #🌿︲giveaway⌝
+        - **emojis**:
+          - **title**: `<a:spider_disc:1517500076782649477>`
+          - **prize**: `<a:giveaway:1571559456037277837>`
+          - **winners**: `<a:dancing_star:1572638621813440643>`
+          - **host**: `<a:Madira_yo:1570284031457890314>`
+          - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+          - **req**: `<a:exo_announce:1565559608502657125>`
+          - **entries**: `<a:Spider_Hero:1517496670697422918>`
+          - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+          - **done**: `<:spider_mastiii:1573018958813208587>`
+          - **ended**: `<:53joker:1572657288915845301>`
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<a:Madira_dance:1570574375160385546>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: `<a:scrajj:1570284076609568919>`
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: `<a:Cat:1570284005067198464>`
+            - **show**: yes
+        - **prize_role**:
+          - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+          - **mode**: permanent
+          - **seconds**: 604800
+        - **points**: 0
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 0
+            - **exclude**:
+              - `1570386957056348251` → #╰ ¤〢Casino ︲☃️︲
+              - `1488691409744695417` → #🍃︲bot_usage⌝
+              - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
+          - **invites**: 0
+          - **task**:
+            - **enabled**: no
+            - **phrase**: happy birthday
+            - **target**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+            - **channel**: *none*
+      - **status**: ended
+      - **valid**: 14
+      - **ended**: 1795578822 (2026-11-25 03:53 UTC)
+      - **winners**:
+        - `743845224287043665` → !             Whoknow (whoknow_008)
+        - `1455775148962746411` → $ VEXY (wh0_is_vexy)
+      - **entries**: 14
+      - **users_with_counted_messages**: 0
+      - **inviters**: 0
+      - **task_done**: 0
+  - **temp_roles**:
+    - #1
+      - **u**: `650534818517483526` → Lazy (whysolayz)
+      - **r**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+      - **exp**: 1796181110 (2026-12-02 03:11 UTC)
+      - **gw**: 1
+      - **tries**: 0
+    - #2
+      - **u**: `1414153115602518067` → 🜲 Shaitan Ladka ツ (shaitan_ladka)
+      - **r**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+      - **exp**: 1796181340 (2026-12-02 03:15 UTC)
+      - **gw**: 2
+      - **tries**: 0
+    - #3
+      - **u**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+      - **r**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+      - **exp**: 1796181340 (2026-12-02 03:15 UTC)
+      - **gw**: 2
+      - **tries**: 0
+  - **last**:
+    - **title**: GIVEAWAY
+    - **prize**: Role
+    - **description**: Click the button below to enter!
+    - **winners**: 2
+    - **duration**: 86400
+    - **color**: 10181046
+    - **image**:
+      - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&
+      - **ref**:
+        - **c**: `1572663742091632681`
+        - **m**: `1574622625496436830`
+    - **thumbnail**:
+      - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06512b&is=6b04ffab&hm=c4796c70563ab85d7474fec6b78b04352403c2e59898060ef778cb6a0d0e89ed&
+      - **ref**:
+        - **c**: `1572663742091632681`
+        - **m**: `1574622703137194117`
+    - **channel**: `1517397020049014926` → #🌿︲giveaway⌝
+    - **emojis**:
+      - **title**: `<a:spider_disc:1517500076782649477>`
+      - **prize**: `<a:giveaway:1571559456037277837>`
+      - **winners**: `<a:dancing_star:1572638621813440643>`
+      - **host**: `<a:Madira_yo:1570284031457890314>`
+      - **ends**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+      - **req**: `<a:exo_announce:1565559608502657125>`
+      - **entries**: `<a:Spider_Hero:1517496670697422918>`
+      - **todo**: `<:LazyCafeDogesh:1570285024895434802>`
+      - **done**: `<:spider_mastiii:1573018958813208587>`
+      - **ended**: `<:53joker:1572657288915845301>`
+    - **buttons**:
+      - **join**:
+        - **label**: Join Giveaway
+        - **emoji**: `<a:Madira_dance:1570574375160385546>`
+        - **style**: primary
+        - **ended_label**: Giveaway Ended
+      - **entries**:
+        - **emoji**: `<a:scrajj:1570284076609568919>`
+        - **show**: yes
+      - **progress**:
+        - **label**: My Progress
+        - **emoji**: `<a:Cat:1570284005067198464>`
+        - **show**: yes
+    - **prize_role**:
+      - **role**: `1488691203858890833` → @ゝ2x XP Boost ⌝
+      - **mode**: permanent
+      - **seconds**: 604800
+    - **points**: 0
+    - **req**:
+      - **roles**: *(empty)*
+      - **roles_mode**: any
+      - **messages**:
+        - **count**: 0
+        - **exclude**:
+          - `1570386957056348251` → #╰ ¤〢Casino ︲☃️︲
+          - `1488691409744695417` → #🍃︲bot_usage⌝
+          - `1488691349212495892` → #╰ ¤〢Games ︲🎄︲
+      - **invites**: 0
+      - **task**:
+        - **enabled**: no
+        - **phrase**: happy birthday
+        - **target**: `1262248731353546763` → Anshu >_< (anshumanfr_)
+        - **channel**: *none*
 - **handfight**:
   - **channel**: `1572828244758241330` → #🎄︲handfight⌝
 - **handfight_stats**:
-  - **650534818517483526** → Aalsi (whysolayz):
+  - **650534818517483526** → Lazy (whysolayz):
     - **games**: 6
     - **titles**: 4
     - **rounds_won**: 9
@@ -838,7 +1875,7 @@ __select category from the dropdown menu to contact us__`
     - **rock**: 0
     - **paper**: 2
     - **scissors**: 0
-  - **1425991437396217960** → TheSky (sky_bauni):
+  - **1425991437396217960**:
     - **games**: 1
     - **titles**: 1
     - **rounds_won**: 2
@@ -904,7 +1941,7 @@ __select category from the dropdown menu to contact us__`
     - **rock**: 3
     - **paper**: 1
     - **scissors**: 2
-  - **1262248731353546763** → We Know Cuz It's Fact...... (anshumanfr_):
+  - **1262248731353546763** → Anshu >_< (anshumanfr_):
     - **games**: 1
     - **titles**: 0
     - **rounds_won**: 0
@@ -935,13 +1972,13 @@ __select category from the dropdown menu to contact us__`
       - **url**: https://cdn.discordapp.com/attachments/1572381729233051669/1572382140719566910/img-1.jpg?ex=6afe2a7b&is=6afcd8fb&hm=7dc1873b7f51d216fcd45fa9d66a08d3670041fe7dcdf081e0dd6ef0b57cb025&
       - **t**: jpg
       - **s**: 99697
-      - **by**: `650534818517483526` → Aalsi (whysolayz)
+      - **by**: `650534818517483526` → Lazy (whysolayz)
       - **ts**: 1794955515
 - **ludo**:
   - **channel**: `1573551510984462436` → *not found (deleted / bot not in server)*
 - **ludo_games**: *(empty)*
 - **ludo_stats**:
-  - **650534818517483526** → Aalsi (whysolayz):
+  - **650534818517483526** → Lazy (whysolayz):
     - **games**: 1
     - **wins**: 1
     - **kills**: 0
@@ -953,8 +1990,9 @@ __select category from the dropdown menu to contact us__`
   - **role**: `1569999856171229255` → @︲No Prefix 」
   - **users**:
     - `1418875905085935637` → 🜲 SeNvaTor 'メD | 神 (senvator.)
-    - `650534818517483526` → Aalsi (whysolayz)
+    - `650534818517483526` → Lazy (whysolayz)
     - `1473667943186305172` → [T MOD] Viru (thviru)
+    - `1502959831772823762` → DeadSoul (.thedeadsoul)
 - **points**:
   - **chat_enabled**: yes
   - **chat_msgs**: 10
@@ -1088,7 +2126,7 @@ __select category from the dropdown menu to contact us__`
       - **max_open**: 1
       - **name_format**: ticket-{user}
       - **opener_can_close**: no
-  - **counter**: 13
+  - **counter**: 17
   - **blacklist**: *(empty)*
   - **tickets**:
     - **1573971039388434442** → #ticket-nontastic_player:
@@ -1100,9 +2138,9 @@ __select category from the dropdown menu to contact us__`
       - **question**: Kindly mention the amount
       - **opener**: `1028298097664733215` → Nope {>.<} (nontastic_player)
       - **created**: 1795334339 (2026-11-22 07:58 UTC)
-      - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
+      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
       - **claimed_at**: 1795334345 (2026-11-22 07:59 UTC)
-      - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
+      - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
       - **first_reply_at**: 1795334344 (2026-11-22 07:59 UTC)
       - **answer**: Jitna bhi mil jaye
       - **log**:
@@ -1119,9 +2157,9 @@ __select category from the dropdown menu to contact us__`
       - **question**: Kindly mention the amount
       - **opener**: `1513085640642920458` → Luffy !¡ (luffy_07_09)
       - **created**: 1795335162 (2026-11-22 08:12 UTC)
-      - **claimed_by**: `650534818517483526` → Aalsi (whysolayz)
+      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
       - **claimed_at**: 1795335167 (2026-11-22 08:12 UTC)
-      - **first_reply_by**: `650534818517483526` → Aalsi (whysolayz)
+      - **first_reply_by**: `650534818517483526` → Lazy (whysolayz)
       - **first_reply_at**: 1795335170 (2026-11-22 08:12 UTC)
       - **answer**: 500k
       - **log**:
@@ -1138,8 +2176,8 @@ __select category from the dropdown menu to contact us__`
       - **question**: Kindly mention the amount
       - **opener**: `1407327765933461606` → !ꜱᴇɴᴘᴀɪ_xᴅ (yourzoru)
       - **created**: 1795450485 (2026-11-23 16:14 UTC)
-      - **claimed_by**: `1492686665142239372` → [T MOD] Dark buddy (senpaispider_1_)
-      - **claimed_at**: 1795484312 (2026-11-24 01:38 UTC)
+      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+      - **claimed_at**: 1795495873 (2026-11-24 04:51 UTC)
       - **first_reply_by**: `1554945105981603880` → [H MOD] Kartik (mexzon_0205)
       - **first_reply_at**: 1795450512 (2026-11-23 16:15 UTC)
       - **answer**: 10m ka loan demdo
@@ -1148,34 +2186,15 @@ __select category from the dropdown menu to contact us__`
         - `1574458194493972553`
       - **closing**: no
       - **welcome_msg**: `1574458192396689620`
-    - **1574463439118532689** → #ticket-wh0_is_vexy:
-      - **num**: 13
-      - **channel**: `1574463439118532689` → #ticket-wh0_is_vexy
-      - **name**: ticket-wh0_is_vexy
-      - **category**: dsw-support
-      - **category_name**: General Support
-      - **question**: Kindly Mention your issue!
-      - **opener**: `1455775148962746411` → $ VEXY (wh0_is_vexy)
-      - **created**: 1795451737 (2026-11-23 16:35 UTC)
-      - **claimed_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
-      - **claimed_at**: 1795451811 (2026-11-23 16:36 UTC)
-      - **first_reply_by**: `1262248731353546763` → We Know Cuz It's Fact...... (anshumanfr_)
-      - **first_reply_at**: 1795451826 (2026-11-23 16:37 UTC)
-      - **answer**: I wanna apply for admin or staff managements
-      - **log**:
-        - `1570531039187566715` → #︲🛠・opened」
-        - `1574463448887328848`
-      - **closing**: no
-      - **welcome_msg**: `1574463442205548566`
   - **stats**:
-    - **opened**: 13
-    - **closed**: 9
+    - **opened**: 17
+    - **closed**: 14
 - **tictactoe**:
   - **channel**: `1572117193712209960` → #🎄︲tic_tac_toe⌝
 - **timetap**:
   - **channel**: `1572828188332007465` → #🎄︲timetap⌝
 - **timetap_stats**:
-  - **650534818517483526** → Aalsi (whysolayz):
+  - **650534818517483526** → Lazy (whysolayz):
     - **games**: 3
     - **false_starts**: 2
     - **taps**: 14
@@ -1271,4 +2290,4 @@ __select category from the dropdown menu to contact us__`
 
 ### Players
 
-- 159 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)
+- 173 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)

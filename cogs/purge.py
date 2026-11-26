@@ -1,9 +1,9 @@
-"""$purgebot ($pb) - clean up bot messages and command messages in the current channel.
+"""$cleanbots (was $purgebot, $pb) - clean up bot messages and command messages in the current channel.
 
     $pb          -> removes up to 10 bot messages / command messages (newest first)
     $pb 100      -> up to 100 (max 500)
 
-$purgemember ($p, $pm) - delete the messages of ONE member in the current channel.
+$clean (was $purgemember, $p, $pm) - delete the messages of ONE member in the current channel.
 
     $p @member         -> that member's last 10 messages
     $p @member 100     -> last 100 (max 500)
@@ -14,6 +14,7 @@ $purgemember ($p, $pm) - delete the messages of ONE member in the current channe
 Removed: messages sent by any bot (Kon's replies, other bots' replies, embeds) and messages that are commands
 (start with a prefix like  $afk  !ban  ?help  .play  -kick ...) - and the no-prefix commands (plain  afk  profile ...)
 of members who have no-prefix access. Normal chat of members is never touched.
+Every result says WHAT was removed ("6 bot replies · 4 commands" / "31 text · 4 files · 3 links").
 The `$pb` message itself is removed too. Discord can't bulk-delete messages older than 14 days, so those are skipped.
 """
 import asyncio
@@ -34,6 +35,11 @@ MAX = 500
 SCAN_FACTOR = 6          # look at most N*6 (max 1500) recent messages to find N matches
 # "<prefix char><letter/digit>": $afk  !ban  ?help  .play  -kick  +role  ;cmd  %rank  &x  ^x  *x  =x  ~x  >x  ,x
 COMMAND_LIKE = re.compile(r"^[!$?.;\-+%&^*=~>,/][A-Za-z0-9]")
+
+
+def report(kinds: dict) -> str:
+    """{'bot replies': 6, 'commands': 4} -> '6 bot replies · 4 commands' (the clean report under the result)"""
+    return " · ".join(f"{n} {label}" for label, n in kinds.items() if n)
 
 
 class Purge(commands.Cog):
@@ -78,12 +84,14 @@ class Purge(commands.Cog):
 
         limit_age = discord.utils.utcnow() - timedelta(days=14) + timedelta(minutes=5)
         found, skipped_old = [], 0
+        kinds = {"bot replies": 0, "commands": 0}
         async for m in ch.history(limit=min(amount * SCAN_FACTOR + 20, 1500), before=ctx.message):
             if await self.is_target(m, prefixes):
                 if m.created_at < limit_age:
                     skipped_old += 1
                     continue
                 found.append(m)
+                kinds["bot replies" if (m.author.bot or m.webhook_id) else "commands"] += 1
                 if len(found) >= amount:
                     break
 
@@ -99,12 +107,14 @@ class Purge(commands.Cog):
             raise VCError(f"Couldn't delete: {e.text or e.status}")
 
         text = f"{I.s('check')} Deleted **{len(found)}** bot message{'s' if len(found) != 1 else ''}."
+        if found:
+            text += f"\n-# {report(kinds)}"
         if clamped:
             text += f" (max is {MAX})"
         if skipped_old:
             text += f" {skipped_old} older than 14 days skipped."
         try:
-            await ch.send(text, delete_after=5)
+            await ch.send(text, delete_after=7)
         except discord.HTTPException:
             pass
 
@@ -116,6 +126,8 @@ class Purge(commands.Cog):
         """$p @member [amount] - delete a member's messages (default 10, max 500). Reply to a member + `$p` works too."""
         profile = self.bot.get_command("profile")
         if not ctx.author.guild_permissions.manage_messages:        # normal members: $p = profile like before
+            if ctx.invoked_with == "clean":                         # the new name is cleanup only (no profile surprise)
+                raise commands.CheckFailure("needs Manage Messages")
             target = None
             if args:
                 try:
@@ -155,6 +167,7 @@ class Purge(commands.Cog):
 
         limit_age = discord.utils.utcnow() - timedelta(days=14) + timedelta(minutes=5)
         found, skipped_old = [], 0
+        kinds = {"text": 0, "files": 0, "links": 0}
         async for m in ch.history(limit=min(amount * SCAN_FACTOR + 50, 3000), before=ctx.message):
             if m.author.id != member.id:
                 continue
@@ -162,6 +175,7 @@ class Purge(commands.Cog):
                 skipped_old += 1
                 continue
             found.append(m)
+            kinds["files" if m.attachments else "links" if "http" in (m.content or "") else "text"] += 1
             if len(found) >= amount:
                 break
 
@@ -177,12 +191,14 @@ class Purge(commands.Cog):
             raise VCError(f"Couldn't delete: {e.text or e.status}")
 
         text = f"{I.s('check')} Deleted **{len(found)}** message{'s' if len(found) != 1 else ''} from {member.mention}."
+        if found:
+            text += f"\n-# {report(kinds)}"
         if clamped:
             text += f" (max is {MAX})"
         if skipped_old:
             text += f" {skipped_old} older than 14 days skipped."
         try:
-            await ch.send(text, delete_after=5, allowed_mentions=discord.AllowedMentions.none())
+            await ch.send(text, delete_after=7, allowed_mentions=discord.AllowedMentions.none())
         except discord.HTTPException:
             pass
 
