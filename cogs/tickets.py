@@ -96,7 +96,7 @@ def dsw_preset() -> dict:
                 "So, please don't create a ticket regarding this topic.\n\n"
                 f"{users} __**Ticket for Partnership/Sponsors**__ :-\n"
                 "- Create a Ticket If You Got Any Brand Deals Or Sponsors For SenpaiSpider\n"
-                "- Kindly Mention The Basic Details And Have Patience.\n"
+                "- Please add the basic details and be patient.\n"
                 "- The Rates For Brand Deals Would Be Discussed In Ticket\n"
                 "- Leaking The Information To Anyone Would Lead To Ban.\n"
                 "- You Could Contact Our Business Mail Too senpaispidersponsership@gmail.com\n\n"
@@ -105,12 +105,12 @@ def dsw_preset() -> dict:
         "welcome": {
             "title": "Help/support",
             "description": (f"{I.s('headset')} **Welcome to the Ticket Support**\n"
-                            "> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon.")},
+                            "> Tell us what you need help with - a staff member will reply soon.")},
         "categories": [       # the emoji is an icon NAME - it is looked up when drawn, so it survives re-uploads
             {"id": "dsw-support", "name": "General Support", "emoji": "messages", "description": "Reports, bugs, role claiming and more",
-             "question": "Kindly Mention your issue!", "parent": None, "ping_roles": []},
+             "question": "What do you need help with?", "parent": None, "ping_roles": []},
             {"id": "dsw-partner", "name": "Partnership/Sponsors", "emoji": "users", "description": "Brand deals and sponsors",
-             "question": "Kindly mention the basic details of your deal!", "parent": None, "ping_roles": []},
+             "question": "What are the details of your deal?", "parent": None, "ping_roles": []},
         ],
     }
 
@@ -1331,7 +1331,7 @@ class TicketAdmin(OwnedView):
             dict(label="Short description (optional)", default=(cat or {}).get("description"), max=100,
                  placeholder="Shown under the name in the dropdown"),
             dict(label="Form question (empty = no form)", default=(cat or {}).get("question"), max=100,
-                 placeholder="Kindly mention your issue!")], submitted)
+                 placeholder="What do you need help with?")], submitted)
 
     async def cat_picked(self, interaction: discord.Interaction):
         self.cat_id, self.page = interaction.data["values"][0], "cat"

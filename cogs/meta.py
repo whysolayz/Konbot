@@ -1,5 +1,7 @@
 """$konping / $koninfo, $help (clean command list - everybody only sees what THEY can use) and $konextra."""
+import asyncio
 import inspect
+import io
 import math
 import time
 from collections import deque
@@ -11,7 +13,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands, tasks
 
-from core import checks, flair, names
+from core import chart, checks, flair, names
 from core.config import BLURPLE, BRAND, PREFIX
 from core.errors import VCError
 from core.icons import I, ok
@@ -24,13 +26,14 @@ CATEGORIES = {
     "Meta": ("General", "home"), "Autoreact": ("Auto Reacter", "sparkles"), "RoleCmds": ("Role Commands", "crown"),
     "SelfRoles": ("Self Roles", "crown"), "Expressions": ("Emojis & Stickers", "sparkles"), "Purge": ("Cleanup", "tools"),
     "Aura": ("Aura", "fire"), "RoleTransfer": ("Role Transfer", "crown"), "TicTacToe": ("Tic Tac Toe", "gamepad"), "CmdControl": ("Command Control", "lock"),
-    "BlackTea": ("BlackTea", "leaf"), "TimeTap": ("TimeTap", "stopwatch"), "Handfight": ("Handfight", "rock"), "Games": ("Games", "gamepad"), "ImageHost": ("Image Links", "image"),
+    "BlackTea": ("BlackTea", "leaf"), "TimeTap": ("TimeTap", "stopwatch"), "Handfight": ("Handfight", "rock"), "Games": ("Games", "gamepad"), "GuessAnime": ("Guess the Anime", "star_fill"),
+    "GuessEmoji": ("Guess the Emoji", "sparkles"), "SimonSays": ("Simon Says", "gamepad"), "ImageHost": ("Image Links", "image"),
     "Tickets": ("Tickets", "headset"), "Giveaway": ("Giveaways", "gift"),
 }
 # $help is split into a few big groups (key -> (title, icon, short text, [categories in it]))
 GROUPS = {
     "general": ("General & Utility", "home", "Help, AFK, emojis, image links, aliases", ["Meta", "AFK", "Expressions", "ImageHost", "Prefixes"]),
-    "fun": ("Fun & Games", "gamepad", "Games, Aura", ["Games", "TimeTap", "Handfight", "BlackTea", "TicTacToe", "Aura"]),
+    "fun": ("Fun & Games", "gamepad", "Games, Aura", ["Games", "TimeTap", "Handfight", "BlackTea", "GuessAnime", "GuessEmoji", "SimonSays", "TicTacToe", "Aura"]),
     "voice": ("Voice", "speaker", "Custom VC and drag", ["VC", "Drag"]),
     "economy": ("Points & Shop", "coins", "Points, badges, leaderboard, role shop", ["Points", "Shop"]),
     "community": ("Community, Tickets & Giveaways", "headset", "Tickets, giveaways, self roles, autoreact, role commands", ["Tickets", "Giveaway", "SelfRoles", "Autoreact", "RoleCmds", "RoleTransfer"]),
@@ -54,7 +57,7 @@ DESC = {
     "profile": "Your points, chat and VC progress", "leaderboard": "Leaderboard: `$lb` opens points, switch to messages / voice with the menu (Previous / Find Me / Next)",
     "store": "Open the role shop (pages, balance, buy with the menu)", "pointshop": "Open the role shop", "pointshop config": "Add / edit / reorder shop roles",
     "point": "Points settings overview", "point config": "Points, cooldown and channel rules",
-    "point add": "Give points", "point remove": "Take points", "point set": "Set exact points", "point reset": "Wipe a member's data",
+    "point add": "Give points (@member or user ID)", "point remove": "Take points (@member or user ID, also for people who left)", "point set": "Set exact points (@member or user ID)", "point reset": "Wipe a member's data (@member or user ID)",
     "badge": "Show badges", "badge give": "Give a badge", "badge remove": "Remove all badges (or one by name)",
     "noprefix": "Show no-prefix settings", "noprefix role": "Role that doesn't need the prefix",
     "noprefix add": "Give one member no-prefix", "noprefix remove": "Remove a member's no-prefix",
@@ -75,17 +78,27 @@ DESC = {
     "sync": "Sync slash commands", "backup": "Backup status", "backup refresh": "Back up right now",
     "backupload": "Reply to a data file (zip / db / json) with this to merge it (`replace` = backup wins)", "backup config": "Send the readable config + players list",
     "konping": "Heartbeat graph, latency, uptime and status", "koninfo": "Servers, members and bot stats",
-    "aura": "Show your aura (or @member's) - random aura can be negative too", "aura history": "Show the separate graph of recent aura readings", "aura config": "Fix aura, random on/off, switch a person off",
-    "transfer": "Role Transfer Studio - pick who gives and who gets roles with menus (also for people who LEFT: `$transfer <user id|name> @to`), untick roles, Undo, History (Kon admins)",
+    "aura": "Show your aura (or @member's) - random aura can be negative too", "aura config": "Fix aura, random on/off, switch a person off",
+    "transfer": "Move roles and points from one person to another (also for people who LEFT: `$transfer <user id|name> @to`), untick roles, Undo, History (Kon admins)",
     "tictactoe": "Tic Tac Toe info", "tictactoe play": "Challenge a member (only in the game channel)",
     "tictactoe admin": "Set the Tic Tac Toe channel (`$tictactoe set` opens a channel menu)",
-    "games": "All games, the channel each one works in and how to start them", "guessanime": "Multiplayer anime quiz · 2–10 players · 10 rounds", "guessemoji": "Multiplayer emoji word puzzle · 2–10 players · 10–20 rounds", "simonsays": "Multiplayer colour-sequence memory game · 2–10 players",
+    "games": "All games, the channel each one works in and how to start them",
     "timetap": "Open TimeTap - reaction game (pick Training / Duo / Trio / Squad)", "timetap play": "Open TimeTap (`$tt`)",
     "timetap channel": "Pick the TimeTap channel from a menu (`$timetap set`)", "timetap stats": "Your reaction stats and records",
     "timetap stop": "Stop the running TimeTap game",
     "handfight": "Open Handfight - rock paper scissors (Duo / Squad)", "handfight play": "Open Handfight (`$hf`)",
     "handfight channel": "Pick the Handfight channel from a menu (`$handfight set`)", "handfight stats": "Your Handfight record",
     "handfight stop": "Stop the running Handfight game",
+    "guessanime": "Guess the Anime quiz - 2-10 players, 10 rounds (`$ga easy|medium|hard`)", "guessanime play": "Open a Guess the Anime lobby",
+    "guessanime channel": "Pick the Guess the Anime channel (`$guessanime set`)", "guessanime stats": "Your Guess the Anime record",
+    "guessanime top": "Best Guess the Anime players", "guessanime stop": "Stop the running Guess the Anime game",
+    "guessemoji": "Guess the Emoji - emojis hide a word, type it (`$ge easy|medium|hard`)", "guessemoji play": "Open a Guess the Emoji lobby",
+    "guessemoji channel": "Pick the Guess the Emoji channel (`$guessemoji set`)", "guessemoji stats": "Your Guess the Emoji record",
+    "guessemoji top": "Best Guess the Emoji players", "guessemoji stop": "Stop the running Guess the Emoji game",
+    "simonsays": "Simon Says - repeat the colour order (`$simon`)", "simonsays play": "Open a Simon Says lobby",
+    "simonsays channel": "Pick the Simon Says channel (`$simonsays set`)", "simonsays stats": "Your Simon Says high score",
+    "simonsays top": "Best Simon Says players", "simonsays stop": "Stop the running Simon Says game",
+    "aura history": "Graph of the last random aura readings (`$aura history @member`)",
     "blacktea": "Start a BlackTea word game (`$bt easy|medium|hard`)", "blacktea play": "Start a BlackTea word game",
     "blacktea channel": "Pick the BlackTea channel from a menu (`$blacktea set`)", "setblacktea": "Set the BlackTea channel",
     "blacktea reset": "Remove the BlackTea channel", "blacktea stop": "Stop the running BlackTea game",
@@ -93,7 +106,7 @@ DESC = {
     "tolink": "Turn an image / GIF / banner into a saved link (attach, reply or paste a link)",
     "links": "List saved image links", "linkget": "Fresh link + preview of a saved image", "linkdel": "Delete a saved image",
     "ei": "List animated emojis with their IDs (`$ei name`, `$ei here`, `$ei <id>`)",
-    "point transfer": "Send points from your balance to another member", "point enable": "Count points in a channel again", "point disable": "Stop counting points in a channel",
+    "point enable": "Count points in a channel again", "point disable": "Stop counting points in a channel",
     "disablecommand": "Turn commands off in channels / categories / the whole server (`$db`, `$db <cmd> everywhere`)",
     "enablecommand": "Turn commands back on (`$eb`, `$eb <cmd> everywhere` removes every rule)",
     "giveaway": "Easy giveaway panel (1 Details · 2 Rules · 3 Rewards · 4 Style · Templates) - or quick start: `$giveaway 1h 1 Discord Nitro` (admins)",
@@ -239,8 +252,7 @@ class HelpView(OwnedView):
             names = " · ".join(ct for ct, _, _ in cogs.values())
             rows.append(f"{I.s(icon)} **{title}**\n-# {names}")
         return discord.Embed(title=f"{I.s('sparkles')} Kon Help", color=BRAND, description=(
-            "\n".join(rows) + f"\n\n-# Pick a category below, or press **Next** to go through all of them\n"
-            f"-# `<x>` required · `[x]` optional · `{PREFIX}help <command>` for details"))
+            "\n".join(rows) + "\n\n-# Pick a category below, or press **Next** to browse them all"))
 
     def page(self) -> discord.Embed:
         item = self.flat[self.pos]
@@ -360,17 +372,26 @@ class Meta(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.started = time.time()
-        self.beats: deque = deque(maxlen=72)          # gateway latency every 10 s = the last 12 minutes (for $pulse)
+        self.beats: deque = deque(maxlen=40)          # (gateway ms, api ms) every 15 s = the last 10 minutes (for $pulse)
         self.sampler.start()
 
     def cog_unload(self):
         self.sampler.cancel()
 
-    @tasks.loop(seconds=10)
+    async def _api_ms(self) -> Optional[float]:
+        """Round trip of one tiny, harmless request to Discord (GET /gateway)."""
+        t0 = time.perf_counter()
+        try:
+            await self.bot.http.get_gateway()
+        except Exception:
+            return None
+        return (time.perf_counter() - t0) * 1000
+
+    @tasks.loop(seconds=15)
     async def sampler(self):
-        ms = self.bot.latency * 1000
-        if math.isfinite(ms):
-            self.beats.append(ms)
+        ws = self.bot.latency * 1000
+        if math.isfinite(ws):
+            self.beats.append((ws, await self._api_ms()))
 
     @sampler.before_loop
     async def _sampler_wait(self):
@@ -379,12 +400,12 @@ class Meta(commands.Cog):
     # ---------- $kon / $konping / $koninfo ----------
     @commands.hybrid_command(name="konping", aliases=["kping"], description="Kon's pulse: latency graph, uptime and status")
     async def kon_ping(self, ctx: commands.Context):
-        """$pulse - Kon's heartbeat: live latency, a graph of the last 12 minutes, uptime and status."""
+        """$pulse - Kon's heartbeat: live latency, a graph of the last 10 minutes, uptime and status."""
         ws = self.bot.latency * 1000
         if not math.isfinite(ws):
             ws = 0.0
         t0 = time.perf_counter()
-        msg = await ctx.reply(f"{I.s('refresh')} Pinging...", mention_author=False)
+        msg = await ctx.reply(f"{I.s('refresh')} Checking...", mention_author=False)
         api = (time.perf_counter() - t0) * 1000
         t0 = time.perf_counter()
         self.bot.db.ping()
@@ -393,21 +414,31 @@ class Meta(commands.Cog):
         def dot(ms, good, ok_):
             return I.s("light_green") if ms < good else (I.s("warning") if ms < ok_ else I.s("light_red"))
         worst = max(ws / 150, api / 300, db / 20)
-        status, color = (("Active", BRAND) if worst < 1 else ("Slow", 0xF58219) if worst < 2.5 else ("Struggling", 0xED4245))
-        if math.isfinite(ws) and ws > 0:
-            self.beats.append(ws)
-        graph = ""
-        if len(self.beats) >= 3:
-            b = list(self.beats)
-            graph = (f"\n\n**Heartbeat** · last {max(1, len(b) * 10 // 60)} min\n`{flair.spark(b, min(b), max(b))}`\n"
-                     f"-# best `{min(b):.0f}` · average `{sum(b) / len(b):.0f}` · worst `{max(b):.0f}` ms")
+        status, color = (("Healthy", BRAND) if worst < 1 else ("Slow", 0xF58219) if worst < 2.5 else ("Struggling", 0xED4245))
+        if ws > 0:
+            self.beats.append((ws, api))
         e = discord.Embed(title=f"{I.s('sparkles')} Kon Pulse", color=color, description=(
             f"{I.s('check')} **Status:** `{status}`\n"
-            f"{I.s('signal')} **Gateway latency:** `{ws:.0f} ms` {dot(ws, 150, 300)}\n"
-            f"{I.s('bolt')} **API latency:** `{api:.0f} ms` {dot(api, 300, 700)}\n"
+            f"{I.s('signal')} **Gateway:** `{ws:.0f} ms` {dot(ws, 150, 300)}\n"
+            f"{I.s('bolt')} **API:** `{api:.0f} ms` {dot(api, 300, 700)}\n"
             f"{I.s('folder')} **Database:** `{db:.1f} ms` {dot(db, 20, 100)}\n"
-            f"{I.s('clock')} **Uptime:** `{fmt_secs(time.time() - self.started)}`") + graph)
-        await msg.edit(content=None, embed=e)
+            f"{I.s('clock')} **Uptime:** `{fmt_secs(time.time() - self.started)}`"))
+        file = None
+        if len(self.beats) >= 3:
+            beats = list(self.beats)
+            gw = [b[0] for b in beats]
+            series = [{"values": gw, "color": chart.GOLD, "label": "Gateway"}]
+            ap = [b[1] for b in beats if b[1] is not None]
+            if len(ap) == len(beats):
+                series.append({"values": ap, "color": chart.SKY, "label": "API"})
+            png = await asyncio.to_thread(chart.line_chart, series, unit="ms", min_span=20,
+                                          x_left=f"{len(beats) * 15 // 60 or 1} min ago", x_right="now")
+            file = discord.File(io.BytesIO(png), "pulse.png")
+            e.set_image(url="attachment://pulse.png")
+            e.set_footer(text=f"Gateway · best {min(gw):.0f} · avg {sum(gw) / len(gw):.0f} · worst {max(gw):.0f} ms")
+        else:
+            e.set_footer(text="The graph appears after a minute or so.")
+        await msg.edit(content=None, embed=e, attachments=[file] if file else [])
 
     @commands.hybrid_command(name="koninfo", aliases=["kinfo"], description="Servers, members and stats of Kon")
     async def kon_info(self, ctx: commands.Context):

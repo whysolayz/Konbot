@@ -10,7 +10,7 @@ from discord.ext import commands, tasks
 from core.config import BLURPLE, BRAND, PREFIX
 from core.errors import VCError
 from core.icons import I, err, ok
-from core.ui import FieldsModal, OwnedView, parse_int
+from core.ui import FieldsModal, MemberOrID, OwnedView, parse_int
 
 DEFAULTS = {
     "chat_enabled": True, "chat_msgs": 50, "chat_points": 1, "chat_everywhere": True,
@@ -667,62 +667,47 @@ class Points(commands.Cog):
         await ctx.reply(ok("Points on in " + ", ".join(ch.mention for ch in channels) + "."),
                         mention_author=False)
 
+    def _known(self, ctx, ref):
+        """A raw user ID is fine for someone who left - but only if they have a record here (no typo-created ghosts)."""
+        if ref.member is None and not self.db.conn.execute(
+                "SELECT 1 FROM users WHERE guild_id=? AND user_id=?", (ctx.guild.id, ref.id)).fetchone():
+            raise VCError(f"I have no points record for `{ref.id}` in this server. Check the ID.")
+
     @point.command(name="add")
     @commands.has_permissions(manage_guild=True)
-    async def point_add(self, ctx, member: discord.Member, amount: commands.Range[int, 1, 10_000_000]):
-        """$point add @user <amount>"""
+    async def point_add(self, ctx, member: MemberOrID, amount: commands.Range[int, 1, 10_000_000]):
+        """$point add @user|<user id> <amount>"""
+        self._known(ctx, member)
         new = self.db.add_points(ctx.guild.id, member.id, amount, f"admin add by {ctx.author.id}")
-        await ctx.reply(ok(f"Gave {member.mention} **{amount}** points. Now **{new}**."), mention_author=False)
+        await ctx.reply(ok(f"Gave {member.mention} **{amount}** points. Now **{new}**."), mention_author=False,
+                        allowed_mentions=discord.AllowedMentions.none())
 
     @point.command(name="remove")
     @commands.has_permissions(manage_guild=True)
-    async def point_remove(self, ctx, member: str, amount: commands.Range[int, 1, 10_000_000]):
-        """$point remove @user|user_id <amount>"""
-        raw = member.strip().strip("<@!>")
-        target_id = int(raw) if raw.isdigit() else None
-        target = ctx.guild.get_member(target_id) if target_id else ctx.guild.get_member_named(member)
-        if target is not None:
-            target_id = target.id
-            label = target.mention
-        elif target_id is not None and target_id > 0:
-            label = f"`{target_id}`"
-        else:
-            raise commands.BadArgument("Use a member mention, username, or numeric user ID.")
-        new = self.db.add_points(ctx.guild.id, target_id, -amount, f"admin remove by {ctx.author.id}")
-        await ctx.reply(ok(f"Took **{amount}** points from {label}. Now **{new}**."), mention_author=False)
-
-    @point.command(name="transfer", aliases=["send"])
-    @commands.cooldown(1, 30, commands.BucketType.user)
-    @commands.guild_only()
-    async def point_transfer(self, ctx, member: discord.Member, amount: commands.Range[int, 1, 10_000_000]):
-        """$point transfer @user <amount> - send points from your balance."""
-        if member.bot or member.id == ctx.author.id:
-            raise commands.BadArgument("Choose another member, not yourself or a bot.")
-        row = self.db.conn.execute(
-            "SELECT points FROM users WHERE guild_id=? AND user_id=?",
-            (ctx.guild.id, ctx.author.id)
-        ).fetchone()
-        balance = int(row[0]) if row else 0
-        if amount > balance:
-            return await ctx.reply(err(f"You only have **{balance}** points."), mention_author=False)
-        self.db.add_points(ctx.guild.id, ctx.author.id, -amount, f"transfer to {member.id}")
-        new = self.db.add_points(ctx.guild.id, member.id, amount, f"transfer from {ctx.author.id}")
-        await ctx.reply(ok(f"Sent **{amount}** points to {member.mention}. Their balance is now **{new}**."),
-                        mention_author=False)
+    async def point_remove(self, ctx, member: MemberOrID, amount: commands.Range[int, 1, 10_000_000]):
+        """$point remove @user|<user id> <amount>"""
+        self._known(ctx, member)
+        new = self.db.add_points(ctx.guild.id, member.id, -amount, f"admin remove by {ctx.author.id}")
+        await ctx.reply(ok(f"Took **{amount}** points from {member.mention}. Now **{new}**."), mention_author=False,
+                        allowed_mentions=discord.AllowedMentions.none())
 
     @point.command(name="set")
     @commands.has_permissions(manage_guild=True)
-    async def point_set(self, ctx, member: discord.Member, amount: commands.Range[int, 0, 100_000_000]):
-        """$point set @user <amount>"""
+    async def point_set(self, ctx, member: MemberOrID, amount: commands.Range[int, 0, 100_000_000]):
+        """$point set @user|<user id> <amount>"""
+        self._known(ctx, member)
         new = self.db.set_points(ctx.guild.id, member.id, amount)
-        await ctx.reply(ok(f"{member.mention} has **{new}** points now."), mention_author=False)
+        await ctx.reply(ok(f"{member.mention} has **{new}** points now."), mention_author=False,
+                        allowed_mentions=discord.AllowedMentions.none())
 
     @point.command(name="reset")
     @commands.has_permissions(manage_guild=True)
-    async def point_reset(self, ctx, member: discord.Member):
-        """$point reset @user - wipe points, progress and badges."""
+    async def point_reset(self, ctx, member: MemberOrID):
+        """$point reset @user|<user id> - wipe points, progress and badges."""
+        self._known(ctx, member)
         self.db.reset_user(ctx.guild.id, member.id)
-        await ctx.reply(ok(f"Reset {member.mention}."), mention_author=False)
+        await ctx.reply(ok(f"Reset {member.mention}."), mention_author=False,
+                        allowed_mentions=discord.AllowedMentions.none())
 
     # ---------- badges ----------
     @commands.group(name="badge", invoke_without_command=True)

@@ -1,14 +1,15 @@
-"""$transfer - ROLE TRANSFER STUDIO. Move roles from one person to another, even if the first person LEFT the server.
+"""$transfer - move roles (and points) from one person to another. Move roles from one person to another, even if the first person LEFT the server.
 
-    $transfer                          opens the Studio (pick everything with menus, nothing to type)
-    $transfer @from @to                Studio with both already filled in - one tap to confirm
+    $transfer                          opens the transfer panel (pick everything with menus)
+    $transfer @from @to                panel with both already filled in - one tap to confirm
     $transfer <user id> @to            the person already LEFT: Kon gives @to the roles saved when they left
     $transfer <name> @to               same, found by the name Kon saved (`$transfer rahul @to`)
     $transfer @from @to @Role1 @Role2  only those roles
 
-What the Studio does
+What the panel does
   * "Someone who left" menu - every member Kon saw leave (with how many roles + when). Pick one, done.
   * Tick / untick single roles in the role menu before you confirm (all movable roles start ticked).
+  * Points move too (toggle "Points: ON/OFF"): the whole balance of the old account goes to the new one, also for people who left.
   * Live preview: what moves, what is skipped and WHY (managed role, above you, above me, already has it, deleted).
   * Undo button for 10 minutes after the transfer.
   * History button: the last 10 transfers in this server (who, to whom, which roles, undone or not).
@@ -93,9 +94,10 @@ NO_PING = discord.AllowedMentions.none()
 
 class UndoView(OwnedView):
     """Shown under the 'Roles moved' message for 10 minutes."""
-    def __init__(self, cog, ctx, log_id, source_member, target, roles):
+    def __init__(self, cog, ctx, log_id, source_member, target, roles, source_id=None, points=0):
         super().__init__(ctx.author.id, timeout=UNDO_SECONDS)
         self.cog, self.log_id, self.source_member, self.target, self.roles = cog, log_id, source_member, target, roles
+        self.source_id, self.points = source_id, points
         self.undo.emoji = I.e("refresh")
 
     @discord.ui.button(label="Undo transfer", style=discord.ButtonStyle.secondary)
@@ -105,17 +107,24 @@ class UndoView(OwnedView):
         notes = []
         try:
             live = [r for r in self.roles if self.target.guild.get_role(r.id)]
-            await self.target.remove_roles(*live, reason=reason)
-            if self.source_member is not None and self.source_member.guild.get_member(self.source_member.id):
-                await self.source_member.add_roles(*live, reason=reason)
-            else:
-                notes.append("They are not in the server, so the roles just went back to nobody.")
+            if live:
+                await self.target.remove_roles(*live, reason=reason)
+                if self.source_member is not None and self.source_member.guild.get_member(self.source_member.id):
+                    await self.source_member.add_roles(*live, reason=reason)
+                else:
+                    notes.append("They are not in the server, so the roles just went back to nobody.")
         except discord.HTTPException as e:
             return await interaction.response.edit_message(embed=discord.Embed(
                 description=err(f"Couldn't undo: {getattr(e, 'text', None) or e}"), color=0xED4245), view=None)
+        if self.points and self.source_id:
+            back = self.cog.bot.db.move_points(self.target.guild.id, self.target.id, self.source_id, self.points,
+                                               f"$transfer undo by {interaction.user.id}")
+            notes.append(f"{I.s('coins')} **{back:,}** points went back." if back == self.points else
+                         f"{I.s('coins')} Only **{back:,}** of **{self.points:,}** points could go back "
+                         f"({self.target.display_name} already spent the rest).")
         self.cog.bot.db.mark_undone(self.log_id)
         e = discord.Embed(title=f"{I.s('refresh')} Transfer undone", color=BLURPLE,
-                          description=f"{role_list(self.roles)}\n" + "\n".join(notes))
+                          description=(f"{role_list(self.roles)}\n" if self.roles else "") + "\n".join(notes))
         await interaction.response.edit_message(embed=e, view=None)
 
 
@@ -129,12 +138,15 @@ class Studio(OwnedView):
         self.target: Optional[discord.Member] = None
         self.chosen: Optional[set] = {r.id for r in only_roles} if only_roles else None   # None = every movable role
         self.notice = ""
+        self.move_pts = True
         if isinstance(source, discord.Member):
             self.src_member = source
         elif isinstance(source, Leaver):
             self.src_left = cog.bot.db.get_left(self.g.id, source.id)
+            if self.src_left is None and cog.bot.db.get_points(self.g.id, source.id) > 0:
+                self.src_left = {"user_id": source.id, "name": "", "roles": [], "left_ts": time.time()}   # points only
             if self.src_left is None:
-                raise VCError(f"I have no saved roles for `{source.id}`.\nI save the roles of people who leave "
+                raise VCError(f"I have no saved roles or points for `{source.id}`.\nI save the roles of people who leave "
                               "**while I'm in the server**, so older leavers can't be transferred.")
         if target is not None:
             self.set_target(target)
@@ -153,6 +165,14 @@ class Studio(OwnedView):
     @property
     def src_id(self) -> Optional[int]:
         return self.src_member.id if self.src_member else (self.src_left["user_id"] if self.src_left else None)
+
+    @property
+    def src_points(self) -> int:
+        return self.cog.bot.db.get_points(self.g.id, self.src_id) if self.src_id else 0
+
+    def ready(self, movable) -> bool:
+        has_something = bool(self.selected(movable)) or (self.move_pts and self.src_points > 0)
+        return bool(self.src_id and self.target and has_something)
 
     @property
     def src_label(self) -> str:
@@ -200,22 +220,27 @@ class Studio(OwnedView):
     async def embed(self) -> discord.Embed:
         movable, skipped = await self.analyse(self.ctx.author)
         chosen = self.selected(movable)
-        e = discord.Embed(title=f"{I.s('swap')} Role Transfer Studio", color=BRAND)
+        e = discord.Embed(title=f"{I.s('swap')} Transfer", color=BRAND)
         e.add_field(name="From", value=self.src_label, inline=True)
         e.add_field(name="To", value=self.target.mention if self.target else "*not picked yet*", inline=True)
         if self.src_id:
             e.add_field(name=f"Roles that will move ({len(chosen)}/{len(movable)})", inline=False,
                         value=role_list(chosen) if chosen else "*nothing ticked*")
+        if self.src_id:
+            pts = self.src_points
+            e.add_field(name="Points", inline=False, value=(
+                f"{I.s('coins')} **{pts:,}** will move" if self.move_pts and pts else
+                "*nothing to move*" if self.move_pts else "*not moving*"))
         if skipped:
             e.add_field(name=f"{I.s('warning')} Skipped ({len(skipped)})", inline=False, value="\n".join(skipped[:8])[:1024])
         if self.notice:
-            e.add_field(name="Heads up", value=f"{I.s('warning')} {self.notice}", inline=False)
+            e.add_field(name="Note", value=f"{I.s('warning')} {self.notice}", inline=False)
         if not self.src_id:
-            e.description = "**Step 1:** pick who the roles come from - a member, or someone who **left**."
+            e.description = "**1.** Pick who it comes from - a member, or someone who **left**."
         elif not self.target:
-            e.description = "**Step 2:** pick who gets the roles."
+            e.description = "**2.** Pick who receives it."
         else:
-            e.description = "Untick any role you don't want to move, then press **Transfer**."
+            e.description = "Untick what you don't want to move, then press **Transfer**."
         e.set_footer(text="Kon remembers the roles of everyone who leaves (180 days).")
         return e
 
@@ -254,17 +279,19 @@ class Studio(OwnedView):
         go = discord.ui.Button(label="Transfer", style=discord.ButtonStyle.success, emoji=I.e("check"), row=row,
                                disabled=not ready)
         go.callback = self.go
+        pts = discord.ui.Button(label=f"Points: {'ON' if self.move_pts else 'OFF'}", emoji=I.e("coins"), row=row,
+                                style=discord.ButtonStyle.primary if self.move_pts else discord.ButtonStyle.secondary)
+        pts.callback = self.toggle_points
         hist = discord.ui.Button(label="History", style=discord.ButtonStyle.secondary, emoji=I.e("clock"), row=row)
         hist.callback = self.history
         cancel = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.secondary, emoji=I.e("cross"), row=row)
         cancel.callback = self.cancel
-        for b in (go, hist, cancel):
+        for b in (go, pts, hist, cancel):
             self.add_item(b)
 
     async def refresh(self, interaction: discord.Interaction):
         movable, _ = await self.analyse(interaction.user)
-        ready = bool(self.src_id and self.target and self.selected(movable))
-        self.render(movable, ready)
+        self.render(movable, self.ready(movable))
         await interaction.response.edit_message(embed=await self.embed(), view=self)
 
     # ---------- menu callbacks ----------
@@ -309,37 +336,50 @@ class Studio(OwnedView):
         await self.refresh(interaction)
 
     # ---------- buttons ----------
+    async def toggle_points(self, interaction: discord.Interaction):
+        self.move_pts = not self.move_pts
+        await self.refresh(interaction)
+
     async def go(self, interaction: discord.Interaction):
         me, g = self.g.me, self.g
         if not me.guild_permissions.manage_roles:
             return await interaction.response.send_message(err("I need **Manage Roles**."), ephemeral=True)
         movable, skipped = await self.analyse(interaction.user)
         roles = self.selected(movable)
-        if not (self.src_id and self.target and roles):
+        if not self.ready(movable):
             return await interaction.response.send_message(err("Nothing to move yet."), ephemeral=True)
         self.stop()
         await interaction.response.edit_message(embed=discord.Embed(
-            description=f"{I.s('hourglass')} Moving {len(roles)} role(s)...", color=BLURPLE), view=None)
+            description=f"{I.s('hourglass')} Moving...", color=BLURPLE), view=None)
         reason = f"$transfer by {interaction.user} ({interaction.user.id})"
         try:
-            await self.target.add_roles(*roles, reason=reason)
-            if self.src_member is not None:                 # someone who left has nothing to remove
-                await self.src_member.remove_roles(*roles, reason=reason)
+            if roles:
+                await self.target.add_roles(*roles, reason=reason)
+                if self.src_member is not None:             # someone who left has nothing to remove
+                    await self.src_member.remove_roles(*roles, reason=reason)
         except discord.Forbidden:
             return await interaction.edit_original_response(embed=discord.Embed(
                 description=err("I can't move them. I need **Manage Roles** and a higher role."), color=0xED4245))
         except discord.HTTPException as e:
             return await interaction.edit_original_response(embed=discord.Embed(
                 description=err(f"Discord said no: {e.text or e.status}"), color=0xED4245))
+        moved = 0
+        if self.move_pts:
+            moved = self.cog.bot.db.move_points(g.id, self.src_id, self.target.id, self.src_points,
+                                                f"$transfer by {interaction.user.id}")
         name = (self.src_member.display_name if self.src_member else (self.src_left["name"] or "Unknown"))
         log_id = self.cog.bot.db.log_transfer(g.id, interaction.user.id, self.src_id, name, self.target.id,
-                                              [r.id for r in roles], self.src_member is None)
-        e = discord.Embed(title=f"{I.s('check')} Roles moved", color=BRAND,
-                          description=f"{self.src_label} → {self.target.mention}\n\n{role_list(roles)}")
+                                              [r.id for r in roles], self.src_member is None, moved)
+        lines = [f"{self.src_label} → {self.target.mention}", ""]
+        if roles:
+            lines.append(role_list(roles))
+        if moved:
+            lines.append(f"{I.s('coins')} **{moved:,}** points")
+        e = discord.Embed(title=f"{I.s('check')} Transfer done", color=BRAND, description="\n".join(lines))
         if skipped:
             e.add_field(name=f"{I.s('warning')} Skipped ({len(skipped)})", inline=False, value="\n".join(skipped[:8])[:1024])
         e.set_footer(text="Made a mistake? Undo works for 10 minutes.")
-        undo = UndoView(self.cog, self.ctx, log_id, self.src_member, self.target, roles)
+        undo = UndoView(self.cog, self.ctx, log_id, self.src_member, self.target, roles, self.src_id, moved)
         await interaction.edit_original_response(embed=e, view=undo)
         undo.message = await interaction.original_response()
 
@@ -354,7 +394,8 @@ class Studio(OwnedView):
             who = discord.utils.escape_markdown(r["source_name"] or str(r["source_id"]))
             left = " *(left)*" if r["left_member"] else ""
             undone = " ~~undone~~" if r["undone"] else ""
-            lines.append(f"<t:{int(r['ts'])}:R> · <@{r['actor_id']}> moved {what} from **{who}**{left} → <@{r['target_id']}>{undone}")
+            pts = f" + {r['points']:,} points" if r.get("points") else ""
+            lines.append(f"<t:{int(r['ts'])}:R> · <@{r['actor_id']}> moved {what}{pts} from **{who}**{left} → <@{r['target_id']}>{undone}")
         await interaction.response.send_message(embed=discord.Embed(
             title=f"{I.s('clock')} Last transfers", description="\n".join(lines)[:4000], color=BLURPLE),
             ephemeral=True, allowed_mentions=NO_PING)
@@ -399,7 +440,7 @@ class RoleTransfer(commands.Cog):
             raise VCError("I need **Manage Roles**.")
         studio = Studio(self, ctx, source, target, roles or None)
         movable, _ = await studio.analyse(ctx.author)
-        studio.render(movable, bool(studio.src_id and studio.target and studio.selected(movable)))
+        studio.render(movable, studio.ready(movable))
         studio.message = await ctx.reply(embed=await studio.embed(), view=studio, mention_author=False,
                                          allowed_mentions=NO_PING)
 

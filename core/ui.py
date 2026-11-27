@@ -1,4 +1,7 @@
+import re
+
 import discord
+from discord.ext import commands
 
 from .errors import VCError
 from .icons import I, err
@@ -98,3 +101,35 @@ async def replied_message(ctx):
         except discord.HTTPException:
             return None
     return None
+
+
+_ID = re.compile(r"^<@!?(\d{15,22})>$|^(\d{15,22})$")
+
+
+class UserRef:
+    """Somebody picked by @mention, name or plain user ID - they do not have to be in the server any more."""
+
+    def __init__(self, uid: int, member=None):
+        self.id, self.member = uid, member
+
+    @property
+    def mention(self) -> str:
+        return f"<@{self.id}>"
+
+    @property
+    def label(self) -> str:
+        return self.member.display_name if self.member else f"`{self.id}`"
+
+
+class MemberOrID(commands.Converter):
+    """`@member`, a name, or a raw user ID (also for people who already left)."""
+
+    async def convert(self, ctx, argument: str) -> UserRef:
+        try:
+            m = await commands.MemberConverter().convert(ctx, argument)
+            return UserRef(m.id, m)
+        except commands.MemberNotFound:
+            hit = _ID.match(argument.strip())
+            if hit:
+                return UserRef(int(hit.group(1) or hit.group(2)))
+            raise

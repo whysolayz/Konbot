@@ -5,6 +5,15 @@
 > (old `leafy_data.zip` still works with `$backupload`); icons are uploaded as `kon_<name>` in the Yellow/Orange palette
 > (the old `lf_*` green emojis can be deleted in the Developer Portal -> Emojis). Buttons of panels posted before the rebrand keep working.
 
+## What's new
+- **Games** (2-10 players, 15 s per question, speed points, scoreboard after every round, winner screen, Play Again):
+  `$guessanime`, `$guessemoji`, `$simonsays`. Each has `set`, `stats`, `top`, `stop`. Questions: `assets/guess_anime.json`, `assets/guess_emoji.json`.
+- **$transfer** moves points together with roles (button "Points: ON/OFF", Undo brings them back, works for people who left).
+- **$point add / remove / set / reset** accept a user ID, so people who left can be fixed too.
+- **$aura history [@member]** shows the graph; `$aura` itself is clean again.
+- **$pulse** draws a real latency graph (gateway + API, last 10 minutes).
+- Leftovers of removed features (Ludo, old webhook sender) are deleted from the database on start and are no longer exported or backed up.
+
 ## Setup
 1. `pip install -r requirements.txt` (discord.py **2.5+**)
 2. `.env`: `DISCORD_TOKEN=...` and `BACKUP_WEBHOOK=...` (see `.env.example`)
@@ -265,12 +274,3 @@ reason. Every closed ticket produces a Discord-styled HTML transcript (sent to t
 
 `$db <command> everywhere` turns a command off in ALL channels, `$eb <command> everywhere` removes every rule again.
 `$help` is grouped (General, Fun & Games, Voice, Points & Shop, Community & Tickets, Moderation & Admin); `$help <command>` shows details.
-
-
-## Multiplayer party games
-- `$guessanime [easy|medium|hard]` — 2–10 players, 10 rounds, 15 seconds per question, speed-based points and a live scoreboard.
-- `$guessemoji [easy|medium|hard] [10-20]` — emoji word combinations, hints, host skip, speed points and a final leaderboard.
-- `$simonsays` — 2–10 players, interactive colour buttons, growing sequences and elimination.
-- `$point transfer @member <amount>` — transfer points from your own balance.
-- `$point remove <user_id> <amount>` also accepts a mention or username.
-- `$aura history [@member]` shows the aura graph separately; `$aura` itself stays compact.

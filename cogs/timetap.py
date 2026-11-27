@@ -81,7 +81,7 @@ def apply_session(st: dict, s: dict, *, training: bool, won_title: bool) -> list
 
 def tier(ms: int) -> str:
     if ms < 220:
-        return f"{I.s('bolt')} Elite"
+        return f"{I.s('bolt')} Superhuman"
     if ms < 300:
         return f"{I.s('fire')} Lightning"
     if ms < 400:

@@ -52,6 +52,19 @@ CREATE TABLE IF NOT EXISTS transfer_log(
   roles TEXT NOT NULL DEFAULT '[]', left_member INTEGER NOT NULL DEFAULT 0, undone INTEGER NOT NULL DEFAULT 0);
 """
 
+# every settings key the bot really uses. Anything else in the settings table belongs to a feature that no longer
+# exists (Ludo, the old webhook sender ...) and is removed on start, so it is not kept or backed up any more.
+KNOWN_SETTINGS = {
+    "aliases", "aura", "autoreact", "cmd_disable", "customvc", "giveaway", "imagehost", "imagehost_host",
+    "noprefix", "points", "rolecmds", "shop", "tickets", "tictactoe",
+    "timetap", "timetap_stats", "handfight", "handfight_stats",
+    "guessanime", "guessanime_stats", "guessemoji", "guessemoji_stats", "simonsays", "simonsays_stats",
+}
+# tables that exist in the schema (the export and the backup only look at these)
+KNOWN_TABLES = ("users", "channel_progress", "badges", "shop_items", "purchases", "settings", "point_log",
+                "left_members", "aura_log", "transfer_log")
+OLD_TABLES = ("ludo", "ludo_games", "ludo_stats")
+
 
 class DB:
     def __init__(self, path):
@@ -62,6 +75,7 @@ class DB:
         self.conn.execute("PRAGMA synchronous=NORMAL")
         self.conn.executescript(SCHEMA)
         self._migrate()
+        self.purge_stale()
         self.prune_logs()
         self.prune_left()
 
@@ -71,9 +85,20 @@ class DB:
         with self.conn:
             if "position" not in cols:
                 self.conn.execute("ALTER TABLE shop_items ADD COLUMN position INTEGER")
+            cols = [r[1] for r in self.conn.execute("PRAGMA table_info(transfer_log)")]
+            if "points" not in cols:                       # $transfer can move points too
+                self.conn.execute("ALTER TABLE transfer_log ADD COLUMN points INTEGER NOT NULL DEFAULT 0")
             self.conn.execute(
                 "UPDATE shop_items SET position=(SELECT COUNT(*) FROM shop_items s2 "
                 "WHERE s2.guild_id=shop_items.guild_id AND s2.id<=shop_items.id) WHERE position IS NULL")
+
+    def purge_stale(self):
+        """Delete settings of features that were removed (Ludo, old webhook sender ...) and leftover tables."""
+        marks = ",".join("?" * len(KNOWN_SETTINGS))
+        with self.conn:
+            self.conn.execute(f"DELETE FROM settings WHERE key NOT IN ({marks})", tuple(KNOWN_SETTINGS))
+            for t in OLD_TABLES:
+                self.conn.execute(f"DROP TABLE IF EXISTS {t}")
 
     # ---------- basics ----------
     def _ensure(self, gid, uid):
@@ -130,6 +155,12 @@ class DB:
                                  (gid, uid, limit)).fetchall()
         return [r["value"] for r in rows]
 
+    def aura_rows(self, gid, uid, limit=24) -> list:
+        """(timestamp, value) pairs, OLDEST first - for the graph in $aura history"""
+        rows = self.conn.execute("SELECT ts, value FROM aura_log WHERE guild_id=? AND user_id=? ORDER BY id DESC LIMIT ?",
+                                 (gid, uid, limit)).fetchall()
+        return [(r["ts"], r["value"]) for r in reversed(rows)]
+
     def aura_rank(self, gid, uid) -> tuple:
         """(this member's best reading, how many members have readings) - for 'best in the server'"""
         best = self.conn.execute("SELECT MAX(value) m FROM aura_log WHERE guild_id=? AND user_id=?", (gid, uid)).fetchone()["m"]
@@ -148,14 +179,32 @@ class DB:
             out.append(d)
         return out
 
-    def log_transfer(self, gid, actor, source_id, source_name, target_id, role_ids, left: bool) -> int:
+    def log_transfer(self, gid, actor, source_id, source_name, target_id, role_ids, left: bool, points: int = 0) -> int:
         with self.conn:
             cur = self.conn.execute(
-                "INSERT INTO transfer_log(guild_id,ts,actor_id,source_id,source_name,target_id,roles,left_member) "
-                "VALUES(?,?,?,?,?,?,?,?)",
+                "INSERT INTO transfer_log(guild_id,ts,actor_id,source_id,source_name,target_id,roles,left_member,points) "
+                "VALUES(?,?,?,?,?,?,?,?,?)",
                 (gid, time.time(), actor, source_id, source_name[:100], target_id,
-                 json.dumps([int(r) for r in role_ids]), 1 if left else 0))
+                 json.dumps([int(r) for r in role_ids]), 1 if left else 0, int(points)))
             return cur.lastrowid
+
+    def get_points(self, gid, uid) -> int:
+        r = self.conn.execute("SELECT points FROM users WHERE guild_id=? AND user_id=?", (gid, uid)).fetchone()
+        return int(r[0]) if r else 0
+
+    def move_points(self, gid, src, dst, amount: int, reason: str) -> int:
+        """Take `amount` points from src and give them to dst in ONE step (nothing is lost half way). Returns what moved."""
+        with self.conn:
+            have = self.get_points(gid, src)
+            amount = max(0, min(int(amount), have))
+            if amount:
+                self._ensure(gid, src)
+                self._ensure(gid, dst)
+                self.conn.execute("UPDATE users SET points=points-? WHERE guild_id=? AND user_id=?", (amount, gid, src))
+                self.conn.execute("UPDATE users SET points=points+? WHERE guild_id=? AND user_id=?", (amount, gid, dst))
+                self._log(gid, src, -amount, reason)
+                self._log(gid, dst, amount, reason)
+        return amount
 
     def mark_undone(self, log_id: int):
         with self.conn:

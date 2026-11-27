@@ -39,6 +39,7 @@ from discord.ext import commands, tasks
 
 from core import checks, export
 from core.config import PREFIX, AFK_FILE, BACKUP_MODE, BACKUP_REDACT, BACKUP_WEBHOOK, BASE, BLURPLE, DATA_DIR, BRAND
+from core.db import KNOWN_SETTINGS
 from core.errors import VCError
 from core.icons import I, ok
 
@@ -62,7 +63,9 @@ FEATURES = {
     "rolecmds": "Role commands", "autoreact": "Autoreact", "aura": "Aura", "cmd_disable": "Command control",
     "tickets": "Tickets", "giveaway": "Giveaways", "tictactoe": "Tic Tac Toe", "timetap": "TimeTap",
     "timetap_stats": "TimeTap stats", "handfight": "Handfight", "handfight_stats": "Handfight stats",
-    "webhook": "Webhook sender", "imagehost": "Image links", "imagehost_host": "Image host channel",
+    "guessanime": "Guess the Anime", "guessanime_stats": "Guess the Anime stats",
+    "guessemoji": "Guess the Emoji", "guessemoji_stats": "Guess the Emoji stats",
+    "simonsays": "Simon Says", "simonsays_stats": "Simon Says stats", "imagehost": "Image links", "imagehost_host": "Image host channel",
 }
 
 
@@ -259,6 +262,8 @@ def merge_db(live: sqlite3.Connection, src_path: str, replace: bool = False, det
             if "settings" in tables:
                 touched = 0
                 for gid, key, val in live.execute("SELECT guild_id,key,value FROM src.settings").fetchall():
+                    if key not in KNOWN_SETTINGS:                  # old backups may still carry removed features (Ludo ...)
+                        continue
                     try:
                         incoming = json.loads(val)
                     except ValueError:
@@ -435,17 +440,6 @@ class Backup(commands.Cog):
                         "reason": REASONS.get(reason, reason), "status": status, "backup_number": counter}
                 try:
                     self.bot.db.snapshot(snap.name)
-                    # Drop settings left behind by the retired Ludo module from backup snapshots.
-                    # This only cleans the exported snapshot; it does not alter the live server database.
-                    try:
-                        stale = sqlite3.connect(snap.name)
-                        try:
-                            stale.execute("DELETE FROM settings WHERE key IN ('ludo', 'ludo_stats', 'ludo_games')")
-                            stale.commit()
-                        finally:
-                            stale.close()
-                    except sqlite3.Error:
-                        log.warning("could not prune retired Ludo settings from backup snapshot")
                     cfg_export = self.export_config()
                     info = await asyncio.to_thread(build_zip, BASE, snap.name, meta, cfg_export)
                 finally:

@@ -37,7 +37,7 @@ from aiohttp import web
 from discord.ext import commands
 
 TOKEN_CACHE_SECONDS = 60
-GAMES = ("tictactoe", "timetap", "handfight")
+GAMES = ("tictactoe", "timetap", "handfight", "guessanime", "guessemoji", "simonsays")
 
 
 def _id(v):

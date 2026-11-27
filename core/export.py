@@ -23,8 +23,11 @@ from datetime import datetime, timezone
 
 import discord
 
+from .db import KNOWN_SETTINGS
+
 SNOWFLAKE_MIN = 10 ** 15
-TABLES = ("users", "channel_progress", "badges", "shop_items", "purchases", "settings", "point_log")
+TABLES = ("users", "channel_progress", "badges", "shop_items", "purchases", "settings", "point_log",
+          "left_members", "aura_log", "transfer_log")
 MAX_LOG_ROWS_IN_JSON = 50000        # point_log is always complete inside data/kon.db
 
 
@@ -193,6 +196,8 @@ def collect(bot, afk_data: dict) -> dict:
         vcs = {cid: rec for cid, rec in st.get("vcs", {}).items() if rec.get("guild") == gid}
         raw_settings = {}
         for key, val in db.conn.execute("SELECT key,value FROM settings WHERE guild_id=?", (gid,)):
+            if key not in KNOWN_SETTINGS:                     # leftovers of removed features are not exported
+                continue
             try:
                 raw_settings[key] = json.loads(val)
             except Exception:
@@ -228,14 +233,15 @@ def collect(bot, afk_data: dict) -> dict:
             "aura": raw_settings.get("aura"),
             "custom_vc_rules": raw_settings.get("customvc"),
             "tictactoe": raw_settings.get("tictactoe"),
-            "game_channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)": {
+            "game_channels": {
                 "tictactoe": (raw_settings.get("tictactoe") or {}).get("channel"),
                 "blacktea": ((bot.get_cog("BlackTea").settings.get("channels", {}) if bot.get_cog("BlackTea") else {}).get(str(gid))),
                 "timetap": (raw_settings.get("timetap") or {}).get("channel"),
-                "handfight": (raw_settings.get("handfight") or {}).get("channel")},
-            "game_stats (TimeTap, Handfight)": {"timetap": raw_settings.get("timetap_stats"),
-                                                "handfight": raw_settings.get("handfight_stats")},
-            "webhook_sender (name, avatar, embed, images)": raw_settings.get("webhook"),
+                "handfight": (raw_settings.get("handfight") or {}).get("channel"),
+                "guessanime": (raw_settings.get("guessanime") or {}).get("channel"),
+                "guessemoji": (raw_settings.get("guessemoji") or {}).get("channel"),
+                "simonsays": (raw_settings.get("simonsays") or {}).get("channel")},
+            "game_stats": {k: raw_settings.get(k + "_stats") for k in ("timetap", "handfight", "guessanime", "guessemoji", "simonsays")},
             "saved_images ($tolink names -> links)": raw_settings.get("imagehost"),
             "command_disable ($disablecommand)": raw_settings.get("cmd_disable"),
             "extra_owners": [res.ref(i) for i in st.get("guild_owners", {}).get(str(gid), [])],
@@ -258,9 +264,8 @@ def collect(bot, afk_data: dict) -> dict:
                           ("Tickets ($ticket)", "tickets (panels, categories, open tickets)"),
                           ("Giveaways ($giveaway)", "giveaways (templates, running, ended)"),
                           ("Autoreact", "autoreact"), ("Aura ($aura config)", "aura"), ("Tic Tac Toe channel", "tictactoe"),
-                          ("Game channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)", "game_channels (Tic Tac Toe, BlackTea, TimeTap, Handfight)"),
-                          ("Game stats (TimeTap, Handfight)", "game_stats (TimeTap, Handfight)"),
-                          ("Webhook sender (name, avatar, embed, images)", "webhook_sender (name, avatar, embed, images)"),
+                          ("Game channels", "game_channels"),
+                          ("Game stats", "game_stats"),
                           ("Saved images ($tolink)", "saved_images ($tolink names -> links)"),
                           ("Disabled commands", "command_disable ($disablecommand)"), ("Extra owners ($konextra - this server only)", "extra_owners"),
                           ("AFK", "afk"),

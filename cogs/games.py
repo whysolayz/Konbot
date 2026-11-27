@@ -17,7 +17,8 @@ class Games(commands.Cog):
         get = lambda key: self.bot.db.get_settings(gid, key).get("channel")
         return {"tictactoe": get("tictactoe"),
                 "blacktea": bt.game_channel(gid) if bt else None,
-                "timetap": get("timetap"), "handfight": get("handfight")}
+                "timetap": get("timetap"), "handfight": get("handfight"),
+                "guessanime": get("guessanime"), "guessemoji": get("guessemoji"), "simonsays": get("simonsays")}
 
     @commands.hybrid_command(name="games", aliases=["gamechannels"], description="All games and the channel each one works in")
     @commands.guild_only()
@@ -27,17 +28,15 @@ class Games(commands.Cog):
                 ("BlackTea", "leaf", "blacktea", f"`{PREFIX}blacktea` · word bomb, up to 20 players"),
                 ("TimeTap", "stopwatch", "timetap", f"`{PREFIX}timetap` · reaction duel: Training, Duo, Trio, Squad"),
                 ("Handfight", "rock", "handfight", f"`{PREFIX}handfight` · rock paper scissors: Duo, Squad"),
-                ("Guess the Anime", "gamepad", None, f"`{PREFIX}guessanime [easy|medium|hard]` · 2–10 players"),
-                ("Guess the Emoji", "sparkles", None, f"`{PREFIX}guessemoji [easy|medium|hard] [10-20]` · word puzzle"),
-                ("Simon Says", "grid", None, f"`{PREFIX}simonsays` · colour memory, 2–10 players"))
+                ("Guess the Anime", "star_fill", "guessanime", f"`{PREFIX}guessanime` · 2-10 players, 10 rounds, 15s each"),
+                ("Guess the Emoji", "sparkles", "guessemoji", f"`{PREFIX}guessemoji` · emojis hide a word, type it"),
+                ("Simon Says", "gamepad", "simonsays", f"`{PREFIX}simonsays` · repeat the colour order"))
         lines = []
         for name, icon, key, how in rows:
-            channel_id = ch.get(key) if key else None
-            where = f"<#{channel_id}>" if channel_id else ("*any channel*" if key is None else "*not set*")
-            setup = f" · set channel: `{PREFIX}{key} set`" if key else ""
-            lines.append(f"{I.s(icon)} **{name}** - {where}\n-# {how}{setup}")
+            where = f"<#{ch[key]}>" if ch[key] else "*not set*"
+            lines.append(f"{I.s(icon)} **{name}** - {where}\n-# {how} · set channel: `{PREFIX}{key} set`")
         e = discord.Embed(title=f"{I.s('gamepad')} Games", color=BRAND, description="\n\n".join(lines))
-        e.set_footer(text="Channel-based games stay in their selected channel. Party games can be played anywhere.")
+        e.set_footer(text="Every game works only in its own channel. Admins pick it with  <game> set.")
         await ctx.reply(embed=e, mention_author=False)
 
 

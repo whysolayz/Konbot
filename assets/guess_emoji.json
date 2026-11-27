@@ -1,0 +1,556 @@
+{
+ "easy": [
+  {
+   "clue": "🌧️ + 🏹",
+   "a": "rainbow",
+   "parts": [
+    "RAIN",
+    "BOW"
+   ]
+  },
+  {
+   "clue": "☀️ + 🌸",
+   "a": "sunflower",
+   "parts": [
+    "SUN",
+    "FLOWER"
+   ]
+  },
+  {
+   "clue": "⭐ + 🐟",
+   "a": "starfish",
+   "parts": [
+    "STAR",
+    "FISH"
+   ]
+  },
+  {
+   "clue": "🍳 + 🎂",
+   "a": "pancake",
+   "parts": [
+    "PAN",
+    "CAKE"
+   ]
+  },
+  {
+   "clue": "🧈 + 🪰",
+   "a": "butterfly",
+   "parts": [
+    "BUTTER",
+    "FLY"
+   ]
+  },
+  {
+   "clue": "❄️ + ⚽",
+   "a": "snowball",
+   "parts": [
+    "SNOW",
+    "BALL"
+   ]
+  },
+  {
+   "clue": "🌙 + 💡",
+   "a": "moonlight",
+   "parts": [
+    "MOON",
+    "LIGHT"
+   ]
+  },
+  {
+   "clue": "🔥 + 👨",
+   "a": "fireman",
+   "parts": [
+    "FIRE",
+    "MAN"
+   ]
+  },
+  {
+   "clue": "🐶 + 🏠",
+   "a": "doghouse",
+   "parts": [
+    "DOG",
+    "HOUSE"
+   ]
+  },
+  {
+   "clue": "🦶 + ⚽",
+   "a": "football",
+   "parts": [
+    "FOOT",
+    "BALL"
+   ]
+  },
+  {
+   "clue": "🥚 + 🌱",
+   "a": "eggplant",
+   "parts": [
+    "EGG",
+    "PLANT"
+   ]
+  },
+  {
+   "clue": "📖 + 🪱",
+   "a": "bookworm",
+   "parts": [
+    "BOOK",
+    "WORM"
+   ]
+  },
+  {
+   "clue": "🌊 + 🐴",
+   "a": "seahorse",
+   "parts": [
+    "SEA",
+    "HORSE"
+   ]
+  },
+  {
+   "clue": "🕷️ + 🕸️",
+   "a": "spiderweb",
+   "parts": [
+    "SPIDER",
+    "WEB"
+   ]
+  },
+  {
+   "clue": "🐴 + 👞",
+   "a": "horseshoe",
+   "parts": [
+    "HORSE",
+    "SHOE"
+   ]
+  },
+  {
+   "clue": "🌍 + 🪱",
+   "a": "earthworm",
+   "parts": [
+    "EARTH",
+    "WORM"
+   ]
+  },
+  {
+   "clue": "🔑 + 🕳️",
+   "a": "keyhole",
+   "parts": [
+    "KEY",
+    "HOLE"
+   ]
+  },
+  {
+   "clue": "🔥 + 🪰",
+   "a": "firefly",
+   "parts": [
+    "FIRE",
+    "FLY"
+   ]
+  },
+  {
+   "clue": "☀️ + 💡",
+   "a": "sunlight",
+   "parts": [
+    "SUN",
+    "LIGHT"
+   ]
+  },
+  {
+   "clue": "🧺 + ⚽",
+   "a": "basketball",
+   "parts": [
+    "BASKET",
+    "BALL"
+   ]
+  },
+  {
+   "clue": "🦷 + 🖌️",
+   "a": "toothbrush",
+   "parts": [
+    "TOOTH",
+    "BRUSH"
+   ]
+  },
+  {
+   "clue": "🐱 + 🐟",
+   "a": "catfish",
+   "parts": [
+    "CAT",
+    "FISH"
+   ]
+  }
+ ],
+ "medium": [
+  {
+   "clue": "🥞",
+   "a": "pancake",
+   "parts": [
+    "PAN",
+    "CAKE"
+   ],
+   "alt": [
+    "pancakes"
+   ]
+  },
+  {
+   "clue": "🌈",
+   "a": "rainbow",
+   "parts": [
+    "RAIN",
+    "BOW"
+   ]
+  },
+  {
+   "clue": "🦋",
+   "a": "butterfly",
+   "parts": [
+    "BUTTER",
+    "FLY"
+   ]
+  },
+  {
+   "clue": "🌻",
+   "a": "sunflower",
+   "parts": [
+    "SUN",
+    "FLOWER"
+   ]
+  },
+  {
+   "clue": "🍿",
+   "a": "popcorn",
+   "parts": [
+    "POP",
+    "CORN"
+   ]
+  },
+  {
+   "clue": "🥜",
+   "a": "peanut",
+   "parts": [
+    "PEA",
+    "NUT"
+   ]
+  },
+  {
+   "clue": "⛄",
+   "a": "snowman",
+   "parts": [
+    "SNOW",
+    "MAN"
+   ],
+   "alt": [
+    "snowmen"
+   ]
+  },
+  {
+   "clue": "🔦",
+   "a": "flashlight",
+   "parts": [
+    "FLASH",
+    "LIGHT"
+   ]
+  },
+  {
+   "clue": "🎆",
+   "a": "firework",
+   "parts": [
+    "FIRE",
+    "WORK"
+   ],
+   "alt": [
+    "fireworks"
+   ]
+  },
+  {
+   "clue": "👓",
+   "a": "eyeglasses",
+   "parts": [
+    "EYE",
+    "GLASSES"
+   ],
+   "alt": [
+    "eyeglass",
+    "glasses"
+   ]
+  },
+  {
+   "clue": "🌅",
+   "a": "sunrise",
+   "parts": [
+    "SUN",
+    "RISE"
+   ]
+  },
+  {
+   "clue": "🌇",
+   "a": "sunset",
+   "parts": [
+    "SUN",
+    "SET"
+   ]
+  },
+  {
+   "clue": "✈️",
+   "a": "airplane",
+   "parts": [
+    "AIR",
+    "PLANE"
+   ],
+   "alt": [
+    "aeroplane",
+    "plane"
+   ]
+  },
+  {
+   "clue": "📰",
+   "a": "newspaper",
+   "parts": [
+    "NEWS",
+    "PAPER"
+   ]
+  },
+  {
+   "clue": "🐚",
+   "a": "seashell",
+   "parts": [
+    "SEA",
+    "SHELL"
+   ]
+  },
+  {
+   "clue": "🧁",
+   "a": "cupcake",
+   "parts": [
+    "CUP",
+    "CAKE"
+   ],
+   "alt": [
+    "cupcakes"
+   ]
+  },
+  {
+   "clue": "⌚",
+   "a": "wristwatch",
+   "parts": [
+    "WRIST",
+    "WATCH"
+   ]
+  },
+  {
+   "clue": "🎧",
+   "a": "headphones",
+   "parts": [
+    "HEAD",
+    "PHONES"
+   ],
+   "alt": [
+    "headphone"
+   ]
+  },
+  {
+   "clue": "💡",
+   "a": "lightbulb",
+   "parts": [
+    "LIGHT",
+    "BULB"
+   ]
+  },
+  {
+   "clue": "🛁",
+   "a": "bathtub",
+   "parts": [
+    "BATH",
+    "TUB"
+   ]
+  },
+  {
+   "clue": "🪥",
+   "a": "toothbrush",
+   "parts": [
+    "TOOTH",
+    "BRUSH"
+   ]
+  }
+ ],
+ "hard": [
+  {
+   "clue": "🐉 + 🪰",
+   "a": "dragonfly",
+   "parts": [
+    "DRAGON",
+    "FLY"
+   ]
+  },
+  {
+   "clue": "🌽 + 🍞",
+   "a": "cornbread",
+   "parts": [
+    "CORN",
+    "BREAD"
+   ]
+  },
+  {
+   "clue": "👂 + 💍",
+   "a": "earring",
+   "parts": [
+    "EAR",
+    "RING"
+   ],
+   "alt": [
+    "earrings"
+   ]
+  },
+  {
+   "clue": "🧊 + 🏔️",
+   "a": "iceberg",
+   "parts": [
+    "ICE",
+    "BERG"
+   ]
+  },
+  {
+   "clue": "🔥 + 📍",
+   "a": "fireplace",
+   "parts": [
+    "FIRE",
+    "PLACE"
+   ]
+  },
+  {
+   "clue": "🕐 + 🥛",
+   "a": "hourglass",
+   "parts": [
+    "HOUR",
+    "GLASS"
+   ]
+  },
+  {
+   "clue": "🌧️ + 🧥",
+   "a": "raincoat",
+   "parts": [
+    "RAIN",
+    "COAT"
+   ]
+  },
+  {
+   "clue": "🌧️ + 💧",
+   "a": "raindrop",
+   "parts": [
+    "RAIN",
+    "DROP"
+   ],
+   "alt": [
+    "raindrops"
+   ]
+  },
+  {
+   "clue": "🛏️ + 🐛",
+   "a": "bedbug",
+   "parts": [
+    "BED",
+    "BUG"
+   ]
+  },
+  {
+   "clue": "🦶 + 🖨️",
+   "a": "footprint",
+   "parts": [
+    "FOOT",
+    "PRINT"
+   ],
+   "alt": [
+    "footprints"
+   ]
+  },
+  {
+   "clue": "✋ + 👜",
+   "a": "handbag",
+   "parts": [
+    "HAND",
+    "BAG"
+   ],
+   "alt": [
+    "handbags"
+   ]
+  },
+  {
+   "clue": "🏠 + 💼",
+   "a": "homework",
+   "parts": [
+    "HOME",
+    "WORK"
+   ]
+  },
+  {
+   "clue": "🐴 + 🔋",
+   "a": "horsepower",
+   "parts": [
+    "HORSE",
+    "POWER"
+   ]
+  },
+  {
+   "clue": "🍔",
+   "a": "hamburger",
+   "parts": [
+    "HAM",
+    "BURGER"
+   ]
+  },
+  {
+   "clue": "🌭",
+   "a": "hotdog",
+   "parts": [
+    "HOT",
+    "DOG"
+   ],
+   "alt": [
+    "hotdogs"
+   ]
+  },
+  {
+   "clue": "🍇 + 🍎",
+   "a": "grapefruit",
+   "parts": [
+    "GRAPE",
+    "FRUIT"
+   ]
+  },
+  {
+   "clue": "🪑 + 👨",
+   "a": "chairman",
+   "parts": [
+    "CHAIR",
+    "MAN"
+   ]
+  },
+  {
+   "clue": "🚪 + 🔔",
+   "a": "doorbell",
+   "parts": [
+    "DOOR",
+    "BELL"
+   ],
+   "alt": [
+    "doorbells"
+   ]
+  },
+  {
+   "clue": "🍯 + 🌙",
+   "a": "honeymoon",
+   "parts": [
+    "HONEY",
+    "MOON"
+   ]
+  },
+  {
+   "clue": "🍯 + 🐝",
+   "a": "honeybee",
+   "parts": [
+    "HONEY",
+    "BEE"
+   ],
+   "alt": [
+    "honeybees"
+   ]
+  }
+ ]
+}

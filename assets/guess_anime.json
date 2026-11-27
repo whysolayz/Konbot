@@ -1,0 +1,284 @@
+{
+ "easy": [
+  {
+   "q": "A rubber-bodied boy and his Straw Hat crew sail the Grand Line in search of a legendary treasure.",
+   "a": "One Piece"
+  },
+  {
+   "q": "An outcast ninja boy with a sealed fox spirit dreams of becoming the leader of his village.",
+   "a": "Naruto"
+  },
+  {
+   "q": "A monkey-tailed boy hunts for seven magic orbs that grant a wish and keeps getting stronger.",
+   "a": "Dragon Ball"
+  },
+  {
+   "q": "Humanity hides behind enormous walls to survive giant man-eating monsters.",
+   "a": "Attack on Titan"
+  },
+  {
+   "q": "A genius student finds a notebook that kills anyone whose name is written in it.",
+   "a": "Death Note"
+  },
+  {
+   "q": "A boy from Pallet Town travels the world with his Pikachu to become a Master.",
+   "a": "Pokémon"
+  },
+  {
+   "q": "Two brothers use alchemy to search for a legendary stone after a forbidden ritual costs them their bodies.",
+   "a": "Fullmetal Alchemist"
+  },
+  {
+   "q": "A high schooler swallows a cursed finger and joins a school of sorcerers who fight curses.",
+   "a": "Jujutsu Kaisen"
+  },
+  {
+   "q": "A kind boy with a scar on his forehead hunts demons to turn his sister back into a human.",
+   "a": "Demon Slayer"
+  },
+  {
+   "q": "In a world where most people have superpowers, a Quirkless boy inherits the power of the number one hero.",
+   "a": "My Hero Academia"
+  },
+  {
+   "q": "A teen detective is shrunk into a child's body by a shady organization and keeps solving crimes.",
+   "a": "Detective Conan"
+  },
+  {
+   "q": "A blue robot cat from the future helps a clumsy boy with gadgets from a pocket.",
+   "a": "Doraemon"
+  },
+  {
+   "q": "A bored hero with a plain look can defeat any enemy with a single punch.",
+   "a": "One Punch Man"
+  },
+  {
+   "q": "A clumsy schoolgirl with long twin tails becomes a sailor-suited warrior who fights evil.",
+   "a": "Sailor Moon"
+  },
+  {
+   "q": "A girl's parents turn into pigs, so she works in a bathhouse for spirits to save them.",
+   "a": "Spirited Away"
+  },
+  {
+   "q": "Two sisters meet a giant, fluffy forest spirit and ride a cat-shaped bus.",
+   "a": "My Neighbor Totoro"
+  },
+  {
+   "q": "A boy takes the Hunter Exam to find his father, a legendary Hunter.",
+   "a": "Hunter x Hunter"
+  },
+  {
+   "q": "A short boy with amazing jumping skills joins a high school volleyball team.",
+   "a": "Haikyu!!"
+  },
+  {
+   "q": "A spy, an assassin and a telepathic girl pretend to be an ordinary family.",
+   "a": "Spy x Family"
+  },
+  {
+   "q": "A teen who can see ghosts becomes a Soul Reaper with a giant sword.",
+   "a": "Bleach"
+  },
+  {
+   "q": "A poor young man merges with a chainsaw devil and becomes a devil hunter.",
+   "a": "Chainsaw Man"
+  },
+  {
+   "q": "Thousands of players are trapped in a virtual reality game where dying means dying for real.",
+   "a": "Sword Art Online"
+  },
+  {
+   "q": "A student becomes half-ghoul after an organ transplant and struggles to live in both worlds.",
+   "a": "Tokyo Ghoul"
+  },
+  {
+   "q": "A boy born without magic in a world of mages aims to become the Wizard King.",
+   "a": "Black Clover"
+  },
+  {
+   "q": "Bounty hunters travel through space to the sound of jazz.",
+   "a": "Cowboy Bebop"
+  },
+  {
+   "q": "Two teens secretly swap bodies, and a comet changes everything.",
+   "a": "Your Name"
+  },
+  {
+   "q": "A fire-breathing wizard and his flying blue cat join a famous magic guild.",
+   "a": "Fairy Tail"
+  },
+  {
+   "q": "Humanity is turned to stone for thousands of years, and a science genius rebuilds civilization.",
+   "a": "Dr. Stone"
+  }
+ ],
+ "medium": [
+  {
+   "q": "A self-proclaimed mad scientist discovers a way to send text messages to the past with a modified microwave.",
+   "a": "Steins;Gate"
+  },
+  {
+   "q": "An exiled prince gains a power that lets him command anyone to obey, and leads a rebellion against an empire.",
+   "a": "Code Geass"
+  },
+  {
+   "q": "Teenagers pilot giant biomechanical machines to defend a city from beings called Angels.",
+   "a": "Neon Genesis Evangelion"
+  },
+  {
+   "q": "A shut-in is summoned to another world and returns to a checkpoint every time he dies.",
+   "a": "Re:Zero"
+  },
+  {
+   "q": "A young Viking warrior seeks revenge, then searches for a land without war.",
+   "a": "Vinland Saga"
+  },
+  {
+   "q": "An awkward middle schooler with huge psychic powers tries to live a normal life.",
+   "a": "Mob Psycho 100"
+  },
+  {
+   "q": "A former soldier becomes a letter-writing Auto Memory Doll to understand human emotions.",
+   "a": "Violet Evergarden"
+  },
+  {
+   "q": "A lazy, sweet-loving samurai takes odd jobs in an Edo overrun by aliens.",
+   "a": "Gintama"
+  },
+  {
+   "q": "Students at a school for weapon partners collect souls to create a death scythe.",
+   "a": "Soul Eater"
+  },
+  {
+   "q": "Seven mages summon heroic spirits to fight for a wish-granting Holy Grail.",
+   "a": "Fate/Zero"
+  },
+  {
+   "q": "A boy with a scary face and a tiny, fierce girl team up to win each other's crushes.",
+   "a": "Toradora!"
+  },
+  {
+   "q": "People who die play deadly games in a bar to decide whether they are reincarnated or sent to the void.",
+   "a": "Death Parade"
+  },
+  {
+   "q": "A teenager's right hand is taken over by an alien parasite named Migi.",
+   "a": "Parasyte"
+  },
+  {
+   "q": "A girl and a robot boy descend into a giant, dangerous hole full of relics.",
+   "a": "Made in Abyss"
+  },
+  {
+   "q": "Orphans discover that their cozy orphanage is secretly a farm raising children for demons.",
+   "a": "The Promised Neverland"
+  },
+  {
+   "q": "Two genius student council members try to make the other confess first.",
+   "a": "Kaguya-sama: Love Is War"
+  },
+  {
+   "q": "In a future society, a system measures people's chance of committing a crime.",
+   "a": "Psycho-Pass"
+  },
+  {
+   "q": "A ronin with prosthetic body parts hunts demons to reclaim his stolen body.",
+   "a": "Dororo"
+  },
+  {
+   "q": "Soccer players compete in a facility to forge the most selfish striker in the country.",
+   "a": "Blue Lock"
+  },
+  {
+   "q": "A doctor is reborn as the child of his favorite idol.",
+   "a": "Oshi no Ko"
+  },
+  {
+   "q": "After the hero party defeats the Demon King, an elf mage sets out to understand humans.",
+   "a": "Frieren"
+  },
+  {
+   "q": "A boy from a family diner enrolls in an elite cooking academy and battles rivals in intense food duels.",
+   "a": "Food Wars!"
+  }
+ ],
+ "hard": [
+  {
+   "q": "A brilliant surgeon saves a boy's life and later hunts the killer the boy became.",
+   "a": "Monster"
+  },
+  {
+   "q": "A wandering healer helps people troubled by mysterious life forms.",
+   "a": "Mushishi"
+  },
+  {
+   "q": "A quiet girl becomes entangled with a worldwide computer network known as the Wired.",
+   "a": "Serial Experiments Lain"
+  },
+  {
+   "q": "A golden-bat-wielding kid attacks stressed-out people in Tokyo.",
+   "a": "Paranoia Agent"
+  },
+  {
+   "q": "A boy with a drill digs underground and ends up piercing the heavens with a giant robot.",
+   "a": "Gurren Lagann"
+  },
+  {
+   "q": "A cyborg agent of Section 9 hunts a hacker called the Puppet Master.",
+   "a": "Ghost in the Shell"
+  },
+  {
+   "q": "In Neo-Tokyo, a biker gang member's friend develops dangerous psychic powers.",
+   "a": "Akira"
+  },
+  {
+   "q": "A doughnut-loving gunman with a huge bounty wanders the desert preaching love and peace.",
+   "a": "Trigun"
+  },
+  {
+   "q": "A vampire servant of a British organization hunts monsters.",
+   "a": "Hellsing"
+  },
+  {
+   "q": "A lone swordsman with a giant blade seeks revenge in a dark fantasy world.",
+   "a": "Berserk"
+  },
+  {
+   "q": "Two women with the same name meet on a train and share an apartment in Tokyo.",
+   "a": "Nana"
+  },
+  {
+   "q": "Space-debris collectors work in near-future orbit and dream of the stars.",
+   "a": "Planetes"
+  },
+  {
+   "q": "A wandering swordsman, a street-style rebel and a waitress search for the samurai who smells of sunflowers.",
+   "a": "Samurai Champloo"
+  },
+  {
+   "q": "A former gang member becomes a teacher for the toughest students.",
+   "a": "Great Teacher Onizuka"
+  },
+  {
+   "q": "Two brothers promise to become astronauts, and the younger one gets there first.",
+   "a": "Space Brothers"
+  },
+  {
+   "q": "A figure skater who lost a big competition gets coached by a Russian star.",
+   "a": "Yuri on Ice"
+  },
+  {
+   "q": "A swordless swordsman and a strategist collect twelve legendary swords.",
+   "a": "Katanagatari"
+  },
+  {
+   "q": "A vast space opera about two brilliant commanders in a war between an empire and an alliance.",
+   "a": "Legend of the Galactic Heroes"
+  },
+  {
+   "q": "Winged beings with halos live in a walled town and care for newcomers who hatch from cocoons.",
+   "a": "Haibane Renmei"
+  }
+ ]
+}
