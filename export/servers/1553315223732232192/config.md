@@ -50,7 +50,7 @@
 - **settings**: *none*
 - **items**:
   - #1
-    - **id**: 21
+    - **id**: 11
     - **guild_id**: `1553315223732232192` → server Amoxy's Nation
     - **role_id**: `1574733232124076093` → @ϟ 〢Lush◞
     - **price**: 150
@@ -58,7 +58,7 @@
     - **emoji**: `<:AN_CuteTeddy:1558444891288379402>`
     - **position**: 1
   - #2
-    - **id**: 22
+    - **id**: 12
     - **guild_id**: `1553315223732232192` → server Amoxy's Nation
     - **role_id**: `1574735925525880903` → @ϟ 〢Super Nova◞
     - **price**: 100
@@ -66,7 +66,7 @@
     - **emoji**: `<:AN_Panda:1558432223613419560>`
     - **position**: 2
   - #3
-    - **id**: 23
+    - **id**: 13
     - **guild_id**: `1553315223732232192` → server Amoxy's Nation
     - **role_id**: `1574735130944209039` → @ϟ 〢Mystic◞
     - **price**: 50
@@ -166,4 +166,4 @@
 
 ### Players
 
-- 6 players stored in `data/kon.db` (full list: `export/players_1553315223732232192.csv`)
+- 10 players stored in `data/kon.db` (full list: `export/players_1553315223732232192.csv`)

@@ -8,7 +8,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
   - **name**: Kon#9118
   - **id**: `1569712165932236842` → Kon#9118
 - **voice_mutes_running**: *(empty)*
-- **slash_sync_hash**: bb87a31cf37003adf71290e3e5587b9ad38591b2
+- **slash_sync_hash**: ba5f540411dbe6cba97962557688a4fe6f59b5c0
 
 ## (server 0 - bot not in it)  (`0`)
 
@@ -120,14 +120,33 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 ### Custom VC (join-to-create + control panel + live VCs)
 
-- **join_to_create_channel**: *none*
-- **interface_channel**: *none*
-- **interface_message_id**: *none*
+- **join_to_create_channel**: `1575604636428140661` → #➕ Join to Create
+- **interface_channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+- **interface_message_id**: `1575604581650665524` → *not found (deleted / bot not in server)*
 - **saved_setup (last known, survives channel deletion)**:
-  - **join_to_create**: *none*
-  - **interface**: *none*
-  - **panel_message_id**: *none*
-- **other_keys**: *(empty)*
+  - **join_to_create**:
+    - **id**: `1575604636428140661` → #➕ Join to Create
+    - **name**: ➕ Join to Create
+    - **type**: voice
+    - **category_id**: `1575604635471708310` → #Custom VCs
+    - **category**: Custom VCs
+    - **position**: 0
+    - **bitrate**: 64000
+    - **user_limit**: 0
+    - **currently_set**: yes
+    - **exists_now**: yes
+  - **interface**:
+    - **id**: `1567856391396261898` → #🍃︲chit_chat⌝
+    - **name**: 🍃︲chit_chat⌝
+    - **type**: text
+    - **category_id**: `1154838258027606118` → #╰ ¤〢Lounge ︲🍃︲
+    - **category**: ╰ ¤〢Lounge ︲🍃︲
+    - **position**: 0
+    - **currently_set**: yes
+    - **exists_now**: yes
+  - **panel_message_id**: `1575604581650665524`
+- **other_keys**:
+  - **panel_ver**: 0b67fbf2e1172476
 - **active_custom_vcs**: *(empty)*
 
 ### Custom VC protection ($customvc config)
@@ -851,7 +870,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 - **join_to_create_channel**: `1488691385266864208` → #🌱︲Dark Custom VC⌝
 - **interface_channel**: `1488691445769568306` → #🌱︲dark_interface⌝
-- **interface_message_id**: `1573473132516212869` → *not found (deleted / bot not in server)*
+- **interface_message_id**: `1575604881543143577` → *not found (deleted / bot not in server)*
 - **saved_setup (last known, survives channel deletion)**:
   - **join_to_create**:
     - **id**: `1488691385266864208` → #🌱︲Dark Custom VC⌝
@@ -873,9 +892,9 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **position**: 47
     - **currently_set**: yes
     - **exists_now**: yes
-  - **panel_message_id**: `1573473132516212869`
+  - **panel_message_id**: `1575604881543143577`
 - **other_keys**:
-  - **panel_ver**: cf4fe9877c500fc2
+  - **panel_ver**: 0b67fbf2e1172476
   - **dashboard**:
     - **aliases**:
       - **aliases**:
@@ -924,11 +943,11 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
       - **vc_need_muted**: no
       - **vc_disabled_channels**: *(empty)*
 - **active_custom_vcs**:
-  - **1575383150224474122** → #subha hogayi kya:
-    - **owner**: `1299765230011678834` → Meow-Gamer (soul_reaperx2)
+  - **1575616530279039078** → #Suhani Subha:
+    - **owner**: `650534818517483526` → Lazy (whysolayz)
     - **banned**: *(empty)*
     - **block_drags**: no
-    - **created**: 1795671015 (2026-11-26 05:30 UTC)
+    - **created**: 1795726655 (2026-11-26 20:57 UTC)
 
 ### Custom VC protection ($customvc config)
 
@@ -937,7 +956,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 ### Self roles ($setsr / $editsr)
 
 - **channel**: `1488691387653161131` → #🌵︲self_roles⌝
-- **message**: `1573004560971079892`
+- **message**: `1575605856186400800`
 - **title**: Self Roles :
 - **title_emoji**: `<:Spider_Diamond:1570309161198293013>`
 - **footer**: Click the buttons below to toggle your roles.
@@ -968,7 +987,7 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
     - **emoji**: `<:Senpai_Information:1517499045117952060>`
     - **line**: Social Feeds
     - **line_emoji**: `<:Senpai_Information:1517499045117952060>`
-- **banner_url**: https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b021f4a&is=6b00cdca&hm=f9c1f6e5da1b90cbbcd44a1a86fa5ef906817bc5152e0a97e47e7fe9ffc66218&
+- **banner_url**: https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b095f8a&is=6b080e0a&hm=624422229740cffbdbe0a1b4b9232095209061d172220a288124f002c8e769b6&
 - **banner_ref**:
   - **c**: `1572381729233051669` → #︲🛠・bot-kon」
   - **m**: `1572382470312296601`
@@ -1058,11 +1077,10 @@ Every channel / role / user ID below is followed by its name (as the bot sees it
 
 ### No-prefix
 
-- **role**: `1569999856171229255` → @︲No Prefix 」
+- **role**: `1488691185374462012` → @ゝStaff Of The Week ⌝
 - **users**:
   - `1418875905085935637` → 🜲 SeNvaTor 'メD | 神 (senvator.)
   - `650534818517483526` → Lazy (whysolayz)
-  - `1473667943186305172` → [T MOD] Viru (thviru)
   - `1502959831772823762` → DeadSoul (.thedeadsoul)
 
 ### Aliases
@@ -1185,7 +1203,7 @@ __select category from the dropdown menu to contact us__`
     - **max_open**: 1
     - **name_format**: ticket-{user}
     - **opener_can_close**: no
-- **counter**: 17
+- **counter**: 18
 - **blacklist**: *(empty)*
 - **tickets**:
   - **1573971039388434442** → #ticket-nontastic_player:
@@ -1245,8 +1263,28 @@ __select category from the dropdown menu to contact us__`
       - `1574458194493972553`
     - **closing**: no
     - **welcome_msg**: `1574458192396689620`
+  - **1575470287686996019** → #ticket-whoknow_008:
+    - **num**: 18
+    - **channel**: `1575470287686996019` → #ticket-whoknow_008
+    - **name**: ticket-whoknow_008
+    - **panel**: main
+    - **category**: df8fd6b2
+    - **category_name**: Currency Loan
+    - **question**: Kindly mention the amount
+    - **opener**: `743845224287043665` → !             Whoknow (whoknow_008)
+    - **created**: 1795691788 (2026-11-26 11:16 UTC)
+    - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+    - **claimed_at**: 1795723420 (2026-11-26 20:03 UTC)
+    - **first_reply_by**: `1547837265961685072` → !! Lynx (lynx._.96)
+    - **first_reply_at**: 1795691862 (2026-11-26 11:17 UTC)
+    - **answer**: 50m
+    - **log**:
+      - `1570531039187566715` → #︲🛠・opened」
+      - `1575470293210759279`
+    - **closing**: no
+    - **welcome_msg**: `1575470291008618628`
 - **stats**:
-  - **opened**: 17
+  - **opened**: 18
   - **closed**: 14
 
 ### Giveaways ($giveaway)
@@ -1804,7 +1842,7 @@ __select category from the dropdown menu to contact us__`
     - `<a:Madira_eating:1570284028093792286>`
   - **743845224287043665** → !             Whoknow (whoknow_008):
     - `<a:Cat:1570284005067198464>`
-  - **1086203964300730449** → [T Mod] Caliber (arionx_774):
+  - **1086203964300730449**:
     - `<a:Oliviaaa_nooooo:1570284034532188210>`
   - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
     - `<:LazyCafeCat:1570284011136491742>`
@@ -2101,9 +2139,9 @@ __select category from the dropdown menu to contact us__`
     - **since**: 1794852924 (2026-11-16 18:15 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 1
-  - **1476239945172648142** → THUNDER (thunderz_gamer1):
-    - **reason**: `||<@1418875905085935637> Tu Randiiiii hai <:Roast:1569605305011015711>||`
-    - **since**: 1795630338 (2026-11-25 18:12 UTC)
+  - **743845224287043665** → !             Whoknow (whoknow_008):
+    - **reason**: AFK
+    - **since**: 1795751770 (2026-11-27 03:56 UTC)
     - **old_nick**: *none*
     - **mentions_waiting**: 1
 
@@ -2132,7 +2170,7 @@ __select category from the dropdown menu to contact us__`
       - `<a:Madira_eating:1570284028093792286>`
     - **743845224287043665** → !             Whoknow (whoknow_008):
       - `<a:Cat:1570284005067198464>`
-    - **1086203964300730449** → [T Mod] Caliber (arionx_774):
+    - **1086203964300730449**:
       - `<a:Oliviaaa_nooooo:1570284034532188210>`
     - **1299765230011678834** → Meow-Gamer (soul_reaperx2):
       - `<:LazyCafeCat:1570284011136491742>`
@@ -2819,10 +2857,7 @@ __select category from the dropdown menu to contact us__`
       - **s**: 99697
       - **by**: `650534818517483526` → Lazy (whysolayz)
       - **ts**: 1794955515
-- **ludo**:
   - **channel**: `1573551510984462436` → *not found (deleted / bot not in server)*
-- **ludo_games**: *(empty)*
-- **ludo_stats**:
   - **650534818517483526** → Lazy (whysolayz):
     - **games**: 1
     - **wins**: 1
@@ -2832,11 +2867,10 @@ __select category from the dropdown menu to contact us__`
     - **rolls**: 27
     - **pawns_home**: 1
 - **noprefix**:
-  - **role**: `1569999856171229255` → @︲No Prefix 」
+  - **role**: `1488691185374462012` → @ゝStaff Of The Week ⌝
   - **users**:
     - `1418875905085935637` → 🜲 SeNvaTor 'メD | 神 (senvator.)
     - `650534818517483526` → Lazy (whysolayz)
-    - `1473667943186305172` → [T MOD] Viru (thviru)
     - `1502959831772823762` → DeadSoul (.thedeadsoul)
 - **points**:
   - **chat_enabled**: yes
@@ -2971,7 +3005,7 @@ __select category from the dropdown menu to contact us__`
       - **max_open**: 1
       - **name_format**: ticket-{user}
       - **opener_can_close**: no
-  - **counter**: 17
+  - **counter**: 18
   - **blacklist**: *(empty)*
   - **tickets**:
     - **1573971039388434442** → #ticket-nontastic_player:
@@ -3031,8 +3065,28 @@ __select category from the dropdown menu to contact us__`
         - `1574458194493972553`
       - **closing**: no
       - **welcome_msg**: `1574458192396689620`
+    - **1575470287686996019** → #ticket-whoknow_008:
+      - **num**: 18
+      - **channel**: `1575470287686996019` → #ticket-whoknow_008
+      - **name**: ticket-whoknow_008
+      - **panel**: main
+      - **category**: df8fd6b2
+      - **category_name**: Currency Loan
+      - **question**: Kindly mention the amount
+      - **opener**: `743845224287043665` → !             Whoknow (whoknow_008)
+      - **created**: 1795691788 (2026-11-26 11:16 UTC)
+      - **claimed_by**: `650534818517483526` → Lazy (whysolayz)
+      - **claimed_at**: 1795723420 (2026-11-26 20:03 UTC)
+      - **first_reply_by**: `1547837265961685072` → !! Lynx (lynx._.96)
+      - **first_reply_at**: 1795691862 (2026-11-26 11:17 UTC)
+      - **answer**: 50m
+      - **log**:
+        - `1570531039187566715` → #︲🛠・opened」
+        - `1575470293210759279`
+      - **closing**: no
+      - **welcome_msg**: `1575470291008618628`
   - **stats**:
-    - **opened**: 17
+    - **opened**: 18
     - **closed**: 14
 - **tictactoe**:
   - **channel**: `1572117193712209960` → #🎄︲tic_tac_toe⌝
@@ -3135,7 +3189,7 @@ __select category from the dropdown menu to contact us__`
 
 ### Players
 
-- 173 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)
+- 175 players stored in `data/kon.db` (full list: `export/players_1488690726870057165.csv`)
 
 ## OG-Bunny  (testing server)  (`1506692944604823696`)
 
@@ -3587,7 +3641,16 @@ __select category from the dropdown menu to contact us__`
 
 ### Self roles ($setsr / $editsr)
 
-- *not configured*
+- **channel**: *none*
+- **message**: *none*
+- **title**: Self Roles :
+- **title_emoji**: 🍃
+- **footer**: Click the buttons below to toggle your roles.
+- **color**: 16758834
+- **banner**: *none*
+- **banner_url**: *none*
+- **banner_ref**: *none*
+- **roles**: *(empty)*
 
 ### Points ($point config)
 
@@ -3621,16 +3684,17 @@ __select category from the dropdown menu to contact us__`
   - `1385099857781329961` → Alonefox (d3adb9y1113)
   - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
   - `1504536783898021908` → T-Mod | om pandey (om61006)
-  - `1562817118641062029` → Aint replying (growup.buddyy)
+  - `1562817118641062029` → growup.buddyy
   - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
   - `1519731963244580987` → Blaze zzz (btwkartikxz)
   - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
-  - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
+  - `1537639385879683212` → T-MOD | hell Ruler (hellruler08457)
   - `1554280108632842295` → .arnav.gg
   - `1423371939556233247` → 1 April 2027 (whitebeardxz)
   - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
   - `1575313903104172175` → Nebulix (Nebulix#6028)
   - `829689719633215498` → !Lol Vortex (_vortextheog)
+  - `650534818517483526` → Lazy (whysolayz)
 
 ### Aliases
 
@@ -3736,7 +3800,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 - **roles**: *(empty)*
 - **users**:
-  - **1562817118641062029** → Aint replying (growup.buddyy):
+  - **1562817118641062029** → growup.buddyy:
     - `<a:Oliviaaa_nooooo:1570865411195543645>`
   - **829689719633215498** → !Lol Vortex (_vortextheog):
     - `<:nebula_Bored:1561078200325382194>`
@@ -3799,7 +3863,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 - **autoreact**:
   - **roles**: *(empty)*
   - **users**:
-    - **1562817118641062029** → Aint replying (growup.buddyy):
+    - **1562817118641062029** → growup.buddyy:
       - `<a:Oliviaaa_nooooo:1570865411195543645>`
     - **829689719633215498** → !Lol Vortex (_vortextheog):
       - `<:nebula_Bored:1561078200325382194>`
@@ -3821,16 +3885,17 @@ Tell us what is going on in as much detail as you can - a staff member will be w
     - `1385099857781329961` → Alonefox (d3adb9y1113)
     - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
     - `1504536783898021908` → T-Mod | om pandey (om61006)
-    - `1562817118641062029` → Aint replying (growup.buddyy)
+    - `1562817118641062029` → growup.buddyy
     - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
     - `1519731963244580987` → Blaze zzz (btwkartikxz)
     - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
-    - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
+    - `1537639385879683212` → T-MOD | hell Ruler (hellruler08457)
     - `1554280108632842295` → .arnav.gg
     - `1423371939556233247` → 1 April 2027 (whitebeardxz)
     - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
     - `1575313903104172175` → Nebulix (Nebulix#6028)
     - `829689719633215498` → !Lol Vortex (_vortextheog)
+    - `650534818517483526` → Lazy (whysolayz)
 - **tickets**:
   - **panel_channel**: `1568343826425323692` → #⚒️〢staff-chat
   - **panel_message**: `1573917007349289031`
@@ -3920,7 +3985,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 ### Players
 
-- 464 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
+- 465 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
 
 ## Amoxy's Nation  (`1553315223732232192`)
 
@@ -3972,7 +4037,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 - **settings**: *none*
 - **items**:
   - #1
-    - **id**: 21
+    - **id**: 11
     - **guild_id**: `1553315223732232192` → server Amoxy's Nation
     - **role_id**: `1574733232124076093` → @ϟ 〢Lush◞
     - **price**: 150
@@ -3980,7 +4045,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
     - **emoji**: `<:AN_CuteTeddy:1558444891288379402>`
     - **position**: 1
   - #2
-    - **id**: 22
+    - **id**: 12
     - **guild_id**: `1553315223732232192` → server Amoxy's Nation
     - **role_id**: `1574735925525880903` → @ϟ 〢Super Nova◞
     - **price**: 100
@@ -3988,7 +4053,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
     - **emoji**: `<:AN_Panda:1558432223613419560>`
     - **position**: 2
   - #3
-    - **id**: 23
+    - **id**: 13
     - **guild_id**: `1553315223732232192` → server Amoxy's Nation
     - **role_id**: `1574735130944209039` → @ϟ 〢Mystic◞
     - **price**: 50
@@ -4088,7 +4153,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 ### Players
 
-- 6 players stored in `data/kon.db` (full list: `export/players_1553315223732232192.csv`)
+- 10 players stored in `data/kon.db` (full list: `export/players_1553315223732232192.csv`)
 
 ## Soul of Nebula  (`1556044009661530124`)
 
@@ -4333,7 +4398,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 ### Players
 
-- 3 players stored in `data/kon.db` (full list: `export/players_1561595482604703805.csv`)
+- 4 players stored in `data/kon.db` (full list: `export/players_1561595482604703805.csv`)
 
 ## Dr4k3n Hangout  (`1562735431051903090`)
 
@@ -4613,7 +4678,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 ### Players
 
-- 2 players stored in `data/kon.db` (full list: `export/players_1564620144527806506.csv`)
+- 3 players stored in `data/kon.db` (full list: `export/players_1564620144527806506.csv`)
 
 ## SpiderMan  (`1569042863465963680`)
 

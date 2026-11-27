@@ -134,4 +134,4 @@
 
 ### Players
 
-- 3 players stored in `data/kon.db` (full list: `export/players_1561595482604703805.csv`)
+- 4 players stored in `data/kon.db` (full list: `export/players_1561595482604703805.csv`)

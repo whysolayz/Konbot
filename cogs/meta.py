@@ -75,11 +75,11 @@ DESC = {
     "sync": "Sync slash commands", "backup": "Backup status", "backup refresh": "Back up right now",
     "backupload": "Reply to a data file (zip / db / json) with this to merge it (`replace` = backup wins)", "backup config": "Send the readable config + players list",
     "konping": "Heartbeat graph, latency, uptime and status", "koninfo": "Servers, members and bot stats",
-    "aura": "Show your aura (or @member's) - random aura can be negative too", "aura config": "Fix aura, random on/off, switch a person off",
+    "aura": "Show your aura (or @member's) - random aura can be negative too", "aura history": "Show the separate graph of recent aura readings", "aura config": "Fix aura, random on/off, switch a person off",
     "transfer": "Role Transfer Studio - pick who gives and who gets roles with menus (also for people who LEFT: `$transfer <user id|name> @to`), untick roles, Undo, History (Kon admins)",
     "tictactoe": "Tic Tac Toe info", "tictactoe play": "Challenge a member (only in the game channel)",
     "tictactoe admin": "Set the Tic Tac Toe channel (`$tictactoe set` opens a channel menu)",
-    "games": "All games, the channel each one works in and how to start them",
+    "games": "All games, the channel each one works in and how to start them", "guessanime": "Multiplayer anime quiz · 2–10 players · 10 rounds", "guessemoji": "Multiplayer emoji word puzzle · 2–10 players · 10–20 rounds", "simonsays": "Multiplayer colour-sequence memory game · 2–10 players",
     "timetap": "Open TimeTap - reaction game (pick Training / Duo / Trio / Squad)", "timetap play": "Open TimeTap (`$tt`)",
     "timetap channel": "Pick the TimeTap channel from a menu (`$timetap set`)", "timetap stats": "Your reaction stats and records",
     "timetap stop": "Stop the running TimeTap game",
@@ -93,7 +93,7 @@ DESC = {
     "tolink": "Turn an image / GIF / banner into a saved link (attach, reply or paste a link)",
     "links": "List saved image links", "linkget": "Fresh link + preview of a saved image", "linkdel": "Delete a saved image",
     "ei": "List animated emojis with their IDs (`$ei name`, `$ei here`, `$ei <id>`)",
-    "point enable": "Count points in a channel again", "point disable": "Stop counting points in a channel",
+    "point transfer": "Send points from your balance to another member", "point enable": "Count points in a channel again", "point disable": "Stop counting points in a channel",
     "disablecommand": "Turn commands off in channels / categories / the whole server (`$db`, `$db <cmd> everywhere`)",
     "enablecommand": "Turn commands back on (`$eb`, `$eb <cmd> everywhere` removes every rule)",
     "giveaway": "Easy giveaway panel (1 Details · 2 Rules · 3 Rewards · 4 Style · Templates) - or quick start: `$giveaway 1h 1 Discord Nitro` (admins)",
@@ -240,7 +240,7 @@ class HelpView(OwnedView):
             rows.append(f"{I.s(icon)} **{title}**\n-# {names}")
         return discord.Embed(title=f"{I.s('sparkles')} Kon Help", color=BRAND, description=(
             "\n".join(rows) + f"\n\n-# Pick a category below, or press **Next** to go through all of them\n"
-            f"-# Prefix `{PREFIX}` · `<x>` required · `[x]` optional · `{PREFIX}help <command>` for details"))
+            f"-# `<x>` required · `[x]` optional · `{PREFIX}help <command>` for details"))
 
     def page(self) -> discord.Embed:
         item = self.flat[self.pos]
@@ -360,13 +360,13 @@ class Meta(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.started = time.time()
-        self.beats: deque = deque(maxlen=24)          # gateway latency every 30 s = the last 12 minutes (for $pulse)
+        self.beats: deque = deque(maxlen=72)          # gateway latency every 10 s = the last 12 minutes (for $pulse)
         self.sampler.start()
 
     def cog_unload(self):
         self.sampler.cancel()
 
-    @tasks.loop(seconds=30)
+    @tasks.loop(seconds=10)
     async def sampler(self):
         ms = self.bot.latency * 1000
         if math.isfinite(ms):
@@ -399,7 +399,7 @@ class Meta(commands.Cog):
         graph = ""
         if len(self.beats) >= 3:
             b = list(self.beats)
-            graph = (f"\n\n**Heartbeat** · last {len(b) * 30 // 60 or 1} min\n`{flair.spark(b, 0, max(200, max(b)))}`\n"
+            graph = (f"\n\n**Heartbeat** · last {max(1, len(b) * 10 // 60)} min\n`{flair.spark(b, min(b), max(b))}`\n"
                      f"-# best `{min(b):.0f}` · average `{sum(b) / len(b):.0f}` · worst `{max(b):.0f}` ms")
         e = discord.Embed(title=f"{I.s('sparkles')} Kon Pulse", color=color, description=(
             f"{I.s('check')} **Status:** `{status}`\n"

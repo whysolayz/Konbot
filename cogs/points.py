@@ -676,10 +676,39 @@ class Points(commands.Cog):
 
     @point.command(name="remove")
     @commands.has_permissions(manage_guild=True)
-    async def point_remove(self, ctx, member: discord.Member, amount: commands.Range[int, 1, 10_000_000]):
-        """$point remove @user <amount>"""
-        new = self.db.add_points(ctx.guild.id, member.id, -amount, f"admin remove by {ctx.author.id}")
-        await ctx.reply(ok(f"Took **{amount}** points from {member.mention}. Now **{new}**."), mention_author=False)
+    async def point_remove(self, ctx, member: str, amount: commands.Range[int, 1, 10_000_000]):
+        """$point remove @user|user_id <amount>"""
+        raw = member.strip().strip("<@!>")
+        target_id = int(raw) if raw.isdigit() else None
+        target = ctx.guild.get_member(target_id) if target_id else ctx.guild.get_member_named(member)
+        if target is not None:
+            target_id = target.id
+            label = target.mention
+        elif target_id is not None and target_id > 0:
+            label = f"`{target_id}`"
+        else:
+            raise commands.BadArgument("Use a member mention, username, or numeric user ID.")
+        new = self.db.add_points(ctx.guild.id, target_id, -amount, f"admin remove by {ctx.author.id}")
+        await ctx.reply(ok(f"Took **{amount}** points from {label}. Now **{new}**."), mention_author=False)
+
+    @point.command(name="transfer", aliases=["send"])
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    @commands.guild_only()
+    async def point_transfer(self, ctx, member: discord.Member, amount: commands.Range[int, 1, 10_000_000]):
+        """$point transfer @user <amount> - send points from your balance."""
+        if member.bot or member.id == ctx.author.id:
+            raise commands.BadArgument("Choose another member, not yourself or a bot.")
+        row = self.db.conn.execute(
+            "SELECT points FROM users WHERE guild_id=? AND user_id=?",
+            (ctx.guild.id, ctx.author.id)
+        ).fetchone()
+        balance = int(row[0]) if row else 0
+        if amount > balance:
+            return await ctx.reply(err(f"You only have **{balance}** points."), mention_author=False)
+        self.db.add_points(ctx.guild.id, ctx.author.id, -amount, f"transfer to {member.id}")
+        new = self.db.add_points(ctx.guild.id, member.id, amount, f"transfer from {ctx.author.id}")
+        await ctx.reply(ok(f"Sent **{amount}** points to {member.mention}. Their balance is now **{new}**."),
+                        mention_author=False)
 
     @point.command(name="set")
     @commands.has_permissions(manage_guild=True)

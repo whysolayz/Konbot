@@ -13,18 +13,18 @@
   {
    "guild_id": 1553315223732232192,
    "user_id": 1517493672931758162,
-   "points": 0,
-   "chat_total": 38,
-   "chat_progress": 38,
+   "points": 1,
+   "chat_total": 53,
+   "chat_progress": 3,
    "vc_total": 0,
    "vc_progress": 0
   },
   {
    "guild_id": 1553315223732232192,
    "user_id": 1510881768792789002,
-   "points": 1,
-   "chat_total": 51,
-   "chat_progress": 1,
+   "points": 2,
+   "chat_total": 130,
+   "chat_progress": 30,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -41,8 +41,8 @@
    "guild_id": 1553315223732232192,
    "user_id": 1226200140763631636,
    "points": 0,
-   "chat_total": 1,
-   "chat_progress": 1,
+   "chat_total": 3,
+   "chat_progress": 3,
    "vc_total": 0,
    "vc_progress": 0
   },
@@ -50,8 +50,44 @@
    "guild_id": 1553315223732232192,
    "user_id": 1440053765880418456,
    "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1553315223732232192,
+   "user_id": 1418933578007580683,
+   "points": 1,
+   "chat_total": 83,
+   "chat_progress": 33,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1553315223732232192,
+   "user_id": 1397969945329143812,
+   "points": 0,
+   "chat_total": 31,
+   "chat_progress": 31,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1553315223732232192,
+   "user_id": 1495612261450911865,
+   "points": 0,
    "chat_total": 1,
    "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1553315223732232192,
+   "user_id": 1066014674170167316,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
    "vc_total": 0,
    "vc_progress": 0
   }
@@ -60,7 +96,7 @@
  "badges": [],
  "shop_items": [
   {
-   "id": 21,
+   "id": 11,
    "guild_id": 1553315223732232192,
    "role_id": 1574733232124076093,
    "price": 150,
@@ -69,7 +105,7 @@
    "position": 1
   },
   {
-   "id": 22,
+   "id": 12,
    "guild_id": 1553315223732232192,
    "role_id": 1574735925525880903,
    "price": 100,
@@ -78,7 +114,7 @@
    "position": 2
   },
   {
-   "id": 23,
+   "id": 13,
    "guild_id": 1553315223732232192,
    "role_id": 1574735130944209039,
    "price": 50,
@@ -139,6 +175,30 @@
    "delta": 1,
    "reason": "chat",
    "ts": 1795665755.881231
+  },
+  {
+   "id": 24241,
+   "guild_id": 1553315223732232192,
+   "user_id": 1418933578007580683,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795691500.0254714
+  },
+  {
+   "id": 24242,
+   "guild_id": 1553315223732232192,
+   "user_id": 1510881768792789002,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795691550.828633
+  },
+  {
+   "id": 24433,
+   "guild_id": 1553315223732232192,
+   "user_id": 1517493672931758162,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795705437.2668624
   }
  ]
 }

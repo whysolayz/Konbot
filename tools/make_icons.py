@@ -736,38 +736,60 @@ def blur(a, r):
 
 
 def render(fn, pal):
+    """Clean 2D gradient icon: crisp silhouette, restrained shading, no glossy/3D effects."""
     B, D, L = Layer(), Layer(), Layer()
     fn(B, D, L)
-    b = np.asarray(B.im, float) / 255
-    d = np.asarray(D.im, float) / 255 * (b > 0.02)
-    l = np.asarray(L.im, float) / 255 * (b > 0.02)
-    rgb, (y0, y1, x0, x1) = gradient(b, pal)
-    k = int(N * 0.011)
-    shift = lambda a, dy, dx: np.roll(np.roll(a, dy, 0), dx, 1)
-    rim_top = blur(np.clip(b - shift(b, k, k), 0, 1), N * 0.004)                     # lit edge, top-left
-    rim_low = blur(np.clip(b - shift(b, -int(k * 1.6), -int(k * 1.6)), 0, 1), N * 0.006)   # shaded edge, bottom-right
-    yy = np.mgrid[0:N, 0:N][0]
-    gloss = np.clip(1 - (yy - y0) / max(1, 0.5 * (y1 - y0)), 0, 1) ** 1.6 * 0.26
-    out = rgb.copy()
-    out = out * (1 - 0.7 * rim_top[..., None]) + np.array([255, 247, 205]) * 0.7 * rim_top[..., None]
-    out = out * (1 - 0.5 * rim_low[..., None]) + np.array(pal[-1], float) * 0.62 * rim_low[..., None]
-    out = out * (1 - gloss[..., None] * b[..., None]) + 255 * gloss[..., None] * b[..., None]
-    dark = np.array(pal[-1], float) * 0.45
-    out = out * (1 - 0.88 * d[..., None]) + dark * 0.88 * d[..., None]
-    out = out * (1 - l[..., None]) + np.array(CREAM, float) * l[..., None]
-    alpha = np.clip(np.maximum(b, np.maximum(d, l)), 0, 1)
-    body = np.dstack([np.clip(out, 0, 255), alpha * 255]).astype(np.uint8)
-    img = Image.fromarray(body, "RGBA")
-    # soft drop shadow under everything
-    sh = blur(shift(alpha, int(N * 0.018), int(N * 0.006)), N * 0.016) * 0.34
-    shadow = Image.fromarray(np.dstack([np.full((N, N), v, np.uint8) for v in (70, 24, 4)] + [(sh * 255).astype(np.uint8)]), "RGBA")
-    shadow.alpha_composite(img)
+    body = np.asarray(B.im, float) / 255
+    detail = np.asarray(D.im, float) / 255 * (body > 0.02)
+    light = np.asarray(L.im, float) / 255 * (body > 0.02)
+    rgb, _ = gradient(body, pal)
+    dark = np.asarray(pal[-1], float) * 0.38
+    rgb = rgb * (1 - detail[..., None] * 0.88) + dark * (detail[..., None] * 0.88)
+    rgb = rgb * (1 - light[..., None] * 0.94) + np.asarray(CREAM, float) * (light[..., None] * 0.94)
+    # Very subtle inner edge gives the shape definition without a bevel or drop shadow.
+    alpha = np.clip(body, 0, 1)
+    rgba = np.dstack([np.clip(rgb, 0, 255), alpha * 255]).astype(np.uint8)
+    img = Image.fromarray(rgba, "RGBA")
     ys, xs = np.nonzero(alpha > 0.04)
     cx, cy = (xs.min() + xs.max()) / 2, (ys.min() + ys.max()) / 2
     side = max(xs.max() - xs.min(), ys.max() - ys.min()) * 128 / 102
     box = (int(cx - side / 2), int(cy - side / 2), int(cx + side / 2), int(cy + side / 2))
-    return shadow.crop(box).resize((128, 128), Image.LANCZOS)
+    return img.crop(box).resize((128, 128), Image.LANCZOS)
 
+
+# Varied semantic palettes keep the icon set colourful without changing silhouettes.
+VIOLET = [(220, 205, 255), (170, 135, 255), (126, 91, 235), (88, 58, 190), (55, 35, 130)]
+CYAN = [(190, 246, 255), (105, 220, 245), (50, 177, 220), (28, 125, 180), (16, 78, 125)]
+PINK = [(255, 210, 232), (255, 145, 195), (238, 88, 155), (190, 48, 120), (125, 25, 82)]
+GOLD = [(255, 239, 170), (255, 205, 90), (244, 157, 45), (205, 105, 24), (135, 62, 12)]
+MINT = [(195, 255, 224), (115, 235, 177), (57, 190, 130), (28, 135, 90), (13, 82, 55)]
+BLUEGRAD = [(195, 220, 255), (125, 175, 255), (75, 125, 235), (45, 80, 185), (22, 45, 120)]
+CORAL = [(255, 218, 195), (255, 163, 125), (240, 112, 82), (190, 65, 48), (120, 35, 30)]
+TEAL = [(190, 250, 240), (105, 220, 205), (45, 175, 165), (25, 120, 125), (12, 70, 85)]
+
+def assign_palettes():
+    groups = [
+        (VIOLET, "sparkles palette diamond skull".split()),
+        (CYAN, "signal stopwatch tap gamepad target".split()),
+        (PINK, "heart heart_broken gift_box gift bell_ring mail".split()),
+        (GOLD, "crown trophy coins wallet star_fill fire bolt".split()),
+        (MINT, "leaf check check_outline shield_check shield_star thumbs_up".split()),
+        (BLUEGRAD, "headset info help home menu folder grid image link".split()),
+        (CORAL, "warning ban cross cross_filled stop".split()),
+        (TEAL, "volume speaker mute mic messages message ticket".split()),
+    ]
+    for pal, names in groups:
+        for name in names:
+            if name in ICONS:
+                fn, _ = ICONS[name]
+                ICONS[name] = (fn, pal)
+    # Give every remaining icon a different place in the colour rotation too.
+    rotation = [VIOLET, CYAN, PINK, GOLD, MINT, BLUEGRAD, CORAL, TEAL]
+    for index, (name, (fn, pal)) in enumerate(list(ICONS.items())):
+        if pal is KON:
+            ICONS[name] = (fn, rotation[index % len(rotation)])
+
+assign_palettes()
 
 # ---------- control panel image (voice panel) ----------
 PANEL = [("lock", "LOCK", "Lock VC"), ("unlock", "UNLOCK", "Unlock VC"), ("hide", "HIDE", "Hide VC"),

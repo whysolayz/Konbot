@@ -4,7 +4,7 @@
     "name": "The Blaze Nebula | Drag GW",
     "bot_is_in_server": true,
     "owner_id": 1519731963244580987,
-    "members": 1015
+    "members": 999
   },
   "custom_vc": {
     "join_to_create_channel": null,
@@ -18,7 +18,18 @@
     "other_keys": {},
     "active_custom_vcs": {}
   },
-  "self_roles": null,
+  "self_roles": {
+    "channel": null,
+    "message": null,
+    "title": "Self Roles :",
+    "title_emoji": "🍃",
+    "footer": "Click the buttons below to toggle your roles.",
+    "color": 16758834,
+    "banner": null,
+    "banner_url": null,
+    "banner_ref": null,
+    "roles": []
+  },
   "points_settings": null,
   "shop": {
     "settings": null,
@@ -58,7 +69,8 @@
       1423371939556233247,
       1543476735469691002,
       1575313903104172175,
-      829689719633215498
+      829689719633215498,
+      650534818517483526
     ]
   },
   "aliases": null,
@@ -222,7 +234,8 @@
         1423371939556233247,
         1543476735469691002,
         1575313903104172175,
-        829689719633215498
+        829689719633215498,
+        650534818517483526
       ]
     },
     "tickets": {
@@ -289,5 +302,5 @@
       }
     }
   },
-  "players_in_database": 464
+  "players_in_database": 465
 }

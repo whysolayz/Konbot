@@ -8,9 +8,29 @@
   },
   "1154838258027606117": {
     "server_name": "Lazy",
-    "join_to_create": null,
-    "interface": null,
-    "panel_message_id": null,
+    "join_to_create": {
+      "id": 1575604636428140661,
+      "name": "➕ Join to Create",
+      "type": "voice",
+      "category_id": 1575604635471708310,
+      "category": "Custom VCs",
+      "position": 0,
+      "bitrate": 64000,
+      "user_limit": 0,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "interface": {
+      "id": 1567856391396261898,
+      "name": "🍃︲chit_chat⌝",
+      "type": "text",
+      "category_id": 1154838258027606118,
+      "category": "╰ ¤〢Lounge ︲🍃︲",
+      "position": 0,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "panel_message_id": 1575604581650665524,
     "active_custom_vcs": {}
   },
   "1488690726870057165": {
@@ -37,13 +57,13 @@
       "currently_set": true,
       "exists_now": true
     },
-    "panel_message_id": 1573473132516212869,
+    "panel_message_id": 1575604881543143577,
     "active_custom_vcs": {
-      "1575383150224474122": {
-        "owner": 1299765230011678834,
+      "1575616530279039078": {
+        "owner": 650534818517483526,
         "banned": [],
         "block_drags": false,
-        "created": 1795671014.9377165
+        "created": 1795726654.62377
       }
     }
   },

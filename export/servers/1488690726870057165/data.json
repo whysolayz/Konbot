@@ -3,8 +3,8 @@
   "vc_data.guilds": {
     "create": 1488691385266864208,
     "interface": 1488691445769568306,
-    "panel_msg": 1573473132516212869,
-    "panel_ver": "cf4fe9877c500fc2",
+    "panel_msg": 1575604881543143577,
+    "panel_ver": "0b67fbf2e1172476",
     "dashboard": {
       "aliases": {
         "aliases": [
@@ -67,7 +67,7 @@
   },
   "vc_data.selfroles": {
     "channel": 1488691387653161131,
-    "message": 1573004560971079892,
+    "message": 1575605856186400800,
     "title": "Self Roles :",
     "title_emoji": "<:Spider_Diamond:1570309161198293013>",
     "footer": "Click the buttons below to toggle your roles.",
@@ -103,7 +103,7 @@
         "line_emoji": "<:Senpai_Information:1517499045117952060>"
       }
     ],
-    "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b021f4a&is=6b00cdca&hm=f9c1f6e5da1b90cbbcd44a1a86fa5ef906817bc5152e0a97e47e7fe9ffc66218&",
+    "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b095f8a&is=6b080e0a&hm=624422229740cffbdbe0a1b4b9232095209061d172220a288124f002c8e769b6&",
     "banner_ref": {
       "c": 1572381729233051669,
       "m": 1572382470312296601
@@ -111,12 +111,12 @@
     "missing": []
   },
   "vc_data.vcs": {
-    "1575383150224474122": {
+    "1575616530279039078": {
       "guild": 1488690726870057165,
-      "owner": 1299765230011678834,
+      "owner": 650534818517483526,
       "banned": [],
       "block_drags": false,
-      "created": 1795671014.9377165
+      "created": 1795726654.62377
     }
   },
   "vc_data.mutes": {},
@@ -143,7 +143,7 @@
       "category": "╰ ¤〢Custom VC ︲🌱︲",
       "position": 47
     },
-    "panel_message_id": 1573473132516212869
+    "panel_message_id": 1575604881543143577
   },
   "afk_data.afk": {
     "1512822379061969028": {
@@ -167,17 +167,17 @@
         }
       ]
     },
-    "1476239945172648142": {
-      "reason": "||<@1418875905085935637> Tu Randiiiii hai <:Roast:1569605305011015711>||",
-      "since": 1795630338.4861903,
+    "743845224287043665": {
+      "reason": "AFK",
+      "since": 1795751770.4459443,
       "guild_id": 1488690726870057165,
       "old_nick": null,
       "mentions": [
         {
-          "author": "🜲 SeNvaTor 'メD | 神",
-          "channel_id": 1575210864754032640,
-          "url": "https://discord.com/channels/1488690726870057165/1575210864754032640/1575212964003192843",
-          "content": "<:AnshuPareshan:1569605317103460454> kya be kte hue"
+          "author": "Anshu >_<",
+          "channel_id": 1488691402039627776,
+          "url": "https://discord.com/channels/1488690726870057165/1488691402039627776/1575722104043872378",
+          "content": "savh to karwa hota hai"
         }
       ]
     }

@@ -4,7 +4,7 @@
     "name": "Amoxy's Nation",
     "bot_is_in_server": true,
     "owner_id": 1510881768792789002,
-    "members": 82
+    "members": 83
   },
   "custom_vc": {
     "join_to_create_channel": 1575128383052845156,
@@ -46,7 +46,7 @@
     "settings": null,
     "items": [
       {
-        "id": 21,
+        "id": 11,
         "guild_id": 1553315223732232192,
         "role_id": 1574733232124076093,
         "price": 150,
@@ -55,7 +55,7 @@
         "position": 1
       },
       {
-        "id": 22,
+        "id": 12,
         "guild_id": 1553315223732232192,
         "role_id": 1574735925525880903,
         "price": 100,
@@ -64,7 +64,7 @@
         "position": 2
       },
       {
-        "id": 23,
+        "id": 13,
         "guild_id": 1553315223732232192,
         "role_id": 1574735130944209039,
         "price": 50,
@@ -142,5 +142,5 @@
       }
     }
   },
-  "players_in_database": 6
+  "players_in_database": 10
 }

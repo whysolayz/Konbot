@@ -20,7 +20,16 @@
 
 ### Self roles ($setsr / $editsr)
 
-- *not configured*
+- **channel**: *none*
+- **message**: *none*
+- **title**: Self Roles :
+- **title_emoji**: 🍃
+- **footer**: Click the buttons below to toggle your roles.
+- **color**: 16758834
+- **banner**: *none*
+- **banner_url**: *none*
+- **banner_ref**: *none*
+- **roles**: *(empty)*
 
 ### Points ($point config)
 
@@ -54,16 +63,17 @@
   - `1385099857781329961` → Alonefox (d3adb9y1113)
   - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
   - `1504536783898021908` → T-Mod | om pandey (om61006)
-  - `1562817118641062029` → Aint replying (growup.buddyy)
+  - `1562817118641062029` → growup.buddyy
   - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
   - `1519731963244580987` → Blaze zzz (btwkartikxz)
   - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
-  - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
+  - `1537639385879683212` → T-MOD | hell Ruler (hellruler08457)
   - `1554280108632842295` → .arnav.gg
   - `1423371939556233247` → 1 April 2027 (whitebeardxz)
   - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
   - `1575313903104172175` → Nebulix (Nebulix#6028)
   - `829689719633215498` → !Lol Vortex (_vortextheog)
+  - `650534818517483526` → Lazy (whysolayz)
 
 ### Aliases
 
@@ -169,7 +179,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 - **roles**: *(empty)*
 - **users**:
-  - **1562817118641062029** → Aint replying (growup.buddyy):
+  - **1562817118641062029** → growup.buddyy:
     - `<a:Oliviaaa_nooooo:1570865411195543645>`
   - **829689719633215498** → !Lol Vortex (_vortextheog):
     - `<:nebula_Bored:1561078200325382194>`
@@ -232,7 +242,7 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 - **autoreact**:
   - **roles**: *(empty)*
   - **users**:
-    - **1562817118641062029** → Aint replying (growup.buddyy):
+    - **1562817118641062029** → growup.buddyy:
       - `<a:Oliviaaa_nooooo:1570865411195543645>`
     - **829689719633215498** → !Lol Vortex (_vortextheog):
       - `<:nebula_Bored:1561078200325382194>`
@@ -254,16 +264,17 @@ Tell us what is going on in as much detail as you can - a staff member will be w
     - `1385099857781329961` → Alonefox (d3adb9y1113)
     - `1538573910839140575` → Patrick Badmosh (patrickbadmosh)
     - `1504536783898021908` → T-Mod | om pandey (om61006)
-    - `1562817118641062029` → Aint replying (growup.buddyy)
+    - `1562817118641062029` → growup.buddyy
     - `1556600326617042959` → 4LC_DR4K3N (4lc_dr4k3n)
     - `1519731963244580987` → Blaze zzz (btwkartikxz)
     - `1340198074387267634` → MGMT | TacticalShower (.mlx_rinn)
-    - `1537639385879683212` → T-MOD | Ruler (hellruler08457)
+    - `1537639385879683212` → T-MOD | hell Ruler (hellruler08457)
     - `1554280108632842295` → .arnav.gg
     - `1423371939556233247` → 1 April 2027 (whitebeardxz)
     - `1543476735469691002` → MOD | Batak Sir (ryomentheog.)
     - `1575313903104172175` → Nebulix (Nebulix#6028)
     - `829689719633215498` → !Lol Vortex (_vortextheog)
+    - `650534818517483526` → Lazy (whysolayz)
 - **tickets**:
   - **panel_channel**: `1568343826425323692` → #⚒️〢staff-chat
   - **panel_message**: `1573917007349289031`
@@ -353,4 +364,4 @@ Tell us what is going on in as much detail as you can - a staff member will be w
 
 ### Players
 
-- 464 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)
+- 465 players stored in `data/kon.db` (full list: `export/players_1547650379448188999.csv`)

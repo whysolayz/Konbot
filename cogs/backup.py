@@ -435,6 +435,17 @@ class Backup(commands.Cog):
                         "reason": REASONS.get(reason, reason), "status": status, "backup_number": counter}
                 try:
                     self.bot.db.snapshot(snap.name)
+                    # Drop settings left behind by the retired Ludo module from backup snapshots.
+                    # This only cleans the exported snapshot; it does not alter the live server database.
+                    try:
+                        stale = sqlite3.connect(snap.name)
+                        try:
+                            stale.execute("DELETE FROM settings WHERE key IN ('ludo', 'ludo_stats', 'ludo_games')")
+                            stale.commit()
+                        finally:
+                            stale.close()
+                    except sqlite3.Error:
+                        log.warning("could not prune retired Ludo settings from backup snapshot")
                     cfg_export = self.export_config()
                     info = await asyncio.to_thread(build_zip, BASE, snap.name, meta, cfg_export)
                 finally:

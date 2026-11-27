@@ -4,12 +4,12 @@
     "name": "Dark ︲ Spider's Web",
     "bot_is_in_server": true,
     "owner_id": 1400039022855852113,
-    "members": 231
+    "members": 230
   },
   "custom_vc": {
     "join_to_create_channel": 1488691385266864208,
     "interface_channel": 1488691445769568306,
-    "interface_message_id": 1573473132516212869,
+    "interface_message_id": 1575604881543143577,
     "saved_setup (last known, survives channel deletion)": {
       "join_to_create": {
         "id": 1488691385266864208,
@@ -33,10 +33,10 @@
         "currently_set": true,
         "exists_now": true
       },
-      "panel_message_id": 1573473132516212869
+      "panel_message_id": 1575604881543143577
     },
     "other_keys": {
-      "panel_ver": "cf4fe9877c500fc2",
+      "panel_ver": "0b67fbf2e1172476",
       "dashboard": {
         "aliases": {
           "aliases": [
@@ -98,17 +98,17 @@
       }
     },
     "active_custom_vcs": {
-      "1575383150224474122": {
-        "owner": 1299765230011678834,
+      "1575616530279039078": {
+        "owner": 650534818517483526,
         "banned": [],
         "block_drags": false,
-        "created": 1795671014.9377165
+        "created": 1795726654.62377
       }
     }
   },
   "self_roles": {
     "channel": 1488691387653161131,
-    "message": 1573004560971079892,
+    "message": 1575605856186400800,
     "title": "Self Roles :",
     "title_emoji": "<:Spider_Diamond:1570309161198293013>",
     "footer": "Click the buttons below to toggle your roles.",
@@ -144,7 +144,7 @@
         "line_emoji": "<:Senpai_Information:1517499045117952060>"
       }
     ],
-    "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b021f4a&is=6b00cdca&hm=f9c1f6e5da1b90cbbcd44a1a86fa5ef906817bc5152e0a97e47e7fe9ffc66218&",
+    "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b095f8a&is=6b080e0a&hm=624422229740cffbdbe0a1b4b9232095209061d172220a288124f002c8e769b6&",
     "banner_ref": {
       "c": 1572381729233051669,
       "m": 1572382470312296601
@@ -242,11 +242,10 @@
     ]
   },
   "no_prefix": {
-    "role": 1569999856171229255,
+    "role": 1488691185374462012,
     "users": [
       1418875905085935637,
       650534818517483526,
-      1473667943186305172,
       1502959831772823762
     ]
   },
@@ -637,9 +636,9 @@
         "old_nick": null,
         "mentions_waiting": 1
       },
-      "1476239945172648142": {
-        "reason": "||<@1418875905085935637> Tu Randiiiii hai <:Roast:1569605305011015711>||",
-        "since": 1795630338.4861903,
+      "743845224287043665": {
+        "reason": "AFK",
+        "since": 1795751770.4459443,
         "old_nick": null,
         "mentions_waiting": 1
       }
@@ -721,7 +720,7 @@
         "opener_can_close": false
       }
     },
-    "counter": 17,
+    "counter": 18,
     "blacklist": [],
     "tickets": {
       "1573971039388434442": {
@@ -786,10 +785,32 @@
         ],
         "closing": false,
         "welcome_msg": 1574458192396689620
+      },
+      "1575470287686996019": {
+        "num": 18,
+        "channel": 1575470287686996019,
+        "name": "ticket-whoknow_008",
+        "panel": "main",
+        "category": "df8fd6b2",
+        "category_name": "Currency Loan",
+        "question": "Kindly mention the amount",
+        "opener": 743845224287043665,
+        "created": 1795691787.6163282,
+        "claimed_by": 650534818517483526,
+        "claimed_at": 1795723419.814148,
+        "first_reply_by": 1547837265961685072,
+        "first_reply_at": 1795691861.551,
+        "answer": "50m",
+        "log": [
+          1570531039187566715,
+          1575470293210759279
+        ],
+        "closing": false,
+        "welcome_msg": 1575470291008618628
       }
     },
     "stats": {
-      "opened": 17,
+      "opened": 18,
       "closed": 14
     }
   },
@@ -2304,27 +2325,11 @@
         }
       }
     },
-    "ludo": {
-      "channel": 1573551510984462436
-    },
-    "ludo_games": {},
-    "ludo_stats": {
-      "650534818517483526": {
-        "games": 1,
-        "wins": 1,
-        "kills": 0,
-        "deaths": 0,
-        "sixes": 3,
-        "rolls": 27,
-        "pawns_home": 1
-      }
-    },
     "noprefix": {
-      "role": 1569999856171229255,
+      "role": 1488691185374462012,
       "users": [
         1418875905085935637,
         650534818517483526,
-        1473667943186305172,
         1502959831772823762
       ]
     },
@@ -2465,7 +2470,7 @@
           "opener_can_close": false
         }
       },
-      "counter": 17,
+      "counter": 18,
       "blacklist": [],
       "tickets": {
         "1573971039388434442": {
@@ -2530,10 +2535,32 @@
           ],
           "closing": false,
           "welcome_msg": 1574458192396689620
+        },
+        "1575470287686996019": {
+          "num": 18,
+          "channel": 1575470287686996019,
+          "name": "ticket-whoknow_008",
+          "panel": "main",
+          "category": "df8fd6b2",
+          "category_name": "Currency Loan",
+          "question": "Kindly mention the amount",
+          "opener": 743845224287043665,
+          "created": 1795691787.6163282,
+          "claimed_by": 650534818517483526,
+          "claimed_at": 1795723419.814148,
+          "first_reply_by": 1547837265961685072,
+          "first_reply_at": 1795691861.551,
+          "answer": "50m",
+          "log": [
+            1570531039187566715,
+            1575470293210759279
+          ],
+          "closing": false,
+          "welcome_msg": 1575470291008618628
         }
       },
       "stats": {
-        "opened": 17,
+        "opened": 18,
         "closed": 14
       }
     },
@@ -2653,5 +2680,5 @@
       ]
     }
   },
-  "players_in_database": 173
+  "players_in_database": 175
 }

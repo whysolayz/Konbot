@@ -56,7 +56,7 @@ Gotcha handled: `$clean` for someone WITHOUT Manage Messages does nothing (the o
 ## Unique touches (not copies of anything)
 1. **`$transfer` Studio** (task 1) - menus, leaver menu, tick roles, Undo, History.
 2. **`$pulse`** (was `$konping`) - a **heartbeat graph** `▁▂▃▅▃▂▂▃` of the last 12 minutes (latency sampled every 30 s), best / average / worst, plus API + DB latency and status.
-3. **`$aura` memory** - the animation and look stay as they were, but every random reading is remembered. Under the final bar: `▂▅▇▁▃▆` graph of the last readings, best, a streak ("3 positive in a row") and **new personal best / low**. (Fixed auras are not logged.)
+3. **`$aura history`** - random aura readings are saved and the graph is shown only when requested, keeping `$aura` itself compact. Fixed auras are not logged.
 4. **`$help <word>`** - search by new name, old name, alias or what it does: `$help mute` lists `$hush`, `$hushall`... Only commands YOU can use are shown.
 5. **Did you mean?** - a mistyped command (`$lokc`, `$tranfser`) gets a quiet "Did you mean `$lock`?" (close typos only, once per 15 s per channel, disappears after 10 s, never suggests commands you can't use, never for no-prefix users).
 6. **Clean report** - `$clean` / `$cleanbots` now say what was removed: `31 text · 4 files · 3 links` / `6 bot replies · 4 commands`.

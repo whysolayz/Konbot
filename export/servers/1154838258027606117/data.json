@@ -1,11 +1,36 @@
 {
   "server_id": 1154838258027606117,
-  "vc_data.guilds": {},
+  "vc_data.guilds": {
+    "interface": 1567856391396261898,
+    "panel_msg": 1575604581650665524,
+    "panel_ver": "0b67fbf2e1172476",
+    "create": 1575604636428140661
+  },
   "vc_data.selfroles": {},
   "vc_data.vcs": {},
   "vc_data.mutes": {},
   "vc_data.guild_owners": [],
-  "vc_data.vc_setup": {},
+  "vc_data.vc_setup": {
+    "create": {
+      "id": 1575604636428140661,
+      "name": "➕ Join to Create",
+      "type": "voice",
+      "category_id": 1575604635471708310,
+      "category": "Custom VCs",
+      "position": 0,
+      "bitrate": 64000,
+      "user_limit": 0
+    },
+    "interface": {
+      "id": 1567856391396261898,
+      "name": "🍃︲chit_chat⌝",
+      "type": "text",
+      "category_id": 1154838258027606118,
+      "category": "╰ ¤〢Lounge ︲🍃︲",
+      "position": 0
+    },
+    "panel_message_id": 1575604581650665524
+  },
   "afk_data.afk": {},
   "afk_data.tag": true
 }

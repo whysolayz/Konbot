@@ -8,8 +8,7 @@
 Priority: fixed aura of the MEMBER > fixed aura of their highest ROLE that has one > random aura.
 Random aura = a NEW random amount every single time the command is used: from -100% to +100% (negative aura is possible!).
 The bar always fills from the LEFT, for positive and negative aura alike (a negative one shows the minus sign).
-AURA MEMORY: every random reading is remembered (last 24 per member). Under the bar a small line shows the graph of the last
-readings, the best one, a streak ("3 positive in a row") and personal records - fixed auras are not logged.
+Random readings are saved so you can view them separately with `$aura history [@member]`.
 `$aura config` -> "Negative: OFF" brings back positive-only random aura. Fixed aura can be negative too (-100 .. 100).
 """
 import asyncio
@@ -224,23 +223,6 @@ class Aura(commands.Cog):
         c = self.cfg(member.guild.id)
         return str(member.id) in c["members"] or any(str(r.id) in c["roles"] for r in member.roles)
 
-    def memory(self, gid: int, uid: int, now: int) -> str:
-        """The small line under a random reading: graph of the last readings, best, streak, personal records.
-        Aura is random every time - this is what makes your readings add up to something."""
-        hist = self.bot.db.aura_history(gid, uid, 12)          # newest first, includes `now`
-        if len(hist) < 2:
-            return ""
-        prev = hist[1:]
-        bits = [f"`{flair.spark(list(reversed(hist)), -100, 100)}`", f"best `{max(hist)}%`"]
-        sign, n = flair.streak(hist)
-        if n >= 2 and sign:
-            bits.append(f"{n} {'positive' if sign > 0 else 'negative'} in a row")
-        if len(prev) >= 3 and now > max(prev):
-            bits.append("new personal best")
-        elif len(prev) >= 3 and now < min(prev):
-            bits.append("new personal low")
-        return "\n-# " + " · ".join(bits)
-
     async def pick(self, ctx: commands.Context, text: str) -> discord.Member:
         for m in ctx.message.mentions:
             if isinstance(m, discord.Member) and not m.bot:
@@ -275,16 +257,14 @@ class Aura(commands.Cog):
 
         head = "Negative aura this user holds!" if pct < 0 else "Aura this user holds!"
 
-        note = ""
-        if not self.is_fixed(member):                          # random readings are remembered (see memory())
+        if not self.is_fixed(member):
             try:
                 self.bot.db.log_aura(ctx.guild.id, member.id, pct)
-                note = self.memory(ctx.guild.id, member.id, pct)
             except Exception:
-                note = ""                                      # memory is a bonus: never break $aura for it
+                pass
 
         def line(p: int, last: bool = False) -> str:
-            return f"{head} {member.mention}:\n`[{bar(p)}]` `{p}%`" + (note if last else "")
+            return f"{head} {member.mention}:\\n`[{bar(p)}]` `{p}%`"
         msg = await ctx.reply(line(0, pct == 0), mention_author=False, allowed_mentions=mention)
         if pct == 0:
             return
@@ -294,6 +274,26 @@ class Aura(commands.Cog):
                 await msg.edit(content=line(round(pct * i / TICKS), i == TICKS), allowed_mentions=mention)
             except discord.HTTPException:
                 break
+
+    @aura.command(name="history")
+    @commands.guild_only()
+    async def aura_history(self, ctx: commands.Context, *, text: str = ""):
+        """$aura history [@member] - show the recent aura graph separately."""
+        member = await self.pick(ctx, text)
+        values = self.bot.db.aura_history(ctx.guild.id, member.id, 12)
+        if not values:
+            return await ctx.reply(f"No aura history for {member.mention} yet.", mention_author=False,
+                                   allowed_mentions=discord.AllowedMentions.none())
+        graph = flair.spark(list(reversed(values)), -100, 100)
+        best, low = max(values), min(values)
+        e = discord.Embed(title=f"{I.s('sparkles')} Aura History",
+                          description=f"**{member.display_name}**\\n`{graph}`\\n"
+                                      f"Recent: {' · '.join(f'{v:+d}%' for v in values[:8])}",
+                          color=BRAND)
+        e.add_field(name="Highest", value=f"`{best:+d}%`")
+        e.add_field(name="Lowest", value=f"`{low:+d}%`")
+        e.set_footer(text="Latest readings first · up to 12 saved readings")
+        await ctx.reply(embed=e, mention_author=False, allowed_mentions=discord.AllowedMentions.none())
 
     @aura.command(name="config")
     @commands.has_permissions(manage_guild=True)

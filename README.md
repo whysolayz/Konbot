@@ -265,3 +265,12 @@ reason. Every closed ticket produces a Discord-styled HTML transcript (sent to t
 
 `$db <command> everywhere` turns a command off in ALL channels, `$eb <command> everywhere` removes every rule again.
 `$help` is grouped (General, Fun & Games, Voice, Points & Shop, Community & Tickets, Moderation & Admin); `$help <command>` shows details.
+
+
+## Multiplayer party games
+- `$guessanime [easy|medium|hard]` — 2–10 players, 10 rounds, 15 seconds per question, speed-based points and a live scoreboard.
+- `$guessemoji [easy|medium|hard] [10-20]` — emoji word combinations, hints, host skip, speed points and a final leaderboard.
+- `$simonsays` — 2–10 players, interactive colour buttons, growing sequences and elimination.
+- `$point transfer @member <amount>` — transfer points from your own balance.
+- `$point remove <user_id> <amount>` also accepts a mention or username.
+- `$aura history [@member]` shows the aura graph separately; `$aura` itself stays compact.

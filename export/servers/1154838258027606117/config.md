@@ -4,14 +4,33 @@
 
 ### Custom VC (join-to-create + control panel + live VCs)
 
-- **join_to_create_channel**: *none*
-- **interface_channel**: *none*
-- **interface_message_id**: *none*
+- **join_to_create_channel**: `1575604636428140661` → #➕ Join to Create
+- **interface_channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+- **interface_message_id**: `1575604581650665524` → *not found (deleted / bot not in server)*
 - **saved_setup (last known, survives channel deletion)**:
-  - **join_to_create**: *none*
-  - **interface**: *none*
-  - **panel_message_id**: *none*
-- **other_keys**: *(empty)*
+  - **join_to_create**:
+    - **id**: `1575604636428140661` → #➕ Join to Create
+    - **name**: ➕ Join to Create
+    - **type**: voice
+    - **category_id**: `1575604635471708310` → #Custom VCs
+    - **category**: Custom VCs
+    - **position**: 0
+    - **bitrate**: 64000
+    - **user_limit**: 0
+    - **currently_set**: yes
+    - **exists_now**: yes
+  - **interface**:
+    - **id**: `1567856391396261898` → #🍃︲chit_chat⌝
+    - **name**: 🍃︲chit_chat⌝
+    - **type**: text
+    - **category_id**: `1154838258027606118` → #╰ ¤〢Lounge ︲🍃︲
+    - **category**: ╰ ¤〢Lounge ︲🍃︲
+    - **position**: 0
+    - **currently_set**: yes
+    - **exists_now**: yes
+  - **panel_message_id**: `1575604581650665524`
+- **other_keys**:
+  - **panel_ver**: 0b67fbf2e1172476
 - **active_custom_vcs**: *(empty)*
 
 ### Custom VC protection ($customvc config)
