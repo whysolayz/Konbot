@@ -24,6 +24,8 @@ NEW_NAMES = {
     "disablecommand": "cmdoff", "enablecommand": "cmdon",
     "purgebot": "cleanbots", "purgemember": "clean",
     "setsr": "rolepanel", "editsr": "editpanel", "point": "points",
+    # ---- everyday
+    "profile": "me", "leaderboard": "rank", "transfer": "move", "linkdel": "unlink", "ar": "react",
 }
 SHOWN = {v: k for k, v in NEW_NAMES.items()}
 

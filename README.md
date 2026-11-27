@@ -63,6 +63,11 @@ Every command got a friendlier name. **The old names keep working** (they are al
 | `$restore` | `$backupload` |
 | `$cmdoff` | `$disablecommand` |
 | `$cmdon` | `$enablecommand` |
+| `$me` | `$profile` |
+| `$rank` | `$leaderboard` |
+| `$move` | `$transfer` |
+| `$unlink` | `$linkdel` |
+| `$react` | `$ar` |
 | `$cleanbots` | `$purgebot` |
 | `$clean` | `$purgemember` |
 | `$rolepanel` | `$setsr` |

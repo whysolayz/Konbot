@@ -558,7 +558,7 @@ def _(B, D, L):
 
 @icon("stop")
 def _(B, D, L):
-    B.rr(14, 14, 86, 86, 17); L.rr(22, 21, 30, 25, 2)
+    B.rr(14, 14, 86, 86, 17); D.rr(34, 34, 66, 66, 6); L.rr(22, 21, 30, 25, 2)
 
 
 @icon("repeat")
@@ -736,6 +736,8 @@ def blur(a, r):
 
 
 def render(fn, pal):
+    """Kon Glass v2: brighter top-to-bottom gradient, curved specular shine, warm bounce light at the bottom,
+    inner edge light / shade, a thin dark outline (keeps the icon readable on light AND dark Discord themes)."""
     B, D, L = Layer(), Layer(), Layer()
     fn(B, D, L)
     b = np.asarray(B.im, float) / 255
@@ -744,25 +746,37 @@ def render(fn, pal):
     rgb, (y0, y1, x0, x1) = gradient(b, pal)
     k = int(N * 0.011)
     shift = lambda a, dy, dx: np.roll(np.roll(a, dy, 0), dx, 1)
-    rim_top = blur(np.clip(b - shift(b, k, k), 0, 1), N * 0.004)                     # lit edge, top-left
-    rim_low = blur(np.clip(b - shift(b, -int(k * 1.6), -int(k * 1.6)), 0, 1), N * 0.006)   # shaded edge, bottom-right
-    yy = np.mgrid[0:N, 0:N][0]
-    gloss = np.clip(1 - (yy - y0) / max(1, 0.5 * (y1 - y0)), 0, 1) ** 1.6 * 0.26
+    yy, xx = np.mgrid[0:N, 0:N]
+    h = max(1, y1 - y0)
     out = rgb.copy()
-    out = out * (1 - 0.7 * rim_top[..., None]) + np.array([255, 247, 205]) * 0.7 * rim_top[..., None]
-    out = out * (1 - 0.5 * rim_low[..., None]) + np.array(pal[-1], float) * 0.62 * rim_low[..., None]
-    out = out * (1 - gloss[..., None] * b[..., None]) + 255 * gloss[..., None] * b[..., None]
-    dark = np.array(pal[-1], float) * 0.45
-    out = out * (1 - 0.88 * d[..., None]) + dark * 0.88 * d[..., None]
+    # inner light on the top-left edge, inner shade on the bottom-right edge
+    rim_top = blur(np.clip(b - shift(b, k, k), 0, 1), N * 0.004)
+    rim_low = blur(np.clip(b - shift(b, -int(k * 1.7), -int(k * 1.7)), 0, 1), N * 0.007)
+    out = out * (1 - 0.75 * rim_top[..., None]) + np.array([255, 249, 214]) * 0.75 * rim_top[..., None]
+    out = out * (1 - 0.55 * rim_low[..., None]) + np.array(pal[-1], float) * 0.7 * rim_low[..., None]
+    # curved specular shine: a soft ellipse over the upper part of the shape
+    shine = np.clip(1 - ((yy - (y0 + 0.2 * h)) / (0.42 * h)) ** 2 - ((xx - (x0 + 0.38 * (x1 - x0))) / (0.62 * (x1 - x0) + 1)) ** 2, 0, 1) ** 1.3
+    shine = blur(shine, N * 0.01) * 0.30
+    out = out * (1 - (shine * b)[..., None]) + 255 * (shine * b)[..., None]
+    # warm bounce light along the bottom edge
+    bounce = np.clip((yy - (y0 + 0.72 * h)) / (0.28 * h + 1), 0, 1) ** 2 * 0.22
+    out = out * (1 - (bounce * b)[..., None]) + np.array(pal[1], float) * (bounce * b)[..., None] * 1.0 + 0 * out
+    dark = np.array(pal[-1], float) * 0.42
+    out = out * (1 - 0.9 * d[..., None]) + dark * 0.9 * d[..., None]
     out = out * (1 - l[..., None]) + np.array(CREAM, float) * l[..., None]
     alpha = np.clip(np.maximum(b, np.maximum(d, l)), 0, 1)
-    body = np.dstack([np.clip(out, 0, 255), alpha * 255]).astype(np.uint8)
+    # thin outline around the outside of the shape
+    grown = blur(alpha, N * 0.007) * 2.2
+    edge = np.clip(np.clip(grown, 0, 1) - alpha, 0, 1)
+    ocol = np.array(pal[-1], float) * 0.55
+    full_a = np.clip(alpha + edge * 0.85, 0, 1)
+    out = np.where((edge > 0)[..., None] & (alpha < 0.5)[..., None], ocol, out)
+    body = np.dstack([np.clip(out, 0, 255), full_a * 255]).astype(np.uint8)
     img = Image.fromarray(body, "RGBA")
-    # soft drop shadow under everything
-    sh = blur(shift(alpha, int(N * 0.018), int(N * 0.006)), N * 0.016) * 0.34
-    shadow = Image.fromarray(np.dstack([np.full((N, N), v, np.uint8) for v in (70, 24, 4)] + [(sh * 255).astype(np.uint8)]), "RGBA")
+    sh = blur(shift(full_a, int(N * 0.02), int(N * 0.006)), N * 0.018) * 0.38
+    shadow = Image.fromarray(np.dstack([np.full((N, N), v, np.uint8) for v in (60, 20, 3)] + [(sh * 255).astype(np.uint8)]), "RGBA")
     shadow.alpha_composite(img)
-    ys, xs = np.nonzero(alpha > 0.04)
+    ys, xs = np.nonzero(full_a > 0.04)
     cx, cy = (xs.min() + xs.max()) / 2, (ys.min() + ys.max()) / 2
     side = max(xs.max() - xs.min(), ys.max() - ys.min()) * 128 / 102
     box = (int(cx - side / 2), int(cy - side / 2), int(cx + side / 2), int(cy + side / 2))
