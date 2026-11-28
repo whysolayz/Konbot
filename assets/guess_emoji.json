@@ -179,7 +179,7 @@
  ],
  "medium": [
   {
-   "clue": "🥞",
+   "clue": "🍳 + 🎂 + 🥞",
    "a": "pancake",
    "parts": [
     "PAN",
@@ -190,7 +190,7 @@
    ]
   },
   {
-   "clue": "🌈",
+   "clue": "🌧️ + 🏹 + 🌈",
    "a": "rainbow",
    "parts": [
     "RAIN",
@@ -198,7 +198,7 @@
    ]
   },
   {
-   "clue": "🦋",
+   "clue": "🧈 + 🪰 + 🦋",
    "a": "butterfly",
    "parts": [
     "BUTTER",
@@ -206,7 +206,7 @@
    ]
   },
   {
-   "clue": "🌻",
+   "clue": "☀️ + 🌸 + 🌻",
    "a": "sunflower",
    "parts": [
     "SUN",
@@ -214,7 +214,7 @@
    ]
   },
   {
-   "clue": "🍿",
+   "clue": "💥 + 🌽 + 🍿",
    "a": "popcorn",
    "parts": [
     "POP",
@@ -222,7 +222,7 @@
    ]
   },
   {
-   "clue": "🥜",
+   "clue": "🫛 + 🌰 + 🥜",
    "a": "peanut",
    "parts": [
     "PEA",
@@ -230,7 +230,7 @@
    ]
   },
   {
-   "clue": "⛄",
+   "clue": "❄️ + 👨 + ⛄",
    "a": "snowman",
    "parts": [
     "SNOW",
@@ -241,7 +241,7 @@
    ]
   },
   {
-   "clue": "🔦",
+   "clue": "⚡ + 💡 + 🔦",
    "a": "flashlight",
    "parts": [
     "FLASH",
@@ -249,7 +249,7 @@
    ]
   },
   {
-   "clue": "🎆",
+   "clue": "🔥 + 💼 + 🎆",
    "a": "firework",
    "parts": [
     "FIRE",
@@ -260,7 +260,7 @@
    ]
   },
   {
-   "clue": "👓",
+   "clue": "👁️ + 🥛 + 👓",
    "a": "eyeglasses",
    "parts": [
     "EYE",
@@ -272,7 +272,7 @@
    ]
   },
   {
-   "clue": "🌅",
+   "clue": "☀️ + ⬆️ + 🌅",
    "a": "sunrise",
    "parts": [
     "SUN",
@@ -280,7 +280,7 @@
    ]
   },
   {
-   "clue": "🌇",
+   "clue": "☀️ + ⬇️ + 🌇",
    "a": "sunset",
    "parts": [
     "SUN",
@@ -288,7 +288,7 @@
    ]
   },
   {
-   "clue": "✈️",
+   "clue": "💨 + 🛩️ + ✈️",
    "a": "airplane",
    "parts": [
     "AIR",
@@ -300,7 +300,7 @@
    ]
   },
   {
-   "clue": "📰",
+   "clue": "📢 + 📄 + 📰",
    "a": "newspaper",
    "parts": [
     "NEWS",
@@ -308,7 +308,7 @@
    ]
   },
   {
-   "clue": "🐚",
+   "clue": "🌊 + 🥚 + 🐚",
    "a": "seashell",
    "parts": [
     "SEA",
@@ -316,7 +316,7 @@
    ]
   },
   {
-   "clue": "🧁",
+   "clue": "☕ + 🎂 + 🧁",
    "a": "cupcake",
    "parts": [
     "CUP",
@@ -327,7 +327,7 @@
    ]
   },
   {
-   "clue": "⌚",
+   "clue": "✋ + 👀 + ⌚",
    "a": "wristwatch",
    "parts": [
     "WRIST",
@@ -335,7 +335,7 @@
    ]
   },
   {
-   "clue": "🎧",
+   "clue": "🧠 + 📞 + 🎧",
    "a": "headphones",
    "parts": [
     "HEAD",
@@ -346,7 +346,7 @@
    ]
   },
   {
-   "clue": "💡",
+   "clue": "🔦 + 🌷 + 💡",
    "a": "lightbulb",
    "parts": [
     "LIGHT",
@@ -354,7 +354,7 @@
    ]
   },
   {
-   "clue": "🛁",
+   "clue": "🧼 + 🪣 + 🛁",
    "a": "bathtub",
    "parts": [
     "BATH",
@@ -362,7 +362,7 @@
    ]
   },
   {
-   "clue": "🪥",
+   "clue": "🦷 + 🖌️ + 🪥",
    "a": "toothbrush",
    "parts": [
     "TOOTH",
@@ -488,7 +488,7 @@
    ]
   },
   {
-   "clue": "🍔",
+   "clue": "🍖 + 🍔",
    "a": "hamburger",
    "parts": [
     "HAM",
@@ -496,7 +496,7 @@
    ]
   },
   {
-   "clue": "🌭",
+   "clue": "🔥 + 🐶",
    "a": "hotdog",
    "parts": [
     "HOT",

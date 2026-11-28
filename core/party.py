@@ -46,6 +46,21 @@ def speed_points(base: int, elapsed: float, seconds: float, factor: float = 1.0)
     return int(round((base + SPEED_BONUS * left) * factor))
 
 
+def stop_button(game: "Party", row=None) -> discord.ui.Button:
+    """Red Stop button under a running round: host or an admin ends the game at once."""
+    b = discord.ui.Button(label="Stop", emoji=I.e("stop"), style=discord.ButtonStyle.danger, row=row)
+
+    async def press(interaction: discord.Interaction):
+        u = interaction.user
+        if u.id != game.host.id and not getattr(u.guild_permissions, "manage_guild", False) \
+                and not interaction.client.is_owner_fast(u.id, interaction.guild_id):
+            return await interaction.response.send_message(err("Only the host or an admin can stop the game."), ephemeral=True)
+        game.stop()
+        await interaction.response.send_message(f"{I.s('stop')} Stopping {game.title}...", ephemeral=True)
+    b.callback = press
+    return b
+
+
 # ============================================================================ lobby
 class PartyLobby(discord.ui.View):
     def __init__(self, game: "Party"):

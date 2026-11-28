@@ -30,8 +30,9 @@ from discord.ext import commands
 
 from core import ratelimit
 from core.config import BASE, DATA_DIR
+from core.checks import true_owner_only
 from core.icons import I, err
-from core.party import (LEVELS, ROUND_SECONDS, Party, PartyCog, speed_points)
+from core.party import (LEVELS, ROUND_SECONDS, Party, PartyCog, speed_points, stop_button)
 
 log = logging.getLogger("kon.guessanime")
 QUESTIONS_FILE = BASE / "assets" / "guess_anime.json"
@@ -40,6 +41,7 @@ ANILIST = "https://graphql.anilist.co"
 Q_SEARCH = "query($s:String){Page(perPage:8){media(search:$s,type:ANIME,sort:POPULARITY_DESC){id title{romaji english}}}}"
 Q_CHARS = ("query($id:Int){Media(id:$id){characters(sort:FAVOURITES_DESC,perPage:30)"
            "{nodes{name{full} image{large}}}}}")
+JIKAN = "https://api.jikan.moe/v4"                    # backup source (MyAnimeList) when AniList is blocked / down
 # which characters (rank by popularity inside the show) each mode shows: easy = the faces of the show, hard = deep cuts
 TIERS = {"easy": (0, 4), "medium": (3, 12), "hard": (10, 30)}
 LETTERS = "ABCD"
@@ -64,6 +66,7 @@ class AnswerView(discord.ui.View):
             b = discord.ui.Button(label=name[:80], style=discord.ButtonStyle.primary, row=i // 2)
             b.callback = (lambda inter, n=name: self.pick(inter, n))
             self.add_item(b)
+        self.add_item(stop_button(game, row=2))
 
     async def pick(self, interaction: discord.Interaction, name: str):
         g, uid = self.game, interaction.user.id
@@ -120,7 +123,7 @@ class AnimeGame(Party):
         e = discord.Embed(color=GOLDEN, title=f"{I.s(self.icon)} Guess the Anime · Round {self.round_no}/{self.rounds}",
                           description=f"{ask}\n\n{I.s('hourglass')} ends <t:{self.deadline}:R>")
         if q.get("img"):
-            e.set_image(url=q["img"])
+            e.set_thumbnail(url=q["img"])                 # small picture on the side (a full image fills the whole screen)
         e.add_field(name="Answered", value=f"**{len(self.answers)}/{len(self.players)}**", inline=True)
         e.add_field(name="Worth", value=f"**{self.level['base']}** + speed", inline=True)
         e.set_footer(text=f"{self.level['label']} · tap one answer below")
@@ -151,9 +154,14 @@ class AnimeGame(Party):
 
     async def prepare(self, used: set) -> dict:
         """Pick the next anime + one of its characters (runs in the background during the previous round)."""
-        q = dict(self.pick_question(used))
+        pool = self.cog.questions.get(self.difficulty) or []
+        cached = [q for q in pool if q["a"] not in used and q["a"] in self.cog.chars]
+        q = dict(random.choice(cached) if cached else self.pick_question(used))       # a cached anime = instant, no download
         char = await self.cog.character(q["a"], self.difficulty)
-        q["img"], q["who"] = (char["i"], char["n"]) if char else (None, None)    # no image -> the old text clue
+        if not char and not cached:                                                  # one more try with another anime
+            q = dict(self.pick_question(used | {q["a"]}))
+            char = await self.cog.character(q["a"], self.difficulty)
+        q["img"], q["who"] = (char["i"], char["n"]) if char else (None, None)        # still nothing -> the old text clue
         return q
 
     async def play(self):
@@ -228,6 +236,9 @@ class GuessAnime(PartyCog, commands.Cog):
         self.chars: dict = self._load_chars()          # anime title -> [{"n": name, "i": image url}, ...] best known first
         self._session: Optional[aiohttp.ClientSession] = None
         self._gate = asyncio.Semaphore(2)              # at most 2 AniList requests at once
+        self.last_error = "-"
+        self._fails = 0                                # downloads failed in a row (2+ -> text clues for a minute, no waiting)
+        self._down_until = 0.0
         self._pause_until = 0.0                        # AniList said "slow down" -> no requests until then
         self._warm_task = asyncio.create_task(self._warm())
 
@@ -259,18 +270,68 @@ class GuessAnime(PartyCog, commands.Cog):
                 async with self._session.post(ANILIST, json={"query": query, "variables": variables}) as r:
                     if r.status == 429:
                         self._pause_until = time.monotonic() + min(int(r.headers.get("Retry-After", "30") or 30), 90)
+                        self.last_error = "AniList 429 (rate limited)"
                         return None
                     if r.status != 200:
+                        self.last_error = f"AniList HTTP {r.status}"
+                        log.warning("AniList answered HTTP %s", r.status)
                         return None
                     return (await r.json()).get("data")
-            except (aiohttp.ClientError, asyncio.TimeoutError, ValueError):
+            except (aiohttp.ClientError, asyncio.TimeoutError, ValueError) as e:
+                self.last_error = f"AniList: {type(e).__name__} {e}"[:200]
+                log.warning("AniList request failed: %r", e)
                 return None
+
+    async def _get(self, url: str, params: Optional[dict] = None) -> Optional[dict]:
+        if self._session is None or self._session.closed:
+            self._session = aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=8), headers={"User-Agent": "KonBot/1.0"})
+        async with self._gate:
+            try:
+                async with self._session.get(url, params=params) as r:
+                    if r.status != 200:
+                        self.last_error = f"Jikan HTTP {r.status}"
+                        log.warning("Jikan answered HTTP %s", r.status)
+                        return None
+                    return await r.json()
+            except (aiohttp.ClientError, asyncio.TimeoutError, ValueError) as e:
+                self.last_error = f"Jikan: {type(e).__name__} {e}"[:200]
+                log.warning("Jikan request failed: %r", e)
+                return None
+
+    async def _fetch_jikan(self, title: str) -> Optional[list]:
+        data = await self._get(f"{JIKAN}/anime", {"q": title, "limit": 6, "sfw": "true", "order_by": "popularity"})
+        media = (data or {}).get("data") or []
+        if not media:
+            return None
+        want = self._norm(title)
+        hit = next((m for m in media if want in (self._norm(m.get("title")), self._norm(m.get("title_english")))), media[0])
+        data = await self._get(f"{JIKAN}/anime/{hit['mal_id']}/characters")
+        rows = sorted((data or {}).get("data") or [], key=lambda r: -(r.get("favorites") or 0))
+        out = []
+        for r in rows:
+            c = r.get("character") or {}
+            img = (((c.get("images") or {}).get("jpg") or {}).get("image_url")) or ""
+            if c.get("name") and img and "questionmark" not in img:
+                name = c["name"]
+                if "," in name:                                   # "Uzumaki, Naruto" -> "Naruto Uzumaki"
+                    a, b = [x.strip() for x in name.split(",", 1)]
+                    name = f"{b} {a}"
+                out.append({"n": name, "i": img})
+        return out[:30] or None
 
     @staticmethod
     def _norm(t: str) -> str:
         return re.sub(r"[^a-z0-9]", "", (t or "").lower().replace("é", "e"))
 
     async def _fetch(self, title: str) -> Optional[list]:
+        out = await self._fetch_anilist(title)
+        if not out:
+            out = await self._fetch_jikan(title)                 # AniList failed -> try MyAnimeList
+        if not out:
+            log.warning("no character pictures found for %r (%s)", title, self.last_error)
+        return out
+
+    async def _fetch_anilist(self, title: str) -> Optional[list]:
         data = await self._post(Q_SEARCH, {"s": title})
         media = ((data or {}).get("Page") or {}).get("media") or []
         if not media:
@@ -287,12 +348,18 @@ class GuessAnime(PartyCog, commands.Cog):
         """A character picture for `title` that fits the mode - None if AniList can't help (the round then uses a text clue)."""
         chars = self.chars.get(title)
         if chars is None:
+            if time.monotonic() < self._down_until:
+                return None
             try:
-                chars = await asyncio.wait_for(self._fetch(title), 9)
+                chars = await asyncio.wait_for(self._fetch(title), 14)
             except asyncio.TimeoutError:
                 chars = None
             if not chars:
+                self._fails += 1
+                if self._fails >= 2:
+                    self._down_until = time.monotonic() + 60
                 return None
+            self._fails = 0
             self.chars[title] = chars
             await asyncio.to_thread(self._save_chars)
         lo, hi = TIERS.get(level, TIERS["medium"])
@@ -338,6 +405,21 @@ class GuessAnime(PartyCog, commands.Cog):
     @commands.guild_only()
     async def ga_channel(self, ctx: commands.Context):
         await self.pick_channel(ctx)
+
+    @guessanime.command(name="check", description="(Owner) Test the character pictures")
+    @true_owner_only()
+    async def ga_check(self, ctx: commands.Context):
+        t0 = time.monotonic()
+        chars = await self._fetch("Naruto")
+        took = time.monotonic() - t0
+        known = sum(1 for lv in LEVELS for q in self.questions.get(lv, []) if q["a"] in self.chars)
+        total = sum(len(v) for v in self.questions.values())
+        if chars:
+            await ctx.reply(f"{I.s('check')} Pictures work ({took:.1f}s, {len(chars)} characters found for Naruto). Cached anime: **{known}/{total}**.",
+                            mention_author=False)
+        else:
+            await ctx.reply(err(f"No pictures could be downloaded. Last error: `{self.last_error}`\n"
+                                f"The host probably blocks `graphql.anilist.co` and `api.jikan.moe`."), mention_author=False)
 
     @guessanime.command(name="stop", description="Stop the running Guess the Anime game (host or admin)")
     @commands.guild_only()

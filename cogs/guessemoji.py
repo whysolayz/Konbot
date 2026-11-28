@@ -6,7 +6,7 @@ $guessemoji stats [@member]      wins, points and best game
 $guessemoji top                  best players of this server
 $guessemoji stop                 stop the running game (host or admin)
 
-Example: 🌧️ + 🏹 = RAIN + BOW = RAINBOW   ·   🥞 = PAN + CAKE = PANCAKE
+Example: 🌧️ + 🏹 = RAIN + BOW = RAINBOW   ·   🍳 + 🎂 + 🥞 = PAN + CAKE = PANCAKE
 2-10 players · 10 / 15 / 20 rounds (host picks) · 15 seconds per puzzle · Hint and Skip buttons.
 Points: 100 / 150 / 200 (Easy / Medium / Hard) + up to 100 for speed. A hint costs 30% of that round's points.
 Skip needs more than half of the players. After every round the scoreboard is shown.
@@ -27,7 +27,7 @@ from discord.ext import commands
 
 from core.config import BASE
 from core.icons import I, err
-from core.party import LEVELS, ROUND_SECONDS, Party, PartyCog, speed_points
+from core.party import LEVELS, ROUND_SECONDS, Party, PartyCog, speed_points, stop_button
 
 log = logging.getLogger("kon.guessemoji")
 PUZZLES_FILE = BASE / "assets" / "guess_emoji.json"
@@ -59,6 +59,7 @@ class RoundView(discord.ui.View):
         self.skip_btn.callback = self.skip
         self.add_item(self.hint_btn)
         self.add_item(self.skip_btn)
+        self.add_item(stop_button(game))
 
     def skip_label(self) -> str:
         g = self.game
@@ -127,7 +128,7 @@ class EmojiGame(Party):
                 f"• **Skip** needs more than half of the players. The scoreboard is shown after every round {I.s('trophy')}")
 
     def level_info(self, level: str) -> str:
-        return f"{LEVELS[level]['base']} pts per word · {'two clear emojis' if level == 'easy' else 'one emoji, one word' if level == 'medium' else 'tricky pairs'}"
+        return f"{LEVELS[level]['base']} pts per word · {'two clear emojis' if level == 'easy' else 'three emoji clues' if level == 'medium' else 'tricky pairs'}"
 
     def hint_text(self) -> str:
         word = self.puzzle["a"]

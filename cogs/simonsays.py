@@ -22,7 +22,7 @@ from discord import app_commands
 from discord.ext import commands
 
 from core.icons import I, err
-from core.party import Party, PartyCog, rank_mark
+from core.party import Party, PartyCog, rank_mark, stop_button
 
 log = logging.getLogger("kon.simonsays")
 
@@ -34,6 +34,7 @@ COLORS = {
 }
 KEYS = list(COLORS)
 START_LEN = 3
+LIVES = 3
 MAX_LEVEL = 25
 NEUTRAL = 0x2B2D31
 BLUE = 0x5865F2
@@ -51,6 +52,7 @@ class PadView(discord.ui.View):
             b = discord.ui.Button(label=label, emoji=emoji, style=style)
             b.callback = (lambda i, k=key: self.press(i, k))
             self.add_item(b)
+        self.add_item(stop_button(game, row=1))
 
     async def press(self, interaction: discord.Interaction, key: str):
         g, uid = self.game, interaction.user.id
@@ -63,7 +65,7 @@ class PadView(discord.ui.View):
             return await interaction.response.defer()
         if st != "playing":
             return await interaction.response.send_message(
-                f"{I.s('check')} You already finished this level." if st == "done" else f"{I.s('skull')} You're out.", ephemeral=True)
+                f"{I.s('check')} You already finished this level." if st == "done" else f"{I.s('cross')} You missed this level - wait for the next one.", ephemeral=True)
         n = len(g.seq)
         if key == g.seq[g.pos[uid]]:
             g.pos[uid] += 1
@@ -76,7 +78,8 @@ class PadView(discord.ui.View):
         else:
             g.state[uid] = "out"
             g.reason[uid] = "wrong colour"
-            text = f"{I.s('cross')} Wrong colour - you're out."
+            left = g.lives.get(uid, LIVES) - 1
+            text = f"{I.s('cross')} Wrong colour - " + (f"you lose a life ({left} left)." if left > 0 else "that was your last life, you're out.")
         if uid not in g.acks:
             g.acks[uid] = interaction
             await interaction.response.send_message(text, ephemeral=True)
@@ -104,6 +107,7 @@ class SimonGame(Party):
         self.seq: list = []
         self.alive: list = []
         self.out: set = set()
+        self.lives: dict = {}
         self.cleared: dict = {}
         self.last_prog: dict = {}
         self.state: dict = {}
@@ -117,7 +121,7 @@ class SimonGame(Party):
         self.dirty = False
         self.level_done = asyncio.Event()
         self.message: Optional[discord.Message] = None
-        self.level = 0
+        self.stage = 0
         self.new_best: set = set()
 
     def how_to(self) -> str:
@@ -125,9 +129,13 @@ class SimonGame(Party):
                 f"`🔴 → 🔵 → 🟢`\n\n"
                 f"**How to play**\n"
                 f"• Every level adds **one more colour** and gets a little faster.\n"
-                f"• Wrong colour or too slow = **eliminated**.\n"
+                f"• Wrong colour or too slow = you lose a life. You have **{LIVES} lives** - at 0 you're out.\n"
                 f"• Last player standing wins {I.s('trophy')} - if everybody falls in the same level, the one who got furthest wins.\n"
                 f"• Your best level is saved as your **personal high score**.")
+
+    def hearts_of(self, u: int) -> str:
+        n = self.lives.get(u, 0)
+        return I.s("heart") * n + I.s("heart_broken") * (LIVES - n)
 
     @property
     def time_limit(self) -> int:
@@ -135,7 +143,7 @@ class SimonGame(Party):
 
     # ----- embeds -----
     def watch_embed(self, text: str, color: int = BLUE, footer: str = "") -> discord.Embed:
-        e = discord.Embed(color=color, title=f"{I.s(self.icon)} Simon Says · Level {self.level}", description=text)
+        e = discord.Embed(color=color, title=f"{I.s(self.icon)} Simon Says · Level {self.stage}", description=text)
         if footer:
             e.set_footer(text=footer)
         return e
@@ -147,10 +155,10 @@ class SimonGame(Party):
             if st == "done":
                 lines.append(f"{I.s('check')} <@{u}> · done in {self.times.get(u, 0):.1f}s")
             elif st == "out":
-                lines.append(f"{I.s('cross')} <@{u}> · {self.reason.get(u, 'out')}")
+                lines.append(f"{I.s('cross')} <@{u}> · {self.reason.get(u, 'out')} · {self.hearts_of(u)}")
             else:
-                lines.append(f"{I.s('hourglass')} <@{u}> · {self.pos.get(u, 0)}/{len(self.seq)}")
-        e = discord.Embed(color=BLUE, title=f"{I.s(self.icon)} Simon Says · Level {self.level}",
+                lines.append(f"{I.s('hourglass')} <@{u}> · {self.pos.get(u, 0)}/{len(self.seq)} · {self.hearts_of(u)}")
+        e = discord.Embed(color=BLUE, title=f"{I.s(self.icon)} Simon Says · Level {self.stage}",
                           description=f"### Your turn - repeat all **{len(self.seq)}** colours!\n{I.s('hourglass')} ends <t:{self.deadline}:R>")
         e.add_field(name="Players", value="\n".join(lines) or "-", inline=False)
         e.set_footer(text="Press the colours in the order you saw them")
@@ -164,7 +172,7 @@ class SimonGame(Party):
                 pass
 
     async def flash(self):
-        speed = max(0.75, 1.15 - 0.03 * self.level)
+        speed = max(0.75, 1.15 - 0.03 * self.stage)
         await self.message.edit(embed=self.watch_embed("### Watch closely...", footer=f"{len(self.seq)} colours"), view=None)
         await self.pause(1.6)
         for i, key in enumerate(self.seq, 1):
@@ -177,14 +185,15 @@ class SimonGame(Party):
     # ----- the game -----
     async def play(self):
         self.alive = list(self.players)
+        self.lives = {u: LIVES for u in self.players}
         self.cleared = {u: 0 for u in self.players}
         self.last_prog = {u: 0 for u in self.players}
         self.seq = [random.choice(KEYS) for _ in range(START_LEN - 1)]
         self.message = await self.channel.send(content=" ".join(f"<@{u}>" for u in self.players),
                                                embed=self.watch_embed("### Get ready..."))
         await self.pause(2.5)
-        while self.alive and self.level < MAX_LEVEL:
-            self.level += 1
+        while self.alive and self.stage < MAX_LEVEL:
+            self.stage += 1
             self.seq.append(random.choice(KEYS))
             await self.flash()
             # ----- input phase -----
@@ -210,18 +219,23 @@ class SimonGame(Party):
             for u in self.alive:
                 if self.state.get(u) == "done":
                     survivors.append(u)
-                    self.cleared[u] = self.level
+                    self.cleared[u] = self.stage
                     lines.append(f"{I.s('check')} <@{u}> · {self.times.get(u, 0):.1f}s")
                 else:
-                    self.out.add(u)
                     self.last_prog[u] = self.pos.get(u, 0)
                     why = self.reason.get(u) or "ran out of time"
-                    lines.append(f"{I.s('cross')} <@{u}> · {why} ({self.pos.get(u, 0)}/{len(self.seq)})")
+                    self.lives[u] = self.lives.get(u, LIVES) - 1           # a miss costs one of the 3 lives
+                    if self.lives[u] > 0:
+                        survivors.append(u)
+                        lines.append(f"{I.s('cross')} <@{u}> · {why} ({self.pos.get(u, 0)}/{len(self.seq)}) · {self.hearts_of(u)}")
+                    else:
+                        self.out.add(u)                                    # 3 misses = out, the others go on
+                        lines.append(f"{I.s('skull')} <@{u}> · {why} · **out of lives**")
             self.alive = survivors
             e = discord.Embed(color=0x57F287 if survivors else 0xED4245,
-                              title=f"{I.s(self.icon)} Level {self.level} · {show(self.seq)}", description="\n".join(lines))
+                              title=f"{I.s(self.icon)} Level {self.stage} · {show(self.seq)}", description="\n".join(lines))
             e.add_field(name="Still in", value=" ".join(f"<@{u}>" for u in survivors) or "*nobody*", inline=False)
-            e.set_footer(text=("Next level: one more colour..." if len(survivors) > 1 and self.level < MAX_LEVEL
+            e.set_footer(text=("Next level: one more colour..." if len(survivors) > 1 and self.stage < MAX_LEVEL
                                else "We have a result!"))
             try:
                 await self.message.edit(embed=e, view=None, allowed_mentions=discord.AllowedMentions.none())
