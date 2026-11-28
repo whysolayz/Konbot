@@ -1,0 +1,68 @@
+{
+  "afk": {
+    "1512822379061969028": {
+      "reason": "sone ja raha",
+      "since": 1794505670.9405162,
+      "guild_id": 1488690726870057165,
+      "old_nick": null,
+      "mentions": []
+    },
+    "1502235313081290855": {
+      "reason": "gn",
+      "since": 1794852923.8723984,
+      "guild_id": 1488690726870057165,
+      "old_nick": null,
+      "mentions": [
+        {
+          "author": "TheSKY",
+          "channel_id": 1571917188183363594,
+          "url": "https://discord.com/channels/1488690726870057165/1571917188183363594/1571951848339013683",
+          "content": "Gn"
+        }
+      ]
+    },
+    "1039155760749355019": {
+      "reason": "sleep",
+      "since": 1795806486.2818556,
+      "guild_id": 1547650379448188999,
+      "old_nick": "T-Mod | Dark",
+      "mentions": [
+        {
+          "author": "Mexzon | Blaze",
+          "channel_id": 1568343826425323692,
+          "url": "https://discord.com/channels/1547650379448188999/1568343826425323692/1575951447378366647",
+          "content": "."
+        },
+        {
+          "author": "Mexzon | Blaze",
+          "channel_id": 1568343826425323692,
+          "url": "https://discord.com/channels/1547650379448188999/1568343826425323692/1575951547370832063",
+          "content": "."
+        },
+        {
+          "author": "Mexzon | Blaze",
+          "channel_id": 1568343826425323692,
+          "url": "https://discord.com/channels/1547650379448188999/1568343826425323692/1575951620305457323",
+          "content": "."
+        }
+      ]
+    },
+    "1554945105981603880": {
+      "reason": "sleeping zzz",
+      "since": 1795806768.9411836,
+      "guild_id": 1547650379448188999,
+      "old_nick": "Mexzon | Blaze",
+      "mentions": [
+        {
+          "author": "LUFFY_ELY",
+          "channel_id": 1575894837603991672,
+          "url": "https://discord.com/channels/1547650379448188999/1575894837603991672/1576003927432888471",
+          "content": "wsp"
+        }
+      ]
+    }
+  },
+  "tag": {
+    "1488690726870057165": false
+  }
+}

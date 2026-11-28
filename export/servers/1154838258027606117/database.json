@@ -1,0 +1,448 @@
+{
+ "server_id": 1154838258027606117,
+ "users": [
+  {
+   "guild_id": 1154838258027606117,
+   "user_id": 1262248731353546763,
+   "points": 0,
+   "chat_total": 9,
+   "chat_progress": 9,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1154838258027606117,
+   "user_id": 650534818517483526,
+   "points": 500,
+   "chat_total": 37,
+   "chat_progress": 37,
+   "vc_total": 0,
+   "vc_progress": 0
+  }
+ ],
+ "channel_progress": [],
+ "badges": [],
+ "shop_items": [],
+ "purchases": [],
+ "settings": [
+  {
+   "guild_id": 1154838258027606117,
+   "key": "imagehost",
+   "value": {
+    "channel": null,
+    "items": {
+     "img-1": {
+      "c": 1572663742091632681,
+      "m": 1572762221564399626,
+      "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1572762221292032173/img-1.png?ex=6aff8c76&is=6afe3af6&hm=f83907cf51458460f6aec025318bc5b3cadab1ac349c7ba4199ed96d88c46e4e&",
+      "t": "png",
+      "s": 408181,
+      "by": 650534818517483526,
+      "ts": 1795046134
+     }
+    }
+   }
+  },
+  {
+   "guild_id": 1154838258027606117,
+   "key": "giveaway",
+   "value": {
+    "counter": 2,
+    "templates": {
+     "discord nitro": {
+      "name": "Discord Nitro",
+      "saved": 1795484561.1722157,
+      "cfg": {
+       "title": "GIVEAWAY",
+       "prize": "Discord Nitro",
+       "description": "Click the button below to enter!",
+       "winners": 1,
+       "duration": 60,
+       "color": 16758834,
+       "image": {
+        "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574600939871014972/giveaway_image_1154838258027606117.png?ex=6b063ce6&is=6b04eb66&hm=85b6b232c36047b4d3a3d857e50d5742fbd8ccf57ce14744a87754eb69e3e414&",
+        "ref": {
+         "c": 1572663742091632681,
+         "m": 1574600940089254029
+        }
+       },
+       "thumbnail": {
+        "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574600978500550676/giveaway_thumbnail_1154838258027606117.gif?ex=6b063cef&is=6b04eb6f&hm=912f1dea7b40ed2654cdbe493fd1dc07e4ccb672c3a494a24883959263f3d60e&",
+        "ref": {
+         "c": 1572663742091632681,
+         "m": 1574600978706202664
+        }
+       },
+       "channel": 1567856391396261898,
+       "emojis": {},
+       "buttons": {
+        "join": {
+         "label": "Join Giveaway",
+         "emoji": "<:giveaway:1543990569901236294>",
+         "style": "primary",
+         "ended_label": "Giveaway Ended"
+        },
+        "entries": {
+         "emoji": "<a:IND_AzyLsdDance:1573015221843529768>",
+         "show": true
+        },
+        "progress": {
+         "label": "My Progress",
+         "emoji": ":Madira_spy:",
+         "show": true
+        }
+       },
+       "prize_role": {
+        "role": null,
+        "mode": "permanent",
+        "seconds": 604800
+       },
+       "points": 0,
+       "req": {
+        "roles": [],
+        "roles_mode": "any",
+        "messages": {
+         "count": 0,
+         "exclude": []
+        },
+        "invites": 0,
+        "task": {
+         "enabled": true,
+         "phrase": "Happy Birthday",
+         "target": 650534818517483526,
+         "channel": null
+        }
+       }
+      }
+     },
+     "test": {
+      "name": "Test",
+      "saved": 1795488339.9139051,
+      "cfg": {
+       "title": "GIVEAWAY",
+       "prize": "Nitro",
+       "description": "Click the button below to enter!",
+       "winners": 1,
+       "duration": 60,
+       "color": 15105570,
+       "image": null,
+       "thumbnail": {
+        "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574613878686351380/giveaway_thumbnail_1154838258027606117.gif?ex=6b0648f3&is=6b04f773&hm=c33d2fefc16d917624a5516f189a7e3f39504664fef856ad59d11911c7df7d9a&",
+        "ref": {
+         "c": 1572663742091632681,
+         "m": 1574613879194001480
+        }
+       },
+       "channel": 1567856391396261898,
+       "emojis": {
+        "title": "<a:spider_disc:1517500076782649477>",
+        "prize": "<a:giveaway:1571559456037277837>",
+        "winners": "<a:Oliviaaa_nooooo:1570284034532188210>",
+        "host": "<a:Madira_yo:1570284031457890314>",
+        "ends": "<a:fun:1565555437766713424>",
+        "req": "<a:exo_announce:1565559608502657125>",
+        "entries": "<a:Spider_Hero:1517496670697422918>",
+        "done": "<a:Cat:1570284005067198464>",
+        "todo": "<a:Madira_angry:1570284024486690837>",
+        "ended": "<a:emoji_72:1570284058552963092>"
+       },
+       "buttons": {
+        "join": {
+         "label": "Join Giveaway",
+         "emoji": "<a:giveaway:1571559456037277837>",
+         "style": "primary",
+         "ended_label": "Giveaway Ended"
+        },
+        "entries": {
+         "emoji": "👥",
+         "show": true
+        },
+        "progress": {
+         "label": "My Progress",
+         "emoji": "📊",
+         "show": true
+        }
+       },
+       "prize_role": {
+        "role": null,
+        "mode": "permanent",
+        "seconds": 604800
+       },
+       "points": 500,
+       "req": {
+        "roles": [],
+        "roles_mode": "any",
+        "messages": {
+         "count": 0,
+         "exclude": []
+        },
+        "invites": 0,
+        "task": {
+         "enabled": true,
+         "phrase": "happy birthday",
+         "target": 650534818517483526,
+         "channel": null
+        }
+       }
+      }
+     }
+    },
+    "active": {},
+    "ended": {
+     "1574617009440817256": {
+      "n": 2,
+      "gid": 1154838258027606117,
+      "ch": 1567856391396261898,
+      "msg": 1574617009440817256,
+      "host": 650534818517483526,
+      "start": 1795488349.8576345,
+      "end": 1795488409,
+      "cfg": {
+       "title": "GIVEAWAY",
+       "prize": "Nitro",
+       "description": "Click the button below to enter!",
+       "winners": 1,
+       "duration": 60,
+       "color": 15105570,
+       "image": null,
+       "thumbnail": {
+        "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574613878686351380/giveaway_thumbnail_1154838258027606117.gif?ex=6b0648f3&is=6b04f773&hm=c33d2fefc16d917624a5516f189a7e3f39504664fef856ad59d11911c7df7d9a&",
+        "ref": {
+         "c": 1572663742091632681,
+         "m": 1574613879194001480
+        }
+       },
+       "channel": null,
+       "emojis": {
+        "title": "<a:spider_disc:1517500076782649477>",
+        "prize": "<a:giveaway:1571559456037277837>",
+        "winners": "<a:Oliviaaa_nooooo:1570284034532188210>",
+        "host": "<a:Madira_yo:1570284031457890314>",
+        "ends": "<a:fun:1565555437766713424>",
+        "req": "<a:exo_announce:1565559608502657125>",
+        "entries": "<a:Spider_Hero:1517496670697422918>",
+        "done": "<a:Cat:1570284005067198464>",
+        "todo": "<a:Madira_angry:1570284024486690837>",
+        "ended": "<a:emoji_72:1570284058552963092>"
+       },
+       "buttons": {
+        "join": {
+         "label": "Join Giveaway",
+         "emoji": "<a:giveaway:1571559456037277837>",
+         "style": "primary",
+         "ended_label": "Giveaway Ended"
+        },
+        "entries": {
+         "emoji": "👥",
+         "show": true
+        },
+        "progress": {
+         "label": "My Progress",
+         "emoji": "📊",
+         "show": true
+        }
+       },
+       "prize_role": {
+        "role": null,
+        "mode": "permanent",
+        "seconds": 604800
+       },
+       "points": 500,
+       "req": {
+        "roles": [],
+        "roles_mode": "any",
+        "messages": {
+         "count": 0,
+         "exclude": []
+        },
+        "invites": 0,
+        "task": {
+         "enabled": true,
+         "phrase": "happy birthday",
+         "target": 650534818517483526,
+         "channel": null
+        }
+       }
+      },
+      "entries": [
+       650534818517483526
+      ],
+      "counts": {},
+      "inv": {},
+      "task": [
+       650534818517483526
+      ],
+      "status": "ended",
+      "valid": 1,
+      "ended": 1795488409.3156185,
+      "winners": [
+       650534818517483526
+      ]
+     },
+     "1574604563254747231": {
+      "n": 1,
+      "gid": 1154838258027606117,
+      "ch": 1567856391396261898,
+      "msg": 1574604563254747231,
+      "host": 650534818517483526,
+      "start": 1795485382.6392937,
+      "end": 1795488982,
+      "cfg": {
+       "title": "GIVEAWAY",
+       "prize": "Nitro",
+       "description": "Click the button below to enter!",
+       "winners": 1,
+       "duration": 3600,
+       "color": 16758834,
+       "image": null,
+       "thumbnail": null,
+       "channel": null,
+       "emojis": {},
+       "buttons": {
+        "join": {
+         "label": "Join Giveaway",
+         "emoji": "🎉",
+         "style": "primary",
+         "ended_label": "Giveaway Ended"
+        },
+        "entries": {
+         "emoji": "👥",
+         "show": true
+        },
+        "progress": {
+         "label": "My Progress",
+         "emoji": "📊",
+         "show": true
+        }
+       },
+       "prize_role": {
+        "role": null,
+        "mode": "permanent",
+        "seconds": 604800
+       },
+       "points": 0,
+       "req": {
+        "roles": [],
+        "roles_mode": "any",
+        "messages": {
+         "count": 0,
+         "exclude": []
+        },
+        "invites": 0,
+        "task": {
+         "enabled": false,
+         "phrase": "",
+         "target": null,
+         "channel": null
+        }
+       }
+      },
+      "entries": [
+       650534818517483526
+      ],
+      "counts": {},
+      "inv": {},
+      "task": [],
+      "status": "ended",
+      "valid": 1,
+      "ended": 1795488984.3297126,
+      "winners": [
+       650534818517483526
+      ]
+     }
+    },
+    "temp_roles": [],
+    "last": {
+     "title": "GIVEAWAY",
+     "prize": "Nitro",
+     "description": "Click the button below to enter!",
+     "winners": 1,
+     "duration": 60,
+     "color": 15105570,
+     "image": null,
+     "thumbnail": {
+      "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574613878686351380/giveaway_thumbnail_1154838258027606117.gif?ex=6b0648f3&is=6b04f773&hm=c33d2fefc16d917624a5516f189a7e3f39504664fef856ad59d11911c7df7d9a&",
+      "ref": {
+       "c": 1572663742091632681,
+       "m": 1574613879194001480
+      }
+     },
+     "channel": 1567856391396261898,
+     "emojis": {
+      "title": "<a:spider_disc:1517500076782649477>",
+      "prize": "<a:giveaway:1571559456037277837>",
+      "winners": "<a:Oliviaaa_nooooo:1570284034532188210>",
+      "host": "<a:Madira_yo:1570284031457890314>",
+      "ends": "<a:fun:1565555437766713424>",
+      "req": "<a:exo_announce:1565559608502657125>",
+      "entries": "<a:Spider_Hero:1517496670697422918>",
+      "done": "<a:Cat:1570284005067198464>",
+      "todo": "<a:Madira_angry:1570284024486690837>",
+      "ended": "<a:emoji_72:1570284058552963092>"
+     },
+     "buttons": {
+      "join": {
+       "label": "Join Giveaway",
+       "emoji": "<a:giveaway:1571559456037277837>",
+       "style": "primary",
+       "ended_label": "Giveaway Ended"
+      },
+      "entries": {
+       "emoji": "👥",
+       "show": true
+      },
+      "progress": {
+       "label": "My Progress",
+       "emoji": "📊",
+       "show": true
+      }
+     },
+     "prize_role": {
+      "role": null,
+      "mode": "permanent",
+      "seconds": 604800
+     },
+     "points": 500,
+     "req": {
+      "roles": [],
+      "roles_mode": "any",
+      "messages": {
+       "count": 0,
+       "exclude": []
+      },
+      "invites": 0,
+      "task": {
+       "enabled": true,
+       "phrase": "happy birthday",
+       "target": 650534818517483526,
+       "channel": null
+      }
+     }
+    }
+   }
+  },
+  {
+   "guild_id": 1154838258027606117,
+   "key": "noprefix",
+   "value": {
+    "role": null,
+    "users": [
+     650534818517483526
+    ]
+   }
+  }
+ ],
+ "point_log": [
+  {
+   "id": 20506,
+   "guild_id": 1154838258027606117,
+   "user_id": 650534818517483526,
+   "delta": 500,
+   "reason": "giveaway #2",
+   "ts": 1795488409.3155096
+  }
+ ],
+ "left_members": [],
+ "aura_log": [],
+ "transfer_log": []
+}

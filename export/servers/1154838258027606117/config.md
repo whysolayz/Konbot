@@ -1,0 +1,751 @@
+# Kon - server configuration
+
+## Lazy  (`1154838258027606117`)
+
+### Custom VC (join-to-create + control panel + live VCs)
+
+- **join_to_create_channel**: `1575604636428140661` → #➕ Join to Create
+- **interface_channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+- **interface_message_id**: `1575604581650665524` → *not found (deleted / bot not in server)*
+- **saved_setup (last known, survives channel deletion)**:
+  - **join_to_create**:
+    - **id**: `1575604636428140661` → #➕ Join to Create
+    - **name**: ➕ Join to Create
+    - **type**: voice
+    - **category_id**: `1575604635471708310` → #Custom VCs
+    - **category**: Custom VCs
+    - **position**: 0
+    - **bitrate**: 64000
+    - **user_limit**: 0
+    - **currently_set**: yes
+    - **exists_now**: yes
+  - **interface**:
+    - **id**: `1567856391396261898` → #🍃︲chit_chat⌝
+    - **name**: 🍃︲chit_chat⌝
+    - **type**: text
+    - **category_id**: `1154838258027606118` → #╰ ¤〢Lounge ︲🍃︲
+    - **category**: ╰ ¤〢Lounge ︲🍃︲
+    - **position**: 0
+    - **currently_set**: yes
+    - **exists_now**: yes
+  - **panel_message_id**: `1575604581650665524`
+- **other_keys**:
+  - **panel_ver**: 0b67fbf2e1172476
+- **active_custom_vcs**: *(empty)*
+
+### Custom VC protection ($customvc config)
+
+- *not configured*
+
+### Self roles ($setsr / $editsr)
+
+- *not configured*
+
+### Points ($point config)
+
+- *not configured*
+
+### Point shop
+
+- **settings**: *none*
+- **items**: *(empty)*
+
+### No-prefix
+
+- **role**: *none*
+- **users**:
+  - `650534818517483526` → Lazy (whysolayz)
+
+### Aliases
+
+- *not configured*
+
+### Role commands ($setrole)
+
+- *not configured*
+
+### Tickets ($ticket)
+
+- *not configured*
+
+### Giveaways ($giveaway)
+
+- **counter**: 2
+- **templates**:
+  - **discord nitro**:
+    - **name**: Discord Nitro
+    - **saved**: 1795484561 (2026-11-24 01:42 UTC)
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Discord Nitro
+      - **description**: Click the button below to enter!
+      - **winners**: 1
+      - **duration**: 60
+      - **color**: 16758834
+      - **image**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574600939871014972/giveaway_image_1154838258027606117.png?ex=6b063ce6&is=6b04eb66&hm=85b6b232c36047b4d3a3d857e50d5742fbd8ccf57ce14744a87754eb69e3e414&
+        - **ref**:
+          - **c**: `1572663742091632681` → #🌼︲kon_image
+          - **m**: `1574600940089254029`
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574600978500550676/giveaway_thumbnail_1154838258027606117.gif?ex=6b063cef&is=6b04eb6f&hm=912f1dea7b40ed2654cdbe493fd1dc07e4ccb672c3a494a24883959263f3d60e&
+        - **ref**:
+          - **c**: `1572663742091632681` → #🌼︲kon_image
+          - **m**: `1574600978706202664`
+      - **channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+      - **emojis**: *(empty)*
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<:giveaway:1543990569901236294>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: `<a:IND_AzyLsdDance:1573015221843529768>`
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: :Madira_spy:
+          - **show**: yes
+      - **prize_role**:
+        - **role**: *none*
+        - **mode**: permanent
+        - **seconds**: 604800
+      - **points**: 0
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 0
+          - **exclude**: *(empty)*
+        - **invites**: 0
+        - **task**:
+          - **enabled**: yes
+          - **phrase**: Happy Birthday
+          - **target**: `650534818517483526` → Lazy (whysolayz)
+          - **channel**: *none*
+  - **test**:
+    - **name**: Test
+    - **saved**: 1795488340 (2026-11-24 02:45 UTC)
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Nitro
+      - **description**: Click the button below to enter!
+      - **winners**: 1
+      - **duration**: 60
+      - **color**: 15105570
+      - **image**: *none*
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574613878686351380/giveaway_thumbnail_1154838258027606117.gif?ex=6b0648f3&is=6b04f773&hm=c33d2fefc16d917624a5516f189a7e3f39504664fef856ad59d11911c7df7d9a&
+        - **ref**:
+          - **c**: `1572663742091632681` → #🌼︲kon_image
+          - **m**: `1574613879194001480`
+      - **channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+      - **emojis**:
+        - **title**: `<a:spider_disc:1517500076782649477>`
+        - **prize**: `<a:giveaway:1571559456037277837>`
+        - **winners**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+        - **host**: `<a:Madira_yo:1570284031457890314>`
+        - **ends**: `<a:fun:1565555437766713424>`
+        - **req**: `<a:exo_announce:1565559608502657125>`
+        - **entries**: `<a:Spider_Hero:1517496670697422918>`
+        - **done**: `<a:Cat:1570284005067198464>`
+        - **todo**: `<a:Madira_angry:1570284024486690837>`
+        - **ended**: `<a:emoji_72:1570284058552963092>`
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<a:giveaway:1571559456037277837>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: 👥
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: 📊
+          - **show**: yes
+      - **prize_role**:
+        - **role**: *none*
+        - **mode**: permanent
+        - **seconds**: 604800
+      - **points**: 500
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 0
+          - **exclude**: *(empty)*
+        - **invites**: 0
+        - **task**:
+          - **enabled**: yes
+          - **phrase**: happy birthday
+          - **target**: `650534818517483526` → Lazy (whysolayz)
+          - **channel**: *none*
+- **active**: *(empty)*
+- **ended**:
+  - **1574617009440817256**:
+    - **n**: 2
+    - **gid**: `1154838258027606117` → server Lazy
+    - **ch**: `1567856391396261898` → #🍃︲chit_chat⌝
+    - **msg**: `1574617009440817256`
+    - **host**: `650534818517483526` → Lazy (whysolayz)
+    - **start**: 1795488350 (2026-11-24 02:45 UTC)
+    - **end**: 1795488409
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Nitro
+      - **description**: Click the button below to enter!
+      - **winners**: 1
+      - **duration**: 60
+      - **color**: 15105570
+      - **image**: *none*
+      - **thumbnail**:
+        - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574613878686351380/giveaway_thumbnail_1154838258027606117.gif?ex=6b0648f3&is=6b04f773&hm=c33d2fefc16d917624a5516f189a7e3f39504664fef856ad59d11911c7df7d9a&
+        - **ref**:
+          - **c**: `1572663742091632681` → #🌼︲kon_image
+          - **m**: `1574613879194001480`
+      - **channel**: *none*
+      - **emojis**:
+        - **title**: `<a:spider_disc:1517500076782649477>`
+        - **prize**: `<a:giveaway:1571559456037277837>`
+        - **winners**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+        - **host**: `<a:Madira_yo:1570284031457890314>`
+        - **ends**: `<a:fun:1565555437766713424>`
+        - **req**: `<a:exo_announce:1565559608502657125>`
+        - **entries**: `<a:Spider_Hero:1517496670697422918>`
+        - **done**: `<a:Cat:1570284005067198464>`
+        - **todo**: `<a:Madira_angry:1570284024486690837>`
+        - **ended**: `<a:emoji_72:1570284058552963092>`
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: `<a:giveaway:1571559456037277837>`
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: 👥
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: 📊
+          - **show**: yes
+      - **prize_role**:
+        - **role**: *none*
+        - **mode**: permanent
+        - **seconds**: 604800
+      - **points**: 500
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 0
+          - **exclude**: *(empty)*
+        - **invites**: 0
+        - **task**:
+          - **enabled**: yes
+          - **phrase**: happy birthday
+          - **target**: `650534818517483526` → Lazy (whysolayz)
+          - **channel**: *none*
+    - **status**: ended
+    - **valid**: 1
+    - **ended**: 1795488409 (2026-11-24 02:46 UTC)
+    - **winners**:
+      - `650534818517483526` → Lazy (whysolayz)
+    - **entries**: 1
+    - **users_with_counted_messages**: 0
+    - **inviters**: 0
+    - **task_done**: 1
+  - **1574604563254747231**:
+    - **n**: 1
+    - **gid**: `1154838258027606117` → server Lazy
+    - **ch**: `1567856391396261898` → #🍃︲chit_chat⌝
+    - **msg**: `1574604563254747231`
+    - **host**: `650534818517483526` → Lazy (whysolayz)
+    - **start**: 1795485383 (2026-11-24 01:56 UTC)
+    - **end**: 1795488982
+    - **cfg**:
+      - **title**: GIVEAWAY
+      - **prize**: Nitro
+      - **description**: Click the button below to enter!
+      - **winners**: 1
+      - **duration**: 3600
+      - **color**: 16758834
+      - **image**: *none*
+      - **thumbnail**: *none*
+      - **channel**: *none*
+      - **emojis**: *(empty)*
+      - **buttons**:
+        - **join**:
+          - **label**: Join Giveaway
+          - **emoji**: 🎉
+          - **style**: primary
+          - **ended_label**: Giveaway Ended
+        - **entries**:
+          - **emoji**: 👥
+          - **show**: yes
+        - **progress**:
+          - **label**: My Progress
+          - **emoji**: 📊
+          - **show**: yes
+      - **prize_role**:
+        - **role**: *none*
+        - **mode**: permanent
+        - **seconds**: 604800
+      - **points**: 0
+      - **req**:
+        - **roles**: *(empty)*
+        - **roles_mode**: any
+        - **messages**:
+          - **count**: 0
+          - **exclude**: *(empty)*
+        - **invites**: 0
+        - **task**:
+          - **enabled**: no
+          - **phrase**: 
+          - **target**: *none*
+          - **channel**: *none*
+    - **status**: ended
+    - **valid**: 1
+    - **ended**: 1795488984 (2026-11-24 02:56 UTC)
+    - **winners**:
+      - `650534818517483526` → Lazy (whysolayz)
+    - **entries**: 1
+    - **users_with_counted_messages**: 0
+    - **inviters**: 0
+    - **task_done**: 0
+- **temp_roles**: *(empty)*
+- **last**:
+  - **title**: GIVEAWAY
+  - **prize**: Nitro
+  - **description**: Click the button below to enter!
+  - **winners**: 1
+  - **duration**: 60
+  - **color**: 15105570
+  - **image**: *none*
+  - **thumbnail**:
+    - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574613878686351380/giveaway_thumbnail_1154838258027606117.gif?ex=6b0648f3&is=6b04f773&hm=c33d2fefc16d917624a5516f189a7e3f39504664fef856ad59d11911c7df7d9a&
+    - **ref**:
+      - **c**: `1572663742091632681` → #🌼︲kon_image
+      - **m**: `1574613879194001480`
+  - **channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+  - **emojis**:
+    - **title**: `<a:spider_disc:1517500076782649477>`
+    - **prize**: `<a:giveaway:1571559456037277837>`
+    - **winners**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+    - **host**: `<a:Madira_yo:1570284031457890314>`
+    - **ends**: `<a:fun:1565555437766713424>`
+    - **req**: `<a:exo_announce:1565559608502657125>`
+    - **entries**: `<a:Spider_Hero:1517496670697422918>`
+    - **done**: `<a:Cat:1570284005067198464>`
+    - **todo**: `<a:Madira_angry:1570284024486690837>`
+    - **ended**: `<a:emoji_72:1570284058552963092>`
+  - **buttons**:
+    - **join**:
+      - **label**: Join Giveaway
+      - **emoji**: `<a:giveaway:1571559456037277837>`
+      - **style**: primary
+      - **ended_label**: Giveaway Ended
+    - **entries**:
+      - **emoji**: 👥
+      - **show**: yes
+    - **progress**:
+      - **label**: My Progress
+      - **emoji**: 📊
+      - **show**: yes
+  - **prize_role**:
+    - **role**: *none*
+    - **mode**: permanent
+    - **seconds**: 604800
+  - **points**: 500
+  - **req**:
+    - **roles**: *(empty)*
+    - **roles_mode**: any
+    - **messages**:
+      - **count**: 0
+      - **exclude**: *(empty)*
+    - **invites**: 0
+    - **task**:
+      - **enabled**: yes
+      - **phrase**: happy birthday
+      - **target**: `650534818517483526` → Lazy (whysolayz)
+      - **channel**: *none*
+
+### Autoreact
+
+- *not configured*
+
+### Aura ($aura config)
+
+- *not configured*
+
+### Tic Tac Toe channel
+
+- *not configured*
+
+### Game channels
+
+- **tictactoe**: *none*
+- **blacktea**: *none*
+- **timetap**: *none*
+- **handfight**: *none*
+- **guessanime**: *none*
+- **guessemoji**: *none*
+- **simonsays**: *none*
+
+### Game stats
+
+- **timetap**: *none*
+- **handfight**: *none*
+- **guessanime**: *none*
+- **guessemoji**: *none*
+- **simonsays**: *none*
+
+### Saved images ($tolink)
+
+- **channel**: *none*
+- **items**:
+  - **img-1**:
+    - **c**: `1572663742091632681` → #🌼︲kon_image
+    - **m**: `1572762221564399626`
+    - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1572762221292032173/img-1.png?ex=6aff8c76&is=6afe3af6&hm=f83907cf51458460f6aec025318bc5b3cadab1ac349c7ba4199ed96d88c46e4e&
+    - **t**: png
+    - **s**: 408181
+    - **by**: `650534818517483526` → Lazy (whysolayz)
+    - **ts**: 1795046134
+
+### Disabled commands
+
+- *not configured*
+
+### Extra owners ($konextra - this server only)
+
+- *(empty)*
+
+### AFK
+
+- **tag_enabled**: yes
+- **users**: *(empty)*
+
+### EVERYTHING saved for this server (raw settings, nothing left out)
+
+- **giveaway**:
+  - **counter**: 2
+  - **templates**:
+    - **discord nitro**:
+      - **name**: Discord Nitro
+      - **saved**: 1795484561 (2026-11-24 01:42 UTC)
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Discord Nitro
+        - **description**: Click the button below to enter!
+        - **winners**: 1
+        - **duration**: 60
+        - **color**: 16758834
+        - **image**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574600939871014972/giveaway_image_1154838258027606117.png?ex=6b063ce6&is=6b04eb66&hm=85b6b232c36047b4d3a3d857e50d5742fbd8ccf57ce14744a87754eb69e3e414&
+          - **ref**:
+            - **c**: `1572663742091632681` → #🌼︲kon_image
+            - **m**: `1574600940089254029`
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574600978500550676/giveaway_thumbnail_1154838258027606117.gif?ex=6b063cef&is=6b04eb6f&hm=912f1dea7b40ed2654cdbe493fd1dc07e4ccb672c3a494a24883959263f3d60e&
+          - **ref**:
+            - **c**: `1572663742091632681` → #🌼︲kon_image
+            - **m**: `1574600978706202664`
+        - **channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+        - **emojis**: *(empty)*
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<:giveaway:1543990569901236294>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: `<a:IND_AzyLsdDance:1573015221843529768>`
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: :Madira_spy:
+            - **show**: yes
+        - **prize_role**:
+          - **role**: *none*
+          - **mode**: permanent
+          - **seconds**: 604800
+        - **points**: 0
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 0
+            - **exclude**: *(empty)*
+          - **invites**: 0
+          - **task**:
+            - **enabled**: yes
+            - **phrase**: Happy Birthday
+            - **target**: `650534818517483526` → Lazy (whysolayz)
+            - **channel**: *none*
+    - **test**:
+      - **name**: Test
+      - **saved**: 1795488340 (2026-11-24 02:45 UTC)
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Nitro
+        - **description**: Click the button below to enter!
+        - **winners**: 1
+        - **duration**: 60
+        - **color**: 15105570
+        - **image**: *none*
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574613878686351380/giveaway_thumbnail_1154838258027606117.gif?ex=6b0648f3&is=6b04f773&hm=c33d2fefc16d917624a5516f189a7e3f39504664fef856ad59d11911c7df7d9a&
+          - **ref**:
+            - **c**: `1572663742091632681` → #🌼︲kon_image
+            - **m**: `1574613879194001480`
+        - **channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+        - **emojis**:
+          - **title**: `<a:spider_disc:1517500076782649477>`
+          - **prize**: `<a:giveaway:1571559456037277837>`
+          - **winners**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+          - **host**: `<a:Madira_yo:1570284031457890314>`
+          - **ends**: `<a:fun:1565555437766713424>`
+          - **req**: `<a:exo_announce:1565559608502657125>`
+          - **entries**: `<a:Spider_Hero:1517496670697422918>`
+          - **done**: `<a:Cat:1570284005067198464>`
+          - **todo**: `<a:Madira_angry:1570284024486690837>`
+          - **ended**: `<a:emoji_72:1570284058552963092>`
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<a:giveaway:1571559456037277837>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: 👥
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: 📊
+            - **show**: yes
+        - **prize_role**:
+          - **role**: *none*
+          - **mode**: permanent
+          - **seconds**: 604800
+        - **points**: 500
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 0
+            - **exclude**: *(empty)*
+          - **invites**: 0
+          - **task**:
+            - **enabled**: yes
+            - **phrase**: happy birthday
+            - **target**: `650534818517483526` → Lazy (whysolayz)
+            - **channel**: *none*
+  - **active**: *(empty)*
+  - **ended**:
+    - **1574617009440817256**:
+      - **n**: 2
+      - **gid**: `1154838258027606117` → server Lazy
+      - **ch**: `1567856391396261898` → #🍃︲chit_chat⌝
+      - **msg**: `1574617009440817256`
+      - **host**: `650534818517483526` → Lazy (whysolayz)
+      - **start**: 1795488350 (2026-11-24 02:45 UTC)
+      - **end**: 1795488409
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Nitro
+        - **description**: Click the button below to enter!
+        - **winners**: 1
+        - **duration**: 60
+        - **color**: 15105570
+        - **image**: *none*
+        - **thumbnail**:
+          - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574613878686351380/giveaway_thumbnail_1154838258027606117.gif?ex=6b0648f3&is=6b04f773&hm=c33d2fefc16d917624a5516f189a7e3f39504664fef856ad59d11911c7df7d9a&
+          - **ref**:
+            - **c**: `1572663742091632681` → #🌼︲kon_image
+            - **m**: `1574613879194001480`
+        - **channel**: *none*
+        - **emojis**:
+          - **title**: `<a:spider_disc:1517500076782649477>`
+          - **prize**: `<a:giveaway:1571559456037277837>`
+          - **winners**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+          - **host**: `<a:Madira_yo:1570284031457890314>`
+          - **ends**: `<a:fun:1565555437766713424>`
+          - **req**: `<a:exo_announce:1565559608502657125>`
+          - **entries**: `<a:Spider_Hero:1517496670697422918>`
+          - **done**: `<a:Cat:1570284005067198464>`
+          - **todo**: `<a:Madira_angry:1570284024486690837>`
+          - **ended**: `<a:emoji_72:1570284058552963092>`
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: `<a:giveaway:1571559456037277837>`
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: 👥
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: 📊
+            - **show**: yes
+        - **prize_role**:
+          - **role**: *none*
+          - **mode**: permanent
+          - **seconds**: 604800
+        - **points**: 500
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 0
+            - **exclude**: *(empty)*
+          - **invites**: 0
+          - **task**:
+            - **enabled**: yes
+            - **phrase**: happy birthday
+            - **target**: `650534818517483526` → Lazy (whysolayz)
+            - **channel**: *none*
+      - **status**: ended
+      - **valid**: 1
+      - **ended**: 1795488409 (2026-11-24 02:46 UTC)
+      - **winners**:
+        - `650534818517483526` → Lazy (whysolayz)
+      - **entries**: 1
+      - **users_with_counted_messages**: 0
+      - **inviters**: 0
+      - **task_done**: 1
+    - **1574604563254747231**:
+      - **n**: 1
+      - **gid**: `1154838258027606117` → server Lazy
+      - **ch**: `1567856391396261898` → #🍃︲chit_chat⌝
+      - **msg**: `1574604563254747231`
+      - **host**: `650534818517483526` → Lazy (whysolayz)
+      - **start**: 1795485383 (2026-11-24 01:56 UTC)
+      - **end**: 1795488982
+      - **cfg**:
+        - **title**: GIVEAWAY
+        - **prize**: Nitro
+        - **description**: Click the button below to enter!
+        - **winners**: 1
+        - **duration**: 3600
+        - **color**: 16758834
+        - **image**: *none*
+        - **thumbnail**: *none*
+        - **channel**: *none*
+        - **emojis**: *(empty)*
+        - **buttons**:
+          - **join**:
+            - **label**: Join Giveaway
+            - **emoji**: 🎉
+            - **style**: primary
+            - **ended_label**: Giveaway Ended
+          - **entries**:
+            - **emoji**: 👥
+            - **show**: yes
+          - **progress**:
+            - **label**: My Progress
+            - **emoji**: 📊
+            - **show**: yes
+        - **prize_role**:
+          - **role**: *none*
+          - **mode**: permanent
+          - **seconds**: 604800
+        - **points**: 0
+        - **req**:
+          - **roles**: *(empty)*
+          - **roles_mode**: any
+          - **messages**:
+            - **count**: 0
+            - **exclude**: *(empty)*
+          - **invites**: 0
+          - **task**:
+            - **enabled**: no
+            - **phrase**: 
+            - **target**: *none*
+            - **channel**: *none*
+      - **status**: ended
+      - **valid**: 1
+      - **ended**: 1795488984 (2026-11-24 02:56 UTC)
+      - **winners**:
+        - `650534818517483526` → Lazy (whysolayz)
+      - **entries**: 1
+      - **users_with_counted_messages**: 0
+      - **inviters**: 0
+      - **task_done**: 0
+  - **temp_roles**: *(empty)*
+  - **last**:
+    - **title**: GIVEAWAY
+    - **prize**: Nitro
+    - **description**: Click the button below to enter!
+    - **winners**: 1
+    - **duration**: 60
+    - **color**: 15105570
+    - **image**: *none*
+    - **thumbnail**:
+      - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1574613878686351380/giveaway_thumbnail_1154838258027606117.gif?ex=6b0648f3&is=6b04f773&hm=c33d2fefc16d917624a5516f189a7e3f39504664fef856ad59d11911c7df7d9a&
+      - **ref**:
+        - **c**: `1572663742091632681` → #🌼︲kon_image
+        - **m**: `1574613879194001480`
+    - **channel**: `1567856391396261898` → #🍃︲chit_chat⌝
+    - **emojis**:
+      - **title**: `<a:spider_disc:1517500076782649477>`
+      - **prize**: `<a:giveaway:1571559456037277837>`
+      - **winners**: `<a:Oliviaaa_nooooo:1570284034532188210>`
+      - **host**: `<a:Madira_yo:1570284031457890314>`
+      - **ends**: `<a:fun:1565555437766713424>`
+      - **req**: `<a:exo_announce:1565559608502657125>`
+      - **entries**: `<a:Spider_Hero:1517496670697422918>`
+      - **done**: `<a:Cat:1570284005067198464>`
+      - **todo**: `<a:Madira_angry:1570284024486690837>`
+      - **ended**: `<a:emoji_72:1570284058552963092>`
+    - **buttons**:
+      - **join**:
+        - **label**: Join Giveaway
+        - **emoji**: `<a:giveaway:1571559456037277837>`
+        - **style**: primary
+        - **ended_label**: Giveaway Ended
+      - **entries**:
+        - **emoji**: 👥
+        - **show**: yes
+      - **progress**:
+        - **label**: My Progress
+        - **emoji**: 📊
+        - **show**: yes
+    - **prize_role**:
+      - **role**: *none*
+      - **mode**: permanent
+      - **seconds**: 604800
+    - **points**: 500
+    - **req**:
+      - **roles**: *(empty)*
+      - **roles_mode**: any
+      - **messages**:
+        - **count**: 0
+        - **exclude**: *(empty)*
+      - **invites**: 0
+      - **task**:
+        - **enabled**: yes
+        - **phrase**: happy birthday
+        - **target**: `650534818517483526` → Lazy (whysolayz)
+        - **channel**: *none*
+- **imagehost**:
+  - **channel**: *none*
+  - **items**:
+    - **img-1**:
+      - **c**: `1572663742091632681` → #🌼︲kon_image
+      - **m**: `1572762221564399626`
+      - **url**: https://cdn.discordapp.com/attachments/1572663742091632681/1572762221292032173/img-1.png?ex=6aff8c76&is=6afe3af6&hm=f83907cf51458460f6aec025318bc5b3cadab1ac349c7ba4199ed96d88c46e4e&
+      - **t**: png
+      - **s**: 408181
+      - **by**: `650534818517483526` → Lazy (whysolayz)
+      - **ts**: 1795046134
+- **noprefix**:
+  - **role**: *none*
+  - **users**:
+    - `650534818517483526` → Lazy (whysolayz)
+
+### Players
+
+- 2 players stored in `data/kon.db` (full list: `export/players_1154838258027606117.csv`)

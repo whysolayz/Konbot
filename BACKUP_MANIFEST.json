@@ -1,0 +1,1227 @@
+{
+  "bot": "Kon#9118",
+  "created": "2026-11-28T02:15:18.824953+00:00",
+  "reason": "Automatic (every 30s)",
+  "status": "online",
+  "backup_number": 708,
+  "kind": "code",
+  "files": [
+    {
+      "path": ".gitignore",
+      "size": 199,
+      "sha1": "8218be7fa2bc36fb8f46a3dbed7a21c2a90069b3"
+    },
+    {
+      "path": "LICENSE",
+      "size": 1062,
+      "sha1": "36ad5db07bbcf587ebbcd574d0ad4557813230c1"
+    },
+    {
+      "path": "README.md",
+      "size": 24746,
+      "sha1": "65ed2a2d0f57b1af87671b492b6479354faf274b"
+    },
+    {
+      "path": "assets/guess_anime.json",
+      "size": 8699,
+      "sha1": "d9f450db1ec2ce510b0b2b75834a3b64dfcbc56c"
+    },
+    {
+      "path": "assets/guess_emoji.json",
+      "size": 6545,
+      "sha1": "b44bc4257821055603329931cb732de285af1231"
+    },
+    {
+      "path": "assets/icons/ban.png",
+      "size": 15846,
+      "sha1": "0dba02a9e5a15a572eafd7e8a0a3ddecfe6ef8b6"
+    },
+    {
+      "path": "assets/icons/bell_ring.png",
+      "size": 8573,
+      "sha1": "15c6ced08910b68170805fb7bdaee083a370692d"
+    },
+    {
+      "path": "assets/icons/bolt.png",
+      "size": 8041,
+      "sha1": "51533e3a6a09a933fd0644bebc931bf83e45e96e"
+    },
+    {
+      "path": "assets/icons/check.png",
+      "size": 12196,
+      "sha1": "09a10310cf919aac011a4d2bd736205e96ee41bd"
+    },
+    {
+      "path": "assets/icons/check_outline.png",
+      "size": 18598,
+      "sha1": "d9872cee1587adf5b5e6a487c41b70f1ee6f244e"
+    },
+    {
+      "path": "assets/icons/clock.png",
+      "size": 12723,
+      "sha1": "d6605d6269a67a5b14487394d0ffe6bbe3cea82b"
+    },
+    {
+      "path": "assets/icons/coins.png",
+      "size": 15393,
+      "sha1": "061f210a9208edb4babd9aa7993508dc4e3bffb7"
+    },
+    {
+      "path": "assets/icons/cross.png",
+      "size": 12443,
+      "sha1": "c64ef2dd382cc38c068e344e674aa80a922f1fa3"
+    },
+    {
+      "path": "assets/icons/cross_filled.png",
+      "size": 15153,
+      "sha1": "795bb72f6df560d32972653cb081f73270cf073e"
+    },
+    {
+      "path": "assets/icons/crown.png",
+      "size": 11488,
+      "sha1": "c7c91f4202a7fb150f79400dd4b81a42a435a139"
+    },
+    {
+      "path": "assets/icons/diamond.png",
+      "size": 11655,
+      "sha1": "503a24397681e9d6e0e36d083fb0bd048923ad45"
+    },
+    {
+      "path": "assets/icons/edit.png",
+      "size": 8544,
+      "sha1": "57a2607c67c13e616d963e142b8ebcafcf10dded"
+    },
+    {
+      "path": "assets/icons/fast_forward.png",
+      "size": 9399,
+      "sha1": "f8451b5a520d29a0da1416cd8d5135ca1d72e3a7"
+    },
+    {
+      "path": "assets/icons/fire.png",
+      "size": 9745,
+      "sha1": "a98bdc8b2500b5932baedca4f37dcd5b241c031e"
+    },
+    {
+      "path": "assets/icons/folder.png",
+      "size": 6136,
+      "sha1": "1d777105771b75eec99547406d6e0e992d40917a"
+    },
+    {
+      "path": "assets/icons/gamepad.png",
+      "size": 9893,
+      "sha1": "6d7bd192f9b169f239d2ecc46e801e4145cf33c2"
+    },
+    {
+      "path": "assets/icons/gift.png",
+      "size": 9434,
+      "sha1": "f8f64b065bfdd1e10bc0da8d223b3cc6b42934fe"
+    },
+    {
+      "path": "assets/icons/gift_box.png",
+      "size": 11147,
+      "sha1": "d9e003e200bb48f72c45c4c0fa83c55dc65b3bff"
+    },
+    {
+      "path": "assets/icons/grid.png",
+      "size": 12636,
+      "sha1": "a0f17d4249c861e7fd19b8ea39190f8aa87b1fea"
+    },
+    {
+      "path": "assets/icons/headset.png",
+      "size": 12936,
+      "sha1": "6344486eaac42c3d2f7bc3d02611a2ab0c523d51"
+    },
+    {
+      "path": "assets/icons/heart.png",
+      "size": 10446,
+      "sha1": "c6a2fe1c55d21ce3ea7d718aa252c80806af0360"
+    },
+    {
+      "path": "assets/icons/heart_broken.png",
+      "size": 13158,
+      "sha1": "11645bacc2157f51a29283b08469f61f243b344c"
+    },
+    {
+      "path": "assets/icons/help.png",
+      "size": 12618,
+      "sha1": "fb4272fa6b8fb67b4698f58a7e9ee6c2ca7fdddc"
+    },
+    {
+      "path": "assets/icons/hide.png",
+      "size": 13431,
+      "sha1": "eb487697f0d336a22587698a636a8d1d9812b7c1"
+    },
+    {
+      "path": "assets/icons/home.png",
+      "size": 7907,
+      "sha1": "265f8afc986cec1954638324ac4dc488a8f487a2"
+    },
+    {
+      "path": "assets/icons/hourglass.png",
+      "size": 9649,
+      "sha1": "ba28a8af77682c176759cd1b03901c1384b1a7d4"
+    },
+    {
+      "path": "assets/icons/image.png",
+      "size": 8140,
+      "sha1": "7077dd2f90c05ebac3860758c18be47bf1adc547"
+    },
+    {
+      "path": "assets/icons/info.png",
+      "size": 11676,
+      "sha1": "e2b3b1fb0f094a04db00ba3f91352f03afc2c006"
+    },
+    {
+      "path": "assets/icons/leaf.png",
+      "size": 11645,
+      "sha1": "4deee261b6025aeec7fd12afc43fe879c2466165"
+    },
+    {
+      "path": "assets/icons/left.png",
+      "size": 7377,
+      "sha1": "27d4bf1453770603e00dbfabfac8cadfbe337981"
+    },
+    {
+      "path": "assets/icons/light_green.png",
+      "size": 12036,
+      "sha1": "925029dc183b03471e08f577743e756e54754ff6"
+    },
+    {
+      "path": "assets/icons/light_red.png",
+      "size": 12057,
+      "sha1": "4ecf39f1fcef047a1e70b14a9aaaec40e8b9d0e0"
+    },
+    {
+      "path": "assets/icons/link.png",
+      "size": 11319,
+      "sha1": "c2564961be50d9d94d5548dc3c03546ed8b21f72"
+    },
+    {
+      "path": "assets/icons/lock.png",
+      "size": 10400,
+      "sha1": "3e1f5a5036e52aa114868f6ca33490c4a0420313"
+    },
+    {
+      "path": "assets/icons/logout.png",
+      "size": 9693,
+      "sha1": "6ea4f180ae43853c818e55152cf3053c8de8e1ff"
+    },
+    {
+      "path": "assets/icons/mail.png",
+      "size": 7722,
+      "sha1": "668a834cd35a9db07d83689ea77b1cd8f6101c61"
+    },
+    {
+      "path": "assets/icons/member.png",
+      "size": 9803,
+      "sha1": "9c746222c4c36d1dff283a700874e2b604dea71e"
+    },
+    {
+      "path": "assets/icons/menu.png",
+      "size": 9437,
+      "sha1": "2610852dfd016a388d71fa0e38de3549805a632f"
+    },
+    {
+      "path": "assets/icons/message.png",
+      "size": 9301,
+      "sha1": "4ee763adbf855dd534566d995fb2726e383aa783"
+    },
+    {
+      "path": "assets/icons/messages.png",
+      "size": 9851,
+      "sha1": "acd4b36de59fb4e393107eb6fed58a1a756b87aa"
+    },
+    {
+      "path": "assets/icons/mic.png",
+      "size": 11632,
+      "sha1": "fd529635cc09d09852425759242c8ba133723b83"
+    },
+    {
+      "path": "assets/icons/minus.png",
+      "size": 11060,
+      "sha1": "4daeb7c3792be4d5ff7c3525559bd17c9f7ffc19"
+    },
+    {
+      "path": "assets/icons/mute.png",
+      "size": 9215,
+      "sha1": "e82ee6b512c0685f1f6c277682a50d9e048eec29"
+    },
+    {
+      "path": "assets/icons/next.png",
+      "size": 6881,
+      "sha1": "0d86083a3082f5fd7314132eed2def5065afa96f"
+    },
+    {
+      "path": "assets/icons/palette.png",
+      "size": 12935,
+      "sha1": "e1d63396535c91a71fd8402bfab74e2a8b0382fa"
+    },
+    {
+      "path": "assets/icons/paper.png",
+      "size": 7801,
+      "sha1": "eee8e84d30ec6aac97212e629966cab68ea1518c"
+    },
+    {
+      "path": "assets/icons/play.png",
+      "size": 7974,
+      "sha1": "fe8d647ad5b19a2037c2920528ede4e059a05794"
+    },
+    {
+      "path": "assets/icons/plus.png",
+      "size": 11535,
+      "sha1": "72bf7fd3e8e2abc2f8a57dadcd53f6e9d1e5933f"
+    },
+    {
+      "path": "assets/icons/prev.png",
+      "size": 6868,
+      "sha1": "b4926b0ee695ab6bd7db3f36011134b6bad0b111"
+    },
+    {
+      "path": "assets/icons/refresh.png",
+      "size": 15713,
+      "sha1": "e721fdb6ff1a364baea93fa2084f5e017dbbca9b"
+    },
+    {
+      "path": "assets/icons/repeat.png",
+      "size": 8265,
+      "sha1": "79d69dbf20833d9170ce89ec9e2a1e8208fb9888"
+    },
+    {
+      "path": "assets/icons/rewind.png",
+      "size": 9436,
+      "sha1": "09507eeeef5715852c0bba15b1c7e437a32bd9c5"
+    },
+    {
+      "path": "assets/icons/right.png",
+      "size": 7225,
+      "sha1": "d0250ddadb787cacddc4e23aeeadb84c9e600a51"
+    },
+    {
+      "path": "assets/icons/rock.png",
+      "size": 11165,
+      "sha1": "7eab0a0fc98ef8a1527c1f92cd9686b1924f16c3"
+    },
+    {
+      "path": "assets/icons/scissors.png",
+      "size": 14868,
+      "sha1": "c8d720d3543e27867a6692349fd090be97856afa"
+    },
+    {
+      "path": "assets/icons/settings.png",
+      "size": 13236,
+      "sha1": "ce0cfccc3207405bdb44a3913ad2a28586fdf311"
+    },
+    {
+      "path": "assets/icons/shield_check.png",
+      "size": 10173,
+      "sha1": "c165eacc116deb47dc70df3701d223567c0a49b2"
+    },
+    {
+      "path": "assets/icons/shield_star.png",
+      "size": 10271,
+      "sha1": "00c3a41fa02eecca7cbb4f3ed40674121ad4a202"
+    },
+    {
+      "path": "assets/icons/show.png",
+      "size": 8437,
+      "sha1": "d8fbfe669af8d519a7de6e602c0b92440ff5ec74"
+    },
+    {
+      "path": "assets/icons/signal.png",
+      "size": 8681,
+      "sha1": "8607bc8ca09e41a853c171035f178fd209745037"
+    },
+    {
+      "path": "assets/icons/skull.png",
+      "size": 13917,
+      "sha1": "af7d28cee1b8d6b8cc7646145832b872355634a7"
+    },
+    {
+      "path": "assets/icons/sparkles.png",
+      "size": 13051,
+      "sha1": "7b071db8f7393f94764a20642c4a0332adabb50f"
+    },
+    {
+      "path": "assets/icons/speaker.png",
+      "size": 10031,
+      "sha1": "740152e81a5a728b35cee1e22a89490ebe70fc99"
+    },
+    {
+      "path": "assets/icons/star_fill.png",
+      "size": 11288,
+      "sha1": "6665d1971a2c5a59126107569f2512876b3a4469"
+    },
+    {
+      "path": "assets/icons/stop.png",
+      "size": 9202,
+      "sha1": "94c65da8fb15286eaa77900b7b0f28d61efbf899"
+    },
+    {
+      "path": "assets/icons/stopwatch.png",
+      "size": 11505,
+      "sha1": "08e8bb46d51ee12ca0068b7d7e7c834db75ec783"
+    },
+    {
+      "path": "assets/icons/swap.png",
+      "size": 7840,
+      "sha1": "50ab9d672b1e2e15ae81a552ce922b26e41d723f"
+    },
+    {
+      "path": "assets/icons/swap_small.png",
+      "size": 13007,
+      "sha1": "cd13a707a543bcb355dd7bbe1e2ad4366c6ddf97"
+    },
+    {
+      "path": "assets/icons/tag.png",
+      "size": 7493,
+      "sha1": "8533e6428182fb8414391de687e4bb081a34a957"
+    },
+    {
+      "path": "assets/icons/tap.png",
+      "size": 9938,
+      "sha1": "0d418e3f5fed599d1b8668db28815ee5dddbd604"
+    },
+    {
+      "path": "assets/icons/target.png",
+      "size": 18671,
+      "sha1": "c9aa7a93f23dd7ee3c8aa803638ddf51eab745a0"
+    },
+    {
+      "path": "assets/icons/team_blue.png",
+      "size": 10139,
+      "sha1": "f7787ed29cf3931ac13e3eb8cc3d924df50b12fa"
+    },
+    {
+      "path": "assets/icons/team_red.png",
+      "size": 10218,
+      "sha1": "e702fb7c6f29e24f837929e5cdef3af785abc3b8"
+    },
+    {
+      "path": "assets/icons/terminal.png",
+      "size": 7993,
+      "sha1": "97f28bb96a90fc32779d80f115f45acecb16a175"
+    },
+    {
+      "path": "assets/icons/thumbs_up.png",
+      "size": 8329,
+      "sha1": "6f6a2fa506cb415b99b1d99c03fc42d9abfe3ce8"
+    },
+    {
+      "path": "assets/icons/ticket.png",
+      "size": 8619,
+      "sha1": "1d91b84c19686b18cda56eb2484bfea2669a6cf5"
+    },
+    {
+      "path": "assets/icons/tools.png",
+      "size": 14210,
+      "sha1": "c8a6fc83d0f7594f16b6627b587b559b02d873cb"
+    },
+    {
+      "path": "assets/icons/trophy.png",
+      "size": 12766,
+      "sha1": "f415ffb1fa4cf44050b394968f4087005116f55e"
+    },
+    {
+      "path": "assets/icons/unlock.png",
+      "size": 9169,
+      "sha1": "cbf714e0f9dd0fed8c1ed6b8e61ab5e90c7788a7"
+    },
+    {
+      "path": "assets/icons/upload.png",
+      "size": 8750,
+      "sha1": "cacab49fdfa44b444a2d7398aaa4f119534546c6"
+    },
+    {
+      "path": "assets/icons/user_add.png",
+      "size": 12348,
+      "sha1": "dfa2c994b06c2118f161c71b7fee5e73c91a6fe1"
+    },
+    {
+      "path": "assets/icons/user_minus.png",
+      "size": 10507,
+      "sha1": "ae7832973ae7d95d84e303ee2731605851c7eed9"
+    },
+    {
+      "path": "assets/icons/user_plus_arrow.png",
+      "size": 12344,
+      "sha1": "dc8091d94e7ae8b8a60da751989b98096cedfcfb"
+    },
+    {
+      "path": "assets/icons/user_star.png",
+      "size": 12734,
+      "sha1": "b3f382fc5b7e2bd2fe57c3da56844ac5805d9e62"
+    },
+    {
+      "path": "assets/icons/users.png",
+      "size": 14114,
+      "sha1": "bbd3c3ff042734b7f6f584cb6a6bbec3a9df4cc0"
+    },
+    {
+      "path": "assets/icons/volume.png",
+      "size": 11740,
+      "sha1": "c11feea68b3e1f00e4b47174588b52a76eb9aebc"
+    },
+    {
+      "path": "assets/icons/wallet.png",
+      "size": 9364,
+      "sha1": "ef75dd6bdd54aac5b3eb5a5b4b8a10b3df422a00"
+    },
+    {
+      "path": "assets/icons/warning.png",
+      "size": 8114,
+      "sha1": "03373a2694caa6f37f1f9da70bca1e82df962915"
+    },
+    {
+      "path": "assets/panel.png",
+      "size": 66365,
+      "sha1": "2379ef55e969ddf9919d2d12cf8025e6c184afd2"
+    },
+    {
+      "path": "assets/words.txt",
+      "size": 1098525,
+      "sha1": "8a938df44fb6d666d7abbe4b759cc0c233feb815"
+    },
+    {
+      "path": "assets/words_extra.txt",
+      "size": 57,
+      "sha1": "ee62434494e57a502a6737eb5aee8dab93ea5442"
+    },
+    {
+      "path": "cogs/admin.py",
+      "size": 8387,
+      "sha1": "f648d5ca896acd0549859bf619a550fb731fdac5"
+    },
+    {
+      "path": "cogs/afk.py",
+      "size": 9554,
+      "sha1": "bdd15d8e048943a8d3cf684302743e4ab61c3694"
+    },
+    {
+      "path": "cogs/aura.py",
+      "size": 16046,
+      "sha1": "6358f4723ee012f9704d6f42224d1b6ad119fa54"
+    },
+    {
+      "path": "cogs/autoreact.py",
+      "size": 16129,
+      "sha1": "6659e66b577d008b203a700d1cb1e4247ec4f051"
+    },
+    {
+      "path": "cogs/backup.py",
+      "size": 46836,
+      "sha1": "4d4445cbf9fca5b85e0160fc261de64ebfd9d18a"
+    },
+    {
+      "path": "cogs/blacktea.py",
+      "size": 23355,
+      "sha1": "7e1c3f9feb0a40998ec1692f8ed8ab03d6b41744"
+    },
+    {
+      "path": "cogs/cmdcontrol.py",
+      "size": 25020,
+      "sha1": "bc8317c979c780a053890fef8ef1b6728a3f1016"
+    },
+    {
+      "path": "cogs/dashboard_api.py",
+      "size": 19134,
+      "sha1": "92d51418bc6063770dd8fc94566af847357eeea4"
+    },
+    {
+      "path": "cogs/drag.py",
+      "size": 5238,
+      "sha1": "f9a55793b45a70cdeed7bf519078c1066e462ac8"
+    },
+    {
+      "path": "cogs/errors.py",
+      "size": 6943,
+      "sha1": "573dd23d5eb73ebf023095299f0caff8bbbf94f4"
+    },
+    {
+      "path": "cogs/expressions.py",
+      "size": 29305,
+      "sha1": "1de79687f542c87c09a3f6a8f2b96fdb3308c4fb"
+    },
+    {
+      "path": "cogs/games.py",
+      "size": 2354,
+      "sha1": "8a2ec902abfc1f3bb6243b43c86a4eb9865f71a4"
+    },
+    {
+      "path": "cogs/giveaway.py",
+      "size": 91655,
+      "sha1": "1c7f161b1e1a9421114d120ff6c319ee8933c63f"
+    },
+    {
+      "path": "cogs/guessanime.py",
+      "size": 10303,
+      "sha1": "ff81baab9710bf519aab9b02776b6f0e1a946a5f"
+    },
+    {
+      "path": "cogs/guessemoji.py",
+      "size": 13330,
+      "sha1": "33c95a392a47e4961425386400ae3a1a99fa7710"
+    },
+    {
+      "path": "cogs/handfight.py",
+      "size": 17705,
+      "sha1": "6a4d339b40c563f15576c9966694403d47287d1e"
+    },
+    {
+      "path": "cogs/imagehost.py",
+      "size": 18904,
+      "sha1": "89fd6898af9a79f23ce5e51d64c75fa5adae5551"
+    },
+    {
+      "path": "cogs/interface.py",
+      "size": 8873,
+      "sha1": "a5dfd9c07df8ddc86470addc01cfb3134d8e1efe"
+    },
+    {
+      "path": "cogs/meta.py",
+      "size": 36192,
+      "sha1": "7ad5a21e4d40d6ade5d7901b909ac16f2dce124c"
+    },
+    {
+      "path": "cogs/points.py",
+      "size": 36274,
+      "sha1": "4509a977b2322668497f276d18c88f98de53bfc5"
+    },
+    {
+      "path": "cogs/prefixes.py",
+      "size": 6465,
+      "sha1": "e0c3b4b789a8a539a8c7ea279c5b39749c6dfc21"
+    },
+    {
+      "path": "cogs/purge.py",
+      "size": 8955,
+      "sha1": "b75dc3d54acf35a9a9db7f11a0d201fbc098ea01"
+    },
+    {
+      "path": "cogs/rolecmds.py",
+      "size": 10564,
+      "sha1": "f47fde2235e8aa960e5f7b97461e72bea005cb1b"
+    },
+    {
+      "path": "cogs/roletransfer.py",
+      "size": 23276,
+      "sha1": "fcce45546c41e14bea55e2e8ddbf5f5b42465259"
+    },
+    {
+      "path": "cogs/selfroles.py",
+      "size": 37639,
+      "sha1": "9ac030a50f605b7f09fe0fd38c58730dd0596609"
+    },
+    {
+      "path": "cogs/shop.py",
+      "size": 22521,
+      "sha1": "70c8335a4779e4339592980cee0e294676425489"
+    },
+    {
+      "path": "cogs/simonsays.py",
+      "size": 13502,
+      "sha1": "d34b6d26109b887e5d915f9257b7c68273e2c597"
+    },
+    {
+      "path": "cogs/status_api.py",
+      "size": 3547,
+      "sha1": "ae7cc973b843763d8426b852faa14046b91543b8"
+    },
+    {
+      "path": "cogs/tickets.py",
+      "size": 81577,
+      "sha1": "925e06ef6fad1fd9b35101bf347c49712d7faab8"
+    },
+    {
+      "path": "cogs/tictactoe.py",
+      "size": 10675,
+      "sha1": "9618da80d0dc93b7569eb4415935a2c659d56fd1"
+    },
+    {
+      "path": "cogs/timetap.py",
+      "size": 25166,
+      "sha1": "0cc02450a67dc695f1b4235fdf5d4659b7c6c240"
+    },
+    {
+      "path": "cogs/vc.py",
+      "size": 34213,
+      "sha1": "bc78ae55a33e2b69e4df6f9a41be9dd9f4b65f39"
+    },
+    {
+      "path": "core/chart.py",
+      "size": 5416,
+      "sha1": "637fcbb53c97996dd3cdddef1eac9ce37b31d0a1"
+    },
+    {
+      "path": "core/checks.py",
+      "size": 1464,
+      "sha1": "fc13be27c262dd19cca9bfea06c04d187765ca2f"
+    },
+    {
+      "path": "core/config.py",
+      "size": 2497,
+      "sha1": "641327e7f97f072e49eff4c5a7e85bff07672255"
+    },
+    {
+      "path": "core/db.py",
+      "size": 24906,
+      "sha1": "6f12267c3f188860fa0c51a8c43a54b46de1ff09"
+    },
+    {
+      "path": "core/emoji.py",
+      "size": 14113,
+      "sha1": "67d0f133864d40ec4ba90b3e2e005a07772a1862"
+    },
+    {
+      "path": "core/errors.py",
+      "size": 374,
+      "sha1": "24a3ac574832dce3c2c6dcab660fda6919870348"
+    },
+    {
+      "path": "core/export.py",
+      "size": 22427,
+      "sha1": "6fe1d3bfcd4ff51955d820a9836aa240c9356715"
+    },
+    {
+      "path": "core/flair.py",
+      "size": 3806,
+      "sha1": "882628b3b4bf75826b744f857e485e6c229b3d4c"
+    },
+    {
+      "path": "core/giveaway_logic.py",
+      "size": 9994,
+      "sha1": "2b30ad88b7c7cb790f32e604e96a497893b5ba7c"
+    },
+    {
+      "path": "core/icons.py",
+      "size": 5251,
+      "sha1": "cce4486f125df7755aeb26a67f0102ad1f3bf530"
+    },
+    {
+      "path": "core/media.py",
+      "size": 8761,
+      "sha1": "501994e9836c2393f3f9fb096362e9710e4c1b5e"
+    },
+    {
+      "path": "core/minigames.py",
+      "size": 26701,
+      "sha1": "92bdefa72bffc8f2a7cacc8a84f7d34bfee0084f"
+    },
+    {
+      "path": "core/names.py",
+      "size": 2906,
+      "sha1": "21aec121bb091f65793abd24250100daf404a215"
+    },
+    {
+      "path": "core/party.py",
+      "size": 19711,
+      "sha1": "9af9357211da6a4d272ba0b05d8493dcc6a7f13b"
+    },
+    {
+      "path": "core/ratelimit.py",
+      "size": 3236,
+      "sha1": "5588a0a12fb956f3cf651ee68a32120674105d6d"
+    },
+    {
+      "path": "core/store.py",
+      "size": 2160,
+      "sha1": "7ddee4128fb63552ee7e3f51b95039e9b7831234"
+    },
+    {
+      "path": "core/transcript.py",
+      "size": 22097,
+      "sha1": "225843db21e1d515a45a42b736d6436b38cf3d35"
+    },
+    {
+      "path": "core/ui.py",
+      "size": 4222,
+      "sha1": "216aa661c0f19fccca36f0cea216c9b301bebec4"
+    },
+    {
+      "path": "export/LINKS.md",
+      "size": 1131,
+      "sha1": "486ed2f07601b66d6082970481aa78768ee1c39b"
+    },
+    {
+      "path": "export/SERVER_CONFIG.json",
+      "size": 173310,
+      "sha1": "b0b93786b9e3c13c7821b7f2a128cc991723ae3c"
+    },
+    {
+      "path": "export/SERVER_CONFIG.md",
+      "size": 162129,
+      "sha1": "f683535c117947e3522c26b573cec815d39c60fa"
+    },
+    {
+      "path": "export/afk.json",
+      "size": 2017,
+      "sha1": "c6aac8d791db68f85f7f3c988cd65defe69b96c1"
+    },
+    {
+      "path": "export/custom_vc_channels.json",
+      "size": 6428,
+      "sha1": "6cfbbfe57c0427cc1f52452b0846162be2043b63"
+    },
+    {
+      "path": "export/db_dump.json",
+      "size": 4357073,
+      "sha1": "124c80212d11a4464930221fafae6be142b4f39a"
+    },
+    {
+      "path": "export/players_1154838258027606117.csv",
+      "size": 224,
+      "sha1": "e012f99e3e35ac5c27e2ada3638c088d91a2bf6e"
+    },
+    {
+      "path": "export/players_1469352773509189699.csv",
+      "size": 194,
+      "sha1": "5074ba8b9f394c1fb86a599cc2eb0472b3eb4d13"
+    },
+    {
+      "path": "export/players_1488690726870057165.csv",
+      "size": 11835,
+      "sha1": "7acd30e67acbb339f892ab71eaa5c0798163fde4"
+    },
+    {
+      "path": "export/players_1506692944604823696.csv",
+      "size": 254,
+      "sha1": "ae8b646013fc7626bae8942f7ae5af9bf008f567"
+    },
+    {
+      "path": "export/players_1524797937836621874.csv",
+      "size": 2581,
+      "sha1": "c33f093b78f45520123e27a5898e47307ada01c4"
+    },
+    {
+      "path": "export/players_1528097634273984807.csv",
+      "size": 851,
+      "sha1": "0cb53daf4d6161603e7e15a005d9538d3e29eecf"
+    },
+    {
+      "path": "export/players_1543872217920573493.csv",
+      "size": 243,
+      "sha1": "881332a201c55e44fe80cc7c8eeff2deabac925b"
+    },
+    {
+      "path": "export/players_1547650379448188999.csv",
+      "size": 31809,
+      "sha1": "546d469d01ac61fad53cfef8a61077bd5448ebcf"
+    },
+    {
+      "path": "export/players_1553315223732232192.csv",
+      "size": 1002,
+      "sha1": "87dc9bc12f744a41c0ce0dc7b05468c66f59e2b7"
+    },
+    {
+      "path": "export/players_1556044009661530124.csv",
+      "size": 4633,
+      "sha1": "7302c2ce98be2fdd6194b650493bfc43c304af22"
+    },
+    {
+      "path": "export/players_1561595482604703805.csv",
+      "size": 375,
+      "sha1": "f7125eaf91a4435da3adb16fa63e3f1bc8bf5d87"
+    },
+    {
+      "path": "export/players_1562735431051903090.csv",
+      "size": 1061,
+      "sha1": "c33e413b27508285e64e0e74c8a16ec6db81311f"
+    },
+    {
+      "path": "export/players_1564620144527806506.csv",
+      "size": 323,
+      "sha1": "df8951a09136964b413cdfe752a1d4718836214b"
+    },
+    {
+      "path": "export/players_1569526897614786571.csv",
+      "size": 249,
+      "sha1": "1d3e127b565e75e08d1481ec4275c35ce47d9372"
+    },
+    {
+      "path": "export/players_1574603839133192317.csv",
+      "size": 1371,
+      "sha1": "26c8438dff5cfea15039f6f42c8d899bee339e33"
+    },
+    {
+      "path": "export/servers/0/config.json",
+      "size": 1464,
+      "sha1": "db6cd11742b89963df4a96bcd179feaaf7c09f7f"
+    },
+    {
+      "path": "export/servers/0/config.md",
+      "size": 1842,
+      "sha1": "d17fc29e6c3ddf3dab288af27f068c6096b84dd6"
+    },
+    {
+      "path": "export/servers/0/data.json",
+      "size": 217,
+      "sha1": "bb8bb72115948fb1004c691b95faecf383b141fb"
+    },
+    {
+      "path": "export/servers/0/database.json",
+      "size": 348,
+      "sha1": "8c1ce4714146f173bf01c31972c0d151baec70a6"
+    },
+    {
+      "path": "export/servers/1154838258027606117/config.json",
+      "size": 26894,
+      "sha1": "a3a91b1806b2a0a671e66a417214492b15764bce"
+    },
+    {
+      "path": "export/servers/1154838258027606117/config.md",
+      "size": 26043,
+      "sha1": "fef07aae9f25d5ab05c8474abd0009a00bb65438"
+    },
+    {
+      "path": "export/servers/1154838258027606117/data.json",
+      "size": 916,
+      "sha1": "9e912c8641a7bc87cfedecde7927cfbc0f85cc0d"
+    },
+    {
+      "path": "export/servers/1154838258027606117/database.json",
+      "size": 11844,
+      "sha1": "da8b056090b4ece51cc092fb5252e9972c444eb8"
+    },
+    {
+      "path": "export/servers/1469352773509189699/config.json",
+      "size": 1400,
+      "sha1": "a7984c2acf56b84426eeff8c85a6ffb628c60ca5"
+    },
+    {
+      "path": "export/servers/1469352773509189699/config.md",
+      "size": 1741,
+      "sha1": "ebd24f78e455e41ff2ac95b010b14d592de281a0"
+    },
+    {
+      "path": "export/servers/1469352773509189699/data.json",
+      "size": 235,
+      "sha1": "f2d5a89986ce7a322934b2b2550c65f09b307f6b"
+    },
+    {
+      "path": "export/servers/1469352773509189699/database.json",
+      "size": 400,
+      "sha1": "afce58ca1dc8905c5f545f813562b627a4ac7261"
+    },
+    {
+      "path": "export/servers/1488690726870057165/config.json",
+      "size": 85384,
+      "sha1": "96afa65354773d4372ad9478f5857c4ae369d8b8"
+    },
+    {
+      "path": "export/servers/1488690726870057165/config.md",
+      "size": 88947,
+      "sha1": "b4f6b47ee364cd5c380392b4ffa6becb08b6d1ec"
+    },
+    {
+      "path": "export/servers/1488690726870057165/data.json",
+      "size": 5197,
+      "sha1": "ce0be480acaa82874ac3694a4e1991fef56bec94"
+    },
+    {
+      "path": "export/servers/1488690726870057165/database.json",
+      "size": 4050926,
+      "sha1": "ee5e182ac29b5c8d72899242a6bd1633aee504eb"
+    },
+    {
+      "path": "export/servers/1506692944604823696/config.json",
+      "size": 1412,
+      "sha1": "9419098492665f49f28cd39b74cfde8b410ea47b"
+    },
+    {
+      "path": "export/servers/1506692944604823696/config.md",
+      "size": 1753,
+      "sha1": "c1f58157a4a1ad90b5feab2242adb9d18fbf67b8"
+    },
+    {
+      "path": "export/servers/1506692944604823696/data.json",
+      "size": 235,
+      "sha1": "dc9fca375fdc0e0887c8278d4efa2c373a8b45e2"
+    },
+    {
+      "path": "export/servers/1506692944604823696/database.json",
+      "size": 579,
+      "sha1": "bc75c0c4af9a312250a663e7b139bb6d49d1d9d0"
+    },
+    {
+      "path": "export/servers/1524797937836621874/config.json",
+      "size": 1627,
+      "sha1": "5e73137f2b1888b32b20b2ad6f34ec7c059603fa"
+    },
+    {
+      "path": "export/servers/1524797937836621874/config.md",
+      "size": 2033,
+      "sha1": "0a783416bcb1ae21f98575050d8dc68a6185ccc2"
+    },
+    {
+      "path": "export/servers/1524797937836621874/data.json",
+      "size": 235,
+      "sha1": "1adeb700ac26be8c373fe6b17063bd380d4f4b58"
+    },
+    {
+      "path": "export/servers/1524797937836621874/database.json",
+      "size": 8906,
+      "sha1": "583e1ed8d49f3139a9f6088fadf814e72aee6ab2"
+    },
+    {
+      "path": "export/servers/1528097634273984807/config.json",
+      "size": 1456,
+      "sha1": "70756f32eaf84912934a5e24b9d463985f7b416e"
+    },
+    {
+      "path": "export/servers/1528097634273984807/config.md",
+      "size": 1797,
+      "sha1": "0f28e97aefdec1480f1c0056b449a5a8ece9faca"
+    },
+    {
+      "path": "export/servers/1528097634273984807/data.json",
+      "size": 235,
+      "sha1": "dc8b1d56e3bf85b2b3b7adc535c535216b5448f6"
+    },
+    {
+      "path": "export/servers/1528097634273984807/database.json",
+      "size": 2163,
+      "sha1": "6a8d07e21fff801faade4481e6655f042ab6171f"
+    },
+    {
+      "path": "export/servers/1543872217920573493/config.json",
+      "size": 1635,
+      "sha1": "a2f15f97b8311bcf8b471794ab8ff01231c7020c"
+    },
+    {
+      "path": "export/servers/1543872217920573493/config.md",
+      "size": 2021,
+      "sha1": "c4dc745c304f5c62e1e2f28eda74182f680e091e"
+    },
+    {
+      "path": "export/servers/1543872217920573493/data.json",
+      "size": 235,
+      "sha1": "e65393a67da0934bdb2b499695c7576384c1ce98"
+    },
+    {
+      "path": "export/servers/1543872217920573493/database.json",
+      "size": 916,
+      "sha1": "d2fe75e769d90cd639d16e71ccfce512920c79e6"
+    },
+    {
+      "path": "export/servers/1547650379448188999/config.json",
+      "size": 11938,
+      "sha1": "3515023f235bed22454f63da2d5af4a90fbc87b5"
+    },
+    {
+      "path": "export/servers/1547650379448188999/config.md",
+      "size": 13396,
+      "sha1": "270d72b85cba28c1cacc80a7a50a2dc2f69af14d"
+    },
+    {
+      "path": "export/servers/1547650379448188999/data.json",
+      "size": 1900,
+      "sha1": "3d566b7694771ce8d667b94d1d45c22495dd686f"
+    },
+    {
+      "path": "export/servers/1547650379448188999/database.json",
+      "size": 247493,
+      "sha1": "7751808a03d5590a0dbefca94be2c04a5ad54493"
+    },
+    {
+      "path": "export/servers/1553315223732232192/config.json",
+      "size": 3546,
+      "sha1": "0c7c59c293acf00fc9306206158ed8b5ba737128"
+    },
+    {
+      "path": "export/servers/1553315223732232192/config.md",
+      "size": 4195,
+      "sha1": "29e5ea8cd77f9f90f85c0695ebde881b05771446"
+    },
+    {
+      "path": "export/servers/1553315223732232192/data.json",
+      "size": 966,
+      "sha1": "e124cd606d3665ac4409886e56bb8ff80bd842ab"
+    },
+    {
+      "path": "export/servers/1553315223732232192/database.json",
+      "size": 4614,
+      "sha1": "c7530a20502c111f47231834304a61fb466eed01"
+    },
+    {
+      "path": "export/servers/1556044009661530124/config.json",
+      "size": 1568,
+      "sha1": "19f0866ea26bf5d796ee21e3d48e4bf275ef2633"
+    },
+    {
+      "path": "export/servers/1556044009661530124/config.md",
+      "size": 1892,
+      "sha1": "31a05cbee0326eeb1cb4faae78deba5582d71fc6"
+    },
+    {
+      "path": "export/servers/1556044009661530124/data.json",
+      "size": 235,
+      "sha1": "a3c7f25bcb9b5ceca47c0d17592e6fff9eac65cb"
+    },
+    {
+      "path": "export/servers/1556044009661530124/database.json",
+      "size": 14065,
+      "sha1": "74370cc2d56097da43d3e653a6311bfcff0763a5"
+    },
+    {
+      "path": "export/servers/1561595482604703805/config.json",
+      "size": 2557,
+      "sha1": "b39102697ca1c6a40014b5bc9b5ecf5188a5b1ea"
+    },
+    {
+      "path": "export/servers/1561595482604703805/config.md",
+      "size": 3022,
+      "sha1": "f3d07a6fc3a316412d757b98615de3beb8308290"
+    },
+    {
+      "path": "export/servers/1561595482604703805/data.json",
+      "size": 934,
+      "sha1": "5dc5750d46dda027f252947cd38cf2d0e6a87daa"
+    },
+    {
+      "path": "export/servers/1561595482604703805/database.json",
+      "size": 1286,
+      "sha1": "3089a4c36335bce35c5883038742731876fb5258"
+    },
+    {
+      "path": "export/servers/1562735431051903090/config.json",
+      "size": 1402,
+      "sha1": "b13cb7b4db98634c04058a3dad7f56ea2af6a52d"
+    },
+    {
+      "path": "export/servers/1562735431051903090/config.md",
+      "size": 1742,
+      "sha1": "b623bebae730a20fc1a069b120ff67dc0e4fec2b"
+    },
+    {
+      "path": "export/servers/1562735431051903090/data.json",
+      "size": 235,
+      "sha1": "674ccf343214588e0560cee48b2947c8df57b848"
+    },
+    {
+      "path": "export/servers/1562735431051903090/database.json",
+      "size": 2867,
+      "sha1": "d08d05538b6d5bc432e7846f24f977d205bb68d0"
+    },
+    {
+      "path": "export/servers/1564620144527806506/config.json",
+      "size": 3454,
+      "sha1": "2418d8d62df17f50a6cc85d367012032a0f38f96"
+    },
+    {
+      "path": "export/servers/1564620144527806506/config.md",
+      "size": 3775,
+      "sha1": "9c332eff9cc339d09061948acb43af78c3e5e7b8"
+    },
+    {
+      "path": "export/servers/1564620144527806506/data.json",
+      "size": 1022,
+      "sha1": "f38fb2efbe4e3bdc893f28fa89446a5543fbc092"
+    },
+    {
+      "path": "export/servers/1564620144527806506/database.json",
+      "size": 8901,
+      "sha1": "fa969ee443df770a27d17457bd8378a32294762d"
+    },
+    {
+      "path": "export/servers/1569042863465963680/config.json",
+      "size": 1394,
+      "sha1": "770a5d0ed17b55a76cbf8f077e78816b08301d6a"
+    },
+    {
+      "path": "export/servers/1569042863465963680/config.md",
+      "size": 1736,
+      "sha1": "76d7f4c0453e6dc5d4121398e4cd3cfcec221d47"
+    },
+    {
+      "path": "export/servers/1569042863465963680/data.json",
+      "size": 235,
+      "sha1": "99a4e2956fbedc2f51bf33241a268b4408dd1816"
+    },
+    {
+      "path": "export/servers/1569526897614786571/config.json",
+      "size": 2141,
+      "sha1": "e936997e9af905a04d9523d1aaa3c935e36b14e7"
+    },
+    {
+      "path": "export/servers/1569526897614786571/config.md",
+      "size": 2662,
+      "sha1": "cdc8f6f71907bc6aa6b7ac029d13d78ae7211add"
+    },
+    {
+      "path": "export/servers/1569526897614786571/data.json",
+      "size": 950,
+      "sha1": "9559d057ed3f5cf92fa2d56bb651bb18045f9a3d"
+    },
+    {
+      "path": "export/servers/1569526897614786571/database.json",
+      "size": 577,
+      "sha1": "438efee4196efd3f2f58f92eadb21bdd15aba577"
+    },
+    {
+      "path": "export/servers/1573601753965011035/config.json",
+      "size": 1400,
+      "sha1": "6f1115aca00bda7a821f42fab906979eaf98522d"
+    },
+    {
+      "path": "export/servers/1573601753965011035/config.md",
+      "size": 1742,
+      "sha1": "4fe7efbe75d4001d2ed12ec215e56fd768d5398a"
+    },
+    {
+      "path": "export/servers/1573601753965011035/data.json",
+      "size": 235,
+      "sha1": "c279ae3de27d49e4ed836dd5d2cfab38f5b3267d"
+    },
+    {
+      "path": "export/servers/1574603839133192317/config.json",
+      "size": 1622,
+      "sha1": "4888b59b93a7817470efddb6f7cdd0c7685e10e1"
+    },
+    {
+      "path": "export/servers/1574603839133192317/config.md",
+      "size": 1993,
+      "sha1": "da5d288c9e7a03fd9881c5ba777ef648425d3d42"
+    },
+    {
+      "path": "export/servers/1574603839133192317/data.json",
+      "size": 235,
+      "sha1": "cd5e6ffb51d9f2f18529a71f39d8aab6d489d7e1"
+    },
+    {
+      "path": "export/servers/1574603839133192317/database.json",
+      "size": 4573,
+      "sha1": "8d880d536c51da347558796539544a388ef5fa89"
+    },
+    {
+      "path": "main.py",
+      "size": 11132,
+      "sha1": "db44ad6c20b4e7f38491cb547edfd739cd3c9662"
+    },
+    {
+      "path": "requirements-tools.txt",
+      "size": 94,
+      "sha1": "c7f7549b41fe6c0ad73538ea47136fa80d9f4731"
+    },
+    {
+      "path": "requirements.txt",
+      "size": 69,
+      "sha1": "41455cbe67fcfb704257063cb29bd464dae82c0c"
+    },
+    {
+      "path": "tools/make_icons.py",
+      "size": 28344,
+      "sha1": "1d1d431210a725dc125d929c3e2cf52c577e9de2"
+    },
+    {
+      "path": "tools/restore.py",
+      "size": 5071,
+      "sha1": "db999fb2e14f83c6fd9d6755d9974b181665e952"
+    }
+  ],
+  "restore": [
+    "unzip",
+    "put your DISCORD_TOKEN (and BACKUP_WEBHOOK) back into .env",
+    "pip install -r requirements.txt",
+    "python main.py",
+    "then send kon_data.zip with $backupload to bring the data back"
+  ]
+}

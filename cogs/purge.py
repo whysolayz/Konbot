@@ -58,13 +58,39 @@ class Purge(commands.Cog):
         author = m.author
         if isinstance(author, discord.User) and m.guild:
             author = m.guild.get_member(author.id) or author
-        if self.bot.is_noprefix(author):
+        if not self.bot.is_noprefix(author):
+            return False
+        word = c.split(None, 1)[0].lower()
+        bot = self.bot
+        if word in bot.all_commands or (m.guild and word in bot.aliases(m.guild.id)):     # plain lookup: no full get_context
+            return True
+        if not (word == "vc" or word.startswith("set")):                                  # only these two forms need the slow path
+            return False
+        try:
+            ctx = await bot.get_context(m)
+        except Exception:
+            return False
+        return bool(ctx.valid)
+
+    @staticmethod
+    async def _delete(ch, todo: list, reason: str):
+        """Delete in bulk chunks of 100 - several chunks at the same time."""
+        async def one(chunk):
+            if len(chunk) == 1:
+                await chunk[0].delete()
+            else:
+                await ch.delete_messages(chunk, reason=reason)
+        await asyncio.gather(*(one(todo[i:i + 100]) for i in range(0, len(todo), 100)))
+
+    @staticmethod
+    def _notice(ch, text: str, **kw):
+        """Send the short result without making the command wait for it."""
+        async def go():
             try:
-                ctx = await self.bot.get_context(m)
-            except Exception:
-                return False
-            return bool(ctx.valid)
-        return False
+                await ch.send(text, delete_after=7, **kw)
+            except discord.HTTPException:
+                pass
+        asyncio.create_task(go())
 
     @commands.command(name="purgebot", aliases=["pb"])
     @commands.has_permissions(manage_messages=True)
@@ -97,12 +123,7 @@ class Purge(commands.Cog):
 
         todo = [ctx.message, *found]
         try:
-            for i in range(0, len(todo), 100):
-                chunk = todo[i:i + 100]
-                if len(chunk) == 1:
-                    await chunk[0].delete()
-                else:
-                    await ch.delete_messages(chunk, reason=f"purgebot by {ctx.author} ({ctx.author.id})")
+            await self._delete(ch, todo, f"purgebot by {ctx.author} ({ctx.author.id})")
         except discord.HTTPException as e:
             raise VCError(f"Couldn't delete: {e.text or e.status}")
 
@@ -113,10 +134,7 @@ class Purge(commands.Cog):
             text += f" (max is {MAX})"
         if skipped_old:
             text += f" {skipped_old} older than 14 days skipped."
-        try:
-            await ch.send(text, delete_after=7)
-        except discord.HTTPException:
-            pass
+        self._notice(ch, text)
 
 
     # ---------- $p / $purgemember ----------
@@ -181,12 +199,7 @@ class Purge(commands.Cog):
 
         todo = [ctx.message, *found]
         try:
-            for i in range(0, len(todo), 100):
-                chunk = todo[i:i + 100]
-                if len(chunk) == 1:
-                    await chunk[0].delete()
-                else:
-                    await ch.delete_messages(chunk, reason=f"purgemember by {ctx.author} ({ctx.author.id})")
+            await self._delete(ch, todo, f"purgemember by {ctx.author} ({ctx.author.id})")
         except discord.HTTPException as e:
             raise VCError(f"Couldn't delete: {e.text or e.status}")
 
@@ -197,10 +210,7 @@ class Purge(commands.Cog):
             text += f" (max is {MAX})"
         if skipped_old:
             text += f" {skipped_old} older than 14 days skipped."
-        try:
-            await ch.send(text, delete_after=7, allowed_mentions=discord.AllowedMentions.none())
-        except discord.HTTPException:
-            pass
+        self._notice(ch, text, allowed_mentions=discord.AllowedMentions.none())
 
 
 async def setup(bot):

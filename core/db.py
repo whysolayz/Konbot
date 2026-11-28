@@ -73,6 +73,9 @@ class DB:
         self.conn.row_factory = sqlite3.Row
         self.conn.execute("PRAGMA journal_mode=WAL")
         self.conn.execute("PRAGMA synchronous=NORMAL")
+        self.conn.execute("PRAGMA temp_store=MEMORY")
+        self.conn.execute("PRAGMA cache_size=-16000")        # 16 MB page cache
+        self.conn.execute("PRAGMA mmap_size=134217728")      # memory-mapped reads
         self.conn.executescript(SCHEMA)
         self._migrate()
         self.purge_stale()

@@ -1,0 +1,65 @@
+{
+  "server_id": 1547650379448188999,
+  "vc_data.guilds": {},
+  "vc_data.selfroles": {
+    "channel": 1568343826425323692,
+    "message": null,
+    "title": "Self Roles :",
+    "title_emoji": "🍃",
+    "footer": "Click the buttons below to toggle your roles.",
+    "color": 16758834,
+    "banner": null,
+    "banner_url": null,
+    "banner_ref": null,
+    "roles": []
+  },
+  "vc_data.vcs": {},
+  "vc_data.mutes": {},
+  "vc_data.guild_owners": [
+    1554945105981603880
+  ],
+  "vc_data.vc_setup": {},
+  "afk_data.afk": {
+    "1039155760749355019": {
+      "reason": "sleep",
+      "since": 1795806486.2818556,
+      "guild_id": 1547650379448188999,
+      "old_nick": "T-Mod | Dark",
+      "mentions": [
+        {
+          "author": "Mexzon | Blaze",
+          "channel_id": 1568343826425323692,
+          "url": "https://discord.com/channels/1547650379448188999/1568343826425323692/1575951447378366647",
+          "content": "."
+        },
+        {
+          "author": "Mexzon | Blaze",
+          "channel_id": 1568343826425323692,
+          "url": "https://discord.com/channels/1547650379448188999/1568343826425323692/1575951547370832063",
+          "content": "."
+        },
+        {
+          "author": "Mexzon | Blaze",
+          "channel_id": 1568343826425323692,
+          "url": "https://discord.com/channels/1547650379448188999/1568343826425323692/1575951620305457323",
+          "content": "."
+        }
+      ]
+    },
+    "1554945105981603880": {
+      "reason": "sleeping zzz",
+      "since": 1795806768.9411836,
+      "guild_id": 1547650379448188999,
+      "old_nick": "Mexzon | Blaze",
+      "mentions": [
+        {
+          "author": "LUFFY_ELY",
+          "channel_id": 1575894837603991672,
+          "url": "https://discord.com/channels/1547650379448188999/1575894837603991672/1576003927432888471",
+          "content": "wsp"
+        }
+      ]
+    }
+  },
+  "afk_data.tag": true
+}

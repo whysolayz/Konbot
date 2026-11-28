@@ -1,0 +1,378 @@
+{
+  "server": {
+    "id": 1547650379448188999,
+    "name": "The Blaze Nebula | Drag GW",
+    "bot_is_in_server": true,
+    "owner_id": 1519731963244580987,
+    "members": 1047
+  },
+  "custom_vc": {
+    "join_to_create_channel": null,
+    "interface_channel": null,
+    "interface_message_id": null,
+    "saved_setup (last known, survives channel deletion)": {
+      "join_to_create": null,
+      "interface": null,
+      "panel_message_id": null
+    },
+    "other_keys": {},
+    "active_custom_vcs": {}
+  },
+  "self_roles": {
+    "channel": 1568343826425323692,
+    "message": null,
+    "title": "Self Roles :",
+    "title_emoji": "🍃",
+    "footer": "Click the buttons below to toggle your roles.",
+    "color": 16758834,
+    "banner": null,
+    "banner_url": null,
+    "banner_ref": null,
+    "roles": []
+  },
+  "points_settings": null,
+  "shop": {
+    "settings": null,
+    "items": [
+      {
+        "id": 8,
+        "guild_id": 1547650379448188999,
+        "role_id": 1566249609846726758,
+        "price": 100,
+        "stock": 2,
+        "emoji": "☘️",
+        "position": 1
+      },
+      {
+        "id": 9,
+        "guild_id": 1547650379448188999,
+        "role_id": 1566249676989005834,
+        "price": 550,
+        "stock": 2,
+        "emoji": "🍀",
+        "position": 2
+      }
+    ]
+  },
+  "no_prefix": {
+    "role": null,
+    "users": [
+      1385099857781329961,
+      1538573910839140575,
+      1504536783898021908,
+      1562817118641062029,
+      1556600326617042959,
+      1519731963244580987,
+      1340198074387267634,
+      1537639385879683212,
+      1554280108632842295,
+      1423371939556233247,
+      1543476735469691002,
+      1575313903104172175,
+      829689719633215498,
+      650534818517483526
+    ]
+  },
+  "aliases": null,
+  "role_commands": null,
+  "autoreact": {
+    "roles": [],
+    "users": {
+      "1562817118641062029": [
+        "<a:Oliviaaa_nooooo:1570865411195543645>"
+      ],
+      "829689719633215498": [
+        "<:nebula_Bored:1561078200325382194>"
+      ],
+      "1519731963244580987": [
+        "<:nebula_hawww:1563397980332105730>"
+      ],
+      "560591477500018725": [
+        "<a:disco:1572571259601031259>"
+      ],
+      "1554945105981603880": [
+        "<:nebula_hawww:1563397980332105730>"
+      ],
+      "1385099857781329961": [
+        "<:Cute_Cry:1549341301282185329>"
+      ],
+      "1433650059043405959": [
+        "<:Nebula_cutie:1563397790627795025>"
+      ]
+    }
+  },
+  "aura": null,
+  "custom_vc_rules": null,
+  "tictactoe": null,
+  "game_channels": {
+    "tictactoe": null,
+    "blacktea": null,
+    "timetap": null,
+    "handfight": 1568343826425323692,
+    "guessanime": null,
+    "guessemoji": null,
+    "simonsays": null
+  },
+  "game_stats": {
+    "timetap": null,
+    "handfight": {
+      "650534818517483526": {
+        "games": 1,
+        "titles": 0,
+        "rounds_won": 2,
+        "rounds_lost": 3,
+        "draws": 2,
+        "match_wins": 0,
+        "match_losses": 1,
+        "rock": 2,
+        "paper": 2,
+        "scissors": 3
+      },
+      "1556600326617042959": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 3,
+        "rounds_lost": 2,
+        "draws": 2,
+        "match_wins": 1,
+        "match_losses": 0,
+        "rock": 5,
+        "paper": 1,
+        "scissors": 1
+      }
+    },
+    "guessanime": null,
+    "guessemoji": null,
+    "simonsays": null
+  },
+  "saved_images ($tolink names -> links)": null,
+  "command_disable ($disablecommand)": null,
+  "extra_owners": [
+    {
+      "id": 1554945105981603880,
+      "name": "Mexzon | Blaze (mexzon_0205)",
+      "found": true
+    }
+  ],
+  "afk": {
+    "tag_enabled": true,
+    "users": {
+      "1039155760749355019": {
+        "reason": "sleep",
+        "since": 1795806486.2818556,
+        "old_nick": "T-Mod | Dark",
+        "mentions_waiting": 3
+      },
+      "1554945105981603880": {
+        "reason": "sleeping zzz",
+        "since": 1795806768.9411836,
+        "old_nick": "Mexzon | Blaze",
+        "mentions_waiting": 1
+      }
+    }
+  },
+  "tickets (panels, categories, open tickets)": {
+    "panel_channel": 1568343826425323692,
+    "panel_message": 1573917007349289031,
+    "panel": {
+      "title": "Support Center",
+      "color": 16758834,
+      "placeholder": "Choose a category...",
+      "banner": null,
+      "description": "🎫 NEED HELP? OPEN A TICKET!\n\nFacing an issue, need assistance, or wish to contact our staff team privately? Our support team is always ready to assist you!\n\n📌 HOW TO CREATE A TICKET\n\nClick the 🎫 Open Ticket button below and select the category that best describes your concern. Our relevant staff members will assist you as soon as possible.\n\n📂 TICKET CATEGORIES\n\n🛠️ Support — General assistance, queries, and server-related issues.\n\n🎉 Giveaway — Claim your giveaway rewards.\n\n🎁 Invite Reward — Claim rewards earned through inviting members.\n\n⚠️ TICKET RULES\n\n• Clearly explain your issue when opening a ticket.\n• Avoid spamming or repeatedly pinging staff members.\n• Provide relevant screenshots or evidence whenever necessary.\n• Open only one ticket per issue.\n• Do not misuse or abuse the ticket system.\n• Cooperate with staff members throughout the process.\n\n🔒 PRIVACY & CONFIDENTIALITY\n\nAll tickets are private and accessible only to the ticket creator and authorized staff members.\n\nPlease select the correct category to ensure faster assistance.\n\n💙 Thank you for being a part of our community!",
+      "_url": null
+    },
+    "welcome": {
+      "title": "Welcome to your ticket",
+      "description": "Hey {user}, thanks for reaching out about **{category}**!\nTell us what is going on in as much detail as you can - a staff member will be with you shortly."
+    },
+    "support_roles": [],
+    "admin_roles": [],
+    "open_category": null,
+    "logs": {
+      "opened": 1573916489734693005,
+      "closed": 1573916520676065400,
+      "transcript": 1573916573553397770
+    },
+    "categories": [
+      {
+        "id": "b1326796",
+        "name": "General Support",
+        "emoji": "🛠️",
+        "description": "General assistance, queries, and server-related issues.",
+        "question": null,
+        "parent": 1568608614577348670,
+        "ping_roles": []
+      },
+      {
+        "id": "e14eb3f2",
+        "name": "Giveaway",
+        "emoji": "🎉",
+        "description": "Claim your giveaway rewards.",
+        "question": null,
+        "parent": 1568608741652303942,
+        "ping_roles": []
+      },
+      {
+        "id": "3efeb3df",
+        "name": "Invite Rewards",
+        "emoji": "🎁",
+        "description": "Claim rewards earned through inviting members.",
+        "question": null,
+        "parent": null,
+        "ping_roles": []
+      }
+    ],
+    "max_open": 1,
+    "name_format": "ticket-{user}",
+    "opener_can_close": true,
+    "counter": 0,
+    "blacklist": [],
+    "tickets": {},
+    "stats": {
+      "opened": 0,
+      "closed": 0
+    }
+  },
+  "giveaways (templates, running, ended)": null,
+  "all_settings_raw": {
+    "autoreact": {
+      "roles": [],
+      "users": {
+        "1562817118641062029": [
+          "<a:Oliviaaa_nooooo:1570865411195543645>"
+        ],
+        "829689719633215498": [
+          "<:nebula_Bored:1561078200325382194>"
+        ],
+        "1519731963244580987": [
+          "<:nebula_hawww:1563397980332105730>"
+        ],
+        "560591477500018725": [
+          "<a:disco:1572571259601031259>"
+        ],
+        "1554945105981603880": [
+          "<:nebula_hawww:1563397980332105730>"
+        ],
+        "1385099857781329961": [
+          "<:Cute_Cry:1549341301282185329>"
+        ],
+        "1433650059043405959": [
+          "<:Nebula_cutie:1563397790627795025>"
+        ]
+      }
+    },
+    "handfight": {
+      "channel": 1568343826425323692
+    },
+    "handfight_stats": {
+      "650534818517483526": {
+        "games": 1,
+        "titles": 0,
+        "rounds_won": 2,
+        "rounds_lost": 3,
+        "draws": 2,
+        "match_wins": 0,
+        "match_losses": 1,
+        "rock": 2,
+        "paper": 2,
+        "scissors": 3
+      },
+      "1556600326617042959": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 3,
+        "rounds_lost": 2,
+        "draws": 2,
+        "match_wins": 1,
+        "match_losses": 0,
+        "rock": 5,
+        "paper": 1,
+        "scissors": 1
+      }
+    },
+    "noprefix": {
+      "role": null,
+      "users": [
+        1385099857781329961,
+        1538573910839140575,
+        1504536783898021908,
+        1562817118641062029,
+        1556600326617042959,
+        1519731963244580987,
+        1340198074387267634,
+        1537639385879683212,
+        1554280108632842295,
+        1423371939556233247,
+        1543476735469691002,
+        1575313903104172175,
+        829689719633215498,
+        650534818517483526
+      ]
+    },
+    "tickets": {
+      "panel_channel": 1568343826425323692,
+      "panel_message": 1573917007349289031,
+      "panel": {
+        "title": "Support Center",
+        "color": 16758834,
+        "placeholder": "Choose a category...",
+        "banner": null,
+        "description": "🎫 NEED HELP? OPEN A TICKET!\n\nFacing an issue, need assistance, or wish to contact our staff team privately? Our support team is always ready to assist you!\n\n📌 HOW TO CREATE A TICKET\n\nClick the 🎫 Open Ticket button below and select the category that best describes your concern. Our relevant staff members will assist you as soon as possible.\n\n📂 TICKET CATEGORIES\n\n🛠️ Support — General assistance, queries, and server-related issues.\n\n🎉 Giveaway — Claim your giveaway rewards.\n\n🎁 Invite Reward — Claim rewards earned through inviting members.\n\n⚠️ TICKET RULES\n\n• Clearly explain your issue when opening a ticket.\n• Avoid spamming or repeatedly pinging staff members.\n• Provide relevant screenshots or evidence whenever necessary.\n• Open only one ticket per issue.\n• Do not misuse or abuse the ticket system.\n• Cooperate with staff members throughout the process.\n\n🔒 PRIVACY & CONFIDENTIALITY\n\nAll tickets are private and accessible only to the ticket creator and authorized staff members.\n\nPlease select the correct category to ensure faster assistance.\n\n💙 Thank you for being a part of our community!",
+        "_url": null
+      },
+      "welcome": {
+        "title": "Welcome to your ticket",
+        "description": "Hey {user}, thanks for reaching out about **{category}**!\nTell us what is going on in as much detail as you can - a staff member will be with you shortly."
+      },
+      "support_roles": [],
+      "admin_roles": [],
+      "open_category": null,
+      "logs": {
+        "opened": 1573916489734693005,
+        "closed": 1573916520676065400,
+        "transcript": 1573916573553397770
+      },
+      "categories": [
+        {
+          "id": "b1326796",
+          "name": "General Support",
+          "emoji": "🛠️",
+          "description": "General assistance, queries, and server-related issues.",
+          "question": null,
+          "parent": 1568608614577348670,
+          "ping_roles": []
+        },
+        {
+          "id": "e14eb3f2",
+          "name": "Giveaway",
+          "emoji": "🎉",
+          "description": "Claim your giveaway rewards.",
+          "question": null,
+          "parent": 1568608741652303942,
+          "ping_roles": []
+        },
+        {
+          "id": "3efeb3df",
+          "name": "Invite Rewards",
+          "emoji": "🎁",
+          "description": "Claim rewards earned through inviting members.",
+          "question": null,
+          "parent": null,
+          "ping_roles": []
+        }
+      ],
+      "max_open": 1,
+      "name_format": "ticket-{user}",
+      "opener_can_close": true,
+      "counter": 0,
+      "blacklist": [],
+      "tickets": {},
+      "stats": {
+        "opened": 0,
+        "closed": 0
+      }
+    }
+  },
+  "players_in_database": 493
+}

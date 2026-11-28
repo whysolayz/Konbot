@@ -1,0 +1,73 @@
+{
+ "server_id": 1561595482604703805,
+ "users": [
+  {
+   "guild_id": 1561595482604703805,
+   "user_id": 1536636111722643457,
+   "points": 0,
+   "chat_total": 32,
+   "chat_progress": 32,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1561595482604703805,
+   "user_id": 918439212041269259,
+   "points": 0,
+   "chat_total": 3,
+   "chat_progress": 3,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1561595482604703805,
+   "user_id": 1510881768792789002,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1561595482604703805,
+   "user_id": 1418933578007580683,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  }
+ ],
+ "channel_progress": [],
+ "badges": [],
+ "shop_items": [],
+ "purchases": [],
+ "settings": [
+  {
+   "guild_id": 1561595482604703805,
+   "key": "noprefix",
+   "value": {
+    "role": null,
+    "users": [
+     1536636111722643457
+    ]
+   }
+  },
+  {
+   "guild_id": 1561595482604703805,
+   "key": "autoreact",
+   "value": {
+    "roles": [],
+    "users": {
+     "1536636111722643457": [
+      "<:PF_RAJAJI:1561613810882707488>"
+     ]
+    }
+   }
+  }
+ ],
+ "point_log": [],
+ "left_members": [],
+ "aura_log": [],
+ "transfer_log": []
+}

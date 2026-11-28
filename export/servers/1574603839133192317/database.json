@@ -1,0 +1,238 @@
+{
+ "server_id": 1574603839133192317,
+ "users": [
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1554945105981603880,
+   "points": 4,
+   "chat_total": 203,
+   "chat_progress": 3,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1433650059043405959,
+   "points": 1,
+   "chat_total": 86,
+   "chat_progress": 36,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 829689719633215498,
+   "points": 0,
+   "chat_total": 6,
+   "chat_progress": 6,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1490368451469119698,
+   "points": 0,
+   "chat_total": 3,
+   "chat_progress": 3,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1556600326617042959,
+   "points": 0,
+   "chat_total": 13,
+   "chat_progress": 13,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1167780321706655767,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1537639385879683212,
+   "points": 0,
+   "chat_total": 8,
+   "chat_progress": 8,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1490758066440896665,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1421871623673348166,
+   "points": 0,
+   "chat_total": 11,
+   "chat_progress": 11,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1340198074387267634,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1538573910839140575,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1039155760749355019,
+   "points": 0,
+   "chat_total": 8,
+   "chat_progress": 8,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1520772239262351360,
+   "points": 0,
+   "chat_total": 3,
+   "chat_progress": 3,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 750644305101586453,
+   "points": 0,
+   "chat_total": 4,
+   "chat_progress": 4,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1069653985725780109,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1418455730498834562,
+   "points": 0,
+   "chat_total": 23,
+   "chat_progress": 23,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1571069507915747330,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1472999560237547633,
+   "points": 0,
+   "chat_total": 15,
+   "chat_progress": 15,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1574603839133192317,
+   "user_id": 1487135923983614113,
+   "points": 0,
+   "chat_total": 2,
+   "chat_progress": 2,
+   "vc_total": 0,
+   "vc_progress": 0
+  }
+ ],
+ "channel_progress": [],
+ "badges": [],
+ "shop_items": [],
+ "purchases": [],
+ "settings": [
+  {
+   "guild_id": 1574603839133192317,
+   "key": "noprefix",
+   "value": {
+    "role": null,
+    "users": [
+     1554945105981603880,
+     1433650059043405959
+    ]
+   }
+  }
+ ],
+ "point_log": [
+  {
+   "id": 20742,
+   "guild_id": 1574603839133192317,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795492843.1147254
+  },
+  {
+   "id": 21125,
+   "guild_id": 1574603839133192317,
+   "user_id": 1433650059043405959,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795503878.3436985
+  },
+  {
+   "id": 21914,
+   "guild_id": 1574603839133192317,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795557875.778521
+  },
+  {
+   "id": 25978,
+   "guild_id": 1574603839133192317,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795781510.5864859
+  },
+  {
+   "id": 26008,
+   "guild_id": 1574603839133192317,
+   "user_id": 1554945105981603880,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795786038.5997043
+  }
+ ],
+ "left_members": [],
+ "aura_log": [],
+ "transfer_log": []
+}

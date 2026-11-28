@@ -1,0 +1,53 @@
+{
+ "server_id": 1543872217920573493,
+ "users": [
+  {
+   "guild_id": 1543872217920573493,
+   "user_id": 1554945105981603880,
+   "points": 0,
+   "chat_total": 10,
+   "chat_progress": 10,
+   "vc_total": 0,
+   "vc_progress": 0
+  },
+  {
+   "guild_id": 1543872217920573493,
+   "user_id": 829689719633215498,
+   "points": 1,
+   "chat_total": 60,
+   "chat_progress": 10,
+   "vc_total": 0,
+   "vc_progress": 0
+  }
+ ],
+ "channel_progress": [],
+ "badges": [],
+ "shop_items": [],
+ "purchases": [],
+ "settings": [
+  {
+   "guild_id": 1543872217920573493,
+   "key": "noprefix",
+   "value": {
+    "role": null,
+    "users": [
+     1554945105981603880,
+     829689719633215498
+    ]
+   }
+  }
+ ],
+ "point_log": [
+  {
+   "id": 21403,
+   "guild_id": 1543872217920573493,
+   "user_id": 829689719633215498,
+   "delta": 1,
+   "reason": "chat",
+   "ts": 1795524197.4094887
+  }
+ ],
+ "left_members": [],
+ "aura_log": [],
+ "transfer_log": []
+}

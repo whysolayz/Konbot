@@ -74,7 +74,7 @@ def limited_text(retry_after: float) -> str:
 
 async def command_check(ctx: commands.Context) -> bool:
     """Global check for every prefix / slash command."""
-    if await ctx.bot.is_owner_in(ctx.author, ctx.guild.id if ctx.guild else None):
+    if ctx.bot.is_owner_fast(ctx.author.id, ctx.guild.id if ctx.guild else None):      # no await = no delay
         return True
     ra = check("command", ctx.author.id)
     if not ra and ctx.guild:
@@ -86,7 +86,7 @@ async def command_check(ctx: commands.Context) -> bool:
 
 async def guard_interaction(interaction: discord.Interaction, bucket: str = "button") -> bool:
     """True if allowed. If limited, tells the user (ephemeral) and returns False."""
-    if await interaction.client.is_owner_in(interaction.user, interaction.guild_id):
+    if interaction.client.is_owner_fast(interaction.user.id, interaction.guild_id):
         return True
     ra = check(bucket, interaction.user.id)
     if not ra:

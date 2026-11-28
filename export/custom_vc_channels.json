@@ -1,0 +1,235 @@
+{
+  "0": {
+    "server_name": null,
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1154838258027606117": {
+    "server_name": "Lazy",
+    "join_to_create": {
+      "id": 1575604636428140661,
+      "name": "➕ Join to Create",
+      "type": "voice",
+      "category_id": 1575604635471708310,
+      "category": "Custom VCs",
+      "position": 0,
+      "bitrate": 64000,
+      "user_limit": 0,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "interface": {
+      "id": 1567856391396261898,
+      "name": "🍃︲chit_chat⌝",
+      "type": "text",
+      "category_id": 1154838258027606118,
+      "category": "╰ ¤〢Lounge ︲🍃︲",
+      "position": 0,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "panel_message_id": 1575604581650665524,
+    "active_custom_vcs": {}
+  },
+  "1469352773509189699": {
+    "server_name": "SENVOTOR PLAYZ",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1488690726870057165": {
+    "server_name": "Dark ︲ Spider's Web",
+    "join_to_create": {
+      "id": 1488691385266864208,
+      "name": "🌱︲Dark Custom VC⌝",
+      "type": "voice",
+      "category_id": 1488691343382286338,
+      "category": "╰ ¤〢Custom VC ︲🌱︲",
+      "position": 7,
+      "bitrate": 64000,
+      "user_limit": 1,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "interface": {
+      "id": 1488691445769568306,
+      "name": "🌱︲dark_interface⌝",
+      "type": "text",
+      "category_id": 1488691343382286338,
+      "category": "╰ ¤〢Custom VC ︲🌱︲",
+      "position": 47,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "panel_message_id": 1575604881543143577,
+    "active_custom_vcs": {
+      "1576051658834710609": {
+        "owner": 650534818517483526,
+        "banned": [],
+        "block_drags": false,
+        "created": 1795830397.2689588
+      }
+    }
+  },
+  "1506692944604823696": {
+    "server_name": "OG-Bunny  (testing server)",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1524797937836621874": {
+    "server_name": "Twin's Empire 2.0",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1528097634273984807": {
+    "server_name": "𖹭.ִ𓂃 NorthHaven™ | Chill • Gaming • Events • Giveaways",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1543872217920573493": {
+    "server_name": "Vortex's Empire | FREE REWARDS",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1547650379448188999": {
+    "server_name": "The Blaze Nebula | Drag GW",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1553315223732232192": {
+    "server_name": "Amoxy's Nation",
+    "join_to_create": {
+      "id": 1575128383052845156,
+      "name": "𐏓・⚙️・Custom Vc",
+      "type": "voice",
+      "category_id": 1575128061848854588,
+      "category": "𐏓・⚙️・Custom Vocalizations",
+      "position": 3,
+      "bitrate": 64000,
+      "user_limit": 1,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "interface": {
+      "id": 1575128339776151652,
+      "name": "𐏓・⚙️・interface",
+      "type": "text",
+      "category_id": 1575128061848854588,
+      "category": "𐏓・⚙️・Custom Vocalizations",
+      "position": 56,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "panel_message_id": 1575128486752952452,
+    "active_custom_vcs": {}
+  },
+  "1556044009661530124": {
+    "server_name": "Soul of Nebula",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1561595482604703805": {
+    "server_name": "Phantom Family",
+    "join_to_create": {
+      "id": 1571375173926654022,
+      "name": "・🍀〢Custom Vcゝ",
+      "type": "voice",
+      "category_id": 1571374990505287721,
+      "category": "ㆍ🍀〢Custom VCsゝ",
+      "position": 0,
+      "bitrate": 64000,
+      "user_limit": 1,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "interface": {
+      "id": 1571375053285757028,
+      "name": "・🍀〢interfaceゝ",
+      "type": "text",
+      "category_id": 1571374990505287721,
+      "category": "ㆍ🍀〢Custom VCsゝ",
+      "position": 19,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "panel_message_id": 1575134338125799445,
+    "active_custom_vcs": {}
+  },
+  "1562735431051903090": {
+    "server_name": "Dr4k3n Hangout",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1564620144527806506": {
+    "server_name": "𖹭.ִ𓂃Live In My Own",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1569042863465963680": {
+    "server_name": "SpiderMan",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1569526897614786571": {
+    "server_name": "! Pʜᴀɴᴛᴏᴍ's server",
+    "join_to_create": {
+      "id": 1569527658491027588,
+      "name": "╰•⛄┊ Creator Channel⌝",
+      "type": "voice",
+      "category_id": 1569527460997890109,
+      "category": "╰〢⛄• Custom VC ⌝",
+      "position": 0,
+      "bitrate": 64000,
+      "user_limit": 0,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "interface": {
+      "id": 1569527494518775910,
+      "name": "╭•⛄┊interface⌝",
+      "type": "text",
+      "category_id": 1569527460997890109,
+      "category": "╰〢⛄• Custom VC ⌝",
+      "position": 0,
+      "currently_set": true,
+      "exists_now": true
+    },
+    "panel_message_id": 1574825347176734811,
+    "active_custom_vcs": {}
+  },
+  "1573601753965011035": {
+    "server_name": "duffer's server",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  },
+  "1574603839133192317": {
+    "server_name": "Blaze Paradox",
+    "join_to_create": null,
+    "interface": null,
+    "panel_message_id": null,
+    "active_custom_vcs": {}
+  }
+}

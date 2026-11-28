@@ -89,7 +89,7 @@ DESC = {
     "handfight": "Open Handfight - rock paper scissors (Duo / Squad)", "handfight play": "Open Handfight (`$hf`)",
     "handfight channel": "Pick the Handfight channel from a menu (`$handfight set`)", "handfight stats": "Your Handfight record",
     "handfight stop": "Stop the running Handfight game",
-    "guessanime": "Guess the Anime quiz - 2-10 players, 10 rounds (`$ga easy|medium|hard`)", "guessanime play": "Open a Guess the Anime lobby",
+    "guessanime": "Guess the Anime - character pictures, 2-10 players, 10 rounds (`$ga easy|medium|hard`, default medium)", "guessanime play": "Open a Guess the Anime lobby",
     "guessanime channel": "Pick the Guess the Anime channel (`$guessanime set`)", "guessanime stats": "Your Guess the Anime record",
     "guessanime top": "Best Guess the Anime players", "guessanime stop": "Stop the running Guess the Anime game",
     "guessemoji": "Guess the Emoji - emojis hide a word, type it (`$ge easy|medium|hard`)", "guessemoji play": "Open a Guess the Emoji lobby",
@@ -372,6 +372,9 @@ class Meta(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.started = time.time()
+        self._help_cache: dict = {}
+        self._graph_cache = None
+        self._cmd_list: Optional[list] = None
         self.beats: deque = deque(maxlen=40)          # (gateway ms, api ms) every 15 s = the last 10 minutes (for $pulse)
         self.sampler.start()
 
@@ -404,6 +407,7 @@ class Meta(commands.Cog):
         ws = self.bot.latency * 1000
         if not math.isfinite(ws):
             ws = 0.0
+        graph = asyncio.create_task(self._graph())               # PIL drawing runs in a thread while the reply is on its way
         t0 = time.perf_counter()
         msg = await ctx.reply(f"{I.s('refresh')} Checking...", mention_author=False)
         api = (time.perf_counter() - t0) * 1000
@@ -424,21 +428,34 @@ class Meta(commands.Cog):
             f"{I.s('folder')} **Database:** `{db:.1f} ms` {dot(db, 20, 100)}\n"
             f"{I.s('clock')} **Uptime:** `{fmt_secs(time.time() - self.started)}`"))
         file = None
-        if len(self.beats) >= 3:
-            beats = list(self.beats)
-            gw = [b[0] for b in beats]
-            series = [{"values": gw, "color": chart.GOLD, "label": "Gateway"}]
-            ap = [b[1] for b in beats if b[1] is not None]
-            if len(ap) == len(beats):
-                series.append({"values": ap, "color": chart.SKY, "label": "API"})
-            png = await asyncio.to_thread(chart.line_chart, series, unit="ms", min_span=20,
-                                          x_left=f"{len(beats) * 15 // 60 or 1} min ago", x_right="now")
+        made = await graph
+        if made:
+            png, footer = made
             file = discord.File(io.BytesIO(png), "pulse.png")
             e.set_image(url="attachment://pulse.png")
-            e.set_footer(text=f"Gateway · best {min(gw):.0f} · avg {sum(gw) / len(gw):.0f} · worst {max(gw):.0f} ms")
+            e.set_footer(text=footer)
         else:
             e.set_footer(text="The graph appears after a minute or so.")
         await msg.edit(content=None, embed=e, attachments=[file] if file else [])
+
+    async def _graph(self):
+        """-> (png bytes, footer text) or None while there are too few readings. Cached for 5 s (spam-proof)."""
+        now = time.monotonic()
+        if self._graph_cache and now - self._graph_cache[0] < 5:
+            return self._graph_cache[1]
+        if len(self.beats) < 3:
+            return None
+        beats = list(self.beats)
+        gw = [b[0] for b in beats]
+        series = [{"values": gw, "color": chart.GOLD, "label": "Gateway"}]
+        ap = [b[1] for b in beats if b[1] is not None]
+        if len(ap) == len(beats):
+            series.append({"values": ap, "color": chart.SKY, "label": "API"})
+        png = await asyncio.to_thread(chart.line_chart, series, unit="ms", min_span=20,
+                                      x_left=f"{len(beats) * 15 // 60 or 1} min ago", x_right="now")
+        out = (png, f"Gateway · best {min(gw):.0f} · avg {sum(gw) / len(gw):.0f} · worst {max(gw):.0f} ms")
+        self._graph_cache = (now, out)
+        return out
 
     @commands.hybrid_command(name="koninfo", aliases=["kinfo"], description="Servers, members and stats of Kon")
     async def kon_info(self, ctx: commands.Context):
@@ -477,12 +494,20 @@ class Meta(commands.Cog):
                 e.add_field(name="Subcommands", value="\n".join(lines)[:1000], inline=False)
         return e
 
-    @commands.command(name="help", aliases=["h"])
-    @commands.guild_only()
-    async def show_help(self, ctx: commands.Context, *, query: str = ""):
-        """$help [category / command] - every command you can use, by category."""
+    HELP_TTL = 60                      # seconds a built help menu is reused for the same person in the same server
+
+    async def _pages_for(self, ctx: commands.Context) -> dict:
+        """Everything this person may use, grouped for $help. Built once, then served from memory (instant $help)."""
+        rc = self.bot.rolecmds(ctx.guild.id)
+        key = (ctx.guild.id, ctx.author.id, tuple(sorted((n, d.get("role")) for n, d in rc.items())))
+        hit = self._help_cache.get(key)
+        now = time.monotonic()
+        if hit and now - hit[0] < self.HELP_TTL:
+            return hit[1]
+        if self._cmd_list is None:
+            self._cmd_list = sorted(self.bot.walk_commands(), key=lambda c: c.qualified_name)
         pages: dict[str, tuple] = {}
-        for cmd in sorted(self.bot.walk_commands(), key=lambda c: c.qualified_name):
+        for cmd in self._cmd_list:
             if cmd.name == "rolecmd" or cmd.hidden:                  # internal dispatcher for custom role commands
                 continue
             level = await access_level(ctx, cmd)
@@ -490,19 +515,29 @@ class Meta(commands.Cog):
                 continue
             self._add_line(pages, cmd, level)
         # the role commands of THIS server ($setmanager ...) are listed too, for people who may use them
-        if ctx.author.guild_permissions.manage_roles or await self.bot.is_true_owner(ctx.author):
+        if ctx.author.guild_permissions.manage_roles or self.bot.is_owner_fast(ctx.author.id, ctx.guild.id):
             lines = []
-            for n, d in sorted(self.bot.rolecmds(ctx.guild.id).items()):
+            for n, d in sorted(rc.items()):
                 r = ctx.guild.get_role(d["role"])
                 lines.append(f"`{PREFIX}set{n} @user` {r.mention if r else '*deleted role*'} {I.s('lock')}")
             if lines:
                 self._cog_bucket(pages, "RoleCmds")[2].setdefault("admin", []).extend(lines)
         order = list(GROUPS) + ["other"]
         pages = dict(sorted(pages.items(), key=lambda kv: order.index(kv[0]) if kv[0] in order else len(order)))
-        for key, (title, icon, text, cogs) in pages.items():       # inside a group: the order of GROUPS[...]
-            if key in GROUPS:
-                rank = GROUPS[key][3]
-                pages[key] = (title, icon, text, dict(sorted(cogs.items(), key=lambda kv: rank.index(kv[0]) if kv[0] in rank else 99)))
+        for gkey, (title, icon, text, cogs) in pages.items():       # inside a group: the order of GROUPS[...]
+            if gkey in GROUPS:
+                rank = GROUPS[gkey][3]
+                pages[gkey] = (title, icon, text, dict(sorted(cogs.items(), key=lambda kv: rank.index(kv[0]) if kv[0] in rank else 99)))
+        if len(self._help_cache) > 300:
+            self._help_cache.clear()
+        self._help_cache[key] = (now, pages)
+        return pages
+
+    @commands.command(name="help", aliases=["h"])
+    @commands.guild_only()
+    async def show_help(self, ctx: commands.Context, *, query: str = ""):
+        """$help [category / command] - every command you can use, by category."""
+        pages = await self._pages_for(ctx)
         view = HelpView(ctx, pages)
 
         q = query.strip().lstrip(PREFIX).strip().lower()

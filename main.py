@@ -41,6 +41,7 @@ class Kon(commands.Bot):
         self._noprefix: dict[int, dict] = {}
         self._aliases: dict[int, dict] = {}
         self._rolecmds: dict[int, dict] = {}
+        self._pref_cache: dict[int, list] = {}
         self._closing = False
         self._closed_evt = asyncio.Event()
 
@@ -134,11 +135,17 @@ class Kon(commands.Bot):
         self.db.set_settings(gid, "rolecmds", self.rolecmds(gid))
 
     async def get_prefix(self, message, /):
+        hit = self._pref_cache.get(message.id)          # get_context asks twice per message - work it out once
+        if hit is not None:
+            return hit
         prefixes = await super().get_prefix(message)
         if isinstance(prefixes, str):
             prefixes = [prefixes]
         if message.guild and not message.author.bot and self.is_noprefix(message.author):
             prefixes = [*prefixes, ""]                 # "" last -> "$cmd" still works, plain "cmd" works too
+        if len(self._pref_cache) > 200:
+            self._pref_cache.clear()
+        self._pref_cache[message.id] = prefixes
         return prefixes
 
     async def get_context(self, message, *, cls=commands.Context):
@@ -160,7 +167,10 @@ class Kon(commands.Bot):
                     sub, _, rest = tail.strip().partition(" ")
                     if self.get_command("vc" + sub.lower()):
                         message.content = f"{pref}vc{sub} {rest}".rstrip()
-        return await super().get_context(message, cls=cls)
+        try:
+            return await super().get_context(message, cls=cls)
+        finally:
+            self._pref_cache.pop(getattr(message, "id", None), None)
 
     def command_hash(self) -> str:
         """Fingerprint of all slash commands, so we only sync when something changed."""

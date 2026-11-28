@@ -1,0 +1,2629 @@
+{
+  "server": {
+    "id": 1488690726870057165,
+    "name": "Dark ︲ Spider's Web",
+    "bot_is_in_server": true,
+    "owner_id": 1400039022855852113,
+    "members": 229
+  },
+  "custom_vc": {
+    "join_to_create_channel": 1488691385266864208,
+    "interface_channel": 1488691445769568306,
+    "interface_message_id": 1575604881543143577,
+    "saved_setup (last known, survives channel deletion)": {
+      "join_to_create": {
+        "id": 1488691385266864208,
+        "name": "🌱︲Dark Custom VC⌝",
+        "type": "voice",
+        "category_id": 1488691343382286338,
+        "category": "╰ ¤〢Custom VC ︲🌱︲",
+        "position": 7,
+        "bitrate": 64000,
+        "user_limit": 1,
+        "currently_set": true,
+        "exists_now": true
+      },
+      "interface": {
+        "id": 1488691445769568306,
+        "name": "🌱︲dark_interface⌝",
+        "type": "text",
+        "category_id": 1488691343382286338,
+        "category": "╰ ¤〢Custom VC ︲🌱︲",
+        "position": 47,
+        "currently_set": true,
+        "exists_now": true
+      },
+      "panel_message_id": 1575604881543143577
+    },
+    "other_keys": {
+      "panel_ver": "0b67fbf2e1172476",
+      "dashboard": {
+        "aliases": {
+          "aliases": [
+            {
+              "name": "backupload",
+              "command": "bload"
+            }
+          ]
+        },
+        "self_roles": {
+          "channel": "1488691387653161131",
+          "title": "Self Roles :",
+          "title_emoji": "<:Spider_Diamond:1570309161198293013>",
+          "footer": "Click the buttons below to toggle your roles.",
+          "color": "#ff9100",
+          "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b00250a&is=6afed38a&hm=cc8806b939ea85d7d95df02c8276839444e69fde897cbf07edc3160bc530f326&",
+          "roles": [
+            {
+              "role": "1488691267574698006",
+              "label": "Event Ping",
+              "emoji": "<:cal2:1570309163999821864>"
+            },
+            {
+              "role": "1488691305323167774",
+              "label": "Fun Ping",
+              "emoji": "<:senpai_wow:1570309166965465138>"
+            },
+            {
+              "role": "1488691271101972531",
+              "label": "Giveaway Ping",
+              "emoji": "<:Spider_Diamond:1570309161198293013>"
+            },
+            {
+              "role": "1488691273446719489",
+              "label": "Social Feeds",
+              "emoji": "<:Senpai_Information:1517499045117952060>"
+            }
+          ]
+        },
+        "points": {
+          "chat_enabled": true,
+          "chat_msgs": 10,
+          "chat_points": 1,
+          "cooldown": 0,
+          "chat_everywhere": true,
+          "enabled_channels": [],
+          "disabled_channels": [
+            "1570386957056348251",
+            "1488691349212495892"
+          ],
+          "channel_rules": [],
+          "vc_enabled": true,
+          "vc_mins": 1,
+          "vc_points": 1,
+          "vc_need_others": false,
+          "vc_need_muted": false,
+          "vc_disabled_channels": []
+        }
+      }
+    },
+    "active_custom_vcs": {
+      "1576051658834710609": {
+        "owner": 650534818517483526,
+        "banned": [],
+        "block_drags": false,
+        "created": 1795830397.2689588
+      }
+    }
+  },
+  "self_roles": {
+    "channel": 1488691387653161131,
+    "message": 1575605856186400800,
+    "title": "Self Roles :",
+    "title_emoji": "<:Spider_Diamond:1570309161198293013>",
+    "footer": "Click the buttons below to toggle your roles.",
+    "color": 16748800,
+    "banner": null,
+    "roles": [
+      {
+        "role": 1488691267574698006,
+        "label": "Event Ping",
+        "emoji": "<:cal2:1570309163999821864>",
+        "line": "Event Ping",
+        "line_emoji": "<:cal2:1570309163999821864>"
+      },
+      {
+        "role": 1488691305323167774,
+        "label": "Fun Ping",
+        "emoji": "<:senpai_wow:1570309166965465138>",
+        "line": "Fun Ping",
+        "line_emoji": "<:senpai_wow:1570309166965465138>"
+      },
+      {
+        "role": 1488691271101972531,
+        "label": "Giveaway Ping",
+        "emoji": "<:Spider_Diamond:1570309161198293013>",
+        "line": "Giveaway Ping",
+        "line_emoji": "<:Spider_Diamond:1570309161198293013>"
+      },
+      {
+        "role": 1488691273446719489,
+        "label": "Social Feeds",
+        "emoji": "<:Senpai_Information:1517499045117952060>",
+        "line": "Social Feeds",
+        "line_emoji": "<:Senpai_Information:1517499045117952060>"
+      }
+    ],
+    "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b095f8a&is=6b080e0a&hm=624422229740cffbdbe0a1b4b9232095209061d172220a288124f002c8e769b6&",
+    "banner_ref": {
+      "c": 1572381729233051669,
+      "m": 1572382470312296601
+    },
+    "missing": []
+  },
+  "points_settings": {
+    "chat_enabled": true,
+    "chat_msgs": 10,
+    "chat_points": 1,
+    "chat_everywhere": true,
+    "vc_enabled": true,
+    "vc_mins": 1,
+    "vc_points": 1,
+    "vc_need_others": false,
+    "vc_need_muted": false,
+    "cooldown": 0,
+    "channel_rules": {},
+    "disabled_channels": [
+      1570386957056348251,
+      1488691409744695417,
+      1488691349212495892
+    ],
+    "enabled_channels": [],
+    "vc_disabled_channels": []
+  },
+  "shop": {
+    "settings": {
+      "per_page": 5
+    },
+    "items": [
+      {
+        "id": 7,
+        "guild_id": 1488690726870057165,
+        "role_id": 1570572186958172180,
+        "price": 250,
+        "stock": 2,
+        "emoji": "<:Kartik_what:1570284014797852802>",
+        "position": 1
+      },
+      {
+        "id": 1,
+        "guild_id": 1488690726870057165,
+        "role_id": 1488691208019771402,
+        "price": 500,
+        "stock": 3,
+        "emoji": "<:Kool:1569605493607890995>",
+        "position": 2
+      },
+      {
+        "id": 2,
+        "guild_id": 1488690726870057165,
+        "role_id": 1488691206375608330,
+        "price": 500,
+        "stock": 0,
+        "emoji": "<:cute:1569605481364852909>",
+        "position": 3
+      },
+      {
+        "id": 3,
+        "guild_id": 1488690726870057165,
+        "role_id": 1488691206891503758,
+        "price": 500,
+        "stock": 2,
+        "emoji": "<:cute:1569605481364852909>",
+        "position": 4
+      },
+      {
+        "id": 4,
+        "guild_id": 1488690726870057165,
+        "role_id": 1488691203858890833,
+        "price": 500,
+        "stock": 2,
+        "emoji": "<:winner:1517495079181488280>",
+        "position": 5
+      },
+      {
+        "id": 5,
+        "guild_id": 1488690726870057165,
+        "role_id": 1488691204785963128,
+        "price": 1000,
+        "stock": 3,
+        "emoji": "<:winner:1517495079181488280>",
+        "position": 6
+      },
+      {
+        "id": 6,
+        "guild_id": 1488690726870057165,
+        "role_id": 1488691205637279785,
+        "price": 2000,
+        "stock": 3,
+        "emoji": "<:winner:1517495079181488280>",
+        "position": 7
+      }
+    ]
+  },
+  "no_prefix": {
+    "role": 1488691185374462012,
+    "users": [
+      1418875905085935637,
+      650534818517483526,
+      1502959831772823762
+    ]
+  },
+  "aliases": {},
+  "role_commands": {
+    "setmemer": {
+      "role": 1488691235970351105,
+      "allowed": null
+    },
+    "sethomies": {
+      "role": 1488691239678378015,
+      "allowed": null
+    },
+    "setguest": {
+      "role": 1488691229838540904,
+      "allowed": null
+    },
+    "setog": {
+      "role": 1488691230861951078,
+      "allowed": null
+    },
+    "own": {
+      "role": 1488691169046167603,
+      "allowed": null
+    },
+    "manager": {
+      "role": 1488691176306639008,
+      "allowed": null
+    },
+    "1488691231771853098": {
+      "role": 1488691231771853098,
+      "allowed": null
+    },
+    "tmod": {
+      "role": 1488691194220384338,
+      "allowed": null
+    },
+    "staff": {
+      "role": 1488691195847643227,
+      "allowed": null
+    }
+  },
+  "autoreact": {
+    "roles": [
+      1570572186958172180,
+      1570053759848153189,
+      1488691208019771402,
+      1488691206891503758,
+      1488691206375608330
+    ],
+    "users": {
+      "650534818517483526": [
+        "<:LazyCafeDogesh:1570285024895434802>"
+      ],
+      "1425991437396217960": [
+        "<a:Nova_Quenn:1572638654252187669>"
+      ],
+      "1548153523709943863": [
+        "<a:Madira_eating:1570284028093792286>"
+      ],
+      "743845224287043665": [
+        "<a:Cat:1570284005067198464>"
+      ],
+      "1086203964300730449": [
+        "<a:Oliviaaa_nooooo:1570284034532188210>"
+      ],
+      "1299765230011678834": [
+        "<:LazyCafeCat:1570284011136491742>"
+      ],
+      "1409148182944022699": [
+        "<:cute:1569605481364852909>"
+      ]
+    }
+  },
+  "aura": {
+    "members": {},
+    "roles": {},
+    "random": true,
+    "negative": true,
+    "disabled": []
+  },
+  "custom_vc_rules": null,
+  "tictactoe": {
+    "channel": 1572117193712209960
+  },
+  "game_channels": {
+    "tictactoe": 1572117193712209960,
+    "blacktea": 1572286596735303771,
+    "timetap": 1572828188332007465,
+    "handfight": 1572828244758241330,
+    "guessanime": 1575970396094599298,
+    "guessemoji": 1575970446325846046,
+    "simonsays": 1575970494216147025
+  },
+  "game_stats": {
+    "timetap": {
+      "650534818517483526": {
+        "games": 3,
+        "false_starts": 2,
+        "taps": 14,
+        "total_ms": 17834,
+        "rounds_won": 14,
+        "match_wins": 1,
+        "titles": 1,
+        "train_runs": 2,
+        "best_clean": 6,
+        "best_ms": 1067,
+        "train_best_avg": 1172
+      },
+      "1028298097664733215": {
+        "games": 4,
+        "false_starts": 1,
+        "taps": 18,
+        "total_ms": 23092,
+        "rounds_won": 18,
+        "match_wins": 2,
+        "titles": 2,
+        "train_runs": 1,
+        "best_clean": 10,
+        "best_ms": 1034,
+        "train_best_avg": 1245
+      },
+      "646117549670662154": {
+        "games": 1,
+        "false_starts": 1,
+        "taps": 7,
+        "total_ms": 8558,
+        "rounds_won": 7,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 1,
+        "best_clean": 6,
+        "best_ms": 1079,
+        "train_best_avg": 1223
+      },
+      "1409148182944022699": {
+        "games": 1,
+        "false_starts": 1,
+        "taps": 10,
+        "total_ms": 14412,
+        "rounds_won": 10,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 1,
+        "best_clean": 9,
+        "best_ms": 1088,
+        "train_best_avg": 1441
+      },
+      "1513085640642920458": {
+        "games": 3,
+        "false_starts": 2,
+        "taps": 13,
+        "total_ms": 26056,
+        "rounds_won": 13,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 3,
+        "best_clean": 10,
+        "best_ms": 1452,
+        "train_best_avg": 2037
+      },
+      "1418875905085935637": {
+        "games": 2,
+        "false_starts": 1,
+        "taps": 0,
+        "total_ms": 0,
+        "rounds_won": 0,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 0,
+        "best_clean": 0
+      }
+    },
+    "handfight": {
+      "650534818517483526": {
+        "games": 6,
+        "titles": 4,
+        "rounds_won": 9,
+        "rounds_lost": 9,
+        "draws": 7,
+        "match_wins": 4,
+        "match_losses": 2,
+        "rock": 3,
+        "paper": 8,
+        "scissors": 14
+      },
+      "1154489620499800127": {
+        "games": 1,
+        "titles": 0,
+        "rounds_won": 0,
+        "rounds_lost": 2,
+        "draws": 0,
+        "match_wins": 0,
+        "match_losses": 1,
+        "rock": 0,
+        "paper": 2,
+        "scissors": 0
+      },
+      "1425991437396217960": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 2,
+        "rounds_lost": 1,
+        "draws": 4,
+        "match_wins": 1,
+        "match_losses": 0,
+        "rock": 2,
+        "paper": 4,
+        "scissors": 1
+      },
+      "1554945105981603880": {
+        "games": 1,
+        "titles": 0,
+        "rounds_won": 0,
+        "rounds_lost": 2,
+        "draws": 0,
+        "match_wins": 0,
+        "match_losses": 1,
+        "rock": 0,
+        "paper": 1,
+        "scissors": 1
+      },
+      "1508094918118211655": {
+        "games": 2,
+        "titles": 0,
+        "rounds_won": 1,
+        "rounds_lost": 4,
+        "draws": 1,
+        "match_wins": 0,
+        "match_losses": 2,
+        "rock": 3,
+        "paper": 2,
+        "scissors": 1
+      },
+      "1409148182944022699": {
+        "games": 2,
+        "titles": 1,
+        "rounds_won": 1,
+        "rounds_lost": 4,
+        "draws": 5,
+        "match_wins": 0,
+        "match_losses": 2,
+        "rock": 3,
+        "paper": 3,
+        "scissors": 4
+      },
+      "1433650059043405959": {
+        "games": 2,
+        "titles": 1,
+        "rounds_won": 4,
+        "rounds_lost": 3,
+        "draws": 7,
+        "match_wins": 2,
+        "match_losses": 1,
+        "rock": 3,
+        "paper": 5,
+        "scissors": 6
+      },
+      "1418875905085935637": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 4,
+        "rounds_lost": 0,
+        "draws": 2,
+        "match_wins": 2,
+        "match_losses": 0,
+        "rock": 3,
+        "paper": 1,
+        "scissors": 2
+      },
+      "1262248731353546763": {
+        "games": 1,
+        "titles": 0,
+        "rounds_won": 0,
+        "rounds_lost": 2,
+        "draws": 0,
+        "match_wins": 0,
+        "match_losses": 1,
+        "rock": 1,
+        "paper": 1,
+        "scissors": 0
+      },
+      "1513085640642920458": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 6,
+        "rounds_lost": 0,
+        "draws": 2,
+        "match_wins": 1,
+        "match_losses": 0,
+        "rock": 4,
+        "paper": 2,
+        "scissors": 2
+      }
+    },
+    "guessanime": null,
+    "guessemoji": null,
+    "simonsays": null
+  },
+  "saved_images ($tolink names -> links)": {
+    "channel": 1572381729233051669,
+    "items": {
+      "img-1": {
+        "c": 1572381729233051669,
+        "m": 1572382140962840586,
+        "url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382140719566910/img-1.jpg?ex=6afe2a7b&is=6afcd8fb&hm=7dc1873b7f51d216fcd45fa9d66a08d3670041fe7dcdf081e0dd6ef0b57cb025&",
+        "t": "jpg",
+        "s": 99697,
+        "by": 650534818517483526,
+        "ts": 1794955515
+      }
+    }
+  },
+  "command_disable ($disablecommand)": {
+    "rules": {
+      "cog:Purge": [
+        1517397408164610158,
+        1517397020049014926,
+        1517396597913419937,
+        1517395703347937301,
+        1517389912452763739,
+        1488691430288523364,
+        1488691418603065364,
+        1488691409744695417,
+        1488691406552830002,
+        1488691404602343530,
+        1488691402039627776,
+        1488691386273370273,
+        1488691384138338395,
+        1488691376962011216,
+        1488691367986069685,
+        1488691349212495892,
+        1488691338026418288,
+        1488691331848208415
+      ]
+    }
+  },
+  "extra_owners": [
+    {
+      "id": 1262248731353546763,
+      "name": "none (anshumanfr_)",
+      "found": true
+    },
+    {
+      "id": 1154489620499800127,
+      "name": "Dark Ojas (darkojas)",
+      "found": true
+    }
+  ],
+  "afk": {
+    "tag_enabled": false,
+    "users": {
+      "1512822379061969028": {
+        "reason": "sone ja raha",
+        "since": 1794505670.9405162,
+        "old_nick": null,
+        "mentions_waiting": 0
+      },
+      "1502235313081290855": {
+        "reason": "gn",
+        "since": 1794852923.8723984,
+        "old_nick": null,
+        "mentions_waiting": 1
+      }
+    }
+  },
+  "tickets (panels, categories, open tickets)": {
+    "panels": {
+      "main": {
+        "name": "Main panel",
+        "panel_channel": 1488691478841528410,
+        "panel_message": 1573885746706776161,
+        "panel": {
+          "title": "__Contact Support Team__",
+          "color": 3066993,
+          "placeholder": "Select a topic...",
+          "banner": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1573875037528784936
+            }
+          },
+          "description": "✉️ **Create A Ticket**- if you need support or have any important queries\n\n<:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**\n\n<:Senpai_Information:1517499045117952060> __**Ticket For Support**__ :-\n- Create Ticket For General Support\n[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]\n- Creating a ticket to be staff is strictly prohibited.\n- Tickets for fun would result in 2days mute / ban\n- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike or a serious action which will be taken by our Support Team.\n- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. So, please don't create a ticket regarding this topic.\n\n<:Spider_partner:1572638598585655296> __**Ticket for Partnership/Sponsors**__ :-\n- Create a Ticket If You Got Any Brand Deals Or Sponsor\n- Kindly Mention The Basic Details And Have Patience.\n- The Rates For Brand Deals Would Be Discussed In Ticket\n- Leaking The Information To Anyone Would Lead To Ban.\n\n<:InShot_20261122_130804475:1573966358889107600>__**Currency Loan**__ :-\n- Loan Currency with intrest.\n- follow all the rules.\n- must repay according to the rules.\n\n\n__select category from the dropdown menu to contact us__",
+          "_url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&"
+        },
+        "welcome": {
+          "title": "Help/support",
+          "description": "<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**\n> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon."
+        },
+        "support_roles": [
+          1488691195847643227
+        ],
+        "admin_roles": [
+          1488691182308692040
+        ],
+        "open_category": null,
+        "logs": {
+          "opened": 1570531039187566715,
+          "closed": 1570531086939848776,
+          "transcript": 1570531130938101883
+        },
+        "categories": [
+          {
+            "id": "dsw-support",
+            "name": "General Support",
+            "emoji": "<:Senpai_Information:1517499045117952060>",
+            "description": "Reports, bugs, role claiming and more",
+            "question": "Kindly Mention your issue!",
+            "parent": 1488691351246868630,
+            "ping_roles": [
+              1488691195847643227
+            ]
+          },
+          {
+            "id": "dsw-partner",
+            "name": "Partnership/Sponsors",
+            "emoji": "<:Spider_partner:1572638598585655296>",
+            "description": "Brand deals and sponsors",
+            "question": "Kindly mention the basic details of your deal!",
+            "parent": 1488691352051912706,
+            "ping_roles": [
+              1488691182308692040
+            ]
+          },
+          {
+            "id": "df8fd6b2",
+            "name": "Currency Loan",
+            "emoji": "<:InShot_20261122_130804475:1573966358889107600>",
+            "description": null,
+            "question": "Kindly mention the amount",
+            "parent": 1488691353503404204,
+            "ping_roles": [
+              1488691182308692040
+            ]
+          }
+        ],
+        "max_open": 1,
+        "name_format": "ticket-{user}",
+        "opener_can_close": false
+      }
+    },
+    "counter": 18,
+    "blacklist": [],
+    "tickets": {
+      "1573971039388434442": {
+        "num": 5,
+        "channel": 1573971039388434442,
+        "name": "ticket-nontastic_player",
+        "category": "df8fd6b2",
+        "category_name": "Currency Loan",
+        "question": "Kindly mention the amount",
+        "opener": 1028298097664733215,
+        "created": 1795334338.8660107,
+        "claimed_by": 650534818517483526,
+        "claimed_at": 1795334344.579034,
+        "first_reply_by": 650534818517483526,
+        "first_reply_at": 1795334343.942,
+        "answer": "Jitna bhi mil jaye",
+        "log": [
+          1570531039187566715,
+          1573971041728991373
+        ],
+        "closing": false,
+        "welcome_msg": 1573971040185356310
+      },
+      "1573974490554044548": {
+        "num": 6,
+        "channel": 1573974490554044548,
+        "name": "ticket-luffy_07_09",
+        "category": "df8fd6b2",
+        "category_name": "Currency Loan",
+        "question": "Kindly mention the amount",
+        "opener": 1513085640642920458,
+        "created": 1795335161.7306697,
+        "claimed_by": 650534818517483526,
+        "claimed_at": 1795335167.3309338,
+        "first_reply_by": 650534818517483526,
+        "first_reply_at": 1795335169.809,
+        "answer": "500k",
+        "log": [
+          1570531039187566715,
+          1573974493007839333
+        ],
+        "closing": false,
+        "welcome_msg": 1573974491669856328
+      },
+      "1574458190815559732": {
+        "num": 12,
+        "channel": 1574458190815559732,
+        "name": "ticket-yourzoru",
+        "category": "df8fd6b2",
+        "category_name": "Currency Loan",
+        "question": "Kindly mention the amount",
+        "opener": 1407327765933461606,
+        "created": 1795450484.8535337,
+        "claimed_by": 650534818517483526,
+        "claimed_at": 1795495873.274491,
+        "first_reply_by": 1554945105981603880,
+        "first_reply_at": 1795450511.518,
+        "answer": "10m ka loan demdo",
+        "log": [
+          1570531039187566715,
+          1574458194493972553
+        ],
+        "closing": false,
+        "welcome_msg": 1574458192396689620
+      },
+      "1575470287686996019": {
+        "num": 18,
+        "channel": 1575470287686996019,
+        "name": "ticket-whoknow_008",
+        "panel": "main",
+        "category": "df8fd6b2",
+        "category_name": "Currency Loan",
+        "question": "Kindly mention the amount",
+        "opener": 743845224287043665,
+        "created": 1795691787.6163282,
+        "claimed_by": 650534818517483526,
+        "claimed_at": 1795723419.814148,
+        "first_reply_by": 1547837265961685072,
+        "first_reply_at": 1795691861.551,
+        "answer": "50m",
+        "log": [
+          1570531039187566715,
+          1575470293210759279
+        ],
+        "closing": false,
+        "welcome_msg": 1575470291008618628
+      }
+    },
+    "stats": {
+      "opened": 18,
+      "closed": 14
+    }
+  },
+  "giveaways (templates, running, ended)": {
+    "counter": 5,
+    "templates": {
+      "bauni": {
+        "name": "Bauni",
+        "saved": 1795489722.8886936,
+        "cfg": {
+          "title": "GIVEAWAY",
+          "prize": "Role",
+          "description": "Click the button below to enter!",
+          "winners": 2,
+          "duration": 86400,
+          "color": 10181046,
+          "image": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622625496436830
+            }
+          },
+          "thumbnail": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06512b&is=6b04ffab&hm=c4796c70563ab85d7474fec6b78b04352403c2e59898060ef778cb6a0d0e89ed&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622703137194117
+            }
+          },
+          "channel": 1488691409744695417,
+          "emojis": {
+            "title": "<a:spider_disc:1517500076782649477>",
+            "prize": "<a:giveaway:1571559456037277837>",
+            "winners": "<a:dancing_star:1572638621813440643>",
+            "host": "<a:Madira_yo:1570284031457890314>",
+            "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+            "req": "<a:exo_announce:1565559608502657125>",
+            "entries": "<a:Spider_Hero:1517496670697422918>",
+            "todo": "<:LazyCafeDogesh:1570285024895434802>",
+            "done": "<:spider_mastiii:1573018958813208587>",
+            "ended": "<:53joker:1572657288915845301>"
+          },
+          "buttons": {
+            "join": {
+              "label": "Join Giveaway",
+              "emoji": "<a:Madira_dance:1570574375160385546>",
+              "style": "primary",
+              "ended_label": "Giveaway Ended"
+            },
+            "entries": {
+              "emoji": ":scrajj",
+              "show": true
+            },
+            "progress": {
+              "label": "My Progress",
+              "emoji": "<a:Cat:1570284005067198464>",
+              "show": true
+            }
+          },
+          "prize_role": {
+            "role": 1488691203858890833,
+            "mode": "temporary",
+            "seconds": 604800
+          },
+          "points": 500,
+          "req": {
+            "roles": [],
+            "roles_mode": "any",
+            "messages": {
+              "count": 0,
+              "exclude": []
+            },
+            "invites": 0,
+            "task": {
+              "enabled": true,
+              "phrase": "bauni",
+              "target": 1425991437396217960,
+              "channel": null
+            }
+          }
+        }
+      }
+    },
+    "active": {},
+    "ended": {
+      "1574623540207026270": {
+        "n": 1,
+        "gid": 1488690726870057165,
+        "ch": 1572381729233051669,
+        "msg": 1574623540207026270,
+        "host": 650534818517483526,
+        "start": 1795489906.7679121,
+        "end": 1795576306,
+        "cfg": {
+          "title": "GIVEAWAY",
+          "prize": "Role",
+          "description": "Click the button below to enter!",
+          "winners": 2,
+          "duration": 86400,
+          "color": 10181046,
+          "image": null,
+          "thumbnail": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622703137194117
+            }
+          },
+          "channel": null,
+          "emojis": {
+            "title": "<a:spider_disc:1517500076782649477>",
+            "prize": "<a:giveaway:1571559456037277837>",
+            "winners": "<a:dancing_star:1572638621813440643>",
+            "host": "<a:Madira_yo:1570284031457890314>",
+            "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+            "req": "<a:exo_announce:1565559608502657125>",
+            "entries": "<a:Spider_Hero:1517496670697422918>",
+            "todo": "<:LazyCafeDogesh:1570285024895434802>",
+            "done": "<:spider_mastiii:1573018958813208587>",
+            "ended": "<:53joker:1572657288915845301>"
+          },
+          "buttons": {
+            "join": {
+              "label": "Join Giveaway",
+              "emoji": "<a:Madira_dance:1570574375160385546>",
+              "style": "primary",
+              "ended_label": "Giveaway Ended"
+            },
+            "entries": {
+              "emoji": "<a:scrajj:1570284076609568919>",
+              "show": true
+            },
+            "progress": {
+              "label": "My Progress",
+              "emoji": "<a:Cat:1570284005067198464>",
+              "show": true
+            }
+          },
+          "prize_role": {
+            "role": 1488691203858890833,
+            "mode": "temporary",
+            "seconds": 604800
+          },
+          "points": 500,
+          "req": {
+            "roles": [],
+            "roles_mode": "any",
+            "messages": {
+              "count": 0,
+              "exclude": []
+            },
+            "invites": 0,
+            "task": {
+              "enabled": true,
+              "phrase": "bauni",
+              "target": 1425991437396217960,
+              "channel": null
+            }
+          }
+        },
+        "status": "ended",
+        "valid": 1,
+        "ended": 1795576309.6874616,
+        "winners": [
+          650534818517483526
+        ],
+        "entries": 1,
+        "users_with_counted_messages": 0,
+        "inviters": 0,
+        "task_done": 7
+      },
+      "1574624507035918348": {
+        "n": 2,
+        "gid": 1488690726870057165,
+        "ch": 1517397020049014926,
+        "msg": 1574624507035918348,
+        "host": 650534818517483526,
+        "start": 1795490137.1829274,
+        "end": 1795576537,
+        "cfg": {
+          "title": "GIVEAWAY",
+          "prize": "Role",
+          "description": "Click the button below to enter!",
+          "winners": 2,
+          "duration": 86400,
+          "color": 10181046,
+          "image": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622625496436830
+            }
+          },
+          "thumbnail": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622703137194117
+            }
+          },
+          "channel": 1488691409744695417,
+          "emojis": {
+            "title": "<a:spider_disc:1517500076782649477>",
+            "prize": "<a:giveaway:1571559456037277837>",
+            "winners": "<a:dancing_star:1572638621813440643>",
+            "host": "<a:Madira_yo:1570284031457890314>",
+            "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+            "req": "<a:exo_announce:1565559608502657125>",
+            "entries": "<a:Spider_Hero:1517496670697422918>",
+            "todo": "<:LazyCafeDogesh:1570285024895434802>",
+            "done": "<:spider_mastiii:1573018958813208587>",
+            "ended": "<:53joker:1572657288915845301>"
+          },
+          "buttons": {
+            "join": {
+              "label": "Join Giveaway",
+              "emoji": "<a:Madira_dance:1570574375160385546>",
+              "style": "primary",
+              "ended_label": "Giveaway Ended"
+            },
+            "entries": {
+              "emoji": "<a:scrajj:1570284076609568919>",
+              "show": true
+            },
+            "progress": {
+              "label": "My Progress",
+              "emoji": "<a:Cat:1570284005067198464>",
+              "show": true
+            }
+          },
+          "prize_role": {
+            "role": 1488691203858890833,
+            "mode": "temporary",
+            "seconds": 604800
+          },
+          "points": 500,
+          "req": {
+            "roles": [],
+            "roles_mode": "any",
+            "messages": {
+              "count": 0,
+              "exclude": []
+            },
+            "invites": 0,
+            "task": {
+              "enabled": true,
+              "phrase": "bauni",
+              "target": 1425991437396217960,
+              "channel": null
+            }
+          }
+        },
+        "status": "ended",
+        "valid": 7,
+        "ended": 1795576539.7024066,
+        "winners": [
+          1414153115602518067,
+          1262248731353546763
+        ],
+        "entries": 7,
+        "users_with_counted_messages": 0,
+        "inviters": 0,
+        "task_done": 7
+      },
+      "1574630785024135219": {
+        "n": 3,
+        "gid": 1488690726870057165,
+        "ch": 1517397020049014926,
+        "msg": 1574630785024135219,
+        "host": 650534818517483526,
+        "start": 1795491634.0037842,
+        "end": 1795578034,
+        "cfg": {
+          "title": "GIVEAWAY",
+          "prize": "Role",
+          "description": "Click the button below to enter!",
+          "winners": 2,
+          "duration": 86400,
+          "color": 10181046,
+          "image": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622625496436830
+            }
+          },
+          "thumbnail": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622703137194117
+            }
+          },
+          "channel": 1517397020049014926,
+          "emojis": {
+            "title": "<a:spider_disc:1517500076782649477>",
+            "prize": "<a:giveaway:1571559456037277837>",
+            "winners": "<a:dancing_star:1572638621813440643>",
+            "host": "<a:Madira_yo:1570284031457890314>",
+            "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+            "req": "<a:exo_announce:1565559608502657125>",
+            "entries": "<a:Spider_Hero:1517496670697422918>",
+            "todo": "<:LazyCafeDogesh:1570285024895434802>",
+            "done": "<:spider_mastiii:1573018958813208587>",
+            "ended": "<:53joker:1572657288915845301>"
+          },
+          "buttons": {
+            "join": {
+              "label": "Join Giveaway",
+              "emoji": "<a:Madira_dance:1570574375160385546>",
+              "style": "primary",
+              "ended_label": "Giveaway Ended"
+            },
+            "entries": {
+              "emoji": "<a:scrajj:1570284076609568919>",
+              "show": true
+            },
+            "progress": {
+              "label": "My Progress",
+              "emoji": "<a:Cat:1570284005067198464>",
+              "show": true
+            }
+          },
+          "prize_role": {
+            "role": 1488691203858890833,
+            "mode": "temporary",
+            "seconds": 604800
+          },
+          "points": 500,
+          "req": {
+            "roles": [],
+            "roles_mode": "any",
+            "messages": {
+              "count": 250,
+              "exclude": [
+                1570388866702245948,
+                1570388769394135150,
+                1517463305768144906,
+                1488691409744695417,
+                1488691349212495892
+              ]
+            },
+            "invites": 0,
+            "task": {
+              "enabled": false,
+              "phrase": "happy birthday",
+              "target": 1262248731353546763,
+              "channel": null
+            }
+          }
+        },
+        "status": "ended",
+        "valid": 0,
+        "ended": 1795578036.2548218,
+        "winners": [],
+        "entries": 0,
+        "users_with_counted_messages": 38,
+        "inviters": 0,
+        "task_done": 0
+      },
+      "1574631196334362695": {
+        "n": 4,
+        "gid": 1488690726870057165,
+        "ch": 1517397020049014926,
+        "msg": 1574631196334362695,
+        "host": 650534818517483526,
+        "start": 1795491731.9411173,
+        "end": 1795578131,
+        "cfg": {
+          "title": "GIVEAWAY",
+          "prize": "Role",
+          "description": "Click the button below to enter!",
+          "winners": 2,
+          "duration": 86400,
+          "color": 10181046,
+          "image": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622625496436830
+            }
+          },
+          "thumbnail": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622703137194117
+            }
+          },
+          "channel": 1517397020049014926,
+          "emojis": {
+            "title": "<a:spider_disc:1517500076782649477>",
+            "prize": "<a:giveaway:1571559456037277837>",
+            "winners": "<a:dancing_star:1572638621813440643>",
+            "host": "<a:Madira_yo:1570284031457890314>",
+            "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+            "req": "<a:exo_announce:1565559608502657125>",
+            "entries": "<a:Spider_Hero:1517496670697422918>",
+            "todo": "<:LazyCafeDogesh:1570285024895434802>",
+            "done": "<:spider_mastiii:1573018958813208587>",
+            "ended": "<:53joker:1572657288915845301>"
+          },
+          "buttons": {
+            "join": {
+              "label": "Join Giveaway",
+              "emoji": "<a:Madira_dance:1570574375160385546>",
+              "style": "primary",
+              "ended_label": "Giveaway Ended"
+            },
+            "entries": {
+              "emoji": "<a:scrajj:1570284076609568919>",
+              "show": true
+            },
+            "progress": {
+              "label": "My Progress",
+              "emoji": "<a:Cat:1570284005067198464>",
+              "show": true
+            }
+          },
+          "prize_role": {
+            "role": 1488691203858890833,
+            "mode": "temporary",
+            "seconds": 604800
+          },
+          "points": 500,
+          "req": {
+            "roles": [],
+            "roles_mode": "any",
+            "messages": {
+              "count": 250,
+              "exclude": [
+                1570386957056348251,
+                1488691409744695417,
+                1488691349212495892
+              ]
+            },
+            "invites": 0,
+            "task": {
+              "enabled": false,
+              "phrase": "happy birthday",
+              "target": 1262248731353546763,
+              "channel": null
+            }
+          }
+        },
+        "status": "ended",
+        "valid": 1,
+        "ended": 1795578131.2566462,
+        "winners": [
+          650534818517483526
+        ],
+        "entries": 4,
+        "users_with_counted_messages": 38,
+        "inviters": 0,
+        "task_done": 0
+      },
+      "1574634081432379435": {
+        "n": 5,
+        "gid": 1488690726870057165,
+        "ch": 1517397020049014926,
+        "msg": 1574634081432379435,
+        "host": 650534818517483526,
+        "start": 1795492419.8864756,
+        "end": 1795578819,
+        "cfg": {
+          "title": "GIVEAWAY",
+          "prize": "Role",
+          "description": "Click the button below to enter!",
+          "winners": 2,
+          "duration": 86400,
+          "color": 10181046,
+          "image": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622625496436830
+            }
+          },
+          "thumbnail": {
+            "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06f9eb&is=6b05a86b&hm=78e13cd5040bf687a215738813968088bb4558d3d7a4098c20c79ff6400c458e&",
+            "ref": {
+              "c": 1572663742091632681,
+              "m": 1574622703137194117
+            }
+          },
+          "channel": 1517397020049014926,
+          "emojis": {
+            "title": "<a:spider_disc:1517500076782649477>",
+            "prize": "<a:giveaway:1571559456037277837>",
+            "winners": "<a:dancing_star:1572638621813440643>",
+            "host": "<a:Madira_yo:1570284031457890314>",
+            "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+            "req": "<a:exo_announce:1565559608502657125>",
+            "entries": "<a:Spider_Hero:1517496670697422918>",
+            "todo": "<:LazyCafeDogesh:1570285024895434802>",
+            "done": "<:spider_mastiii:1573018958813208587>",
+            "ended": "<:53joker:1572657288915845301>"
+          },
+          "buttons": {
+            "join": {
+              "label": "Join Giveaway",
+              "emoji": "<a:Madira_dance:1570574375160385546>",
+              "style": "primary",
+              "ended_label": "Giveaway Ended"
+            },
+            "entries": {
+              "emoji": "<a:scrajj:1570284076609568919>",
+              "show": true
+            },
+            "progress": {
+              "label": "My Progress",
+              "emoji": "<a:Cat:1570284005067198464>",
+              "show": true
+            }
+          },
+          "prize_role": {
+            "role": 1488691203858890833,
+            "mode": "permanent",
+            "seconds": 604800
+          },
+          "points": 0,
+          "req": {
+            "roles": [],
+            "roles_mode": "any",
+            "messages": {
+              "count": 0,
+              "exclude": [
+                1570386957056348251,
+                1488691409744695417,
+                1488691349212495892
+              ]
+            },
+            "invites": 0,
+            "task": {
+              "enabled": false,
+              "phrase": "happy birthday",
+              "target": 1262248731353546763,
+              "channel": null
+            }
+          }
+        },
+        "status": "ended",
+        "valid": 14,
+        "ended": 1795578821.8353305,
+        "winners": [
+          743845224287043665,
+          1455775148962746411
+        ],
+        "entries": 14,
+        "users_with_counted_messages": 0,
+        "inviters": 0,
+        "task_done": 0
+      }
+    },
+    "temp_roles": [
+      {
+        "u": 650534818517483526,
+        "r": 1488691203858890833,
+        "exp": 1796181109.687296,
+        "gw": 1,
+        "tries": 0
+      },
+      {
+        "u": 1414153115602518067,
+        "r": 1488691203858890833,
+        "exp": 1796181339.5284672,
+        "gw": 2,
+        "tries": 0
+      },
+      {
+        "u": 1262248731353546763,
+        "r": 1488691203858890833,
+        "exp": 1796181339.702228,
+        "gw": 2,
+        "tries": 0
+      }
+    ],
+    "last": {
+      "title": "GIVEAWAY",
+      "prize": "Role",
+      "description": "Click the button below to enter!",
+      "winners": 2,
+      "duration": 86400,
+      "color": 10181046,
+      "image": {
+        "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+        "ref": {
+          "c": 1572663742091632681,
+          "m": 1574622625496436830
+        }
+      },
+      "thumbnail": {
+        "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06512b&is=6b04ffab&hm=c4796c70563ab85d7474fec6b78b04352403c2e59898060ef778cb6a0d0e89ed&",
+        "ref": {
+          "c": 1572663742091632681,
+          "m": 1574622703137194117
+        }
+      },
+      "channel": 1517397020049014926,
+      "emojis": {
+        "title": "<a:spider_disc:1517500076782649477>",
+        "prize": "<a:giveaway:1571559456037277837>",
+        "winners": "<a:dancing_star:1572638621813440643>",
+        "host": "<a:Madira_yo:1570284031457890314>",
+        "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+        "req": "<a:exo_announce:1565559608502657125>",
+        "entries": "<a:Spider_Hero:1517496670697422918>",
+        "todo": "<:LazyCafeDogesh:1570285024895434802>",
+        "done": "<:spider_mastiii:1573018958813208587>",
+        "ended": "<:53joker:1572657288915845301>"
+      },
+      "buttons": {
+        "join": {
+          "label": "Join Giveaway",
+          "emoji": "<a:Madira_dance:1570574375160385546>",
+          "style": "primary",
+          "ended_label": "Giveaway Ended"
+        },
+        "entries": {
+          "emoji": "<a:scrajj:1570284076609568919>",
+          "show": true
+        },
+        "progress": {
+          "label": "My Progress",
+          "emoji": "<a:Cat:1570284005067198464>",
+          "show": true
+        }
+      },
+      "prize_role": {
+        "role": 1488691203858890833,
+        "mode": "permanent",
+        "seconds": 604800
+      },
+      "points": 0,
+      "req": {
+        "roles": [],
+        "roles_mode": "any",
+        "messages": {
+          "count": 0,
+          "exclude": [
+            1570386957056348251,
+            1488691409744695417,
+            1488691349212495892
+          ]
+        },
+        "invites": 0,
+        "task": {
+          "enabled": false,
+          "phrase": "happy birthday",
+          "target": 1262248731353546763,
+          "channel": null
+        }
+      }
+    }
+  },
+  "all_settings_raw": {
+    "aliases": {},
+    "aura": {
+      "members": {},
+      "roles": {},
+      "random": true,
+      "negative": true,
+      "disabled": []
+    },
+    "autoreact": {
+      "roles": [
+        1570572186958172180,
+        1570053759848153189,
+        1488691208019771402,
+        1488691206891503758,
+        1488691206375608330
+      ],
+      "users": {
+        "650534818517483526": [
+          "<:LazyCafeDogesh:1570285024895434802>"
+        ],
+        "1425991437396217960": [
+          "<a:Nova_Quenn:1572638654252187669>"
+        ],
+        "1548153523709943863": [
+          "<a:Madira_eating:1570284028093792286>"
+        ],
+        "743845224287043665": [
+          "<a:Cat:1570284005067198464>"
+        ],
+        "1086203964300730449": [
+          "<a:Oliviaaa_nooooo:1570284034532188210>"
+        ],
+        "1299765230011678834": [
+          "<:LazyCafeCat:1570284011136491742>"
+        ],
+        "1409148182944022699": [
+          "<:cute:1569605481364852909>"
+        ]
+      }
+    },
+    "cmd_disable": {
+      "rules": {
+        "cog:Purge": [
+          1517397408164610158,
+          1517397020049014926,
+          1517396597913419937,
+          1517395703347937301,
+          1517389912452763739,
+          1488691430288523364,
+          1488691418603065364,
+          1488691409744695417,
+          1488691406552830002,
+          1488691404602343530,
+          1488691402039627776,
+          1488691386273370273,
+          1488691384138338395,
+          1488691376962011216,
+          1488691367986069685,
+          1488691349212495892,
+          1488691338026418288,
+          1488691331848208415
+        ]
+      }
+    },
+    "giveaway": {
+      "counter": 5,
+      "templates": {
+        "bauni": {
+          "name": "Bauni",
+          "saved": 1795489722.8886936,
+          "cfg": {
+            "title": "GIVEAWAY",
+            "prize": "Role",
+            "description": "Click the button below to enter!",
+            "winners": 2,
+            "duration": 86400,
+            "color": 10181046,
+            "image": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622625496436830
+              }
+            },
+            "thumbnail": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06512b&is=6b04ffab&hm=c4796c70563ab85d7474fec6b78b04352403c2e59898060ef778cb6a0d0e89ed&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622703137194117
+              }
+            },
+            "channel": 1488691409744695417,
+            "emojis": {
+              "title": "<a:spider_disc:1517500076782649477>",
+              "prize": "<a:giveaway:1571559456037277837>",
+              "winners": "<a:dancing_star:1572638621813440643>",
+              "host": "<a:Madira_yo:1570284031457890314>",
+              "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+              "req": "<a:exo_announce:1565559608502657125>",
+              "entries": "<a:Spider_Hero:1517496670697422918>",
+              "todo": "<:LazyCafeDogesh:1570285024895434802>",
+              "done": "<:spider_mastiii:1573018958813208587>",
+              "ended": "<:53joker:1572657288915845301>"
+            },
+            "buttons": {
+              "join": {
+                "label": "Join Giveaway",
+                "emoji": "<a:Madira_dance:1570574375160385546>",
+                "style": "primary",
+                "ended_label": "Giveaway Ended"
+              },
+              "entries": {
+                "emoji": ":scrajj",
+                "show": true
+              },
+              "progress": {
+                "label": "My Progress",
+                "emoji": "<a:Cat:1570284005067198464>",
+                "show": true
+              }
+            },
+            "prize_role": {
+              "role": 1488691203858890833,
+              "mode": "temporary",
+              "seconds": 604800
+            },
+            "points": 500,
+            "req": {
+              "roles": [],
+              "roles_mode": "any",
+              "messages": {
+                "count": 0,
+                "exclude": []
+              },
+              "invites": 0,
+              "task": {
+                "enabled": true,
+                "phrase": "bauni",
+                "target": 1425991437396217960,
+                "channel": null
+              }
+            }
+          }
+        }
+      },
+      "active": {},
+      "ended": {
+        "1574623540207026270": {
+          "n": 1,
+          "gid": 1488690726870057165,
+          "ch": 1572381729233051669,
+          "msg": 1574623540207026270,
+          "host": 650534818517483526,
+          "start": 1795489906.7679121,
+          "end": 1795576306,
+          "cfg": {
+            "title": "GIVEAWAY",
+            "prize": "Role",
+            "description": "Click the button below to enter!",
+            "winners": 2,
+            "duration": 86400,
+            "color": 10181046,
+            "image": null,
+            "thumbnail": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622703137194117
+              }
+            },
+            "channel": null,
+            "emojis": {
+              "title": "<a:spider_disc:1517500076782649477>",
+              "prize": "<a:giveaway:1571559456037277837>",
+              "winners": "<a:dancing_star:1572638621813440643>",
+              "host": "<a:Madira_yo:1570284031457890314>",
+              "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+              "req": "<a:exo_announce:1565559608502657125>",
+              "entries": "<a:Spider_Hero:1517496670697422918>",
+              "todo": "<:LazyCafeDogesh:1570285024895434802>",
+              "done": "<:spider_mastiii:1573018958813208587>",
+              "ended": "<:53joker:1572657288915845301>"
+            },
+            "buttons": {
+              "join": {
+                "label": "Join Giveaway",
+                "emoji": "<a:Madira_dance:1570574375160385546>",
+                "style": "primary",
+                "ended_label": "Giveaway Ended"
+              },
+              "entries": {
+                "emoji": "<a:scrajj:1570284076609568919>",
+                "show": true
+              },
+              "progress": {
+                "label": "My Progress",
+                "emoji": "<a:Cat:1570284005067198464>",
+                "show": true
+              }
+            },
+            "prize_role": {
+              "role": 1488691203858890833,
+              "mode": "temporary",
+              "seconds": 604800
+            },
+            "points": 500,
+            "req": {
+              "roles": [],
+              "roles_mode": "any",
+              "messages": {
+                "count": 0,
+                "exclude": []
+              },
+              "invites": 0,
+              "task": {
+                "enabled": true,
+                "phrase": "bauni",
+                "target": 1425991437396217960,
+                "channel": null
+              }
+            }
+          },
+          "status": "ended",
+          "valid": 1,
+          "ended": 1795576309.6874616,
+          "winners": [
+            650534818517483526
+          ],
+          "entries": 1,
+          "users_with_counted_messages": 0,
+          "inviters": 0,
+          "task_done": 7
+        },
+        "1574624507035918348": {
+          "n": 2,
+          "gid": 1488690726870057165,
+          "ch": 1517397020049014926,
+          "msg": 1574624507035918348,
+          "host": 650534818517483526,
+          "start": 1795490137.1829274,
+          "end": 1795576537,
+          "cfg": {
+            "title": "GIVEAWAY",
+            "prize": "Role",
+            "description": "Click the button below to enter!",
+            "winners": 2,
+            "duration": 86400,
+            "color": 10181046,
+            "image": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622625496436830
+              }
+            },
+            "thumbnail": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622703137194117
+              }
+            },
+            "channel": 1488691409744695417,
+            "emojis": {
+              "title": "<a:spider_disc:1517500076782649477>",
+              "prize": "<a:giveaway:1571559456037277837>",
+              "winners": "<a:dancing_star:1572638621813440643>",
+              "host": "<a:Madira_yo:1570284031457890314>",
+              "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+              "req": "<a:exo_announce:1565559608502657125>",
+              "entries": "<a:Spider_Hero:1517496670697422918>",
+              "todo": "<:LazyCafeDogesh:1570285024895434802>",
+              "done": "<:spider_mastiii:1573018958813208587>",
+              "ended": "<:53joker:1572657288915845301>"
+            },
+            "buttons": {
+              "join": {
+                "label": "Join Giveaway",
+                "emoji": "<a:Madira_dance:1570574375160385546>",
+                "style": "primary",
+                "ended_label": "Giveaway Ended"
+              },
+              "entries": {
+                "emoji": "<a:scrajj:1570284076609568919>",
+                "show": true
+              },
+              "progress": {
+                "label": "My Progress",
+                "emoji": "<a:Cat:1570284005067198464>",
+                "show": true
+              }
+            },
+            "prize_role": {
+              "role": 1488691203858890833,
+              "mode": "temporary",
+              "seconds": 604800
+            },
+            "points": 500,
+            "req": {
+              "roles": [],
+              "roles_mode": "any",
+              "messages": {
+                "count": 0,
+                "exclude": []
+              },
+              "invites": 0,
+              "task": {
+                "enabled": true,
+                "phrase": "bauni",
+                "target": 1425991437396217960,
+                "channel": null
+              }
+            }
+          },
+          "status": "ended",
+          "valid": 7,
+          "ended": 1795576539.7024066,
+          "winners": [
+            1414153115602518067,
+            1262248731353546763
+          ],
+          "entries": 7,
+          "users_with_counted_messages": 0,
+          "inviters": 0,
+          "task_done": 7
+        },
+        "1574630785024135219": {
+          "n": 3,
+          "gid": 1488690726870057165,
+          "ch": 1517397020049014926,
+          "msg": 1574630785024135219,
+          "host": 650534818517483526,
+          "start": 1795491634.0037842,
+          "end": 1795578034,
+          "cfg": {
+            "title": "GIVEAWAY",
+            "prize": "Role",
+            "description": "Click the button below to enter!",
+            "winners": 2,
+            "duration": 86400,
+            "color": 10181046,
+            "image": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622625496436830
+              }
+            },
+            "thumbnail": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622703137194117
+              }
+            },
+            "channel": 1517397020049014926,
+            "emojis": {
+              "title": "<a:spider_disc:1517500076782649477>",
+              "prize": "<a:giveaway:1571559456037277837>",
+              "winners": "<a:dancing_star:1572638621813440643>",
+              "host": "<a:Madira_yo:1570284031457890314>",
+              "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+              "req": "<a:exo_announce:1565559608502657125>",
+              "entries": "<a:Spider_Hero:1517496670697422918>",
+              "todo": "<:LazyCafeDogesh:1570285024895434802>",
+              "done": "<:spider_mastiii:1573018958813208587>",
+              "ended": "<:53joker:1572657288915845301>"
+            },
+            "buttons": {
+              "join": {
+                "label": "Join Giveaway",
+                "emoji": "<a:Madira_dance:1570574375160385546>",
+                "style": "primary",
+                "ended_label": "Giveaway Ended"
+              },
+              "entries": {
+                "emoji": "<a:scrajj:1570284076609568919>",
+                "show": true
+              },
+              "progress": {
+                "label": "My Progress",
+                "emoji": "<a:Cat:1570284005067198464>",
+                "show": true
+              }
+            },
+            "prize_role": {
+              "role": 1488691203858890833,
+              "mode": "temporary",
+              "seconds": 604800
+            },
+            "points": 500,
+            "req": {
+              "roles": [],
+              "roles_mode": "any",
+              "messages": {
+                "count": 250,
+                "exclude": [
+                  1570388866702245948,
+                  1570388769394135150,
+                  1517463305768144906,
+                  1488691409744695417,
+                  1488691349212495892
+                ]
+              },
+              "invites": 0,
+              "task": {
+                "enabled": false,
+                "phrase": "happy birthday",
+                "target": 1262248731353546763,
+                "channel": null
+              }
+            }
+          },
+          "status": "ended",
+          "valid": 0,
+          "ended": 1795578036.2548218,
+          "winners": [],
+          "entries": 0,
+          "users_with_counted_messages": 38,
+          "inviters": 0,
+          "task_done": 0
+        },
+        "1574631196334362695": {
+          "n": 4,
+          "gid": 1488690726870057165,
+          "ch": 1517397020049014926,
+          "msg": 1574631196334362695,
+          "host": 650534818517483526,
+          "start": 1795491731.9411173,
+          "end": 1795578131,
+          "cfg": {
+            "title": "GIVEAWAY",
+            "prize": "Role",
+            "description": "Click the button below to enter!",
+            "winners": 2,
+            "duration": 86400,
+            "color": 10181046,
+            "image": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622625496436830
+              }
+            },
+            "thumbnail": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b07a2ab&is=6b06512b&hm=c335405e8eb48624ec405b19876e5f6e6075226c121dfa9a0befdae87e4dd28f&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622703137194117
+              }
+            },
+            "channel": 1517397020049014926,
+            "emojis": {
+              "title": "<a:spider_disc:1517500076782649477>",
+              "prize": "<a:giveaway:1571559456037277837>",
+              "winners": "<a:dancing_star:1572638621813440643>",
+              "host": "<a:Madira_yo:1570284031457890314>",
+              "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+              "req": "<a:exo_announce:1565559608502657125>",
+              "entries": "<a:Spider_Hero:1517496670697422918>",
+              "todo": "<:LazyCafeDogesh:1570285024895434802>",
+              "done": "<:spider_mastiii:1573018958813208587>",
+              "ended": "<:53joker:1572657288915845301>"
+            },
+            "buttons": {
+              "join": {
+                "label": "Join Giveaway",
+                "emoji": "<a:Madira_dance:1570574375160385546>",
+                "style": "primary",
+                "ended_label": "Giveaway Ended"
+              },
+              "entries": {
+                "emoji": "<a:scrajj:1570284076609568919>",
+                "show": true
+              },
+              "progress": {
+                "label": "My Progress",
+                "emoji": "<a:Cat:1570284005067198464>",
+                "show": true
+              }
+            },
+            "prize_role": {
+              "role": 1488691203858890833,
+              "mode": "temporary",
+              "seconds": 604800
+            },
+            "points": 500,
+            "req": {
+              "roles": [],
+              "roles_mode": "any",
+              "messages": {
+                "count": 250,
+                "exclude": [
+                  1570386957056348251,
+                  1488691409744695417,
+                  1488691349212495892
+                ]
+              },
+              "invites": 0,
+              "task": {
+                "enabled": false,
+                "phrase": "happy birthday",
+                "target": 1262248731353546763,
+                "channel": null
+              }
+            }
+          },
+          "status": "ended",
+          "valid": 1,
+          "ended": 1795578131.2566462,
+          "winners": [
+            650534818517483526
+          ],
+          "entries": 4,
+          "users_with_counted_messages": 38,
+          "inviters": 0,
+          "task_done": 0
+        },
+        "1574634081432379435": {
+          "n": 5,
+          "gid": 1488690726870057165,
+          "ch": 1517397020049014926,
+          "msg": 1574634081432379435,
+          "host": 650534818517483526,
+          "start": 1795492419.8864756,
+          "end": 1795578819,
+          "cfg": {
+            "title": "GIVEAWAY",
+            "prize": "Role",
+            "description": "Click the button below to enter!",
+            "winners": 2,
+            "duration": 86400,
+            "color": 10181046,
+            "image": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622625496436830
+              }
+            },
+            "thumbnail": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06f9eb&is=6b05a86b&hm=78e13cd5040bf687a215738813968088bb4558d3d7a4098c20c79ff6400c458e&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1574622703137194117
+              }
+            },
+            "channel": 1517397020049014926,
+            "emojis": {
+              "title": "<a:spider_disc:1517500076782649477>",
+              "prize": "<a:giveaway:1571559456037277837>",
+              "winners": "<a:dancing_star:1572638621813440643>",
+              "host": "<a:Madira_yo:1570284031457890314>",
+              "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+              "req": "<a:exo_announce:1565559608502657125>",
+              "entries": "<a:Spider_Hero:1517496670697422918>",
+              "todo": "<:LazyCafeDogesh:1570285024895434802>",
+              "done": "<:spider_mastiii:1573018958813208587>",
+              "ended": "<:53joker:1572657288915845301>"
+            },
+            "buttons": {
+              "join": {
+                "label": "Join Giveaway",
+                "emoji": "<a:Madira_dance:1570574375160385546>",
+                "style": "primary",
+                "ended_label": "Giveaway Ended"
+              },
+              "entries": {
+                "emoji": "<a:scrajj:1570284076609568919>",
+                "show": true
+              },
+              "progress": {
+                "label": "My Progress",
+                "emoji": "<a:Cat:1570284005067198464>",
+                "show": true
+              }
+            },
+            "prize_role": {
+              "role": 1488691203858890833,
+              "mode": "permanent",
+              "seconds": 604800
+            },
+            "points": 0,
+            "req": {
+              "roles": [],
+              "roles_mode": "any",
+              "messages": {
+                "count": 0,
+                "exclude": [
+                  1570386957056348251,
+                  1488691409744695417,
+                  1488691349212495892
+                ]
+              },
+              "invites": 0,
+              "task": {
+                "enabled": false,
+                "phrase": "happy birthday",
+                "target": 1262248731353546763,
+                "channel": null
+              }
+            }
+          },
+          "status": "ended",
+          "valid": 14,
+          "ended": 1795578821.8353305,
+          "winners": [
+            743845224287043665,
+            1455775148962746411
+          ],
+          "entries": 14,
+          "users_with_counted_messages": 0,
+          "inviters": 0,
+          "task_done": 0
+        }
+      },
+      "temp_roles": [
+        {
+          "u": 650534818517483526,
+          "r": 1488691203858890833,
+          "exp": 1796181109.687296,
+          "gw": 1,
+          "tries": 0
+        },
+        {
+          "u": 1414153115602518067,
+          "r": 1488691203858890833,
+          "exp": 1796181339.5284672,
+          "gw": 2,
+          "tries": 0
+        },
+        {
+          "u": 1262248731353546763,
+          "r": 1488691203858890833,
+          "exp": 1796181339.702228,
+          "gw": 2,
+          "tries": 0
+        }
+      ],
+      "last": {
+        "title": "GIVEAWAY",
+        "prize": "Role",
+        "description": "Click the button below to enter!",
+        "winners": 2,
+        "duration": 86400,
+        "color": 10181046,
+        "image": {
+          "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622624921682070/giveaway_image_1488690726870057165.gif?ex=6b065118&is=6b04ff98&hm=134879b7730e534cbcd2de86a710b198653e0f9543675425220ec767b056caec&",
+          "ref": {
+            "c": 1572663742091632681,
+            "m": 1574622625496436830
+          }
+        },
+        "thumbnail": {
+          "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1574622702466113546/giveaway_thumbnail_1488690726870057165.gif?ex=6b06512b&is=6b04ffab&hm=c4796c70563ab85d7474fec6b78b04352403c2e59898060ef778cb6a0d0e89ed&",
+          "ref": {
+            "c": 1572663742091632681,
+            "m": 1574622703137194117
+          }
+        },
+        "channel": 1517397020049014926,
+        "emojis": {
+          "title": "<a:spider_disc:1517500076782649477>",
+          "prize": "<a:giveaway:1571559456037277837>",
+          "winners": "<a:dancing_star:1572638621813440643>",
+          "host": "<a:Madira_yo:1570284031457890314>",
+          "ends": "<a:Oliviaaa_nooooo:1570284034532188210>",
+          "req": "<a:exo_announce:1565559608502657125>",
+          "entries": "<a:Spider_Hero:1517496670697422918>",
+          "todo": "<:LazyCafeDogesh:1570285024895434802>",
+          "done": "<:spider_mastiii:1573018958813208587>",
+          "ended": "<:53joker:1572657288915845301>"
+        },
+        "buttons": {
+          "join": {
+            "label": "Join Giveaway",
+            "emoji": "<a:Madira_dance:1570574375160385546>",
+            "style": "primary",
+            "ended_label": "Giveaway Ended"
+          },
+          "entries": {
+            "emoji": "<a:scrajj:1570284076609568919>",
+            "show": true
+          },
+          "progress": {
+            "label": "My Progress",
+            "emoji": "<a:Cat:1570284005067198464>",
+            "show": true
+          }
+        },
+        "prize_role": {
+          "role": 1488691203858890833,
+          "mode": "permanent",
+          "seconds": 604800
+        },
+        "points": 0,
+        "req": {
+          "roles": [],
+          "roles_mode": "any",
+          "messages": {
+            "count": 0,
+            "exclude": [
+              1570386957056348251,
+              1488691409744695417,
+              1488691349212495892
+            ]
+          },
+          "invites": 0,
+          "task": {
+            "enabled": false,
+            "phrase": "happy birthday",
+            "target": 1262248731353546763,
+            "channel": null
+          }
+        }
+      }
+    },
+    "guessanime": {
+      "channel": 1575970396094599298
+    },
+    "guessemoji": {
+      "channel": 1575970446325846046
+    },
+    "handfight": {
+      "channel": 1572828244758241330
+    },
+    "handfight_stats": {
+      "650534818517483526": {
+        "games": 6,
+        "titles": 4,
+        "rounds_won": 9,
+        "rounds_lost": 9,
+        "draws": 7,
+        "match_wins": 4,
+        "match_losses": 2,
+        "rock": 3,
+        "paper": 8,
+        "scissors": 14
+      },
+      "1154489620499800127": {
+        "games": 1,
+        "titles": 0,
+        "rounds_won": 0,
+        "rounds_lost": 2,
+        "draws": 0,
+        "match_wins": 0,
+        "match_losses": 1,
+        "rock": 0,
+        "paper": 2,
+        "scissors": 0
+      },
+      "1425991437396217960": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 2,
+        "rounds_lost": 1,
+        "draws": 4,
+        "match_wins": 1,
+        "match_losses": 0,
+        "rock": 2,
+        "paper": 4,
+        "scissors": 1
+      },
+      "1554945105981603880": {
+        "games": 1,
+        "titles": 0,
+        "rounds_won": 0,
+        "rounds_lost": 2,
+        "draws": 0,
+        "match_wins": 0,
+        "match_losses": 1,
+        "rock": 0,
+        "paper": 1,
+        "scissors": 1
+      },
+      "1508094918118211655": {
+        "games": 2,
+        "titles": 0,
+        "rounds_won": 1,
+        "rounds_lost": 4,
+        "draws": 1,
+        "match_wins": 0,
+        "match_losses": 2,
+        "rock": 3,
+        "paper": 2,
+        "scissors": 1
+      },
+      "1409148182944022699": {
+        "games": 2,
+        "titles": 1,
+        "rounds_won": 1,
+        "rounds_lost": 4,
+        "draws": 5,
+        "match_wins": 0,
+        "match_losses": 2,
+        "rock": 3,
+        "paper": 3,
+        "scissors": 4
+      },
+      "1433650059043405959": {
+        "games": 2,
+        "titles": 1,
+        "rounds_won": 4,
+        "rounds_lost": 3,
+        "draws": 7,
+        "match_wins": 2,
+        "match_losses": 1,
+        "rock": 3,
+        "paper": 5,
+        "scissors": 6
+      },
+      "1418875905085935637": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 4,
+        "rounds_lost": 0,
+        "draws": 2,
+        "match_wins": 2,
+        "match_losses": 0,
+        "rock": 3,
+        "paper": 1,
+        "scissors": 2
+      },
+      "1262248731353546763": {
+        "games": 1,
+        "titles": 0,
+        "rounds_won": 0,
+        "rounds_lost": 2,
+        "draws": 0,
+        "match_wins": 0,
+        "match_losses": 1,
+        "rock": 1,
+        "paper": 1,
+        "scissors": 0
+      },
+      "1513085640642920458": {
+        "games": 1,
+        "titles": 1,
+        "rounds_won": 6,
+        "rounds_lost": 0,
+        "draws": 2,
+        "match_wins": 1,
+        "match_losses": 0,
+        "rock": 4,
+        "paper": 2,
+        "scissors": 2
+      }
+    },
+    "imagehost": {
+      "channel": 1572381729233051669,
+      "items": {
+        "img-1": {
+          "c": 1572381729233051669,
+          "m": 1572382140962840586,
+          "url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382140719566910/img-1.jpg?ex=6afe2a7b&is=6afcd8fb&hm=7dc1873b7f51d216fcd45fa9d66a08d3670041fe7dcdf081e0dd6ef0b57cb025&",
+          "t": "jpg",
+          "s": 99697,
+          "by": 650534818517483526,
+          "ts": 1794955515
+        }
+      }
+    },
+    "noprefix": {
+      "role": 1488691185374462012,
+      "users": [
+        1418875905085935637,
+        650534818517483526,
+        1502959831772823762
+      ]
+    },
+    "points": {
+      "chat_enabled": true,
+      "chat_msgs": 10,
+      "chat_points": 1,
+      "chat_everywhere": true,
+      "vc_enabled": true,
+      "vc_mins": 1,
+      "vc_points": 1,
+      "vc_need_others": false,
+      "vc_need_muted": false,
+      "cooldown": 0,
+      "channel_rules": {},
+      "disabled_channels": [
+        1570386957056348251,
+        1488691409744695417,
+        1488691349212495892
+      ],
+      "enabled_channels": [],
+      "vc_disabled_channels": []
+    },
+    "rolecmds": {
+      "setmemer": {
+        "role": 1488691235970351105,
+        "allowed": null
+      },
+      "sethomies": {
+        "role": 1488691239678378015,
+        "allowed": null
+      },
+      "setguest": {
+        "role": 1488691229838540904,
+        "allowed": null
+      },
+      "setog": {
+        "role": 1488691230861951078,
+        "allowed": null
+      },
+      "own": {
+        "role": 1488691169046167603,
+        "allowed": null
+      },
+      "manager": {
+        "role": 1488691176306639008,
+        "allowed": null
+      },
+      "1488691231771853098": {
+        "role": 1488691231771853098,
+        "allowed": null
+      },
+      "tmod": {
+        "role": 1488691194220384338,
+        "allowed": null
+      },
+      "staff": {
+        "role": 1488691195847643227,
+        "allowed": null
+      }
+    },
+    "shop": {
+      "per_page": 5
+    },
+    "simonsays": {
+      "channel": 1575970494216147025
+    },
+    "tickets": {
+      "panels": {
+        "main": {
+          "name": "Main panel",
+          "panel_channel": 1488691478841528410,
+          "panel_message": 1573885746706776161,
+          "panel": {
+            "title": "__Contact Support Team__",
+            "color": 3066993,
+            "placeholder": "Select a topic...",
+            "banner": {
+              "url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&",
+              "ref": {
+                "c": 1572663742091632681,
+                "m": 1573875037528784936
+              }
+            },
+            "description": "✉️ **Create A Ticket**- if you need support or have any important queries\n\n<:InShot_20261122_130918729_2:1573966363184209971> **Do Not Create a Ticket For Fun!**\n\n<:Senpai_Information:1517499045117952060> __**Ticket For Support**__ :-\n- Create Ticket For General Support\n[for e.g. Reporting Someone , Bugs, Special Category Role claiming,etc]\n- Creating a ticket to be staff is strictly prohibited.\n- Tickets for fun would result in 2days mute / ban\n- If you are found spamming or wasting time by making tickets for irrelevant issues might lead to a strike or a serious action which will be taken by our Support Team.\n- Opening a ticket to talk to Senpai or ask for roles is strictly prohibited. So, please don't create a ticket regarding this topic.\n\n<:Spider_partner:1572638598585655296> __**Ticket for Partnership/Sponsors**__ :-\n- Create a Ticket If You Got Any Brand Deals Or Sponsor\n- Kindly Mention The Basic Details And Have Patience.\n- The Rates For Brand Deals Would Be Discussed In Ticket\n- Leaking The Information To Anyone Would Lead To Ban.\n\n<:InShot_20261122_130804475:1573966358889107600>__**Currency Loan**__ :-\n- Loan Currency with intrest.\n- follow all the rules.\n- must repay according to the rules.\n\n\n__select category from the dropdown menu to contact us__",
+            "_url": "https://cdn.discordapp.com/attachments/1572663742091632681/1573875036568293387/ticket_banner_1488690726870057165.gif?ex=6b0398d9&is=6b024759&hm=81a448ca1a93a13c4ca934609b46fa5f48452fc4c236c90eb4227ed462c1984e&"
+          },
+          "welcome": {
+            "title": "Help/support",
+            "description": "<:kon_headset_1cf1da:1573479041917263955> **Welcome to the Ticket Support**\n> Kindly describe your issue/reason of opening this ticket, a staff member would reach to support soon."
+          },
+          "support_roles": [
+            1488691195847643227
+          ],
+          "admin_roles": [
+            1488691182308692040
+          ],
+          "open_category": null,
+          "logs": {
+            "opened": 1570531039187566715,
+            "closed": 1570531086939848776,
+            "transcript": 1570531130938101883
+          },
+          "categories": [
+            {
+              "id": "dsw-support",
+              "name": "General Support",
+              "emoji": "<:Senpai_Information:1517499045117952060>",
+              "description": "Reports, bugs, role claiming and more",
+              "question": "Kindly Mention your issue!",
+              "parent": 1488691351246868630,
+              "ping_roles": [
+                1488691195847643227
+              ]
+            },
+            {
+              "id": "dsw-partner",
+              "name": "Partnership/Sponsors",
+              "emoji": "<:Spider_partner:1572638598585655296>",
+              "description": "Brand deals and sponsors",
+              "question": "Kindly mention the basic details of your deal!",
+              "parent": 1488691352051912706,
+              "ping_roles": [
+                1488691182308692040
+              ]
+            },
+            {
+              "id": "df8fd6b2",
+              "name": "Currency Loan",
+              "emoji": "<:InShot_20261122_130804475:1573966358889107600>",
+              "description": null,
+              "question": "Kindly mention the amount",
+              "parent": 1488691353503404204,
+              "ping_roles": [
+                1488691182308692040
+              ]
+            }
+          ],
+          "max_open": 1,
+          "name_format": "ticket-{user}",
+          "opener_can_close": false
+        }
+      },
+      "counter": 18,
+      "blacklist": [],
+      "tickets": {
+        "1573971039388434442": {
+          "num": 5,
+          "channel": 1573971039388434442,
+          "name": "ticket-nontastic_player",
+          "category": "df8fd6b2",
+          "category_name": "Currency Loan",
+          "question": "Kindly mention the amount",
+          "opener": 1028298097664733215,
+          "created": 1795334338.8660107,
+          "claimed_by": 650534818517483526,
+          "claimed_at": 1795334344.579034,
+          "first_reply_by": 650534818517483526,
+          "first_reply_at": 1795334343.942,
+          "answer": "Jitna bhi mil jaye",
+          "log": [
+            1570531039187566715,
+            1573971041728991373
+          ],
+          "closing": false,
+          "welcome_msg": 1573971040185356310
+        },
+        "1573974490554044548": {
+          "num": 6,
+          "channel": 1573974490554044548,
+          "name": "ticket-luffy_07_09",
+          "category": "df8fd6b2",
+          "category_name": "Currency Loan",
+          "question": "Kindly mention the amount",
+          "opener": 1513085640642920458,
+          "created": 1795335161.7306697,
+          "claimed_by": 650534818517483526,
+          "claimed_at": 1795335167.3309338,
+          "first_reply_by": 650534818517483526,
+          "first_reply_at": 1795335169.809,
+          "answer": "500k",
+          "log": [
+            1570531039187566715,
+            1573974493007839333
+          ],
+          "closing": false,
+          "welcome_msg": 1573974491669856328
+        },
+        "1574458190815559732": {
+          "num": 12,
+          "channel": 1574458190815559732,
+          "name": "ticket-yourzoru",
+          "category": "df8fd6b2",
+          "category_name": "Currency Loan",
+          "question": "Kindly mention the amount",
+          "opener": 1407327765933461606,
+          "created": 1795450484.8535337,
+          "claimed_by": 650534818517483526,
+          "claimed_at": 1795495873.274491,
+          "first_reply_by": 1554945105981603880,
+          "first_reply_at": 1795450511.518,
+          "answer": "10m ka loan demdo",
+          "log": [
+            1570531039187566715,
+            1574458194493972553
+          ],
+          "closing": false,
+          "welcome_msg": 1574458192396689620
+        },
+        "1575470287686996019": {
+          "num": 18,
+          "channel": 1575470287686996019,
+          "name": "ticket-whoknow_008",
+          "panel": "main",
+          "category": "df8fd6b2",
+          "category_name": "Currency Loan",
+          "question": "Kindly mention the amount",
+          "opener": 743845224287043665,
+          "created": 1795691787.6163282,
+          "claimed_by": 650534818517483526,
+          "claimed_at": 1795723419.814148,
+          "first_reply_by": 1547837265961685072,
+          "first_reply_at": 1795691861.551,
+          "answer": "50m",
+          "log": [
+            1570531039187566715,
+            1575470293210759279
+          ],
+          "closing": false,
+          "welcome_msg": 1575470291008618628
+        }
+      },
+      "stats": {
+        "opened": 18,
+        "closed": 14
+      }
+    },
+    "tictactoe": {
+      "channel": 1572117193712209960
+    },
+    "timetap": {
+      "channel": 1572828188332007465
+    },
+    "timetap_stats": {
+      "650534818517483526": {
+        "games": 3,
+        "false_starts": 2,
+        "taps": 14,
+        "total_ms": 17834,
+        "rounds_won": 14,
+        "match_wins": 1,
+        "titles": 1,
+        "train_runs": 2,
+        "best_clean": 6,
+        "best_ms": 1067,
+        "train_best_avg": 1172
+      },
+      "1028298097664733215": {
+        "games": 4,
+        "false_starts": 1,
+        "taps": 18,
+        "total_ms": 23092,
+        "rounds_won": 18,
+        "match_wins": 2,
+        "titles": 2,
+        "train_runs": 1,
+        "best_clean": 10,
+        "best_ms": 1034,
+        "train_best_avg": 1245
+      },
+      "646117549670662154": {
+        "games": 1,
+        "false_starts": 1,
+        "taps": 7,
+        "total_ms": 8558,
+        "rounds_won": 7,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 1,
+        "best_clean": 6,
+        "best_ms": 1079,
+        "train_best_avg": 1223
+      },
+      "1409148182944022699": {
+        "games": 1,
+        "false_starts": 1,
+        "taps": 10,
+        "total_ms": 14412,
+        "rounds_won": 10,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 1,
+        "best_clean": 9,
+        "best_ms": 1088,
+        "train_best_avg": 1441
+      },
+      "1513085640642920458": {
+        "games": 3,
+        "false_starts": 2,
+        "taps": 13,
+        "total_ms": 26056,
+        "rounds_won": 13,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 3,
+        "best_clean": 10,
+        "best_ms": 1452,
+        "train_best_avg": 2037
+      },
+      "1418875905085935637": {
+        "games": 2,
+        "false_starts": 1,
+        "taps": 0,
+        "total_ms": 0,
+        "rounds_won": 0,
+        "match_wins": 0,
+        "titles": 0,
+        "train_runs": 0,
+        "best_clean": 0
+      }
+    }
+  },
+  "players_in_database": 176
+}

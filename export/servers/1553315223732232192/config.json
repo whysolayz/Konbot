@@ -1,0 +1,151 @@
+{
+  "server": {
+    "id": 1553315223732232192,
+    "name": "Amoxy's Nation",
+    "bot_is_in_server": true,
+    "owner_id": 1510881768792789002,
+    "members": 83
+  },
+  "custom_vc": {
+    "join_to_create_channel": 1575128383052845156,
+    "interface_channel": 1575128339776151652,
+    "interface_message_id": 1575128486752952452,
+    "saved_setup (last known, survives channel deletion)": {
+      "join_to_create": {
+        "id": 1575128383052845156,
+        "name": "𐏓・⚙️・Custom Vc",
+        "type": "voice",
+        "category_id": 1575128061848854588,
+        "category": "𐏓・⚙️・Custom Vocalizations",
+        "position": 3,
+        "bitrate": 64000,
+        "user_limit": 1,
+        "currently_set": true,
+        "exists_now": true
+      },
+      "interface": {
+        "id": 1575128339776151652,
+        "name": "𐏓・⚙️・interface",
+        "type": "text",
+        "category_id": 1575128061848854588,
+        "category": "𐏓・⚙️・Custom Vocalizations",
+        "position": 56,
+        "currently_set": true,
+        "exists_now": true
+      },
+      "panel_message_id": 1575128486752952452
+    },
+    "other_keys": {
+      "panel_ver": "4346b0875c598f7e"
+    },
+    "active_custom_vcs": {}
+  },
+  "self_roles": null,
+  "points_settings": null,
+  "shop": {
+    "settings": null,
+    "items": [
+      {
+        "id": 11,
+        "guild_id": 1553315223732232192,
+        "role_id": 1574733232124076093,
+        "price": 150,
+        "stock": 1,
+        "emoji": "<:AN_CuteTeddy:1558444891288379402>",
+        "position": 1
+      },
+      {
+        "id": 12,
+        "guild_id": 1553315223732232192,
+        "role_id": 1574735925525880903,
+        "price": 100,
+        "stock": 3,
+        "emoji": "<:AN_Panda:1558432223613419560>",
+        "position": 2
+      },
+      {
+        "id": 13,
+        "guild_id": 1553315223732232192,
+        "role_id": 1574735130944209039,
+        "price": 50,
+        "stock": 5,
+        "emoji": "<:AN_SigmaBoi:1563606336376152154>",
+        "position": 3
+      }
+    ]
+  },
+  "no_prefix": {
+    "role": null,
+    "users": [
+      1536636111722643457,
+      1517493672931758162
+    ]
+  },
+  "aliases": null,
+  "role_commands": {
+    "chat": {
+      "role": 1555184281465262111,
+      "allowed": null
+    }
+  },
+  "autoreact": {
+    "roles": [],
+    "users": {
+      "1536636111722643457": [
+        "<:AN_CuteTeddy:1558444891288379402>"
+      ]
+    }
+  },
+  "aura": null,
+  "custom_vc_rules": null,
+  "tictactoe": null,
+  "game_channels": {
+    "tictactoe": null,
+    "blacktea": null,
+    "timetap": null,
+    "handfight": null,
+    "guessanime": null,
+    "guessemoji": null,
+    "simonsays": null
+  },
+  "game_stats": {
+    "timetap": null,
+    "handfight": null,
+    "guessanime": null,
+    "guessemoji": null,
+    "simonsays": null
+  },
+  "saved_images ($tolink names -> links)": null,
+  "command_disable ($disablecommand)": null,
+  "extra_owners": [],
+  "afk": {
+    "tag_enabled": true,
+    "users": {}
+  },
+  "tickets (panels, categories, open tickets)": null,
+  "giveaways (templates, running, ended)": null,
+  "all_settings_raw": {
+    "autoreact": {
+      "roles": [],
+      "users": {
+        "1536636111722643457": [
+          "<:AN_CuteTeddy:1558444891288379402>"
+        ]
+      }
+    },
+    "noprefix": {
+      "role": null,
+      "users": [
+        1536636111722643457,
+        1517493672931758162
+      ]
+    },
+    "rolecmds": {
+      "chat": {
+        "role": 1555184281465262111,
+        "allowed": null
+      }
+    }
+  },
+  "players_in_database": 13
+}

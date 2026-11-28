@@ -1,0 +1,23 @@
+{
+ "server_id": 1469352773509189699,
+ "users": [
+  {
+   "guild_id": 1469352773509189699,
+   "user_id": 1418875905085935637,
+   "points": 0,
+   "chat_total": 1,
+   "chat_progress": 1,
+   "vc_total": 0,
+   "vc_progress": 0
+  }
+ ],
+ "channel_progress": [],
+ "badges": [],
+ "shop_items": [],
+ "purchases": [],
+ "settings": [],
+ "point_log": [],
+ "left_members": [],
+ "aura_log": [],
+ "transfer_log": []
+}

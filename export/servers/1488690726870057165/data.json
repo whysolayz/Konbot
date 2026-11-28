@@ -1,0 +1,172 @@
+{
+  "server_id": 1488690726870057165,
+  "vc_data.guilds": {
+    "create": 1488691385266864208,
+    "interface": 1488691445769568306,
+    "panel_msg": 1575604881543143577,
+    "panel_ver": "0b67fbf2e1172476",
+    "dashboard": {
+      "aliases": {
+        "aliases": [
+          {
+            "name": "backupload",
+            "command": "bload"
+          }
+        ]
+      },
+      "self_roles": {
+        "channel": "1488691387653161131",
+        "title": "Self Roles :",
+        "title_emoji": "<:Spider_Diamond:1570309161198293013>",
+        "footer": "Click the buttons below to toggle your roles.",
+        "color": "#ff9100",
+        "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b00250a&is=6afed38a&hm=cc8806b939ea85d7d95df02c8276839444e69fde897cbf07edc3160bc530f326&",
+        "roles": [
+          {
+            "role": "1488691267574698006",
+            "label": "Event Ping",
+            "emoji": "<:cal2:1570309163999821864>"
+          },
+          {
+            "role": "1488691305323167774",
+            "label": "Fun Ping",
+            "emoji": "<:senpai_wow:1570309166965465138>"
+          },
+          {
+            "role": "1488691271101972531",
+            "label": "Giveaway Ping",
+            "emoji": "<:Spider_Diamond:1570309161198293013>"
+          },
+          {
+            "role": "1488691273446719489",
+            "label": "Social Feeds",
+            "emoji": "<:Senpai_Information:1517499045117952060>"
+          }
+        ]
+      },
+      "points": {
+        "chat_enabled": true,
+        "chat_msgs": 10,
+        "chat_points": 1,
+        "cooldown": 0,
+        "chat_everywhere": true,
+        "enabled_channels": [],
+        "disabled_channels": [
+          "1570386957056348251",
+          "1488691349212495892"
+        ],
+        "channel_rules": [],
+        "vc_enabled": true,
+        "vc_mins": 1,
+        "vc_points": 1,
+        "vc_need_others": false,
+        "vc_need_muted": false,
+        "vc_disabled_channels": []
+      }
+    }
+  },
+  "vc_data.selfroles": {
+    "channel": 1488691387653161131,
+    "message": 1575605856186400800,
+    "title": "Self Roles :",
+    "title_emoji": "<:Spider_Diamond:1570309161198293013>",
+    "footer": "Click the buttons below to toggle your roles.",
+    "color": 16748800,
+    "banner": null,
+    "roles": [
+      {
+        "role": 1488691267574698006,
+        "label": "Event Ping",
+        "emoji": "<:cal2:1570309163999821864>",
+        "line": "Event Ping",
+        "line_emoji": "<:cal2:1570309163999821864>"
+      },
+      {
+        "role": 1488691305323167774,
+        "label": "Fun Ping",
+        "emoji": "<:senpai_wow:1570309166965465138>",
+        "line": "Fun Ping",
+        "line_emoji": "<:senpai_wow:1570309166965465138>"
+      },
+      {
+        "role": 1488691271101972531,
+        "label": "Giveaway Ping",
+        "emoji": "<:Spider_Diamond:1570309161198293013>",
+        "line": "Giveaway Ping",
+        "line_emoji": "<:Spider_Diamond:1570309161198293013>"
+      },
+      {
+        "role": 1488691273446719489,
+        "label": "Social Feeds",
+        "emoji": "<:Senpai_Information:1517499045117952060>",
+        "line": "Social Feeds",
+        "line_emoji": "<:Senpai_Information:1517499045117952060>"
+      }
+    ],
+    "banner_url": "https://cdn.discordapp.com/attachments/1572381729233051669/1572382469939011624/banner_1488690726870057165.gif?ex=6b095f8a&is=6b080e0a&hm=624422229740cffbdbe0a1b4b9232095209061d172220a288124f002c8e769b6&",
+    "banner_ref": {
+      "c": 1572381729233051669,
+      "m": 1572382470312296601
+    },
+    "missing": []
+  },
+  "vc_data.vcs": {
+    "1576051658834710609": {
+      "guild": 1488690726870057165,
+      "owner": 650534818517483526,
+      "banned": [],
+      "block_drags": false,
+      "created": 1795830397.2689588
+    }
+  },
+  "vc_data.mutes": {},
+  "vc_data.guild_owners": [
+    1262248731353546763,
+    1154489620499800127
+  ],
+  "vc_data.vc_setup": {
+    "create": {
+      "id": 1488691385266864208,
+      "name": "🌱︲Dark Custom VC⌝",
+      "type": "voice",
+      "category_id": 1488691343382286338,
+      "category": "╰ ¤〢Custom VC ︲🌱︲",
+      "position": 7,
+      "bitrate": 64000,
+      "user_limit": 1
+    },
+    "interface": {
+      "id": 1488691445769568306,
+      "name": "🌱︲dark_interface⌝",
+      "type": "text",
+      "category_id": 1488691343382286338,
+      "category": "╰ ¤〢Custom VC ︲🌱︲",
+      "position": 47
+    },
+    "panel_message_id": 1575604881543143577
+  },
+  "afk_data.afk": {
+    "1512822379061969028": {
+      "reason": "sone ja raha",
+      "since": 1794505670.9405162,
+      "guild_id": 1488690726870057165,
+      "old_nick": null,
+      "mentions": []
+    },
+    "1502235313081290855": {
+      "reason": "gn",
+      "since": 1794852923.8723984,
+      "guild_id": 1488690726870057165,
+      "old_nick": null,
+      "mentions": [
+        {
+          "author": "TheSKY",
+          "channel_id": 1571917188183363594,
+          "url": "https://discord.com/channels/1488690726870057165/1571917188183363594/1571951848339013683",
+          "content": "Gn"
+        }
+      ]
+    }
+  },
+  "afk_data.tag": false
+}
